@@ -1,0 +1,43 @@
+{
+    "id": "HumidityChanged",
+    "highlight": true,
+    "title": {
+        "en": "Humidity has changed",
+        "de": "Luftfeuchtigkeit hat sich geändert",
+        "nl": "Vochtigheid is veranderd"
+    },
+    "hint": {
+        "en": "Triggers when the humidity changes.",
+        "de": "Wird ausgelöst, wenn sich die Luftfeuchtigkeit ändert.",
+        "nl": "Triggert zodra de vochtigheid veranderd."
+    },
+    "tokens": [{
+            "name": "measure_humidity",
+            "type": "number",
+            "title": {
+                "en": "Humidity (%)",
+                "de": "Luftfeuchtigkeit (%)",
+                "nl": "Vochtigheid (%)"
+            },
+            "example": 50
+        },
+        {
+            "name": "location",
+            "type": "string",
+            "title": {
+                "en": "Location",
+                "de": "Standort",
+                "nl": "locatie"
+            },
+            "example": {
+                "en": "Amsterdam",
+                "de": "Berlin"
+            }
+        }
+    ],
+    "args": [{
+        "name": "device",
+        "type": "device",
+        "filter": "driver_id=owmOnecallCurrent|owmOnecallHourly|owmOnecallDaily"
+    }]
+}

@@ -1,0 +1,28 @@
+{
+    "id": "Snow",
+    "title": {
+        "en": "Snow precipitation !{{is|isn't}} more than",
+        "de": "Schnee-Niederschlag !{{ist|ist nicht}} größer als",
+        "nl": "Sneeuw neerslag !{{is|is niet}} meer dan"
+    },
+    "titleFormatted": {
+        "en": "Snow precipitation !{{is|isn't}} more than [[snow]]",
+        "de": "Schnee-Niederschlag !{{ist|ist nicht}} größer als [[snow]]",
+        "nl": "Sneeuw neerslag !{{is|is niet}} meer dan [[snow]]"
+    },
+    "hint": {
+        "en": "Snow precipitation in millimeters",
+        "de": "Schnee-Niederschlag in Millimeter",
+        "nl": "Sneeuw neerslag in millimeters"
+    },
+    "args": [{
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=owmCurrent|owmForecast|owmLongterm|owmOnecallCurrent|owmOnecallHourly|owmOnecallDaily"
+        },
+        {
+            "name": "snow",
+            "type": "number"
+        }
+    ]
+}

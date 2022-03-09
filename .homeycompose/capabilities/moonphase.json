@@ -1,0 +1,12 @@
+{
+    "type": "number",
+    "title": {
+        "en": "Moon phase",
+        "de": "Mondphase",
+        "nl": "Maanfase"
+    },
+    "uiComponent": "sensor",
+    "getable": true,
+    "setable": false,
+    "icon": "/assets/moonphase.svg"
+}

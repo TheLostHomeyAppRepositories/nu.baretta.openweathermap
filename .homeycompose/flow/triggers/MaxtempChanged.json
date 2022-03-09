@@ -1,0 +1,42 @@
+{
+    "id": "MaxtempChanged",
+    "title": {
+        "en": "Max temperature has changed",
+        "de": "Maximum-Temperatur hat sich geändert",
+        "nl": "Max temperatuur is veranderd"
+    },
+    "hint": {
+        "en": "Triggers when the maximum temperature changes.",
+        "de": "Wird ausgelöst, wenn sich die Maximal-Temperatur ändert.",
+        "nl": "Triggert zodra de maximum temperatuur veranderd."
+    },
+    "tokens": [{
+            "name": "measure_temperature.max",
+            "type": "number",
+            "title": {
+                "en": "Maximum temperature",
+                "de": "Minimal-Temperatur",
+                "nl": "Maximum temperatuur"
+            },
+            "example": 5
+        },
+        {
+            "name": "location",
+            "type": "string",
+            "title": {
+                "en": "Location",
+                "de": "Standort",
+                "nl": "locatie"
+            },
+            "example": {
+                "en": "Amsterdam",
+                "de": "Berlin"
+            }
+        }
+    ],
+    "args": [{
+        "name": "ChangedMaxTemperature",
+        "type": "device",
+        "filter": "driver_id=owmLongterm"
+    }]
+}

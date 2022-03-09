@@ -6,7 +6,7 @@
          "error": "An error has occurred.",
          "apiKey": "Voer de OpenWeatherMap API key in:",
          "required": "API key is een vereist veld",
-         "optional": "Optioneel: voer de locatie in voor de weer informatie, stad/landencode",
+         "optional": "Optioneel: voer de locatie in voor de weer informatie, stad,landencode",
          "zipcode": "...of (numerieke) postcode met landencode:",
          "autolocation": "Indien leeg zal Homey's locatie gebruikt worden.",
          "updatefrequency": "Voer de update frequentie in:",
@@ -17,6 +17,49 @@
          "language": "Selecteer taal:",
          "name": "Geef je OpenWeatherMap sensor een naam:",
          "saveSettings": "Instellingen opslaan"
+      },
+      "oneCallAPI":{
+         "title": "OpenWeather - Voeg een locatie toe ...",
+         "titleHourly": "OpenWeather - een voorspelling per uur toevoegen...",
+         "titleDaily": "OpenWeather - een dagelijkse voorspelling toevoegen...",
+         "apiKey": "Voer de OpenWeatherMap API key in.",
+         "apiKey2": "Een API-sleutel kan worden verkregen op http://openweathermap.org.",
+         "city": "Vul een locatie in (plaatsnaam).",
+         "autolocation": "Indien leeg zal Homey's locatie gebruikt worden.",
+         "updateInterval": "Vul de update frequentie in (minuten):",
+         "hours": "Voer het uurverschil in voor de voorspelling.",
+         "hours2": "Voorbeelden: '0' voor een actuele prognose. '5' voor een voorspelling voor 5 uur.",
+         "days": "Voer het dagverschil in voor de voorspelling.",
+         "days2": "Voorbeelden: '0' voor een huidige voorspelling. '5' voor een voorspelling in 5 dagen.",
+         "pairError": "Device setup error", 
+         "apiKeyError": "Voer een geldige API-sleutel in.",
+         "geolocationError1": "Geen locatie gevonden.",
+         "geolocationError2": "Controleer de plaatsnaam die je hebt ingevoerd.",
+         "locationError1": "Er is geen weerlocatie beschikbaar.",
+         "locationError2": "Voeg eerst een apparaat toe voor 'Huidig ​​weer'."
       }
+   },
+   "device_unavailable_reason":{
+      "no_api_result": "Fout bij het aanvragen van OneCall API.",
+      "location_deleted": "De locatie is verwijderd.",
+      "location_not_available": "De locatie is niet beschikbaar."
+   },
+   "windDirectionShort":{
+      "N": "N",
+      "NNE": "NNO",
+      "NE": "NO", 
+      "ENE": "ONO",
+      "E": "O",
+      "ESE": "OZO",
+      "SE": "ZO",
+      "SSE": "ZZO", 
+      "S": "Z",
+      "SSW": "ZZW",
+      "SW": "ZW",
+      "WSW": "WZW",
+      "W": "W",
+      "WNW": "WNW",
+      "NW": "NW",
+      "NNW": "NNW"
    }
 }

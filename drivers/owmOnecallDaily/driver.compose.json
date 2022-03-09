@@ -1,0 +1,83 @@
+{
+    "id": "owmOnecallDaily",
+    "name": {
+        "en": "Daily forecast",
+        "de": "Tägliche Vorhersage",
+        "nl": "Dagelijkse voorspelling"
+    },
+    "images": {
+        "large": "/drivers/owmOnecallDaily/assets/images/large.png",
+        "small": "/drivers/owmOnecallDaily/assets/images/small.png"
+    },
+    "class": "sensor",
+    "connectivity": [ "cloud" ],
+    "capabilities": [
+        "forecast_time",
+        "description",
+
+        "measure_temperature_min",
+        "measure_temperature_max",
+
+        "measure_temperature_morning",
+        "measure_temperature_day",
+
+        "measure_temperature_evening",
+        "measure_temperature_night",
+
+        "measure_humidity",
+        "measure_cloudiness",
+
+        "measure_rain",
+        "measure_snow",
+
+        "measure_wind_combined",
+        "measure_wind_strength",
+
+        "measure_pressure",
+        "measure_pop",
+
+        "measure_ultraviolet",
+
+        "moonphase_type",
+
+        "sunrise",
+        "sunset",
+
+        "moonrise",
+        "moonset",
+
+        "conditioncode",
+        "conditioncode_detail",
+
+        "measure_wind_angle",
+        "measure_wind_direction_string",
+        "measure_windstrength_beaufort"
+
+    ],
+    "pair": [{
+        "id": "settings",
+        "navigation": {
+            "next": "list_my_devices"
+          }
+        },
+        {
+            "id": "location_error",
+            "navigation": {
+                "prev": "settings"
+            }
+        },      
+        {
+            "id": "list_my_devices",
+            "template": "list_devices",
+            "navigation": {
+                "next": "add_my_devices",
+                "prev": "settings"
+            },
+            "options": { "singular": true }
+        },
+        {
+            "id": "add_my_devices",
+            "template": "add_devices"
+        }
+    ]
+}

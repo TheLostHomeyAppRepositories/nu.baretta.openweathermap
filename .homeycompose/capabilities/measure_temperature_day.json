@@ -1,0 +1,21 @@
+{
+    "type": "number",
+    "label": {
+        "en": "Day",
+        "de": "Tag",
+        "nl": "Dag"
+    },
+    "title": {
+        "en": "Temperature at the day",
+        "de": "Temperatur tagsüber",
+        "nl": "temperatuur overdag "
+    },
+    "uiComponent": "sensor",
+    "getable": true,
+    "setable": false,
+    "units": {
+        "en": "°C",
+        "de": "°C"
+    },
+    "icon": "/assets/measure_temperature_day.svg"
+}

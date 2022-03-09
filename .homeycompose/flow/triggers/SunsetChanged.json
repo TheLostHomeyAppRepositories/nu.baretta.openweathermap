@@ -1,0 +1,42 @@
+{
+    "id": "SunsetChanged",
+    "title": {
+        "en": "Sunset has changed",
+        "de": "Sonnenuntergang hat sich geändert",
+        "nl": "Zonsondergang is veranderd"
+    },
+    "hint": {
+        "en": "Triggers when the sunset changes.",
+        "de": "Wird ausgelöst, wenn sich der Sonnenuntergang ändert.",
+        "nl": "Triggert zodra de zonsondergang veranderd."
+    },
+    "tokens": [{
+            "name": "sunset",
+            "type": "string",
+            "title": {
+                "en": "Sunset",
+                "de": "Sonnenuntergang",
+                "nl": "Zonsondergang"
+            },
+            "example": "20:17"
+        },
+        {
+            "name": "location",
+            "type": "string",
+            "title": {
+                "en": "Location",
+                "de": "Standort",
+                "nl": "locatie"
+            },
+            "example": {
+                "en": "Amsterdam",
+                "de": "Berlin"
+            }
+        }
+    ],
+    "args": [{
+        "name": "device",
+        "type": "device",
+        "filter": "driver_id=owmOnecallCurrent|owmOnecallDaily"
+    }]
+}

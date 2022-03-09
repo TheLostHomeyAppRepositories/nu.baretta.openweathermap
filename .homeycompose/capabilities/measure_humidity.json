@@ -1,0 +1,21 @@
+{
+    "type": "number",
+    "label": {
+        "en": "Humidity",
+        "de": "Luftfeuchtigkeit",
+        "nl": "Vochtigheid"
+    },
+    "title": {
+        "en": "Humidity",
+        "de": "Luftfeuchtigkeit",
+        "nl": "Vochtigheid"
+    },
+    "uiComponent": "sensor",
+    "getable": true,
+    "setable": false,
+    "units": {
+        "en": "%",
+        "de": "%"
+    },
+    "icon": "/assets/measure_humidity.svg"
+}

@@ -1,0 +1,46 @@
+{
+  "0.1.0": {
+    "en": "Upgraded to SDK3; Introducing the OneCall API",
+    "de": "Aktualisiert auf SDK3; Einführung der OneCall API"
+  },
+  "0.1.1": {
+    "en": "Upgraded to SDK3; Introducing the OneCall API",
+    "de": "Aktualisiert auf SDK3; Einführung der OneCall API"
+  },
+  "0.1.2": {
+    "en": "Upgraded to SDK3; Introducing the OneCall API, fixed icon for hourly forecast",
+    "de": "Aktualisiert auf SDK3; Einführung der OneCall API, Icon-Korrektur für stündl. Vorhersage"
+  },
+  "0.1.3": {
+    "en": "Upgraded to SDK3; Introducing the OneCall API, fix for 0-hour forecast",
+    "de": "Aktualisiert auf SDK3; Einführung der OneCall API, Korrektur für 0-h-Vorhersage"
+  },
+  "0.1.4": {
+    "en": "Upgraded to SDK3; Introducing the OneCall API, fix for sunrise/sunset timezone",
+    "de": "Aktualisiert auf SDK3; Einführung der OneCall API, Korrektur Sonnenauf/untergang-Zeitzone"
+  },
+  "0.1.5": {
+    "en": "Upgraded to SDK3; Introducing the OneCall API, added daily forecast",
+    "de": "Aktualisiert auf SDK3; Einführung der OneCall API, tägliche Vorhersage ergänzt"
+  },
+  "0.1.6": {
+    "en": "Upgraded to SDK3; Introducing the OneCall API, changed icons and capability text",
+    "de": "Aktualisiert auf SDK3; Einführung der OneCall API, Icons und Attribut-Text geändert"
+  },
+  "0.1.7": {
+    "en": "Upgraded to SDK3; Introducing the OneCall API, changed icons and capability text",
+    "de": "Aktualisiert auf SDK3; Einführung der OneCall API, Icons und Attribut-Text geändert"
+  },
+  "0.1.8": {
+    "en": "Upgraded to SDK3; Introducing the OneCall API, changed icons and capability text",
+    "de": "Aktualisiert auf SDK3; Einführung der OneCall API, Icons und Attribut-Text geändert"
+  },
+  "0.1.9": {
+    "en": "Upgraded to SDK3; Introducing the OneCall API, changed icons and capability text",
+    "de": "Aktualisiert auf SDK3; Einführung der OneCall API, Icons und Attribut-Text geändert"
+  },
+  "1.0.0": {
+    "en": "Upgraded to SDK3; Introducing the OneCall API.",
+    "de": "Aktualisiert auf SDK3; Einführung der OneCall API."
+  }
+}

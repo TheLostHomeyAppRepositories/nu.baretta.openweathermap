@@ -1,0 +1,42 @@
+{
+    "id": "MoonsetChanged",
+    "title": {
+        "en": "Moonset has changed",
+        "de": "Monduntergang hat sich geändert",
+        "nl": "Maansondergang is veranderd"
+    },
+    "hint": {
+        "en": "Triggers when the moonset changes.",
+        "de": "Wird ausgelöst, wenn sich der Monduntergang ändert.",
+        "nl": "Triggert zodra de maansondergang veranderd."
+    },
+    "tokens": [{
+            "name": "moonset",
+            "type": "string",
+            "title": {
+                "en": "Moonset",
+                "de": "Monduntergang",
+                "nl": "Maansondergang"
+            },
+            "example": "7:10"
+        },
+        {
+            "name": "location",
+            "type": "string",
+            "title": {
+                "en": "Location",
+                "de": "Standort",
+                "nl": "locatie"
+            },
+            "example": {
+                "en": "Amsterdam",
+                "de": "Berlin"
+            }
+        }
+    ],
+    "args": [{
+        "name": "device",
+        "type": "device",
+        "filter": "driver_id=owmOnecallDaily"
+    }]
+}

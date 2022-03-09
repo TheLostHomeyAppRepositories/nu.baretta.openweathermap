@@ -1,0 +1,41 @@
+{
+    "id": "MorntempChanged",
+    "title": {
+        "en": "Morning temperature has changed",
+        "de": "Morgen-Temperatur hat sich geändert",
+        "nl": "Ochtend temperatuur is veranderd"
+    },
+    "hint": {
+        "en": "Triggers when the morning temperature changes.",
+        "de": "Wird ausgelöst, wenn sich die Morgentemperatur ändert.",
+        "nl": "Triggert zodra de ochtend temperatuur veranderd."
+    },
+    "tokens": [{
+            "name": "measure_temperature.morning",
+            "type": "number",
+            "title": {
+                "en": "Morning temperature",
+                "de": "Morgentemperatur",
+                "nl": "Ochtend temperatuur"
+            },
+            "example": 5
+        },
+        {
+            "name": "location",
+            "type": "string",
+            "title": {
+                "en": "Location",
+                "de": "Standort",
+                "nl": "locatie"
+            },
+            "example": {
+                "en": "Amsterdam"
+            }
+        }
+    ],
+    "args": [{
+        "name": "ChangedMornTemperature",
+        "type": "device",
+        "filter": "driver_id=owmLongterm"
+    }]
+}

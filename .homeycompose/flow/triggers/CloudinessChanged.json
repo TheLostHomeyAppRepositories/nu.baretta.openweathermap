@@ -1,0 +1,42 @@
+{
+    "id": "CloudinessChanged",
+    "title": {
+        "en": "Cloudiness (%) has changed",
+        "de": "Bewölkung (%) hat sich geändert",
+        "nl": "Bewolking (%) is veranderd"
+    },
+    "hint": {
+        "en": "Triggers when the cloud cover changes.",
+        "de": "Wird ausgelöst, wenn sich die Bewölkung ändert.",
+        "nl": "Triggert zodra de bewolking veranderd."
+    },
+    "tokens": [{
+            "name": "measure_cloudiness",
+            "type": "number",
+            "title": {
+                "en": "Cloudiness (%)",
+                "de": "Bewölkung (%)",
+                "nl": "Bewolking (%)"
+            },
+            "example": 50
+        },
+        {
+            "name": "location",
+            "type": "string",
+            "title": {
+                "en": "Location",
+                "de": "Standort",
+                "nl": "locatie"
+            },
+            "example": {
+                "en": "Amsterdam",
+                "de": "Berlin"
+            }
+        }
+    ],
+    "args": [{
+        "name": "ChangedCloudiness",
+        "type": "device",
+        "filter": "driver_id=owmCurrent|owmForecast|owmLongterm|owmOnecallCurrent|owmOnecallHourly|owmOnecallDaily"
+    }]
+}

@@ -1,0 +1,65 @@
+{
+   "pair": {
+      "start": {
+         "title": "OpenWeatherMap Einrichtung",
+         "intro": "Gib den API-Key und einen Name ein.",
+         "error": "Ein Fehler ist aufgetreten.",
+         "apiKey": "Gib den OpenWeatherMap API-Key ein:",
+         "required": "API-Key ist ein benötigter Wert.",
+         "optional": "Optional: Gib den Standort ein, Stadt,Ländercode:",
+         "zipcode": "...oder eine PLZ (numerisch) sowie den Ländercode:",
+         "autolocation": "Wurde kein Standort angegeben, wird Homeys Standort verwendet.",
+         "updatefrequency": "Gib die Aktualisierungs-Fequenz ein:",
+         "forecastInterval3h": "Anzahl der 3-Stunden Vorhersage-Intervalle für die stündliche Vorhersage:",
+         "forecastIntervalDays": "Anzahl der Tage für die tägliche Vorhersage:",
+         "geolocation": "Verwende Homey's Standort:",
+         "unit": "Benutzer imperiale Einheiten:",
+         "language": "Wähle die Sprache:",
+         "name": "Gib deinem OpenWeatherMap-Sensor einen Name:",
+         "saveSettings": "Einstellungen speichern"
+      },
+      "oneCallAPI":{
+         "title": "OpenWeather - füge einen Standort hinzu...",
+         "titleHourly": "OpenWeather - füge eine stündliche Vorhersage hinzu...",
+         "titleDaily": "OpenWeather - füge eine tägliche Vorhersage hinzu...",
+         "apiKey": "Gib den OpenWeatherMap API-Key an.",
+         "apiKey2": "Ein API-Key ist erhältlich unter http://openweathermap.org.",
+         "city": "Gib den Standort an (Stadt).",
+         "autolocation": "Wurde kein Standort angegeben, wird Homeys Standort verwendet.",
+         "updateInterval": "Gib das Aktualisierungs-Intervall an (in Minuten):",
+         "hours": "Gib die Stunden-Differenz für die Vorhersage an.",
+         "hours2": "Beispiele: '0' für eine aktuelle Vorhersage. '5' für eine Vorhersage in 5 Stunden.",
+         "days": "Gib die Tages-Differenz für die Vorhersage an.",
+         "days2": "Beispiele: '0' für eine aktuelle Vorhersage. '5' für eine Vorhersage in 5 Tagen.",
+         "pairError": "Fehler beim Einrichten des Gerätes.", 
+         "apiKeyError": "Bitte gib einen gültigen API-Key an.",
+         "geolocationError1": "Es wurde kein Standort gefunden.",
+         "geolocationError2": "Bitte prüfe den eingegebenen Name der Stadt.",
+         "locationError1": "Es ist kein Wetter-Standort vorhanden.",
+         "locationError2": "Bitte füge zuerst ein Gerät für 'Aktuelles Wetter' ein."
+      }
+   },
+   "device_unavailable_reason":{
+      "no_api_result": "Fehler beim OneCall-API-Aufruf.",
+      "location_deleted": "Der Standort wurde gelöscht.",
+      "location_not_available": "Der Standort ist nicht verfügbar."
+   },
+   "windDirectionShort":{
+      "N": "N",
+      "NNE": "NNO",
+      "NE": "NO", 
+      "ENE": "ONO",
+      "E": "O",
+      "ESE": "OSO",
+      "SE": "SO",
+      "SSE": "SSO", 
+      "S": "S",
+      "SSW": "SSW",
+      "SW": "SW",
+      "WSW": "WSW",
+      "W": "W",
+      "WNW": "WNW",
+      "NW": "NW",
+      "NNW": "NNW"
+   }
+}

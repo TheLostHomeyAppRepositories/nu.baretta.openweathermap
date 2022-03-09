@@ -1,0 +1,42 @@
+{
+    "id": "SnowChanged",
+    "title": {
+        "en": "Snow precipitation has changed",
+        "de": "Schneeniederschlag hat sich geändert",
+        "nl": "Sneeuw neerslag veranderd"
+    },
+    "hint": {
+        "en": "Triggers when snow precipitation changes.",
+        "de": "Wird ausgelöst, wenn sich der Schneeniederschlag ändert.",
+        "nl": "Triggert zodra de sneeuw neerslag veranderd."
+    },
+    "tokens": [{
+            "name": "measure_snow",
+            "type": "number",
+            "title": {
+                "en": "Snow precipitation in millimeters",
+                "de": "Schneeniederschlag in Millimeter",
+                "nl": "Sneeuw neerslag in millimeters"
+            },
+            "example": 10
+        },
+        {
+            "name": "location",
+            "type": "string",
+            "title": {
+                "en": "Location",
+                "de": "Standort",
+                "nl": "locatie"
+            },
+            "example": {
+                "en": "Amsterdam",
+                "de": "Berlin"
+            }
+        }
+    ],
+    "args": [{
+        "name": "SnowChanged",
+        "type": "device",
+        "filter": "driver_id=owmCurrent|owmForecast|owmLongterm|owmOnecallCurrent|owmOnecallHourly|owmOnecallDaily"
+    }]
+}

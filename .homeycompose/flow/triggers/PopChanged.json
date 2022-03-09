@@ -1,0 +1,43 @@
+{
+    "id": "PopChanged",
+    "highlight": true,
+    "title": {
+        "en": "Probability of precipitation has changed",
+        "de": "Niederschlags-Wahrscheinlichkeit hat sich geändert",
+        "nl": "Kans op neerslag is veranderd"
+    },
+    "hint": {
+        "en": "Triggers when the probability of precipitation changes.",
+        "de": "Wird ausgelöst, wenn sich die Niederschlags-Wahrscheinlichkeit ändert.",
+        "nl": "Triggert zodra de Kans op neerslag veranderd."
+    },
+    "tokens": [{
+            "name": "measure_pop",
+            "type": "number",
+            "title": {
+                "en": "Probability of precipitation (%)",
+                "de": "Niederschlags-Wahrscheinlichkeit (%)",
+                "nl": "Kans op neerslag (%)"
+            },
+            "example": 50
+        },
+        {
+            "name": "location",
+            "type": "string",
+            "title": {
+                "en": "Location",
+                "de": "Standort",
+                "nl": "locatie"
+            },
+            "example": {
+                "en": "Amsterdam",
+                "de": "Berlin"
+            }
+        }
+    ],
+    "args": [{
+        "name": "device",
+        "type": "device",
+        "filter": "driver_id=owmOnecallHourly|owmOnecallDaily"
+    }]
+}

@@ -1,0 +1,20 @@
+{
+    "type": "number",
+    "label": {
+        "en": "Morning",
+        "de": "Morgen",
+        "nl": "Ochtend"
+    },
+    "title": {
+        "en": "Temperature in the morning",
+        "de": "Temperatur morgens",
+        "nl": "Temperatuur 's ochtends"
+    },
+    "getable": true,
+    "setable": false,
+    "uiComponent": "sensor",
+    "units": {
+        "en": "°C",
+        "de": "°C"
+    }
+}

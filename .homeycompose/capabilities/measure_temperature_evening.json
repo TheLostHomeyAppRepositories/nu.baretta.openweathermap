@@ -1,0 +1,21 @@
+{
+    "type": "number",
+    "label": {
+        "en": "Evening",
+        "de": "Abend",
+        "nl": "Avond"
+    },
+    "title": {
+        "en": "Temperature in the evening",
+        "de": "Temperatur abends",
+        "nl": "Temperatuur 's avonds"
+    },
+    "uiComponent": "sensor",
+    "getable": true,
+    "setable": false,
+    "units": {
+        "en": "°C",
+        "de": "°C"
+    },
+    "icon": "/assets/measure_temperature_evening.svg"
+}

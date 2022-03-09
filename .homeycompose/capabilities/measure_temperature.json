@@ -1,0 +1,21 @@
+{
+    "type": "number",
+    "label": {
+        "en": "Temperature",
+        "de": "Temperatur",
+        "nl": "Temperatuur"
+    },
+    "title": {
+        "en": "Temperature",
+        "de": "Temperatur",
+        "nl": "Temperatuur"
+    },
+    "uiComponent": "sensor",
+    "getable": true,
+    "setable": false,
+    "units": {
+        "en": "°C",
+        "de": "°C"
+    },
+    "icon": "/assets/measure_temperature.svg"
+}

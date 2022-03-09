@@ -1,0 +1,28 @@
+{
+    "id": "Pop",
+    "title": {
+        "en": "Probability of precipitation !{{is|isn't}} higher than",
+        "de": "Niederschlags-Wahrscheinlichkeit !{{ist|ist nicht}} größer als",
+        "nl": "Kans op neerslag !{{is|is niet}} hoger dan"
+    },
+    "titleFormatted": {
+        "en": "Probability of precipitation !{{is|isn't}} higher than [[pop]]",
+        "de": "Niederschlags-Wahrscheinlichkeit !{{ist|ist nicht}} größer als [[pop]]",
+        "nl": "Kans op neerslag !{{is|is niet}} hoger dan [[pop]]"
+    },
+    "hint": {
+        "en": "Probability in %",
+        "de": "Wahrscheinlichkeit in %",
+        "nl": "Waarschijnlijkheid in %"
+    },
+    "args": [{
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=owmOnecallHourly|owmOnecallDaily"
+        },
+        {
+            "name": "pop",
+            "type": "number"
+        }
+    ]
+}

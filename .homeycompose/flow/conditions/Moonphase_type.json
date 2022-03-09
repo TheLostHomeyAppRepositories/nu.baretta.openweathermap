@@ -1,0 +1,94 @@
+{
+    "id": "Moonphase_type",
+    "title": {
+        "en": "Moon phase (type) !{{is|isn't}}",
+        "de": "Mondphase (Typ) !{{ist|ist nicht}}",
+        "nl": "Maanfase (type) !{{is|is niet}}"
+    },
+    "titleFormatted": {
+        "en": "Moon phase (type) !{{is|isn't}} [[moonphase_type]]",
+        "de": "Mondphase (Typ) !{{ist|ist nicht}} [[moonphase_type]]",
+        "nl": "Maanfase (type) !{{is|is niet}} [[moonphase_type]]"
+    },
+    "hint": {
+        "en": "Moon phase",
+        "de": "Mondphase",
+        "nl": "Maanfase"
+},
+    "args": [{
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=owmOnecallDaily"
+        },
+        {
+            "name": "moonphase_type",
+            "type": "dropdown",
+            "values": [
+                {
+                    "id": "NM",
+                    "title": {
+                        "en": "🌑 New moon ",
+                        "de": "🌑 Neumond",
+                        "nl": "🌑 Nieuwe maan "
+                    }
+                },
+                {
+                    "id": "ZS",
+                    "title": {
+                        "en": "🌒 Waxing crescent moon ",
+                        "de": "🌒 Zunehmender Sichelmond",
+                        "nl": "🌒 Wassende maansikkel"
+                    }
+                },
+                {
+                    "id": "ZH",
+                    "title": {
+                        "en": "🌓 Waxing crescent moon",
+                        "de": "🌓 Zunehmender Halbmond",
+                        "nl": "🌓 Wassende halve maan "
+                    }
+                },
+                {
+                    "id": "ZM",
+                    "title": {
+                        "en": "🌔 Increasing Moon",
+                        "de": "🌔 Zunehmender Mond",
+                        "nl": "🌔 Toenemende maan "
+                    }
+                },
+                {
+                    "id": "VM",
+                    "title": {
+                        "en": "🌕 Full moon",
+                        "de": "🌕 Vollmond",
+                        "nl": "🌕 Volle maan"
+                    }
+                },
+                {
+                    "id": "AM",
+                    "title": {
+                        "en": "🌖 Waning moon",
+                        "de": "🌖 Abnehmender Mond",
+                        "nl": "🌖 Afnemende maan"
+                    }
+                },
+                {
+                    "id": "AH",
+                    "title": {
+                        "en": "🌗 Afnemende halve maan",
+                        "de": "🌗 Abnehmender Halbmond",
+                        "nl": "🌗 Waning Crescent"
+                    }
+                },
+                {
+                    "id": "AS",
+                    "title": {
+                        "en": "🌘 Waning crescent moon",
+                        "de": "🌘 Abnehmender Sichelmond",
+                        "nl": "🌘 Afnemende maansikkel"
+                    }
+                }
+            ]
+        }
+    ]
+}

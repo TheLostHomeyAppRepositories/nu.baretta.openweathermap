@@ -1,0 +1,28 @@
+{
+    "id": "Temp",
+    "title": {
+        "en": "Temperature !{{is|isn't}} higher than",
+        "de": "Temperatur !{{ist|ist nicht}} größer als",
+        "nl": "Temperatuur !{{is|is niet}} hoger dan"
+    },
+    "titleFormatted": {
+        "en": "Temperature !{{is|isn't}} higher than [[degrees]]",
+        "de": "Temperatur !{{ist|ist nicht}} größer als [[degrees]]",
+        "nl": "Temperatuur !{{is|is niet}} hoger dan [[degrees]]"
+    },
+    "hint": {
+        "en": "Temperature in degrees Celsius.",
+        "de": "Temperatur in Grad Celsius",
+        "nl": "Temperatuur in graden Celsius."
+    },
+    "args": [{
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=owmCurrent|owmForecast|owmLongterm|owmOnecallCurrent|owmOnecallHourly"
+        },
+        {
+            "name": "degrees",
+            "type": "number"
+        }
+    ]
+}

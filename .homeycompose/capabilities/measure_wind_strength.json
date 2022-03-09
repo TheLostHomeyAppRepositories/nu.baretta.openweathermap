@@ -1,0 +1,17 @@
+{
+    "type": "number",
+    "title": {
+        "en": "Wind speed (km/h)",
+        "de": "Windgeschwindigkeit (km/h)",
+        "nl": "Windsnelheid (km/h)"
+    },
+    "uiComponent": "sensor",
+    "getable": true,
+    "setable": false,
+    "units": {
+        "en": "km/h",
+        "de": "km/h",
+        "nl": "km/h"
+    },
+    "icon": "/assets/measure_wind_strength.svg"
+}

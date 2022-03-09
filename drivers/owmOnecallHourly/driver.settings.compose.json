@@ -1,0 +1,37 @@
+[{
+    "type": "group",
+    "label": {
+        "en": "OpenWeatherMap hourly forecast",
+        "de": "OpenWeatherMap Stündliche Vorhersage",
+        "nl": "OpenWeatherMap uurlijkse voorspeling"
+    },
+    "children": [{
+            "id": "hours",
+            "type": "number",
+            "value": 0,
+            "min": 0,
+            "max": 47,
+            "units": { 
+                "en": "Hours",
+                "de": "Stunden",
+                "nl": "Uur"
+             },
+            "label": {
+                "en": "Hour difference for the forecast:",
+                "de": "Stunden-Differenz für die Vorhersage:", 
+                "nl": "Uurverschil voor de voorspelling:"
+            }
+        },
+        {
+            "id": "location",
+            "type": "label",
+            "value": "",
+            "label": {
+                "en": "Linked location :",
+                "de": "Verknüpfter Standort:",
+                "nl": "Gelinkte locatie :"
+            }
+        }
+    ]
+}
+]

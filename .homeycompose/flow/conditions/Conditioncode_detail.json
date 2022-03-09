@@ -1,0 +1,414 @@
+{
+    "id": "Conditioncode_detail",
+    "title": {
+        "en": "The weather in detail !{{is|isn't}}",
+        "de": "Die Wetterlage !{{ist|ist nicht}}",
+        "nl": "Het weer in detail !{{is|is niet}}"
+    },
+    "titleFormatted": {
+        "en": "The weather in detail !{{is|isn't}} [[argument_main]]",
+        "de": "Die Wetterlage !{{ist|ist nicht}} [[argument_main]]",
+        "nl": "Het weer in detail !{{is|is niet}} [[argument_main]]"
+    },
+    "hint": {
+        "en": "Detailed description of the weather.",
+        "de": "Die Wetterlage, z.B. 'leichter Nieselregen'.",
+        "nl": "Gedetailleerde beschrijving van het weer."
+    },
+    "args": [{
+            "name": "argument_main",
+            "type": "dropdown",
+            "values": [{
+                    "id": "200",
+                    "label": {
+                        "en": "thunderstorm with light rain",
+                        "de": "Gewitter mit leichtem Regen"
+                    }
+                },
+                {
+                    "id": "201",
+                    "label": {
+                        "en": "thunderstorm with rain",
+                        "de": "Gewitter mit Regen"
+                    }
+                },
+                {
+                    "id": "202",
+                    "label": {
+                        "en": "thunderstorm with heavy rain",
+                        "de": "Gewitter mit starkem Regen"
+                    }
+                },
+                {
+                    "id": "210",
+                    "label": {
+                        "en": "light thunderstorm",
+                        "de": "Leichtes Gewitter"
+                    }
+                },
+                {
+                    "id": "211",
+                    "label": {
+                        "en": "thunderstorm",
+                        "de": "Gewitter"
+                    }
+                },
+                {
+                    "id": "212",
+                    "label": {
+                        "en": "heavy thunderstorm",
+                        "de": "Starkes Gewitter"
+                    }
+                },
+                {
+                    "id": "221",
+                    "label": {
+                        "en": "ragged thunderstorm",
+                        "de": "Aufziehendes Gewitter"
+                    }
+                },
+                {
+                    "id": "230",
+                    "label": {
+                        "en": "thunderstorm with light drizzle",
+                        "de": "Gewitter mit leichtem Nieselregen"
+                    }
+                },
+                {
+                    "id": "231",
+                    "label": {
+                        "en": "thunderstorm with drizzle",
+                        "de": "Gewitter mit Nieselregen"
+                    }
+                },
+                {
+                    "id": "232",
+                    "label": {
+                        "en": "thunderstorm with heavy drizzle",
+                        "de": "Gewitter mit starkem Nieselregen"
+                    }
+                },
+                {
+                    "id": "300",
+                    "label": {
+                        "en": "light intensity drizzle",
+                        "de": "leichter Nieselregen"
+                    }
+                },
+                {
+                    "id": "301",
+                    "label": {
+                        "en": "drizzle",
+                        "de": "Nieselregen"
+                    }
+                },
+                {
+                    "id": "302",
+                    "label": {
+                        "en": "heavy intensity drizzle",
+                        "de": "Starker Nieselregen"
+                    }
+                },
+                {
+                    "id": "310",
+                    "label": {
+                        "en": "light intensity drizzle rain",
+                        "de": "leichter Nieselregen"
+                    }
+                },
+                {
+                    "id": "311",
+                    "label": {
+                        "en": "drizzle rain",
+                        "de": "Nieselregen"
+                    }
+                },
+                {
+                    "id": "312",
+                    "label": {
+                        "en": "heavy intensity drizzle rain",
+                        "de": "Starker Nieselregen"
+                    }
+                },
+                {
+                    "id": "313",
+                    "label": {
+                        "en": "shower rain and drizzle",
+                        "de": "Regenschauer und Nieselregen"
+                    }
+                },
+                {
+                    "id": "314",
+                    "label": {
+                        "en": "heavy shower rain and drizzle",
+                        "de": "Starke Regenschauer und Nieselregen"
+                    }
+                },
+                {
+                    "id": "321",
+                    "label": {
+                        "en": "shower drizzle",
+                        "de": "Schauerartiger Nieselregen"
+                    }
+                },
+                {
+                    "id": "500",
+                    "label": {
+                        "en": "light rain",
+                        "de": "Leichter Regen"
+                    }
+                },
+                {
+                    "id": "501",
+                    "label": {
+                        "en": "moderate rain",
+                        "de": "Mäßiger Regen"
+                    }
+                },
+                {
+                    "id": "502",
+                    "label": {
+                        "en": "heavy intensity rain",
+                        "de": "Starker Regen"
+                    }
+                },
+                {
+                    "id": "503",
+                    "label": {
+                        "en": "very heavy rain",
+                        "de": "Sehr starker Regen"
+                    }
+                },
+                {
+                    "id": "504",
+                    "label": {
+                        "en": "extreme rain",
+                        "de": "Extremer Regen"
+                    }
+                },
+                {
+                    "id": "511",
+                    "label": {
+                        "en": "freezing rain",
+                        "de": "Gefrierender Regen"
+                    }
+                },
+                {
+                    "id": "520",
+                    "label": {
+                        "en": "light intensity shower rain",
+                        "de": "Leichte Regenschauer"
+                    }
+                },
+                {
+                    "id": "521",
+                    "label": {
+                        "en": "shower rain",
+                        "de": "Regenschauer"
+                    }
+                },
+                {
+                    "id": "522",
+                    "label": {
+                        "en": "heavy intensity shower rain",
+                        "de": "Starke Regenschauer"
+                    }
+                },
+                {
+                    "id": "531",
+                    "label": {
+                        "en": "ragged shower rain",
+                        "de": "Aufziehende Regenschauer"
+                    }
+                },
+                {
+                    "id": "600",
+                    "label": {
+                        "en": "light snow",
+                        "de": "Leichter Schneefall"
+                    }
+                },
+                {
+                    "id": "601",
+                    "label": {
+                        "en": "Snow",
+                        "de": "Schnee"
+                    }
+                },
+                {
+                    "id": "602",
+                    "label": {
+                        "en": "Heavy snow",
+                        "de": "Starker Schneefall"
+                    }
+                },
+                {
+                    "id": "611",
+                    "label": {
+                        "en": "Sleet",
+                        "de": "Schneeregen"
+                    }
+                },
+                {
+                    "id": "612",
+                    "label": {
+                        "en": "Light shower sleet",
+                        "de": "Leichter schauerartiger Schneeregen"
+                    }
+                },
+                {
+                    "id": "613",
+                    "label": {
+                        "en": "Shower sleet",
+                        "de": "Schauerartiger Schneeregen"
+                    }
+                },
+                {
+                    "id": "615",
+                    "label": {
+                        "en": "Light rain and snow",
+                        "de": "Leichter Regen und Schnee"
+                    }
+                },
+                {
+                    "id": "616",
+                    "label": {
+                        "en": "Rain and snow",
+                        "de": "Regen und Schnee"
+                    }
+                },
+                {
+                    "id": "620",
+                    "label": {
+                        "en": "Light shower snow",
+                        "de": "Leichte Schneeschauer"
+                    }
+                },
+                {
+                    "id": "621",
+                    "label": {
+                        "en": "Shower snow",
+                        "de": "Schneeschauer"
+                    }
+                },
+                {
+                    "id": "622",
+                    "label": {
+                        "en": "Heavy shower snow",
+                        "de": "Starke Schneeschauer"
+                    }
+                },
+                {
+                    "id": "701",
+                    "label": {
+                        "en": "mist",
+                        "de": "Nebel"
+                    }
+                },
+                {
+                    "id": "711",
+                    "label": {
+                        "en": "Smoke",
+                        "de": "Rauch"
+                    }
+                },
+                {
+                    "id": "721",
+                    "label": {
+                        "en": "Haze",
+                        "de": "Dunst"
+                    }
+                },
+                {
+                    "id": "731",
+                    "label": {
+                        "en": "sand/ dust whirls",
+                        "de": "Sand-/Staubwirbel"
+                    }
+                },
+                {
+                    "id": "741",
+                    "label": {
+                        "en": "fog",
+                        "de": "Nebel"
+                    }
+                },
+                {
+                    "id": "751",
+                    "label": {
+                        "en": "sand",
+                        "de": "Sand"
+                    }
+                },
+                {
+                    "id": "761",
+                    "label": {
+                        "en": "dust",
+                        "de": "Staub"
+                    }
+                },
+                {
+                    "id": "762",
+                    "label": {
+                        "en": "volcanic ash",
+                        "de": "Vulkanasche"
+                    }
+                },
+                {
+                    "id": "771",
+                    "label": {
+                        "en": "squalls",
+                        "de": "Sturmböen"
+                    }
+                },
+                {
+                    "id": "781",
+                    "label": {
+                        "en": "tornado",
+                        "de": "Tornado"
+                    }
+                },
+                {
+                    "id": "800",
+                    "label": {
+                        "en": "clear sky",
+                        "de": "Klar"
+                    }
+                },
+                {
+                    "id": "801",
+                    "label": {
+                        "en": "few clouds: 11-25%",
+                        "de": "Heiter: 11-25%"
+                    }
+                },
+                {
+                    "id": "802",
+                    "label": {
+                        "en": "scattered clouds: 25-50%",
+                        "de": "Leicht bewölkt: 25-50%"
+                    }
+                },
+                {
+                    "id": "803",
+                    "label": {
+                        "en": "broken clouds: 51-84%",
+                        "de": "Stark bewölkt: 51-84%"
+                    }
+                },
+                {
+                    "id": "804",
+                    "label": {
+                        "en": "overcast clouds: 85-100%",
+                        "de": "Bedeckt: 85-100%"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=owmCurrent|owmForecast|owmLongterm|owmOnecallCurrent|owmOnecallHourly|owmOnecallDaily"
+        }
+    ]
+}

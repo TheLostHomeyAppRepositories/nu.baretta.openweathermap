@@ -1,0 +1,21 @@
+{
+    "type": "number",
+    "label": {
+        "en": "Minimum",
+        "de": "Minimum",
+        "nl": "Minimum"
+    },
+    "title": {
+        "en": "Minimum temperature",
+        "de": "Minimum-Temperatur",
+        "nl": "Minimum temperatuur"
+    },
+    "uiComponent": "sensor",
+    "getable": true,
+    "setable": false,
+    "units": {
+        "en": "°C",
+        "de": "°C"
+    },
+    "icon": "/assets/measure_temperature_min.svg"
+}

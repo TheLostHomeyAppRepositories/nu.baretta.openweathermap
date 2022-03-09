@@ -1,0 +1,20 @@
+{
+    "type": "number",
+    "label": {
+        "en": "Night",
+        "de": "Nacht",
+        "nl": "Nacht"
+    },
+    "title": {
+        "en": "Temperature at night",
+        "de": "Temperatur nachts",
+        "nl": "Temperatuur 's nachts"
+    },
+    "getable": true,
+    "setable": false,
+    "uiComponent": "sensor",
+    "units": {
+        "en": "°C",
+        "de": "°C"
+    }
+}

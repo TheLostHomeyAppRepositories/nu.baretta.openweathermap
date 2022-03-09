@@ -1,0 +1,12 @@
+{
+    "type": "string",
+    "title": {
+        "en": "Wind strength and direction",
+        "de": "Windstärke und Richtung",
+        "nl": "Windkracht en richting"
+    },
+    "uiComponent": "sensor",
+    "getable": true,
+    "setable": false,
+    "icon": "/assets/wind_angle.svg"
+}

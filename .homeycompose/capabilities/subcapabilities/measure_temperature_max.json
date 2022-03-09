@@ -1,0 +1,20 @@
+{
+    "type": "number",
+    "label": {
+        "en": "Maximum",
+        "de": "Maximum",
+        "nl": "Maximum"
+    },
+    "title": {
+        "en": "Maximum temperature",
+        "de": "Maximum-Temperatur",
+        "nl": "Maximum temperatuur"
+    },
+    "getable": true,
+    "setable": false,
+    "uiComponent": "sensor",
+    "units": {
+        "en": "°C",
+        "de": "°C"
+    }
+}

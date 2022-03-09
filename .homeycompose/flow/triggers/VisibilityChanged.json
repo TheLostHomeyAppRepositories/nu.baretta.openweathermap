@@ -1,0 +1,42 @@
+{
+    "id": "VisibilityChanged",
+    "title": {
+        "en": "Visibility has changed",
+        "de": "Sichtweite hat sich geändert",
+        "nl": "Zicht is veranderd"
+    },
+    "hint": {
+        "en": "Triggers when visibility (meters) changes.",
+        "de": "Wird ausgelöst, wenn sich die Sichtweite ändert.",
+        "nl": "Triggert zodra het zicht (meter) veranderd."
+    },
+    "tokens": [{
+            "name": "measure_visibility",
+            "type": "number",
+            "title": {
+                "en": "Visibility in meters",
+                "de": "Sichtweite in Metern",
+                "nl": "Zicht in aantal meter"
+            },
+            "example": 700
+        },
+        {
+            "name": "location",
+            "type": "string",
+            "title": {
+                "en": "Location",
+                "de": "Standort",
+                "nl": "locatie"
+            },
+            "example": {
+                "en": "Amsterdam",
+                "de": "Berlin"
+            }
+        }
+    ],
+    "args": [{
+        "name": "VisibilityChanged",
+        "type": "device",
+        "filter": "driver_id=owmCurrent|owmOnecallCurrent|owmOnecallHourly"
+    }]
+}

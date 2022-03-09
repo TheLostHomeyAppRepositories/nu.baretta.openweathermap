@@ -1,0 +1,12 @@
+{
+    "type": "string",
+    "title": {
+        "en": "Description",
+        "de": "Bezeichnung",
+        "nl": "Beschrijving"
+    },
+    "uiComponent": "sensor",
+    "getable": true,
+    "setable": false,
+    "icon": "/assets/description.svg"
+}

@@ -1,0 +1,19 @@
+{
+    "type": "number",
+    "title": {
+        "en": "Cloudiness",
+        "de": "Bewölkung",
+        "nl": "Bewolking"
+    },
+    "uiComponent": "sensor",
+    "getable": true,
+    "setable": false,
+    "units": {
+        "en": "%",
+        "de": "%"
+    },
+    "min": 0,
+    "max": 100,
+    "step": 1,
+    "icon": "/assets/measure_cloudiness.svg"
+}

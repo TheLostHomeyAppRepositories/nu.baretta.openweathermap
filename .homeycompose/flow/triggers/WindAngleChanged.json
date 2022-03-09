@@ -1,0 +1,42 @@
+{
+    "id": "WindAngleChanged",
+    "title": {
+        "en": "Wind direction has changed",
+        "de": "Windrichtung hat sich geändert",
+        "nl": "Windrichting is veranderd"
+    },
+    "hint": {
+        "en": "Triggers when the strength of the wind direction changes.",
+        "de": "Wird ausgelöst, wenn sich die Windrichtung ändert.",
+        "nl": "Triggert zodra de windrichting veranderd."
+    },
+    "tokens": [{
+            "name": "measure_wind_angle",
+            "type": "number",
+            "title": {
+                "en": "Wind direction (degree)",
+                "de": "Windrichtung (Grad)",
+                "nl": "Windrichting (graden)"
+            },
+            "example": 135
+        },
+        {
+            "name": "location",
+            "type": "string",
+            "title": {
+                "en": "Location",
+                "de": "Standort",
+                "nl": "locatie"
+            },
+            "example": {
+                "en": "Amsterdam",
+                "de": "Berlin"
+            }
+        }
+    ],
+    "args": [{
+        "name": "device",
+        "type": "device",
+        "filter": "driver_id=owmOnecallCurrent|owmOnecallHourly|owmOnecallDaily"
+    }]
+}

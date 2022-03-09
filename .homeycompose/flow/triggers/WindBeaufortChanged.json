@@ -1,0 +1,42 @@
+{
+    "id": "WindBeaufortChanged",
+    "title": {
+        "en": "Wind strength (Beaufort) has changed",
+        "de": "Windstärke (Beaufort) hat sich geändert",
+        "nl": "Windkracht (Beaufort) is veranderd"
+    },
+    "hint": {
+        "en": "Triggers when the strength of the wind (Beaufort) changes.",
+        "de": "Wird ausgelöst, wenn sich die Windstärke (Beaufort) ändert.",
+        "nl": "Triggert zodra de windkracht (Beaufort) veranderd."
+    },
+    "tokens": [{
+            "name": "measure_windstrength_beaufort",
+            "type": "number",
+            "title": {
+                "en": "Wind strength (Beaufort)",
+                "de": "Windstärke (Beaufort)",
+                "nl": "Windkracht (Beaufort)"
+            },
+            "example": 5
+        },
+        {
+            "name": "location",
+            "type": "string",
+            "title": {
+                "en": "Location",
+                "de": "Standort",
+                "nl": "locatie"
+            },
+            "example": {
+                "en": "Amsterdam",
+                "de": "Berlin"
+            }
+        }
+    ],
+    "args": [{
+        "name": "ChangedWindspeedBeaufort",
+        "type": "device",
+        "filter": "driver_id=owmCurrent|owmForecast|owmLongterm|owmOnecallCurrent|owmOnecallHourly|owmOnecallDaily"
+    }]
+}

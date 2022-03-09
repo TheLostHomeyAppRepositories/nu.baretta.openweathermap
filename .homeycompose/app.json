@@ -1,0 +1,80 @@
+{
+	"id": "nu.baretta.openweathermap",
+	"version": "1.0.0",
+	"compatibility": ">=5.0.0",
+	"sdk": 3,
+	"name": {
+		"en": "OpenWeather",
+		"de": "OpenWeather"
+	},
+	"description": {
+		"en": "Get current weather data and forecasts from openweathermap.org",
+		"de": "Erhalte aktuelle Wetterdaten und Vorhersagen von openweathermap.org",
+		"nl": "Ontvang data en weersvooruitzichten van openweathermap.org"
+	},
+	"tags": {
+		"en": [
+			"OpenWeather",
+			"OpenWeatherMap",
+			"weather",
+			"forecast",
+			"climate",
+			"rain",
+			"wind",
+			"precipitation",
+			"OWM"
+		],
+		"de": [
+			"OpenWeather",
+			"OpenWeatherMap",
+			"Wetter",
+			"Vorhersage",
+			"Klima",
+			"Regen",
+			"Wind",
+			"Niederschlag",
+			"OWM"
+		],
+		"nl": [
+			"OpenWeather",
+			"OpenWeatherMap",
+			"weer",
+			"voorspelling",
+			"vooruitzicht",
+			"weerbericht",
+			"klimaat",
+			"regen",
+			"wind",
+			"neerslag",
+			"OWM"
+		]
+	},
+	"images": {
+		"large": "./assets/images/large.png",
+		"small": "./assets/images/small.png"
+	},
+	"category": "internet",
+	"brandColor":"#E96D49",
+	"homeyCommunityTopicId": 61482,
+	"source": "https://github.com/RonnyWinkler/homey.openweathermap",
+	"author": {
+		"name": "Ronny Winkler",
+		"email": "ronny.winkler@web.de"
+	},
+	"permissions": [
+		"homey:manager:geolocation"
+	],
+	"contributors": {
+		"developers": [{
+			"name": "Anne Baretta",
+			"email": "dev@baretta.nu"
+		}]
+	},
+	"contributing": {
+		"donate": {
+			"paypal": {
+				"username": "winklerronny"
+			}
+		}
+	}
+}

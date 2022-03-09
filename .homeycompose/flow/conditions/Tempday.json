@@ -1,0 +1,28 @@
+{
+    "id": "Tempday",
+    "title": {
+        "en": "Daytemperature !{{is|isn't}} higher than",
+        "de": "Tages-Temperatur !{{ist|ist nicht}} größer als",
+        "nl": "Dagtemperatuur !{{is|is niet}} hoger dan"
+    },
+    "titleFormatted": {
+        "en": "Day temperature !{{is|isn't}} higher than [[degrees]]",
+        "de": "Tages-Temperatur !{{ist|ist nicht}} größer als [[degrees]]",
+        "nl": "Dagtemperatuur !{{is|is niet}} hoger dan [[degrees]]"
+    },
+    "hint": {
+        "en": "Day temperature in degrees Celsius.",
+        "de": "Tages-Temperatur in Grad Celsius",
+        "nl": "Dagtemperatuur in graden Celsius."
+    },
+    "args": [{
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=owmOnecallDaily"
+        },
+        {
+            "name": "degrees",
+            "type": "number"
+        }
+    ]
+}

@@ -1,0 +1,45 @@
+{
+    "id": "ConditionDetailChanged",
+    "title": {
+        "en": "The specific weathercondition has changed",
+        "de": "Die spezifische Wetterlage hat sich geändert",
+        "nl": "De specifieke weersomstandigheden zijn veranderd"
+    },
+    "hint": {
+        "en": "Triggers when the condition of the weather changes, e.g. from 'few clouds' to 'scattered clouds'.",
+        "de": "Wird ausgelöst, wenn sich die Wetterbedingung ändert, z.B. von 'Leicht bewölkt' zu 'Bedeckt'.",
+        "nl": "Triggert zodra de weersomstandigheden veranderden, bijv. van 'licht bewolkt' naar 'geheel bewolkt'."
+    },
+    "tokens": [{
+            "name": "conditioncode",
+            "type": "number",
+            "title": {
+                "en": "Weather condition code",
+                "de": "Wetterlagencode",
+                "nl": "Code weersomstandigheid"
+            },
+            "example": {
+                "en": "801",
+                "de": "801",
+                "nl": "801"
+            }
+        },
+        {
+            "name": "location",
+            "type": "string",
+            "title": {
+                "en": "Location",
+                "de": "Standort",
+                "nl": "locatie"
+            },
+            "example": {
+                "en": "Amsterdam"
+            }
+        }
+    ],
+    "args": [{
+        "name": "ChangedCondition",
+        "type": "device",
+        "filter": "driver_id=owmCurrent|owmForecast|owmLongterm|owmOnecallCurrent|owmOnecallHourly|owmOnecallDaily"
+    }]
+}

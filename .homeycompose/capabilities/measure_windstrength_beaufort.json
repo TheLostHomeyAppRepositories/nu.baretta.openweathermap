@@ -1,0 +1,19 @@
+{
+    "type": "number",
+    "title": {
+        "en": "Wind strength (Beaufort)",
+        "de": "Windstärke (Beaufort)",
+        "nl": "Windkracht (Beaufort)"
+    },
+    "uiComponent": null,
+    "getable": true,
+    "setable": false,
+    "units": {
+        "en": "Beaufort",
+        "de": "Beaufort",
+        "nl": "Beaufort"
+    },
+    "min": 0,
+    "max": 12,
+    "step": 1
+}

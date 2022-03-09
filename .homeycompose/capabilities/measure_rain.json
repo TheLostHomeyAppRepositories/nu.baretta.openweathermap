@@ -1,0 +1,21 @@
+{
+    "type": "number",
+    "label": {
+        "en": "Precipitation",
+        "de": "Niederschlag",
+        "nl": "Neerslag"
+    },
+    "title": {
+        "en": "Precipitation",
+        "de": "Niederschlag",
+        "nl": "Neerslag"
+    },
+    "uiComponent": "sensor",
+    "getable": true,
+    "setable": false,
+    "units": {
+        "en": "mm",
+        "de": "mm"
+    },
+    "icon": "/assets/measure_rain.svg"
+}

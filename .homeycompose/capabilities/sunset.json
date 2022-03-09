@@ -1,0 +1,12 @@
+{
+    "type": "string",
+    "title": {
+        "en": "Sunset",
+        "de": "Sonnenuntergang",
+        "nl": "Zonsondergang"
+    },
+    "uiComponent": "sensor",
+    "getable": true,
+    "setable": false,
+    "icon": "/assets/sunset.svg"
+}

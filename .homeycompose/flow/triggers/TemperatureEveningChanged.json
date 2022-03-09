@@ -1,0 +1,43 @@
+{
+    "id": "TemperatureEveningChanged",
+    "highlight": true,
+    "title": {
+        "en": "Evening temperature has changed",
+        "de": "Abend-Temperatur hat sich geändert",
+        "nl": "Avondtemperatuur is veranderd"
+    },
+    "hint": {
+        "en": "Triggers when the evening temperature changes.",
+        "de": "Wird ausgelöst, wenn sich die Temperatur ändert.",
+        "nl": "Triggert zodra de avondtemperatuur veranderd."
+    },
+    "tokens": [{
+            "name": "measure_temperature_evening",
+            "type": "number",
+            "title": {
+                "en": "Temperature (°C)",
+                "de": "Temperatur (°C)",
+                "nl": "Temperatuur (°C)"
+            },
+            "example": 15
+        },
+        {
+            "name": "location",
+            "type": "string",
+            "title": {
+                "en": "Location",
+                "de": "Standort",
+                "nl": "locatie"
+            },
+            "example": {
+                "en": "Amsterdam",
+                "de": "Berlin"
+            }
+        }
+    ],
+    "args": [{
+        "name": "device",
+        "type": "device",
+        "filter": "driver_id=owmOnecallDaily"
+    }]
+}

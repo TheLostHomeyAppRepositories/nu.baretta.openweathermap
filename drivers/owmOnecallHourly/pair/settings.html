@@ -1,0 +1,31 @@
+<script type="application/javascript">
+
+    Homey.setTitle(Homey.__("pair.oneCallAPI.titleHourly"));
+
+    Homey.emit("getSettings").then(function (settings) {
+        if (settings){
+            document.getElementById('hours').value = settings.hours; 
+        }
+    });
+
+    function settingsChanged(){
+        let value = {
+            "hours": document.getElementById('hours').value,
+        };
+        Homey.emit("settingsChanged", value).then(function (result) {
+            //document.getElementById('found_nr').value = result; 
+        });
+    }
+  </script>
+
+<div id="OWMsetup" class="tabcontent">
+    <fieldset>
+        <div class="field row">
+            <label for="hours"><span data-i18n="pair.oneCallAPI.hours"></span></label>
+            <br>
+            <label for="hour"><span data-i18n="pair.oneCallAPI.hours2"></span></label>
+            <br>
+            <input id="hours" type="number" value="0" min="0" max="47" oninput="settingsChanged()"/>
+        </div>
+    </fieldset>
+</div>

@@ -1,0 +1,22 @@
+{
+    "type": "number",
+    "label": {
+        "en": "Probability of precipitation",
+        "de": "Niederschlags-Wahrscheinlichkeit",
+        "nl": "Kans op neersla"
+    },
+    "title": {
+        "en": "Probability of precipitation",
+        "de": "Niederschlags-Wahrscheinlichkeit",
+        "nl": "Kans op neerslag"
+    },
+    "uiComponent": "sensor",
+    "getable": true,
+    "setable": false,
+    "units": {
+        "en": "%",
+        "de": "%",
+        "nl": "%"
+    },
+    "icon": "/assets/measure_pop.svg"
+}

@@ -1,0 +1,20 @@
+{
+    "type": "number",
+    "label": {
+        "en": "Air pressure",
+        "de": "Luftdruck",
+        "nl": "Luchtdruk"
+    },
+    "title": {
+        "en": "Air pressure",
+        "de": "Luftdruck",
+        "nl": "Luchtdruk"
+    },
+    "uiComponent": "sensor",
+    "getable": true,
+    "setable": false,
+    "units": {
+        "en": "mbar",
+        "de": "mbar"
+    }
+}

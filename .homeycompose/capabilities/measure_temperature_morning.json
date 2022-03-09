@@ -1,0 +1,21 @@
+{
+    "type": "number",
+    "label": {
+        "en": "Morning",
+        "de": "Morgen",
+        "nl": "Ochtend"
+    },
+    "title": {
+        "en": "Temperature in the morning",
+        "de": "Temperatur morgens",
+        "nl": "Temperatuur 's ochtends"
+    },
+    "uiComponent": "sensor",
+    "getable": true,
+    "setable": false,
+    "units": {
+        "en": "°C",
+        "de": "°C"
+    },
+    "icon": "/assets/measure_temperature_morning.svg"
+}

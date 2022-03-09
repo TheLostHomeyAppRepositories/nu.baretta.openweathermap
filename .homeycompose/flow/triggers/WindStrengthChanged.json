@@ -1,0 +1,43 @@
+{
+    "id": "WindStrengthChanged",
+    "highlight": true,
+    "title": {
+        "en": "Wind strength (km/h) has changed",
+        "de": "Windstärke (km/h) hat sich geändert",
+        "nl": "Windsnelheid (km/h) is veranderd"
+    },
+    "hint": {
+        "en": "Triggers when the strength of the wind (km/h) changes.",
+        "de": "Wird ausgelöst, wenn sich die Windstärke (km/h) ändert.",
+        "nl": "Triggert zodra de windsnelheid (km/h) veranderd."
+    },
+    "tokens": [{
+            "name": "measure_wind_strength",
+            "type": "number",
+            "title": {
+                "en": "Wind strength (km/h)",
+                "de": "Windstärke (km/h)",
+                "nl": "Windsnelheid (km/h)"
+            },
+            "example": 5
+        },
+        {
+            "name": "location",
+            "type": "string",
+            "title": {
+                "en": "Location",
+                "de": "Standort",
+                "nl": "locatie"
+            },
+            "example": {
+                "en": "Amsterdam",
+                "de": "Berlin"
+            }
+        }
+    ],
+    "args": [{
+        "name": "device",
+        "type": "device",
+        "filter": "driver_id=owmOnecallCurrent|owmOnecallHourly|owmOnecallDaily"
+    }]
+}

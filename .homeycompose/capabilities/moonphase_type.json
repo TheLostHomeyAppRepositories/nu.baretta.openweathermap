@@ -1,0 +1,78 @@
+{
+    "type": "enum",
+    "title": {
+        "en": "Moon phase",
+        "de": "Mondphase",
+        "nl": "Maanfase"
+    },
+    "uiComponent": "sensor",
+    "getable": true,
+    "setable": false,
+    "icon": "/assets/moonphase.svg",
+    "values": [
+        {
+            "id": "NM",
+            "title": {
+                "en": "🌑",
+                "de": "🌑",
+                "nl": "🌑"
+            }
+        },
+        {
+            "id": "ZS",
+            "title": {
+                "en": "🌒",
+                "de": "🌒",
+                "nl": "🌒"
+            }
+        },
+        {
+            "id": "ZH",
+            "title": {
+                "en": "🌓",
+                "de": "🌓",
+                "nl": "🌓"
+            }
+        },
+        {
+            "id": "ZM",
+            "title": {
+                "en": "🌔",
+                "de": "🌔",
+                "nl": "🌔"
+            }
+        },
+        {
+            "id": "VM",
+            "title": {
+                "en": "🌕",
+                "de": "🌕",
+                "nl": "🌕"
+            }
+        },
+        {
+            "id": "AM",
+            "title": {
+                "en": "🌖",
+                "de": "🌖",
+                "nl": "🌖"
+            }
+        },
+        {
+            "id": "AH",
+            "title": {
+                "en": "🌗",
+                "de": "🌗",
+                "nl": "🌗"
+            }
+        },
+        {
+            "id": "AS",
+            "title": {
+                "en": "🌘",
+                "de": "🌘",
+                "nl": "🌘"
+            }
+        }
+    ]
+}

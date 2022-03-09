@@ -1,0 +1,37 @@
+[{
+    "type": "group",
+    "label": {
+        "en": "OpenWeatherMap daily forecast",
+        "de": "OpenWeatherMap Dagelijkse voorspelling ",
+        "nl": "OpenWeatherMap uurlijkse voorspeling"
+    },
+    "children": [{
+            "id": "days",
+            "type": "number",
+            "value": 0,
+            "min": 0,
+            "max": 7,
+            "units": { 
+                "en": "Days",
+                "de": "Tage",
+                "nl": "Dagen"
+             },
+            "label": {
+                "en": "Day difference for the forecast:",
+                "de": "Tages-Differenz für die Vorhersage:", 
+                "nl": "dagelijks verschil voor de voorspelling:"
+            }
+        },
+        {
+            "id": "location",
+            "type": "label",
+            "value": "",
+            "label": {
+                "en": "Linked location :",
+                "de": "Verknüpfter Standort:",
+                "nl": "Gelinkte locatie :"
+            }
+        }
+    ]
+}
+]

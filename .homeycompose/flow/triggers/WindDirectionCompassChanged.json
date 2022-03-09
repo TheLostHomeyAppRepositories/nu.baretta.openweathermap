@@ -1,0 +1,44 @@
+{
+    "id": "WindDirectionCompassChanged",
+    "title": {
+        "en": "Compass direction wind has changed",
+        "de": "Wind-Kompassrichtung hat sich geändert",
+        "nl": "Kompasrichting wind is veranderd"
+    },
+    "hint": {
+        "en": "Triggers when compass direction of wind changes.",
+        "de": "Wird ausgelöst, wenn sich die Wind-Kompassrichtung ändert.",
+        "nl": "Triggert zodra de kompas richting van de wind veranderd."
+    },
+    "tokens": [{
+            "name": "measure_wind_direction_string",
+            "type": "string",
+            "title": {
+                "en": "Winddirection (compass)",
+                "de": "Windrichtung (Kompass)",
+                "nl": "Windrichting (kompas)"
+            },
+            "example": {
+                "en": "N"
+            }
+        },
+        {
+            "name": "location",
+            "type": "string",
+            "title": {
+                "en": "Location",
+                "de": "Standort",
+                "nl": "locatie"
+            },
+            "example": {
+                "en": "Amsterdam",
+                "de": "Berlin"
+            }
+        }
+    ],
+    "args": [{
+        "name": "ChangedWindDirectionCompass",
+        "type": "device",
+        "filter": "driver_id=owmCurrent|owmForecast|owmLongterm|owmOnecallCurrent|owmOnecallHourly|owmOnecallDaily"
+    }]
+}

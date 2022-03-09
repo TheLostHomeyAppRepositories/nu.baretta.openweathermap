@@ -1,0 +1,41 @@
+{
+    "id": "MoonriseChanged",
+    "title": {
+        "en": "Moonrise has changed",
+        "de": "Mondaufgang hat sich geändert",
+        "nl": "Maansopgang is veranderd"
+    },
+    "hint": {
+        "en": "Triggers when the moonrise changes.",
+        "de": "Wird ausgelöst, wenn sich der Mondaufgang ändert.",
+        "nl": "Triggert zodra de maansopgang veranderd."
+    },
+    "tokens": [{
+            "name": "moonrise",
+            "type": "string",
+            "title": {
+                "en": "Moonrise",
+                "de": "Mondaufgang"
+            },
+            "example": "18:10"
+        },
+        {
+            "name": "location",
+            "type": "string",
+            "title": {
+                "en": "Location",
+                "de": "Standort",
+                "nl": "locatie"
+            },
+            "example": {
+                "en": "Amsterdam",
+                "de": "Berlin"
+            }
+        }
+    ],
+    "args": [{
+        "name": "device",
+        "type": "device",
+        "filter": "driver_id=owmOnecallDaily"
+    }]
+}

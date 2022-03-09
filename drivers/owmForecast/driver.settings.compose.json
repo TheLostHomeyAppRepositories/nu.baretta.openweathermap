@@ -1,0 +1,106 @@
+[{
+    "type": "group",
+    "label": {
+        "en": "OpenWeatherMap general settings",
+        "de": "OpenWeatherMap allgemeine Einstellungen",
+        "nl": "OpenWeatherMap algemene instellingen"
+    },
+    "children": [{
+            "id": "APIKey",
+            "type": "text",
+            "value": "abcdef0123456789abcdef0123456789",
+            "label": {
+                "en": "OpenWeatherMap API key:",
+                "de": "OpenWeatherMap API-Key", 
+                "nl": "OpenWeatherMap API sleutel:"
+            },
+            "hint": {
+                "en": "An API key can be obtained at http://openweathermap.org.",
+                "de": "Ein API-Key kann man erhalten unter http://openweathermap.org.",
+                "nl": "Een API sleutel kan op http://openweathermap.org verkregen worden."
+            }
+        },
+        {
+            "id": "GEOlocation",
+            "type": "label",
+            "value": "...pending first data...",
+            "label": {
+                "en": "Current location found by OpenWeatherMap:",
+                "de": "Standort gefunden von OpenWeatherMap:",
+                "nl": "Huidige door OpenWeatherMap gevonden locatie:"
+            },
+            "hint": {
+                "en": "Note: appears after first polling interval.",
+                "de": "Hinweis: Wird nach dem ersten Abruf angezeigt.",
+                "nl": "De locatie verschijnt zodra de eerste data binnen is."
+            }
+        }
+    ]
+},
+{
+    "type": "group",
+    "label": {
+        "en": "Optional location settings",
+        "de": "Optionale Standort-Einstellungen",
+        "nl": "Optionele locatie instellingen"
+    },
+    "children": [{
+            "id": "GEOlocationCity",
+            "type": "text",
+            "value": "Paris,FR",
+            "label": {
+                "en": "City, countrycode (optional):",
+                "de": "Stadt, Ländercode (optional)",
+                "nl": "Stad, landencode (optioneel):"
+            },
+            "hint": {
+                "en": "Optionally the location can be entered by city/country, e.g. Paris,fr.",
+                "de": "Der Standort kann optional als Stadt/Land angegeben werden, z.B. Berlin,de.",
+                "nl": "De locatie kan optioneel als stad/land opgegeven worden, bijv. Utrecht,nl."
+            }
+        },
+        {
+            "id": "GEOlocationZip",
+            "type": "text",
+            "value": "94040,us",
+            "label": {
+                "en": "Zip code, countrycode (optional):",
+                "de": "PLZ, Ländercode (optional)",
+                "nl": "Postcode, landencode (optioneel):"
+            },
+            "hint": {
+                "en": "Optionally the location can be entered by zip code/country, e.g. 94040,us.",
+                "de": "Der Standort kann optional als PLZ/Land angegeben werden, z.B. 12345,de.",
+                "nl": "De locatie kan optioneel als postcode/land opgegeven worden, bijv. 1234,NL."
+            }
+        }
+    ]
+},
+{
+    "type": "group",
+    "label": {
+        "en": "Data source options: current or forecast",
+        "de": "Datenquelle: Aktuell oder Prognose",
+        "nl": "Brondata opties: actueel of voorspelling"
+    },
+    "children": [{
+        "id": "forecastInterval",
+        "type": "number",
+        "value": 0,
+        "label": {
+            "en": "Forecast, number of 3-hour intervals ahead:",
+            "de": "Vorhersage, Anzahl der 3-Stunden-Intervalle",
+            "nl": "Voorspelling, aantal 3-uur intervallen vooruit:"
+        },
+        "hint": {
+            "en": "You can choose the timeframe for the forecast data in three-hour intervals. Choose '8' for instance to get the forecast for the weather in 24 hours. Choose '0' for data in the current three-hour interval.",
+            "de": "Es kann ein Zeitraum im 3h-Vorhesage-Intervall gewählt werden. Wähle z.B. '8', um eine Vorhersage in 24 Stunden zu erhalten. Wähle '0' für eine Vorhersage im aktuellen 3h-Intervall",
+            "nl": "U kunt het tijdvenster kiezen voor de weersvoorspelling in intervallen van drie uur. Kies bijvoorbeeld '8' voor de voorspelling van het weer over 24 uur. Kies '0' voor data in het huidige interval van drie uur."
+        },
+        "attr": {
+            "min": 0,
+            "max": 39
+        }
+    }]
+}
+]

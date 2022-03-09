@@ -1,0 +1,156 @@
+{
+    "id": "Winddirection",
+    "title": {
+        "en": "Compass direction wind !{{is|isn't}}",
+        "de": "Windrichtung (Kompass) !{{ist|ist nicht}}",
+        "nl": "Kompasrichting wind !{{is|is niet}}"
+    },
+    "titleFormatted": {
+        "en": "Compass direction wind !{{is|isn't}} [[winddirection]]",
+        "de": "Windrichtung (Kompass) !{{ist|ist nicht}} [[winddirection]]",
+        "nl": "Kompasrichting wind !{{is|is niet}} [[winddirection]]"
+    },
+    "hint": {
+        "en": "Compass direction of the wind",
+        "de": "Windrichtung (Kompass)",
+        "nl": "Kompasrichting van de wind"
+    },
+    "args": [{
+        "name": "device",
+        "type": "device",
+        "filter": "driver_id=owmCurrent|owmForecast|owmLongterm|owmOnecallCurrent|owmOnecallHourly|owmOnecallDaily"
+    }, {
+        "name": "winddirection",
+        "type": "dropdown",
+        "values": [{
+                "id": "N",
+                "label": {
+                    "en": "N: North",
+                    "de": "N: Nord",
+                    "nl": "N: Noord"
+                }
+            },
+            {
+                "id": "NNE",
+                "label": {
+                    "en": "NNO: North northeast",
+                    "de": "NNO: Nord-Nordost",
+                    "nl": "NNO: Noord noord-oost"
+                }
+            },
+            {
+                "id": "NE",
+                "label": {
+                    "en": "NO: Northeast",
+                    "de": "NO: Nordost",
+                    "nl": "NO: Noord-oost"
+                }
+            },
+            {
+                "id": "ENE",
+                "label": {
+                    "en": "ENE: East northeast",
+                    "de": "ONO: Ost-Nordost",
+                    "nl": "ONO: Oost Noord-oost"
+                }
+            },
+            {
+                "id": "E",
+                "label": {
+                    "en": "E: East",
+                    "de": "O: Ost",
+                    "nl": "O: Oost"
+                }
+            },
+
+            {
+                "id": "ESE",
+                "label": {
+                    "en": "ESE: East southeast",
+                    "de": "OSO: Ost-Südost",
+                    "nl": "OZO: Oost zuid-oost"
+                }
+            },
+            {
+                "id": "SE",
+                "label": {
+                    "en": "SE: Southeast",
+                    "de": "SO: Südost",
+                    "nl": "ZO: Zuid-oost"
+                }
+            },
+            {
+                "id": "SSE",
+                "label": {
+                    "en": "SSO: South southeast",
+                    "de": "SSO: Süd-Südost",
+                    "nl": "ZZO: Zuid zuid-oost"
+                }
+            },
+            {
+                "id": "S",
+                "label": {
+                    "en": "S: South",
+                    "de": "S: Süd",
+                    "nl": "Z: Zuid"
+                }
+            },
+            {
+                "id": "SSW",
+                "label": {
+                    "en": "SSW: South southwest",
+                    "de": "SSW: Süd-Südwest",
+                    "nl": "ZZW: Zuid zuid-west"
+                }
+            },
+            {
+                "id": "SW",
+                "label": {
+                    "en": "SW: Southwest",
+                    "de": "SW: Südwest",
+                    "nl": "ZW: Zuid-west"
+                }
+            },
+            {
+                "id": "WSW",
+                "label": {
+                    "en": "WSW: West southwest",
+                    "de": "WSW: West-Südwest",
+                    "nl": "WZW: West zuid-west"
+                }
+            },
+            {
+                "id": "W",
+                "label": {
+                    "en": "W: West",
+                    "de": "W: West",
+                    "nl": "W: West"
+                }
+            },
+            {
+                "id": "WNW",
+                "label": {
+                    "en": "WNW: West northwest",
+                    "de": "WNW: West-Nordwest",
+                    "nl": "WNW: West noord-west"
+                }
+            },
+            {
+                "id": "NW",
+                "label": {
+                    "en": "NW: Northwest",
+                    "de": "NW: Nordwest",
+                    "nl": "NW: Noord-west"
+                }
+            },
+            {
+                "id": "NNW",
+                "label": {
+                    "en": "NNW: North northwest",
+                    "de": "NNW: Nord-Nordwest",
+                    "nl": "NNW: Noord noord-west"
+                }
+            }
+        ]
+    }]
+}

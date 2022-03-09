@@ -1,0 +1,44 @@
+{
+    "id": "WindCombinedChanged",
+    "title": {
+        "en": "Wind speed and direction has changed",
+        "de": "Windgeschwindigkeit und Richtung hat sich geändert",
+        "nl": "Windsnelheid en richting is veranderd"
+    },
+    "hint": {
+        "en": "Triggers when wind speed and direction changes.",
+        "de": "Wird ausgelöst, wenn sich die Windgeschwindigkeit und Richtung ändert.",
+        "nl": "Triggert zodra de windsnelheid en richting veranderd."
+    },
+    "tokens": [{
+            "name": "measure_wind_combined",
+            "type": "string",
+            "title": {
+                "en": "Wind speed and direction",
+                "de": "Windgeschwindigkeit und Richtung",
+                "nl": "Windsnelheid en richting"
+            },
+            "example": {
+                "en": "N 1"
+            }
+        },
+        {
+            "name": "location",
+            "type": "string",
+            "title": {
+                "en": "Location",
+                "de": "Standort",
+                "nl": "locatie"
+            },
+            "example": {
+                "en": "Amsterdam",
+                "de": "Berlin"
+            }
+        }
+    ],
+    "args": [{
+        "name": "device",
+        "type": "device",
+        "filter": "driver_id=owmOnecallCurrent|owmOnecallHourly|owmOnecallDaily"
+    }]
+}

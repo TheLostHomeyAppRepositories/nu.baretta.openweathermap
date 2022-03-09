@@ -1,0 +1,28 @@
+{
+    "id": "Clouds",
+    "title": {
+        "en": "Cloudiness (%) !{{is|isn't}} more than",
+        "de": "Bewölkung (%) !{{ist|ist nicht}} größer als",
+        "nl": "Bewolking (%) !{{is|is niet}} meer dan"
+    },
+    "titleFormatted": {
+        "en": "Cloudiness (%) !{{is|isn't}} more than [[cloudiness]]",
+        "de": "Bewölkung (%) !{{ist|ist nicht}} größer als [[cloudiness]]",
+        "nl": "Bewolking (%) !{{is|is niet}} meer dan [[cloudiness]]"
+    },
+    "hint": {
+        "en": "Percentage of cloud cover.",
+        "de": "Bewölkung in Prozent",
+        "nl": "Percentage bewolking."
+    },
+    "args": [{
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=owmCurrent|owmForecast|owmLongterm|owmOnecallCurrent|owmOnecallHourly|owmOnecallDaily"
+        },
+        {
+            "name": "cloudiness",
+            "type": "number"
+        }
+    ]
+}

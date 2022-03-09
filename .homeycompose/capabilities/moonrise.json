@@ -1,0 +1,12 @@
+{
+    "type": "string",
+    "title": {
+        "en": "Moonrise",
+        "de": "Mondaufgang",
+        "nl": "Maansopgang"
+    },
+    "uiComponent": "sensor",
+    "getable": true,
+    "setable": false,
+    "icon": "/assets/moonrise.svg"
+}

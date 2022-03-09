@@ -1,0 +1,12 @@
+{
+    "type": "string",
+    "title": {
+        "en": "Moonset",
+        "de": "Monduntergang",
+        "nl": "Maansondergang"
+    },
+    "uiComponent": "sensor",
+    "getable": true,
+    "setable": false,
+    "icon": "/assets/moonset.svg"
+}

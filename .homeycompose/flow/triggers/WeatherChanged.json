@@ -1,0 +1,46 @@
+{
+    "id": "WeatherChanged",
+    "highlight": true,
+    "title": {
+        "en": "The weather (description) has changed",
+        "de": "Das Wetter (Bezeichnung) hat sich geändert",
+        "nl": "Het weer (beschrijving) is veranderd"
+    },
+    "hint": {
+        "en": "Triggers when the description of the weather changes.",
+        "de": "Wird ausgelöst, wenn sich die Wetterbezeichnung geändert hat",
+        "nl": "Triggert zodra de beschrijving van het weer veranderd."
+    },
+    "tokens": [{
+            "name": "description",
+            "type": "string",
+            "title": {
+                "en": "Weather description",
+                "de": "Wetterbezeichnung",
+                "nl": "Weersbeschrijving"
+            },
+            "example": {
+                "en": "Mist",
+                "de": "Nebel"
+            }
+        },
+        {
+            "name": "location",
+            "type": "string",
+            "title": {
+                "en": "Location",
+                "de": "Standort",
+                "nl": "locatie"
+            },
+            "example": {
+                "en": "Amsterdam",
+                "de": "Berlin"
+            }
+        }
+    ],
+    "args": [{
+        "name": "ChangedDescription",
+        "type": "device",
+        "filter": "driver_id=owmCurrent|owmForecast|owmLongterm|owmOnecallCurrent|owmOnecallHourly|owmOnecallDaily"
+    }]
+}

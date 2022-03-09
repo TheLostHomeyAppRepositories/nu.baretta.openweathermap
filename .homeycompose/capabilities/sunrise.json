@@ -1,0 +1,12 @@
+{
+    "type": "string",
+    "title": {
+        "en": "Sunrise",
+        "de": "Sonnenaufgang",
+        "nl": "Zonsopgang"
+    },
+    "uiComponent": "sensor",
+    "getable": true,
+    "setable": false,
+    "icon": "/assets/sunrise.svg"
+}

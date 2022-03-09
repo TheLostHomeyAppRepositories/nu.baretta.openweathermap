@@ -1,0 +1,19 @@
+{
+    "type": "number",
+    "title": {
+        "en": "Visibility",
+        "de": "Sichtweite",
+        "nl": "Zicht"
+    },
+    "uiComponent": "sensor",
+    "getable": true,
+    "setable": false,
+    "units": {
+        "en": "M",
+        "de": "m"
+    },
+    "min": 0,
+    "max": 20000,
+    "step": 1,
+    "icon": "/assets/measure_visibility.svg"
+}

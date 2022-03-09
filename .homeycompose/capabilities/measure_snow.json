@@ -1,0 +1,19 @@
+{
+    "type": "number",
+    "title": {
+        "en": "Snow",
+        "de": "Schnee",
+        "nl": "Sneeuw"
+    },
+    "uiComponent": "sensor",
+    "getable": true,
+    "setable": false,
+    "units": {
+        "en": "mm",
+        "de": "mm"
+    },
+    "min": 0,
+    "max": 10000,
+    "step": 1,
+    "icon": "/assets/measure_snow.svg"
+}

@@ -1,0 +1,11 @@
+{
+    "type": "number",
+    "title": {
+        "en": "Wind direction",
+        "de": "Windrichtung",
+        "nl": "Windrichting"
+    },
+    "uiComponent": null,
+    "getable": true,
+    "setable": false
+}

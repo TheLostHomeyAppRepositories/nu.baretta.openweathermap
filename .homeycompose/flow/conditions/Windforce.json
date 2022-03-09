@@ -1,0 +1,28 @@
+{
+    "id": "Windforce",
+    "title": {
+        "en": "Windforce (Beaufort) !{{is|isn't}} higher than",
+        "de": "Windstärke (Beaufort) !{{ist|ist nicht}} größer als",
+        "nl": "Windkracht (Beaufort) !{{is|is niet}} hoger dan"
+    },
+    "titleFormatted": {
+        "en": "Windforce (Beaufort) !{{is|isn't}} higher than [[windforce]]",
+        "de": "Windstärke (Beaufort) !{{ist|ist nicht}} größer als [[windforce]]",
+        "nl": "Windkracht (Beaufort) !{{is|is niet}} hoger dan [[windforce]]"
+    },
+    "hint": {
+        "en": "Speed of the wind (Beaufort).",
+        "de": "Windstärke (Beaufort)",
+        "nl": "Windkracht (Beaufort)."
+    },
+    "args": [{
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=owmCurrent|owmForecast|owmLongterm|owmOnecallCurrent|owmOnecallHourly|owmOnecallDaily"
+        },
+        {
+            "name": "windforce",
+            "type": "number"
+        }
+    ]
+}

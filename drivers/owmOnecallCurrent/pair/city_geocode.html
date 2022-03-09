@@ -1,0 +1,38 @@
+<script type="application/javascript">
+
+    Homey.setTitle(Homey.__("pair.oneCallAPI.title"));
+
+    Homey.emit("getSettings").then(function (settings) {
+        if (settings){
+            document.getElementById('apiKey').value = settings.APIKey; 
+            document.getElementById('city').value = settings.GEOlocationCity; 
+            document.getElementById('interval').value = settings.pollingInterval; 
+        }
+    });
+
+    function settingsChanged(){
+        let value = {
+            "APIKey": document.getElementById('apiKey').value,
+            "GEOlocationCity": document.getElementById('city').value,
+            "pollingInterval": parseInt(document.getElementById('interval').value)
+        };
+        Homey.emit("settingsChanged", value).then(function (result) {
+            //document.getElementById('found_nr').value = result; 
+        });
+    }
+  </script>
+
+<div id="OWMsetup" class="tabcontent">
+    <fieldset>
+        <div class="field row">
+            <label for="apiKey"><span data-i18n="pair.oneCallAPI.apiKey"></span></label>
+            <label for="apiKey"><span data-i18n="pair.oneCallAPI.apiKey2"></span></label>
+            <input id="apiKey" type="text" value="" oninput="settingsChanged()"/>
+            <label for="city"><span data-i18n="pair.oneCallAPI.city"></span></label>
+            <label for="city"><span data-i18n="pair.oneCallAPI.autolocation"></span></label>
+            <input id="city" type="text" value="" oninput="settingsChanged()"/>
+            <label for="interval"><span data-i18n="pair.oneCallAPI.updateInterval"></span></label>
+            <input id="interval" type="number" value="5" oninput="settingsChanged()"/>
+        </div>
+    </fieldset>
+</div>

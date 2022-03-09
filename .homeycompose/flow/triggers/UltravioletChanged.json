@@ -1,0 +1,43 @@
+{
+    "id": "UltravioletChanged",
+    "highlight": true,
+    "title": {
+        "en": "Ultraviolet index has changed",
+        "de": "UV-Index hat sich geändert",
+        "nl": "Ultraviolette index is veranderd"
+    },
+    "hint": {
+        "en": "Triggers when ultraviolet index changes.",
+        "de": "Wird ausgelöst, wenn sich der UV-Index ändert.",
+        "nl": "Triggert zodra het ultraviolette index veranderd."
+    },
+    "tokens": [{
+            "name": "measure_ultraviolet",
+            "type": "number",
+            "title": {
+                "en": "Ultraviolet indexs",
+                "de": "UV-Index ",
+                "nl": "Ultraviolette index"
+            },
+            "example": 1
+        },
+        {
+            "name": "location",
+            "type": "string",
+            "title": {
+                "en": "Location",
+                "de": "Standort",
+                "nl": "locatie"
+            },
+            "example": {
+                "en": "Amsterdam",
+                "de": "Berlin"
+            }
+        }
+    ],
+    "args": [{
+        "name": "device",
+        "type": "device",
+        "filter": "driver_id=owmOnecallCurrent|owmOnecallHourly|owmOnecallDaily"
+    }]
+}

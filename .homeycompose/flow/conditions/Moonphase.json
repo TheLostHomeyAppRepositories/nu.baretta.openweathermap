@@ -1,0 +1,28 @@
+{
+    "id": "Moonphase",
+    "title": {
+        "en": "Moon phase !{{is|isn't}} higher than",
+        "de": "Mondphase !{{ist|ist nicht}} größer als",
+        "nl": "Maanfase !{{is|is niet}} hoger dan"
+    },
+    "titleFormatted": {
+        "en": "Moon phase !{{is|isn't}} higher than [[moonphase]]",
+        "de": "Mondphase !{{ist|ist nicht}} größer als [[moonphase]]",
+        "nl": "Maanfase !{{is|is niet}} hoger dan [[moonphase]]"
+    },
+    "hint": {
+        "en": "Moon phase (0=new moon, 0.25=first quarter, 0.5=full, 0.75=last quarter, 1=new moon)",
+        "de": "Mondphase (0=Neumond, 0,25=erstes Viertel, 0,5=Vollmond, 0,75=letztes Viertel, 1=Neumond)",
+        "nl": "Maanfase (0=nieuwe maan, 0,25=eerste kwartier, 0,5=vol, 0,75=laatste kwartier, 1=nieuwe maan)"
+},
+    "args": [{
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=owmOnecallDaily"
+        },
+        {
+            "name": "moonphase",
+            "type": "number"
+        }
+    ]
+}

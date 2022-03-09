@@ -1,0 +1,43 @@
+{
+    "id": "TemperatureMorningChanged",
+    "highlight": true,
+    "title": {
+        "en": "Morning temperature has changed",
+        "de": "Morgen-Temperatur hat sich geändert",
+        "nl": "Ochtendtemperatuur is veranderd"
+    },
+    "hint": {
+        "en": "Triggers when the morning temperature changes.",
+        "de": "Wird ausgelöst, wenn sich die Morgen-Temperatur ändert.",
+        "nl": "Triggert zodra de ochtendtemperatuur veranderd."
+    },
+    "tokens": [{
+            "name": "measure_temperature_morning",
+            "type": "number",
+            "title": {
+                "en": "Temperature (°C)",
+                "de": "Temperatur (°C)",
+                "nl": "Temperatuur (°C)"
+            },
+            "example": 15
+        },
+        {
+            "name": "location",
+            "type": "string",
+            "title": {
+                "en": "Location",
+                "de": "Standort",
+                "nl": "locatie"
+            },
+            "example": {
+                "en": "Amsterdam",
+                "de": "Berlin"
+            }
+        }
+    ],
+    "args": [{
+        "name": "device",
+        "type": "device",
+        "filter": "driver_id=owmOnecallDaily"
+    }]
+}

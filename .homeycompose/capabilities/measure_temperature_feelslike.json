@@ -1,0 +1,21 @@
+{
+    "type": "number",
+    "label": {
+        "en": "Minimum",
+        "de": "Minimum",
+        "nl": "Minimum"
+    },
+    "title": {
+        "en": "Feels-like temperature",
+        "de": "Gefühlt-Temperatur",
+        "nl": "Gevoelstemperatuur"
+    },
+    "uiComponent": "sensor",
+    "getable": true,
+    "setable": false,
+    "units": {
+        "en": "°C",
+        "de": "°C"
+    },
+    "icon": "/assets/measure_temperature_feelslike.svg"
+}

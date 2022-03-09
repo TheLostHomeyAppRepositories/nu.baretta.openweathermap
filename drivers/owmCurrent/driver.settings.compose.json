@@ -1,0 +1,80 @@
+[{
+    "type": "group",
+    "label": {
+        "en": "OpenWeatherMap general settings",
+        "de": "OpenWeatherMap allgemeine Einstellungen",
+        "nl": "OpenWeatherMap algemene instellingen"
+    },
+    "children": [{
+            "id": "APIKey",
+            "type": "text",
+            "value": "abcdef0123456789abcdef0123456789",
+            "label": {
+                "en": "OpenWeatherMap API key:",
+                "de": "OpenWeatherMap API-Key", 
+                "nl": "OpenWeatherMap API sleutel:"
+            },
+            "hint": {
+                "en": "An API key can be obtained at http://openweathermap.org.",
+                "de": "Ein API-Key kann man erhalten unter http://openweathermap.org.",
+                "nl": "Een API sleutel kan op http://openweathermap.org verkregen worden."
+            }
+        },
+        {
+            "id": "GEOlocation",
+            "type": "label",
+            "value": "...pending first data...",
+            "label": {
+                "en": "Current location found by OpenWeatherMap:",
+                "de": "Standort gefunden von OpenWeatherMap:",
+                "nl": "Huidige door OpenWeatherMap gevonden locatie:"
+            },
+            "hint": {
+                "en": "Note: appears after first polling interval.",
+                "de": "Hinweis: Wird nach dem ersten Abruf angezeigt.",
+                "nl": "De locatie verschijnt zodra de eerste data binnen is."
+            }
+        }
+    ]
+},
+{
+    "type": "group",
+    "collapsed": "true",
+    "label": {
+        "en": "Optional location settings",
+        "de": "Optionale Standort-Einstellungen",
+        "nl": "Optionele locatie instellingen"
+    },
+    "children": [{
+            "id": "GEOlocationCity",
+            "type": "text",
+            "value": "Paris,FR",
+            "label": {
+                "en": "City, countrycode (optional):",
+                "de": "Stadt, Ländercode (optional)",
+                "nl": "Stad, landencode (optioneel):"
+            },
+            "hint": {
+                "en": "Optionally the location can be entered by city/country, e.g. Paris,fr.",
+                "de": "Der Standort kann optional als Stadt/Land angegeben werden, z.B. Berlin,de.",
+                "nl": "De locatie kan optioneel als stad/land opgegeven worden, bijv. Utrecht,nl."
+            }
+        },
+        {
+            "id": "GEOlocationZip",
+            "type": "text",
+            "value": "94040,us",
+            "label": {
+                "en": "Zip code, countrycode (optional):",
+                "de": "PLZ, Ländercode (optional)",
+                "nl": "Postcode, landencode (optioneel):"
+            },
+            "hint": {
+                "en": "Optionally the location can be entered by zip code/country, e.g. 94040,us.",
+                "de": "Der Standort kann optional als PLZ/Land angegeben werden, z.B. 12345,de.",
+                "nl": "De locatie kan optioneel als postcode/land opgegeven worden, bijv. 1234,NL."
+            }
+        }
+    ]
+}
+]

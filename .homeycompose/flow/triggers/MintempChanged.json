@@ -1,0 +1,42 @@
+{
+    "id": "MintempChanged",
+    "title": {
+        "en": "Min temperature has changed",
+        "de": "Minimim-Temperatur hat sich geändert",
+        "nl": "Min temperatuur is veranderd"
+    },
+    "hint": {
+        "en": "Triggers when the minimum temperature changes.",
+        "de": "Wird ausgelöst, wenn sich die Minimum-Temperatur ändert.",
+        "nl": "Triggert zodra de minimum temperatuur veranderd."
+    },
+    "tokens": [{
+            "name": "measure_temperature.min",
+            "type": "number",
+            "title": {
+                "en": "Minimum temperature",
+                "de": "Minimum-Temperatur",
+                "nl": "Minimum temperatuur"
+            },
+            "example": 5
+        },
+        {
+            "name": "location",
+            "type": "string",
+            "title": {
+                "en": "Location",
+                "de": "Standort",
+                "nl": "locatie"
+            },
+            "example": {
+                "en": "Amsterdam",
+                "de": "Berlin"
+            }
+        }
+    ],
+    "args": [{
+        "name": "ChangedMinTemperature",
+        "type": "device",
+        "filter": "driver_id=owmLongterm"
+    }]
+}

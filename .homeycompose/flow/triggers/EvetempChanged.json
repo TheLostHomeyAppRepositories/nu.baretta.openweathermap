@@ -1,0 +1,42 @@
+{
+    "id": "EvetempChanged",
+    "title": {
+        "en": "Evening temperature has changed",
+        "de": "Abend-Temperatur hat sich geändert",
+        "nl": "Avond temperatuur is veranderd"
+    },
+    "hint": {
+        "en": "Triggers when the evening temperature changes.",
+        "de": "Wird ausgelöst, wenn sich die Abendtemperatur ändert",
+        "nl": "Triggert zodra de avond temperatuur veranderd."
+    },
+    "tokens": [{
+            "name": "measure_temperature.evening",
+            "type": "number",
+            "title": {
+                "en": "Evening temperature",
+                "de": "Abendtemperatur",
+                "nl": "Avond temperatuur"
+            },
+            "example": 5
+        },
+        {
+            "name": "location",
+            "type": "string",
+            "title": {
+                "en": "Location",
+                "de": "Standort",
+                "nl": "locatie"
+            },
+            "example": {
+                "en": "Amsterdam",
+                "de": "Berlin"
+            }
+        }
+    ],
+    "args": [{
+        "name": "ChangedEveTemperature",
+        "type": "device",
+        "filter": "driver_id=owmLongterm"
+    }]
+}

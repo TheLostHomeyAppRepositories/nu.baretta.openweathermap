@@ -1,0 +1,28 @@
+{
+    "id": "Humidity",
+    "title": {
+        "en": "Humidity (%) !{{is|isn't}} higher than",
+        "de": "Luftfeuchte (%) !{{ist|ist nicht}} größer als",
+        "nl": "Luchtvochtigheid (%) !{{is|is niet}} hoger dan"
+    },
+    "titleFormatted": {
+        "en": "Humidity (%) !{{is|isn't}} higher than [[humidity]]",
+        "de": "Luftfeuchte (%) !{{ist|ist nicht}} größer als [[humidity]]",
+        "nl": "Luchtvochtigheid (%) !{{is|is niet}} hoger dan [[humidity]]"
+    },
+    "hint": {
+        "en": "Percentage of moisture in air.",
+        "de": "Luftfeuchte in Prozent",
+        "nl": "Percentage luchtvochtigheid in de lucht."
+    },
+    "args": [{
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=owmCurrent|owmForecast|owmLongterm|owmOnecallCurrent|owmOnecallHourly|owmOnecallDaily"
+        },
+        {
+            "name": "humidity",
+            "type": "number"
+        }
+    ]
+}

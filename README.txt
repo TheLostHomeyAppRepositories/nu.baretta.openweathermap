@@ -1,39 +1,22 @@
-OpenWeatherMap-app for Homey
+This app brings the OpenWeatherMap API to Homey.
+Get current weather data and forecasts for any number of locations.
 
-This app allows you to poll the OpenWeatherMap API for localised weather data and use this in your Homey home automation flows. Several instances (locations) can run simultaneously. Note that the current version is no longer backward compatible with Homey V1. For V1 users an alpha version is able on request.
+The following weather data is available:
+- Current weather data
+- Hourly forecasts up to 48 hours
+- Daily forecasts up to 7 days
 
-Current weather
+Different values are provided for each variant, such as temperature, air pressure, humidity, weather conditions and many other values.
 
-The 'current weather' data comes from the OWM current weather data, refer to http://openweathermap.org/current. It includes visibility, sunrise and sunset data which are not included in the forecast tables. Note that the max. and min. temperatures in the current data indicate the possible range in which the actual temperature is expected, it can be seen as a measure for the standard deviation of the current temperature.
+A description of the API and example data can be found at https://openweathermap.org/api/one-call-api
 
-Forecast up to 5 days
+Precondition:
+An API key is required to use the OpenWeatherMap API.
+The API key can be downloaded free of charge from https://openweathermap.org/api.
+1000 calls per day are permitted per API key.
 
-The five day forecast data (refer to http://openweathermap.org/forecast5) includes forecasts in 3-hour intervals up to 5 days in the future. During pairing you can choose the 3-hour interval you want to have weather data from. Interval 1 gives you data from the currently running 3-hour interval (between one hour ago/two hours ahead) which should be close to the current weather. Interval 8 gives data 24 hours ahead, etc. In this dataset the maximum and minimum temperatures are the expected maximum and minimum temperature, as you would expect.
-
-Long term weather
-
-The long term weather forecast gives data for up to 16 days in the future, in daily intervals (refer to http://openweathermap.org/forecast16). Included in the data is the daily, morning, evening and night temperature.
-
-Please use the community forum for questions and comments related to the app: https://forum.athom.com/discussion/4225/.
-
-Pairing
-
-Settings can be changed after pairing. By default Homey's location is used, optionally a different location can be entered, either by name (city and countrycode, e.g. 'Paris,FR'), or by entering a zip code.
-
-Both methods can be tested by querying the OpenWeathMap site directly. For testing a location by location, enter the following (fill in your own <city,country> combination as well as the API key):
-`https://api.openweathermap.org/data/2.5/weather?q=<city,countrycode>&APPID=<API key>`
-
-For testing a zip code, enter the following in a browser (fill in your <zipcode,country> combination as well as the API key):
-`https://api.openweathermap.org/data/2.5/weather?zip=<zipcode,country>&APPID=<API key>`
-
-Flow cards
-
-For nearly all parameters trigger and condition cards are included, temperature, precipitation (rain as well as snow), winddirection (beaufort, m/s as well as text), extreme weather events and more.
-
-Requirements
-
-To use the app, you need to get a (free) OpenWeatherMap API key at http://openweathermap.org. A single API key is sufficient for adding dozens of separate instances of the app, for instance for different locations and time periods. Note that accessibility of the OpenWeatherMap API is subject to change. The 16 day forecast used to be freely available (and still is for users with an 'old' API key), however it seems this is no longer the case. 
-
-Acknowledgements
-
-The OpenWeatherMap polling is inspired by the 'openweather-apis', refer to https://github.com/CICCIOSGAMINO/openweather-apis.
+Conversion to the OneCall API:
+The previous Homey devices use an older API version that will no longer be supported by OWM in the future or is only available in subscriptions.
+These devices are marked as [obsolete]. They still continue to work but they can't be added anomore.
+As long as the API calls are still possible, these devices can continue to be used.
+However, it is recommended to replace these devices with the new devices and adjust the flows.

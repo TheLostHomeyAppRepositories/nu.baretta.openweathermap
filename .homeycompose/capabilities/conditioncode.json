@@ -1,0 +1,77 @@
+{
+    "type": "enum",
+    "title": {
+        "en": "Weather condition",
+        "de": "Wetterlage",
+        "nl": "Weerconditie"
+    },
+    "uiComponent": "sensor",
+    "getable": true,
+    "setable": false,
+    "icon": "/assets/conditioncode.svg",
+    "values": [{
+            "id": "Clouds",
+            "title": {
+                "en": "Cloudy",
+                "de": "Bewölkt",
+                "nl": "Bewolkt"
+            }
+        },
+        {
+            "id": "Rain",
+            "title": {
+                "en": "Rainy",
+                "de": "Regnerisch",
+                "nl": "Regenachtig"
+            }
+        },
+        {
+            "id": "Clear",
+            "title": {
+                "en": "Clear",
+                "de": "Klar",
+                "nl": "Helder"
+            }
+        },
+        {
+            "id": "Drizzle",
+            "title": {
+                "en": "Drizzly",
+                "de": "Nieselregen",
+                "nl": "Miezerig"
+            }
+        },
+        {
+            "id": "Mist",
+            "title": {
+                "en": "Misty",
+                "de": "Neblig",
+                "nl": "Mistig"
+            }
+        },
+        {
+            "id": "Thunderstorm",
+            "title": {
+                "en": "Thunderstorm",
+                "de": "Gewitter",
+                "nl": "Onweer"
+            }
+        },
+        {
+            "id": "Snow",
+            "title": {
+                "en": "Snow",
+                "de": "Schnee",
+                "nl": "Sneeuw"
+            }
+        },
+        {
+            "id": "Extreme",
+            "title": {
+                "en": "Extreme",
+                "de": "Extremwetter",
+                "nl": "Extreem"
+            }
+        }
+    ]
+}

@@ -1,0 +1,93 @@
+{
+    "id": "Conditioncode",
+    "title": {
+        "en": "The weather !{{is|isn't}}",
+        "de": "Das Wetter !{{ist|ist nicht}}",
+        "nl": "Het weer !{{is|is niet}}"
+    },
+    "titleFormatted": {
+        "en": "The weather !{{is|isn't}} [[argument_main]]",
+        "de": "Das Wetter !{{ist|ist nicht}} [[argument_main]]",
+        "nl": "Het weer !{{is|is niet}} [[argument_main]]"
+    },
+    "hint": {
+        "en": "Broad description of the weather.",
+        "de": "Wetter-Bezeichnung, z.B. 'Bewölkt'",
+        "nl": "Algemene beschrijving van het weer."
+    },
+    "args": [{
+            "name": "argument_main",
+            "type": "dropdown",
+            "values": [{
+                    "id": "Clouds",
+                    "label": {
+                        "en": "Cloudy",
+                        "de": "Bewölkt",
+                        "nl": "Bewolkt"
+                    }
+                },
+                {
+                    "id": "Rain",
+                    "label": {
+                        "en": "Rainy",
+                        "de": "Regnerisch",
+                        "nl": "Regenachtig"
+                    }
+                },
+                {
+                    "id": "Clear",
+                    "label": {
+                        "en": "Clear",
+                        "de": "Klar",
+                        "nl": "Helder"
+                    }
+                },
+                {
+                    "id": "Drizzle",
+                    "label": {
+                        "en": "Drizzly",
+                        "de": "Nieselregen",
+                        "nl": "Miezerig"
+                    }
+                },
+                {
+                    "id": "Mist",
+                    "label": {
+                        "en": "Misty",
+                        "de": "Neblig",
+                        "nl": "Mistig"
+                    }
+                },
+                {
+                    "id": "Thunderstorm",
+                    "label": {
+                        "en": "Thunderstorm",
+                        "de": "Gewitter",
+                        "nl": "Onweer"
+                    }
+                },
+                {
+                    "id": "Snow",
+                    "label": {
+                        "en": "Snow",
+                        "de": "Schnee",
+                        "nl": "Sneeuw"
+                    }
+                },
+                {
+                    "id": "Extreme",
+                    "label": {
+                        "en": "Extreme",
+                        "de": "Extremwetter",
+                        "nl": "Extreem"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=owmCurrent|owmForecast|owmLongterm|owmOnecallCurrent|owmOnecallHourly|owmOnecallDaily"
+        }
+    ]
+}

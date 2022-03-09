@@ -1,0 +1,100 @@
+{
+    "id": "owmLongterm",
+    "deprecated": true,
+    "name": {
+        "en": "Daily forecast [deprecated]",
+        "de": "Tägliche Vorhersage [veraltet]",
+        "nl": "Dagelijkse voorspelling [verouderd]"
+    },
+    "images": {
+        "large": "/drivers/owmLongterm/assets/images/large.png",
+        "small": "/drivers/owmLongterm/assets/images/small.png"
+    },
+    "class": "sensor",
+    "connectivity": [ "cloud" ],
+    "capabilities": [
+        "measure_temperature",
+        "measure_temperature.min",
+        "measure_temperature.max",
+        "measure_temperature.night",
+        "measure_temperature.evening",
+        "measure_temperature.morning",
+        "measure_humidity",
+        "measure_pressure",
+        "measure_rain",
+        "measure_snow",
+        "measure_wind_combined",
+        "measure_wind_strength",
+        "measure_wind_direction_string",
+        "measure_windstrength_beaufort",
+        "measure_wind_angle",
+        "measure_cloudiness",
+        "description",
+        "conditioncode"
+    ],
+    "capabilitiesOptions": {
+        "measure_temperature.max": {
+            "label": {
+                "en": "Maximum",
+                "de": "Maximum",
+                "nl": "Maximum"
+            },
+            "title": {
+                "en": "Maximum temperature",
+                "de": "Maximum-Temperatur",
+                "nl": "Maximum temperatuur"
+            }
+        },
+        "measure_temperature.min": {
+            "label": {
+                "en": "Minimum",
+                "de": "Minimum",
+                "nl": "Minimum"
+            },
+            "title": {
+                "en": "Minimum temperature",
+                "de": "Minimum-Temperatur",
+                "nl": "Minimum temperatuur"
+            }
+        },
+        "measure_temperature.morning": {
+            "label": {
+                "en": "Morning",
+                "de": "Morgen",
+                "nl": "Ochtend"
+            },
+            "title": {
+                "en": "Temperature in the morning",
+                "de": "Temperatur morgens",
+                "nl": "Temperatuur 's ochtends"
+            }
+        },
+        "measure_temperature.evening": {
+            "label": {
+                "en": "Evening",
+                "de": "Abend",
+                "nl": "Avond"
+            },
+            "title": {
+                "en": "Temperature in the evening",
+                "de": "Temperatur abends",
+                "nl": "Temperatuur 's avonds"
+            }
+        },
+        "measure_temperature.night": {
+            "label": {
+                "en": "Night",
+                "de": "Nacht",
+                "nl": "Nacht"
+            },
+            "title": {
+                "en": "Temperature at night",
+                "de": "Temperatur nachts",
+                "nl": "Temperatuur 's nachts"
+            }
+        }
+    },
+    "pair": [{
+        "id": "pair"
+    }]
+}

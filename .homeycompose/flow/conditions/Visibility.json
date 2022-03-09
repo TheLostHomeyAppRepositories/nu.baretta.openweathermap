@@ -1,0 +1,28 @@
+{
+    "id": "Visibility",
+    "title": {
+        "en": "Visibility !{{is|isn't}} more than",
+        "de": "Sichtweite !{{ist|ist nicht}} größer als",
+        "nl": "Zicht !{{is|is niet}} meer dan"
+    },
+    "titleFormatted": {
+        "en": "Visibility !{{is|isn't}} more than [[visibility]]",
+        "de": "Sichtweite !{{ist|ist nicht}} größer als [[visibility]]",
+        "nl": "Zicht !{{is|is niet}} meer dan [[visibility]]"
+    },
+    "hint": {
+        "en": "Visibility in meters",
+        "de": "Sichtweite in Metern",
+        "nl": "Zicht in meter"
+    },
+    "args": [{
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=owmCurrent|owmOnecallCurrent|owmOnecallHourly"
+        },
+        {
+            "name": "visibility",
+            "type": "number"
+        }
+    ]
+}

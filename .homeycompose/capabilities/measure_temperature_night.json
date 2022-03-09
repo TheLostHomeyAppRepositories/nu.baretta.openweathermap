@@ -1,0 +1,21 @@
+{
+    "type": "number",
+    "label": {
+        "en": "Night",
+        "de": "Nacht",
+        "nl": "Nacht"
+    },
+    "title": {
+        "en": "Temperature at night",
+        "de": "Temperatur nachts",
+        "nl": "Temperatuur 's nachts"
+    },
+    "uiComponent": "sensor",
+    "getable": true,
+    "setable": false,
+    "units": {
+        "en": "°C",
+        "de": "°C"
+    },
+    "icon": "/assets/measure_temperature_night.svg"
+}

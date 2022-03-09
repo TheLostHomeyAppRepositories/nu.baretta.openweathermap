@@ -1,0 +1,62 @@
+    "capabilitiesOptions": {
+            "measure_temperature.evening": {
+                "label": {
+                    "en": "Evening",
+                    "de": "Abend",
+                    "nl": "Avond"
+                },
+                "title": {
+                    "en": "Temperature in the evening",
+                    "de": "Temperatur abends",
+                    "nl": "Temperatuur 's avonds"
+                }
+            },
+            "measure_temperature.max": {
+                "label": {
+                    "en": "Maximum",
+                    "de": "Maximum",
+                    "nl": "Maximum"
+                },
+                "title": {
+                    "en": "Maximum temperature",
+                    "de": "Maximum-Temperatur",
+                    "nl": "Maximum temperatuur"
+                }
+            },
+            "measure_temperature.min": {
+                "label": {
+                    "en": "Minimum",
+                    "de": "Minimum",
+                    "nl": "Minimum"
+                },
+                "title": {
+                    "en": "Minimum temperature",
+                    "de": "Minimum-Temperatur",
+                    "nl": "Minimum temperatuur"
+                }
+            },
+            "measure_temperature.morning": {
+                "label": {
+                    "en": "Morning",
+                    "de": "Morgen",
+                    "nl": "Ochtend"
+                },
+                "title": {
+                    "en": "Temperature in the morning",
+                    "de": "Temperatur morgens",
+                    "nl": "Temperatuur 's ochtends"
+                }
+            },
+            "measure_temperature.night": {
+                "label": {
+                    "en": "Night",
+                    "de": "Nacht",
+                    "nl": "Nacht"
+                },
+                "title": {
+                    "en": "Temperature at night",
+                    "de": "Temperatur nachts",
+                    "nl": "Temperatuur 's nachts"
+                }
+            }
+    }

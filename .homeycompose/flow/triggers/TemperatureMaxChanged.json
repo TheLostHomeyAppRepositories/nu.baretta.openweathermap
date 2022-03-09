@@ -1,0 +1,43 @@
+{
+    "id": "TemperatureMaxChanged",
+    "highlight": true,
+    "title": {
+        "en": "Maximum Temperature has changed",
+        "de": "Maximum-Temperatur hat sich geändert",
+        "nl": "Maximum Temperatuur is veranderd"
+    },
+    "hint": {
+        "en": "Triggers when the maximum temperature changes.",
+        "de": "Wird ausgelöst, wenn sich die Maximum-Temperatur ändert.",
+        "nl": "Triggert zodra de maximum temperatuur veranderd."
+    },
+    "tokens": [{
+            "name": "measure_temperature_max",
+            "type": "number",
+            "title": {
+                "en": "Temperature (°C)",
+                "de": "Temperatur (°C)",
+                "nl": "Temperatuur (°C)"
+            },
+            "example": 15
+        },
+        {
+            "name": "location",
+            "type": "string",
+            "title": {
+                "en": "Location",
+                "de": "Standort",
+                "nl": "locatie"
+            },
+            "example": {
+                "en": "Amsterdam",
+                "de": "Berlin"
+            }
+        }
+    ],
+    "args": [{
+        "name": "device",
+        "type": "device",
+        "filter": "driver_id=owmOnecallDaily"
+    }]
+}

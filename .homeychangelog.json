@@ -42,5 +42,9 @@
   "1.0.0": {
     "en": "Upgraded to SDK3; Introducing the OneCall API.",
     "de": "Aktualisiert auf SDK3; Einführung der OneCall API."
+  },
+  "1.0.1": {
+    "en": "Small fixes (icons and translation).",
+    "de": "Kleine Korrekturen (Icons und Übersetzung)."
   }
 }

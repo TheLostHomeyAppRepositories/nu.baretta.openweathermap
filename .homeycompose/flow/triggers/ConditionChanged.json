@@ -4,7 +4,7 @@
     "title": {
         "en": "The main weathercondition has changed",
         "de": "Die Wetterlage hat sich geändert",
-        "nl": "De categorie van de weersomstandigheden is veranderd"
+        "nl": "De weersomstandigheden zijn veranderd"
     },
     "hint": {
         "en": "Triggers when the main condition category of the weather changes, e.g. from Clouds to Clear.",

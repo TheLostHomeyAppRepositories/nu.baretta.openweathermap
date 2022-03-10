@@ -2,9 +2,9 @@
     "id": "TemperatureFeelslikeChanged",
     "highlight": true,
     "title": {
-        "en": "Feels-like temperature has changed",
+        "en": "Wind chill has changed",
         "de": "Gefühlt-Temperatur hat sich geändert",
-        "nl": "voelt-als temperatuur is veranderd"
+        "nl": "Gevoelstemperatuur is veranderd"
     },
     "hint": {
         "en": "Triggers when the feels-like temperature changes.",

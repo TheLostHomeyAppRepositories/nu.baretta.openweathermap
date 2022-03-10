@@ -4,7 +4,7 @@
     "title": {
         "en": "Humidity has changed",
         "de": "Luftfeuchtigkeit hat sich geändert",
-        "nl": "Vochtigheid is veranderd"
+        "nl": "Luchtvochtigheid is veranderd"
     },
     "hint": {
         "en": "Triggers when the humidity changes.",

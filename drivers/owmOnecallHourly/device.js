@@ -164,6 +164,7 @@ class owmOnecallHourly extends Homey.Device {
         var conditioncode = data.weather[0].main;
         this.log("Main conditioncode: " + data.weather[0].main);
         var conditioncode_detail = data.weather[0].id.toString();
+        var conditioncode_detail_number = data.weather[0].id;
         this.log("Specific conditioncode: " + data.weather[0].id);
 
         var temp = Math.round(data.temp* 10) / 10;
@@ -347,10 +348,10 @@ class owmOnecallHourly extends Homey.Device {
             this.log("Conditioncode_detail previous: " + this.getCapabilityValue('conditioncode_detail'));
             this.log("Conditioncode_detail new: " + conditioncode_detail);
             let state = {
-                "conditioncode": conditioncode_detail
+                "conditioncode": conditioncode_detail_number
             };
             let tokens = {
-                "conditioncode": conditioncode_detail,
+                "conditioncode": conditioncode_detail_number,
                 "location": GEOlocation
             };
             triggerList.push({'trigger':this._flowTriggerConditionDetailChanged, 'device':device, 'token':tokens, 'state':state});

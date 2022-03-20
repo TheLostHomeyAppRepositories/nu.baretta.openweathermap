@@ -175,6 +175,7 @@ class owmCurrent extends Homey.Device {
                 this.log("Main conditioncode: " + data.current.weather[0].main);
 
                 var conditioncode_detail = data.current.weather[0].id.toString();
+                var conditioncode_detail_number = data.current.weather[0].id;
                 this.log("Specific conditioncode: " + data.current.weather[0].id);
 
                 let now = new Date(data.current.dt*1000).toLocaleString('de-DE', 
@@ -445,10 +446,10 @@ class owmCurrent extends Homey.Device {
                     this.log("Conditioncode_detail previous: " + this.getCapabilityValue('conditioncode_detail'));
                     this.log("Conditioncode_detail new: " + conditioncode_detail);
                     let state = {
-                        "conditioncode": conditioncode_detail
+                        "conditioncode": conditioncode_detail_number
                     };
                     let tokens = {
-                        "conditioncode": conditioncode_detail,
+                        "conditioncode": conditioncode_detail_number,
                         "location": GEOlocation
                     };
                     triggerList.push({'trigger':this._flowTriggerConditionDetailChanged, 'device':device, 'token':tokens, 'state':state});

@@ -50,5 +50,9 @@
   "1.0.2": {
     "en": "Small fixes (Probability of precipitation).",
     "de": "Kleine Korrekturen (Niederschalags-Wahrscheinlichkeit)."
+  },
+  "1.0.3": {
+    "en": "Small fixes (condition detail trigger).",
+    "de": "Kleine Korrekturen (Spez.Wetterbedingungs-Trigger)."
   }
 }

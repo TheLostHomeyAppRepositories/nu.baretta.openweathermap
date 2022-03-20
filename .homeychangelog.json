@@ -46,5 +46,9 @@
   "1.0.1": {
     "en": "Small fixes (icons and translation).",
     "de": "Kleine Korrekturen (Icons und Übersetzung)."
+  },
+  "1.0.2": {
+    "en": "Small fixes (Probability of precipitation).",
+    "de": "Kleine Korrekturen (Niederschalags-Wahrscheinlichkeit)."
   }
 }

@@ -164,7 +164,7 @@ class owmLongterm extends Homey.Device {
                 }
 
                 if (data.list[forecastInterval].speed) {
-                    var winddegcompass = weather.degToCompass(settings, windangle);
+                    var winddegcompass = weather.degToCompass(windangle);
                     if (settings["units"] == "metric") {
                         // convert from m/s to km/h
                         var windstrength = Math.round(3.6 * data.list[forecastInterval].speed);

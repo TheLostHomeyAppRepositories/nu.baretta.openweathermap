@@ -2,13 +2,13 @@
     "id": "WindStrengthChanged",
     "highlight": true,
     "title": {
-        "en": "Wind strength (km/h) has changed",
-        "de": "Windstärke (km/h) hat sich geändert",
+        "en": "Wind speed (km/h) has changed",
+        "de": "Windgeschwindigkeit (km/h) hat sich geändert",
         "nl": "Windsnelheid (km/h) is veranderd"
     },
     "hint": {
-        "en": "Triggers when the strength of the wind (km/h) changes.",
-        "de": "Wird ausgelöst, wenn sich die Windstärke (km/h) ändert.",
+        "en": "Triggers when the wind speed (km/h) changes.",
+        "de": "Wird ausgelöst, wenn sich die Windgeschwindigkeit (km/h) ändert.",
         "nl": "Triggert zodra de windsnelheid (km/h) veranderd."
     },
     "tokens": [{

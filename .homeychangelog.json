@@ -54,5 +54,9 @@
   "1.0.3": {
     "en": "Small fixes (condition detail trigger).",
     "de": "Kleine Korrekturen (Spez.Wetterbedingungs-Trigger)."
+  },
+  "1.0.4": {
+    "en": "Added device setting to show wind speed in m/s.",
+    "de": "Geräte-Einstellung ergänzt zur Anzeige der Windgeschwindigkeit in m/s."
   }
 }

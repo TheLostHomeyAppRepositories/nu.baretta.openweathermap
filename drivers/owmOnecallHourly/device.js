@@ -103,9 +103,8 @@ class owmOnecallHourly extends Homey.Device {
     async updateDevice(hourlyData){
         this.log(this.getData().id +" Received OWM hourly data");
 
-        let settings = this.getSettings();
-        settings["units"] = this.homey.i18n.getUnits();
-        settings["language"] = this.homey.i18n.getLanguage();
+        let units = this.homey.i18n.getUnits();
+        // let language = this.homey.i18n.getLanguage();
         let GEOlocation = this.getName();
 
         let device = this;
@@ -221,7 +220,7 @@ class owmOnecallHourly extends Homey.Device {
         }
 
         if (data.wind_speed) {
-            if (settings["units"] == "metric") {
+            if (units == "metric") {
                 // convert from m/s to km/h
                 var windstrength = Math.round(3.6 * data.wind_speed);
             } else {
@@ -237,8 +236,8 @@ class owmOnecallHourly extends Homey.Device {
         } else {
             var windangle = null;
         }
-        var winddegcompass = weather.degToCompass(settings, windangle);
-        if (settings["units"] == "metric") {
+        var winddegcompass = weather.degToCompass(windangle);
+        if (units == "metric") {
             // convert to beaufort and concatenate in a string with wind direction
             var windspeedbeaufort = weather.beaufortFromKmh(windstrength);
         } else {
@@ -486,6 +485,25 @@ class owmOnecallHourly extends Homey.Device {
             };
             triggerList.push({'trigger':this._flowTriggerWindAngleChanged, 'device':device, 'token':tokens, 'state':state});
             // this._flowTriggerWeatherChanged.trigger(device, tokens, state).catch(this.error)
+        }
+
+        // adjust units and speed calculation on location settings
+        if ( this.getSetting('windspeed_ms') == true){
+            if ( units == 'metric'){
+                windstrength = Math.round(windstrength * 10 / 3.6) / 10;
+            }
+            else{
+                windstrength = Math.round(windstrength * 10 / 2.237) /10;
+            }
+            await this.setCapabilityOptions( "measure_wind_strength", {"units": "m/s" } );
+        }
+        else{
+            if ( units == 'metric'){
+                await this.setCapabilityOptions( "measure_wind_strength", {"units": "km/h" } );
+            }
+            else{
+                await this.setCapabilityOptions( "measure_wind_strength", {"units": "mph" } );
+            }
         }
 
         this.setCapabilityValue("forecast_time", forecast_time);

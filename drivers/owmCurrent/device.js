@@ -159,7 +159,7 @@ class owmCurrent extends Homey.Device {
                 } else {
                     var windangle = null;
                 }
-                var winddegcompass = weather.degToCompass(settings, windangle);
+                var winddegcompass = weather.degToCompass(windangle);
                 if (settings["units"] == "metric") {
                     // convert to beaufort and concatenate in a string with wind direction
                     var windspeedbeaufort = weather.beaufortFromKmh(windstrength);

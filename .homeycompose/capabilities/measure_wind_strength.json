@@ -1,9 +1,9 @@
 {
     "type": "number",
     "title": {
-        "en": "Wind speed (km/h)",
-        "de": "Windgeschwindigkeit (km/h)",
-        "nl": "Windsnelheid (km/h)"
+        "en": "Wind speed",
+        "de": "Windgeschwindigkeit",
+        "nl": "Windsnelheid"
     },
     "uiComponent": "sensor",
     "getable": true,

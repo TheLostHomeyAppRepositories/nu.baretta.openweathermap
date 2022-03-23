@@ -1,7 +1,7 @@
 {
     "id": "Windspeed",
     "title": {
-        "en": "Windspeed (km/h) !{{is|isn't}} higher than",
+        "en": "Wind speed (km/h) !{{is|isn't}} higher than",
         "de": "Windgeschwindigkeit (km/h) !{{ist|ist nicht}} größer als",
         "nl": "Windsnelheid (km/h) !{{is|is niet}} hoger dan"
     },

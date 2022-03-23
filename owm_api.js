@@ -125,7 +125,7 @@
         return beaufortNum;
     }
 
-    weather.degToCompass = function degToCompass(settings, num) {
+    weather.degToCompass = function degToCompass(num) {
         while (num < 0) num += 360;
         while (num >= 360) num -= 360;
         let val = Math.round((num - 11.25) / 22.5);

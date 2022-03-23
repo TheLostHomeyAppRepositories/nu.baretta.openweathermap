@@ -31,6 +31,16 @@
                 "de": "Verknüpfter Standort:",
                 "nl": "Gelinkte locatie :"
             }
+        },
+        {
+            "id": "windspeed_ms",
+            "type": "checkbox",
+            "value": false,
+            "label": {
+                "en": "Wind speed in m/s",
+                "de": "Windgeschwindigkeit in m/s",
+                "nl": "Windsnelheid in m/s"
+            }
         }
     ]
 }

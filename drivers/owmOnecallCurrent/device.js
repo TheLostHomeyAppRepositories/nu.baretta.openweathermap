@@ -277,7 +277,7 @@ class owmCurrent extends Homey.Device {
                 } else {
                     var windangle = null;
                 }
-                var winddegcompass = weather.degToCompass(settings, windangle);
+                var winddegcompass = weather.degToCompass(windangle);
                 if (settings["units"] == "metric") {
                     // convert to beaufort and concatenate in a string with wind direction
                     var windspeedbeaufort = weather.beaufortFromKmh(windstrength);
@@ -573,6 +573,25 @@ class owmCurrent extends Homey.Device {
                     // this._flowTriggerWeatherChanged.trigger(device, tokens, state).catch(this.error)
                 }
 
+                // adjust units and speed calculation on location settings
+                if ( this.getSetting('windspeed_ms') == true){
+                    if ( settings["units"] == 'metric'){
+                        windstrength = Math.round(windstrength * 10 / 3.6) / 10;
+                    }
+                    else{
+                        windstrength = Math.round(windstrength * 10 / 2.237) /10;
+                            }
+                    await this.setCapabilityOptions( "measure_wind_strength", {"units": "m/s" } );
+                }
+                else{
+                    if ( settings["units"] == 'metric'){
+                        await this.setCapabilityOptions( "measure_wind_strength", {"units": "km/h" } );
+                    }
+                    else{
+                        await this.setCapabilityOptions( "measure_wind_strength", {"units": "mph" } );
+                    }
+                }
+                
                 // update each interval, even if unchanged.
                 const capabilitySet = {
                     'forecast_time': forecast_time,
@@ -607,6 +626,8 @@ class owmCurrent extends Homey.Device {
                     }
                 });
 
+                // await this.setCapabilityOptions( "measure_wind_strength", {"units": "m/s" } );
+        
                 this.log("Trigger Flows...")
                 for (let i=0; i<triggerList.length; i++){
                     triggerList[i].trigger.trigger(triggerList[i].device, triggerList[i].token, triggerList[i].state);

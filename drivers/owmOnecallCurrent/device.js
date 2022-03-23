@@ -261,12 +261,22 @@ class owmCurrent extends Homey.Device {
                 }
 
                 if (data.current.wind_speed) {
-                    if (settings["units"] == "metric") {
-                        // convert from m/s to km/h
-                        var windstrength = Math.round(3.6 * data.current.wind_speed);
-                    } else {
-                        // windspeed in mph
-                        var windstrength = data.current.wind_speed;
+                    if ( this.getSetting('windspeed_ms') == true){
+                        if (settings["units"] == "metric") {
+                            var windstrength = data.current.wind_speed;
+                        } else {
+                            // mph to m/s
+                            var windstrength = Math.round(data.current.wind_speed / 2.237);
+                        }
+                    }
+                    else{
+                        if (settings["units"] == "metric") {
+                            // convert from m/s to km/h
+                            var windstrength = Math.round(3.6 * data.current.wind_speed);
+                        } else {
+                            // windspeed in mph
+                            var windstrength = data.current.wind_speed;
+                        }
                     }
                 } else {
                     var windstrength = {};
@@ -572,25 +582,6 @@ class owmCurrent extends Homey.Device {
                     triggerList.push({'trigger':this._flowTriggerWindAngleChanged, 'device':device, 'token':tokens, 'state':state});
                     // this._flowTriggerWeatherChanged.trigger(device, tokens, state).catch(this.error)
                 }
-
-                // adjust units and speed calculation on location settings
-                if ( this.getSetting('windspeed_ms') == true){
-                    if ( settings["units"] == 'metric'){
-                        windstrength = Math.round(windstrength * 10 / 3.6) / 10;
-                    }
-                    else{
-                        windstrength = Math.round(windstrength * 10 / 2.237) /10;
-                            }
-                    await this.setCapabilityOptions( "measure_wind_strength", {"units": "m/s" } );
-                }
-                else{
-                    if ( settings["units"] == 'metric'){
-                        await this.setCapabilityOptions( "measure_wind_strength", {"units": "km/h" } );
-                    }
-                    else{
-                        await this.setCapabilityOptions( "measure_wind_strength", {"units": "mph" } );
-                    }
-                }
                 
                 // update each interval, even if unchanged.
                 const capabilitySet = {
@@ -679,6 +670,20 @@ class owmCurrent extends Homey.Device {
                         newSettings.pollingInterval = settings.newSettings.pollingInterval;
                         if (!newSettings.pollingInterval || newSettings.pollingInterval == 0){
                             newSettings.pollingInterval = intervalCurrent;
+                        }
+                        break;
+                    case "windspeed_ms":
+                        this.log('windspeed_ms changed to '+settings.newSettings.windspeed_ms);
+                        if ( settings.newSettings.windspeed_ms == true){
+                            this.setCapabilityOptions( "measure_wind_strength", {"units": "m/s" } );
+                        }
+                        else{
+                            if ( this.homey.i18n.getUnits() == 'metric'){
+                                this.setCapabilityOptions( "measure_wind_strength", {"units": "km/h" } );
+                            }
+                            else{
+                                this.setCapabilityOptions( "measure_wind_strength", {"units": "mph" } );
+                            }
                         }
                         break;
                     default:

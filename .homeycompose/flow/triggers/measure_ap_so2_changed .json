@@ -1,0 +1,22 @@
+{
+    "title": {
+        "en": "SO₂ Sulphur dioxide has changed",
+        "de": "SO₂ Schwefeldioxid hat sich verändert",
+        "nl": "SO₂ Zwaveldioxide is veranderd"
+    },
+    "tokens": [{
+            "name": "measure_ap_so2",
+            "type": "number",
+            "title": {
+                "en": "SO₂ Sulphur dioxide (μg/m³)",
+                "de": "SO₂ Schwefeldioxid (μg/m³)",
+                "nl": "SO₂ Zwaveldioxide (μg/m³)"
+            }
+        }
+    ],
+    "args": [{
+        "name": "device",
+        "type": "device",
+        "filter": "driver_id=owmAirPollutionCurrent|owmAirPollutionHourly"
+    }]
+}

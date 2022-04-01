@@ -62,5 +62,17 @@
   "1.0.5": {
     "en": "Added device setting to show wind speed in m/s.",
     "de": "Geräte-Einstellung ergänzt zur Anzeige der Windgeschwindigkeit in m/s."
+  },
+  "1.1.0": {
+    "en": "Added air pollution API (current air quality data and hourly forecast).",
+    "de": "Luftverschmutzungs-API hinzugefügt (aktuelle Luftqualitätsdaten und stündliche Vorhersage)."
+  },
+  "1.1.1": {
+    "en": "Small changes for description and icons.",
+    "de": "Kleine Änderungen der Beschreibung und Icons."
+  },
+  "1.1.2": {
+    "en": "Small changes for description and icons.",
+    "de": "Kleine Änderungen der Beschreibung und Icons."
   }
 }

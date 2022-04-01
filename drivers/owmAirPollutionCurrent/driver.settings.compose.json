@@ -1,0 +1,58 @@
+[{
+    "type": "group",
+    "label": {
+        "en": "Air pollution location",
+        "de": "Luftverschmutzung Standort",
+        "nl": "Luchtvervuiling locatie"
+    },
+    "children": [{
+            "id": "APIKey",
+            "type": "text",
+            "value": "",
+            "label": {
+                "en": "OpenWeatherMap API key:",
+                "de": "OpenWeatherMap API-Key", 
+                "nl": "OpenWeatherMap API sleutel:"
+            }
+        },
+        {
+            "id": "lat",
+            "type": "number",
+            "label": {
+                "en": "Latitude:",
+                "de": "Breitengrad:",
+                "nl": "Breedtegraad:"
+            }
+        },
+        {
+            "id": "lon",
+            "type": "number",
+            "label": {
+                "en": "Longitude:",
+                "de": "Längengrad:",
+                "nl": "Lengtegraad:"
+            }
+        },
+        {
+            "id": "pollingInterval",
+            "type": "number",
+            "value": 5,
+            "label": {
+                "en": "Polling interval:",
+                "de": "Abfrageintervall:",
+                "nl": "Polling interval:"
+            },
+            "hint": {
+                "en": "Set a polling interval. The default is 5 minutes. 1000 queries per day are allowed per API key.",
+                "de": "Setze ein Abfrageintervall. Der Standardwert sind 5 Minuten. Je API-Key sind 1000 Abfragen je Tag erlaubt.",
+                "nl": "Stel een polling-interval in. De standaardwaarde is 5 minuten. Per API-sleutel zijn 1000 queries per dag toegestaan."
+            },
+            "units": { 
+                "en": "minutes",
+                "de": "Minuten",
+                "nl": "Minuten"
+            }
+        }
+    ]
+}
+]

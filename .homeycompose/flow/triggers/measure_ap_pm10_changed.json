@@ -1,0 +1,23 @@
+{
+    "highlight": true,
+    "title": {
+        "en": "PM 10 coarse particulate matter has changed",
+        "de": "PM 10 grobe Partikel hat sich verändert",
+        "nl": "PM 10 fijn stof is veranderd"
+    },
+    "tokens": [{
+            "name": "measure_ap_pm10",
+            "type": "number",
+            "title": {
+                "en": "PM 10 coarse particulate matter (μg/m³)",
+                "de": "PM 10 grobe Partikel (μg/m³)",
+                "nl": "PM 10 fijn stof (μg/m³)"
+            }
+        }
+    ],
+    "args": [{
+        "name": "device",
+        "type": "device",
+        "filter": "driver_id=owmAirPollutionCurrent|owmAirPollutionHourly"
+    }]
+}

@@ -1,0 +1,13 @@
+{
+    "type": "number",
+    "title": {
+        "en": "NH₃ Ammonia",
+        "de": "NH₃ Ammoniak",
+        "nl": "NH₃ Ammoniak"
+    },
+    "uiComponent": "sensor",
+    "getable": true,
+    "setable": false,
+    "units": "μg/m³",
+    "icon": "/assets/measure_ap_nh3.svg"
+}

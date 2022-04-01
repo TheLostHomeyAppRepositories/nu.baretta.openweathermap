@@ -1,0 +1,13 @@
+{
+    "type": "number",
+    "title": {
+        "en": "NO Nitrogen monoxide",
+        "de": "NO Stickstoffmonoxid",
+        "nl": "NO Stikstofmonoxide"
+    },
+    "uiComponent": "sensor",
+    "getable": true,
+    "setable": false,
+    "units": "μg/m³",
+    "icon": "/assets/measure_ap_no.svg"
+}

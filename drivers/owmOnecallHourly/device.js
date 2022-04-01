@@ -174,7 +174,7 @@ class owmOnecallHourly extends Homey.Device {
         var uvi = data.uvi;
         var cloudiness = data.clouds;
         var visibility = data.visibility;
-        var pop = data.pop * 100;
+        var pop = Math.round(data.pop * 100);
 
         // return the rain in mm if present, or precipitation
         if (data.precipitation) {

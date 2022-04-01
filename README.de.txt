@@ -12,7 +12,7 @@ Eine Beschreibung der API sowie Beispieldaten sind zu finden unter https://openw
 
 Voraussetzung:
 Für die Verwendung der OpenWeatherMap-API ist ein API-Key erforderlich. 
-Der API-Key kann kostenlost unter https://openweathermap.org/api.
+Der API-Key kann kostenlost unter https://openweathermap.org/api angefordert werden.
 Je API-Key sind 1000 Abrufe je Tag erlaubt.
 
 Umstellung auf die OneCall-API:

@@ -138,6 +138,44 @@ class openWeatherMap extends Homey.App {
         return (args.device.getCapabilityValue('moonphase_type') == args.moonphase_type);
       })
 
+      // Flow Conditions for AirPollution devices 
+      this._measure_ap_aqi_nrCondition = this.homey.flow.getConditionCard("measure_ap_aqi_nr")
+      .registerRunListener(async (args, state) => {
+        return (args.device.getCapabilityValue('measure_ap_aqi_nr') > args.value);
+      })
+      this._measure_ap_coCondition = this.homey.flow.getConditionCard("measure_ap_co")
+      .registerRunListener(async (args, state) => {
+        return (args.device.getCapabilityValue('measure_ap_co') > args.value);
+      })
+      this._measure_ap_nh3Condition = this.homey.flow.getConditionCard("measure_ap_nh3")
+      .registerRunListener(async (args, state) => {
+        return (args.device.getCapabilityValue('measure_ap_nh3') > args.value);
+      })
+      this._measure_ap_noCondition = this.homey.flow.getConditionCard("measure_ap_no")
+      .registerRunListener(async (args, state) => {
+        return (args.device.getCapabilityValue('measure_ap_no') > args.value);
+      })
+      this._measure_ap_no2Condition = this.homey.flow.getConditionCard("measure_ap_no2")
+      .registerRunListener(async (args, state) => {
+        return (args.device.getCapabilityValue('measure_ap_no2') > args.value);
+      })
+      this._measure_ap_o3Condition = this.homey.flow.getConditionCard("measure_ap_o3")
+      .registerRunListener(async (args, state) => {
+        return (args.device.getCapabilityValue('measure_ap_o3') > args.value);
+      })
+      this._measure_ap_pm10Condition = this.homey.flow.getConditionCard("measure_ap_pm10")
+      .registerRunListener(async (args, state) => {
+        return (args.device.getCapabilityValue('measure_ap_pm10') > args.value);
+      })
+      this._measure_ap_pm25Condition = this.homey.flow.getConditionCard("measure_ap_pm25")
+      .registerRunListener(async (args, state) => {
+        return (args.device.getCapabilityValue('measure_ap_pm25') > args.value);
+      })
+      this._measure_ap_so2Condition = this.homey.flow.getConditionCard("measure_ap_so2")
+      .registerRunListener(async (args, state) => {
+        return (args.device.getCapabilityValue('measure_ap_so2') > args.value);
+      })
+
     }
 
     async readSettings(){

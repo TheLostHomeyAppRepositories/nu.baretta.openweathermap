@@ -1,0 +1,27 @@
+{
+    "title": {
+        "en": "NO₂ Nitrogen !{{is|isn't}} higher than",
+        "de": "NO₂ Stickstoffdioxid !{{ist|ist nicht}} größer als",
+        "nl": "NO₂ Stikstofdioxide !{{is|is niet}} hoger dan"
+    },
+    "titleFormatted": {
+        "en": "NO₂ Nitrogen !{{is|isn't}} higher than [[value]]",
+        "de": "NO₂ Stickstoffdioxid !{{ist|ist nicht}} größer als [[value]]",
+        "nl": "NO₂ Stikstofdioxide !{{is|is niet}} hoger dan [[value]]"
+    },
+    "hint": {
+        "en": "NO₂ Nitrogen dioxide (μg/m³)",
+        "de": "NO₂ Stickstoffdioxid (μg/m³)",
+        "nl": "NO₂ Stikstofdioxide (μg/m³)"
+    },
+    "args": [{
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=owmAirPollutionCurrent|owmAirPollutionHourly"
+        },
+        {
+            "name": "value",
+            "type": "number"
+        }
+    ]
+}

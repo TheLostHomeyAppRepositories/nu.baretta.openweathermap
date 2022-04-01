@@ -120,12 +120,24 @@ class owmCurrent extends Homey.Device {
                 childList[i].setUnavailable(this.homey.__("device_unavailable_reason.location_not_available"));
             }
         }
+        childList = this.homey.drivers.getDriver('owmOnecallDaily').getDevices();
+        for (let i=0; i<childList.length; i++){
+            if (childList[i].getData().locationId == this.getData().id){
+                childList[i].setUnavailable(this.homey.__("device_unavailable_reason.location_not_available"));
+            }
+        }
     }
 
     async setDeviceAvailable(){
         if ( !this.getAvailable() ){
             await this.setAvailable();
             let childList = this.homey.drivers.getDriver('owmOnecallHourly').getDevices();
+            for (let i=0; i<childList.length; i++){
+                if (childList[i].getData().locationId == this.getData().id){
+                    childList[i].setAvailable();
+                }
+            }
+            childList = this.homey.drivers.getDriver('owmOnecallDaily').getDevices();
             for (let i=0; i<childList.length; i++){
                 if (childList[i].getData().locationId == this.getData().id){
                     childList[i].setAvailable();

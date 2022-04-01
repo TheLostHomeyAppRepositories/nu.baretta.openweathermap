@@ -1,0 +1,24 @@
+{
+    "highlight": true,
+    "title": {
+        "en": "Forecast time has changed",
+        "de": "Vorhersagezeit hat sich geändert",
+        "nl": "Voorspelde tijd is veranderd"
+    },
+    "tokens": [{
+            "name": "measure_forecast_time",
+            "type": "string",
+            "title": {
+                "en": "Forecast time",
+                "de": "Vorhersagezeit",
+                "nl": "Voorspelde tijd"
+            },
+            "example": "1"
+        }
+    ],
+    "args": [{
+        "name": "device",
+        "type": "device",
+        "filter": "driver_id=owmAirPollutionCurrent"
+    }]
+}

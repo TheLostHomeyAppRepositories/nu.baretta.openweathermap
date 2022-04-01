@@ -1,0 +1,13 @@
+{
+    "type": "number",
+    "title": {
+        "en": "NO₂ Nitrogen dioxide",
+        "de": "NO₂ Stickstoffdioxid",
+        "nl": "NO₂ Stikstofdioxide"
+    },
+    "uiComponent": "sensor",
+    "getable": true,
+    "setable": false,
+    "units": "μg/m³",
+    "icon": "/assets/measure_ap_no2.svg"
+}

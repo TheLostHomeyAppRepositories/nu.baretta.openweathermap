@@ -1,0 +1,53 @@
+{
+    "type": "enum",
+    "title": {
+        "en": "Air quality index",
+        "de": "Luftqualitätsindex",
+        "nl": "Luchtkwaliteitsindex"
+    },
+    "uiComponent": "sensor",
+    "getable": true,
+    "setable": false,
+    "icon": "/assets/measure_ap_aqi.svg",
+    "values": [{
+            "id": "1",
+            "title": {
+                "en": "1 good",
+                "de": "1 gut",
+                "nl": "1 goed"
+            }
+        },
+        {
+            "id": "2",
+            "title": {
+                "en": "2 fair",
+                "de": "2 befriedigend",
+                "nl": "2 bevredigend"
+            }
+        },
+        {
+            "id": "3",
+            "title": {
+                "en": "3 moderate",
+                "de": "3 ausreichend",
+                "nl": "3 voldoende"
+            }
+        },
+        {
+            "id": "4",
+            "title": {
+                "en": "4 poor",
+                "de": "4 schlecht",
+                "nl": "4 slecht"
+            }
+        },
+        {
+            "id": "5",
+            "title": {
+                "en": "5 very poor",
+                "de": "5 sehr schlecht",
+                "nl": "5 heel slecht "
+            }
+        }
+    ]
+}

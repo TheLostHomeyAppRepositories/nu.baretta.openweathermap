@@ -1,0 +1,13 @@
+{
+    "type": "number",
+    "title": {
+        "en": "CO Carbon monoxide",
+        "de": "CO Kohlenmonoxid",
+        "nl": "CO Koolmonoxide"
+    },
+    "uiComponent": "sensor",
+    "getable": true,
+    "setable": false,
+    "units": "μg/m³",
+    "icon": "/assets/measure_ap_co.svg"
+}

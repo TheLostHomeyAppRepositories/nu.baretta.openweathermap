@@ -1,0 +1,27 @@
+{
+    "title": {
+        "en": "O₃ Ozone !{{is|isn't}} higher than",
+        "de": "O₃ Ozon !{{ist|ist nicht}} größer als",
+        "nl": "O₃ Ozon !{{is|is niet}} hoger dan"
+    },
+    "titleFormatted": {
+        "en": "O₃ Ozone !{{is|isn't}} higher than [[value]]",
+        "de": "O₃ Ozon !{{ist|ist nicht}} größer als [[value]]",
+        "nl": "O₃ Ozon !{{is|is niet}} hoger dan [[value]]"
+    },
+    "hint": {
+        "en": "O₃ Ozone (μg/m³)",
+        "de": "O₃ Ozon (μg/m³)",
+        "nl": "O₃ Ozon (μg/m³)"
+    },
+    "args": [{
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=owmAirPollutionCurrent|owmAirPollutionHourly"
+        },
+        {
+            "name": "value",
+            "type": "number"
+        }
+    ]
+}

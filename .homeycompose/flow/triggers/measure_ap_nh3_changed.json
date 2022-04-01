@@ -1,0 +1,22 @@
+{
+    "title": {
+        "en": "NH₃ Ammonia has changed",
+        "de": "NH₃ Ammoniak hat sich geändert",
+        "nl": "NH₃ Ammoniak is veranderd"
+    },
+    "tokens": [{
+            "name": "measure_ap_nh3",
+            "type": "number",
+            "title": {
+                "en": "NH₃ Ammonia (μg/m³)",
+                "de": "NH₃ Ammoniak (μg/m³)",
+                "nl": "NH₃ Ammoniak (μg/m³)"
+            }
+        }
+    ],
+    "args": [{
+        "name": "device",
+        "type": "device",
+        "filter": "driver_id=owmAirPollutionCurrent|owmAirPollutionHourly"
+    }]
+}

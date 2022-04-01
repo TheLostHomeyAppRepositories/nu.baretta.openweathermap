@@ -1,9 +1,9 @@
 {
     "id": "owmOnecallDaily",
     "name": {
-        "en": "Daily forecast",
-        "de": "Tägliche Vorhersage",
-        "nl": "Dagelijkse voorspelling"
+        "en": "Weather, daily forecast",
+        "de": "Wetter, tägliche Vorhersage",
+        "nl": "Weerbericht, dagelijkse voorspelling"
     },
     "images": {
         "large": "/drivers/owmOnecallDaily/assets/images/large.png",

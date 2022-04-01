@@ -1,0 +1,13 @@
+{
+    "type": "number",
+    "title": {
+        "en": "SO₂ Sulphur dioxide",
+        "de": "SO₂ Schwefeldioxid",
+        "nl": "SO₂ Zwaveldioxide"
+    },
+    "uiComponent": "sensor",
+    "getable": true,
+    "setable": false,
+    "units": "μg/m³",
+    "icon": "/assets/measure_ap_so2.svg"
+}

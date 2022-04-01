@@ -1,0 +1,22 @@
+{
+    "title": {
+        "en": "CO Carbon monoxide has changed",
+        "de": "CO Kohlenmonoxid hat sich geändert",
+        "nl": "CO Koolmonoxide is veranderd"
+    },
+    "tokens": [{
+            "name": "measure_ap_co",
+            "type": "number",
+            "title": {
+                "en": "CO Carbon monoxide (μg/m³)",
+                "de": "CO Kohlenmonoxid (μg/m³)",
+                "nl": "CO Koolmonoxide (μg/m³)"
+            }
+        }
+    ],
+    "args": [{
+        "name": "device",
+        "type": "device",
+        "filter": "driver_id=owmAirPollutionCurrent|owmAirPollutionHourly"
+    }]
+}

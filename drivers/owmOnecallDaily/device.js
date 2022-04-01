@@ -177,7 +177,7 @@ class owmOnecallDaily extends Homey.Device {
         var uvi = data.uvi;
         var cloudiness = data.clouds;
         // var visibility = data.visibility;
-        var pop = data.pop * 100;
+        var pop = Math.round(data.pop * 100);
 
         let sunr = new Date(data.sunrise*1000).toLocaleString('de-DE', 
         { 

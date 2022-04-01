@@ -1,0 +1,58 @@
+{
+    "id": "owmAirPollutionHourly",
+    "name": {
+        "en": "Air quality, hourly forecast",
+        "de": "Luftqualität, stündliche Vorhersage",
+        "nl": "luchtkwaliteit, uurlijkse voorspeling"
+    },
+    "images": {
+        "large": "/drivers/owmAirPollutionHourly/assets/images/large.png",
+        "small": "/drivers/owmAirPollutionHourly/assets/images/small.png"
+    },
+    "class": "sensor",
+    "connectivity": [ "cloud" ],
+    "capabilities": [
+        "measure_forecast_time",
+        "measure_ap_aqi",
+
+        "measure_ap_pm10",
+        "measure_ap_pm25",
+        
+        "measure_ap_no",
+        "measure_ap_no2",
+
+        "measure_ap_o3",
+        "measure_ap_co",
+
+        "measure_ap_so2",
+        "measure_ap_nh3",
+
+        "measure_ap_aqi_nr"
+    ],
+    "pair": [{
+        "id": "settings",
+        "navigation": {
+            "next": "list_my_devices"
+          }
+        },
+        {
+            "id": "location_error",
+            "navigation": {
+                "prev": "settings"
+            }
+        },      
+        {
+            "id": "list_my_devices",
+            "template": "list_devices",
+            "navigation": {
+                "next": "add_my_devices",
+                "prev": "settings"
+            },
+            "options": { "singular": true }
+        },
+        {
+            "id": "add_my_devices",
+            "template": "add_devices"
+        }
+    ]
+}

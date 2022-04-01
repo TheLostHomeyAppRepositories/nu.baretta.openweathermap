@@ -1,0 +1,13 @@
+{
+    "type": "number",
+    "title": {
+        "en": "PM 10 coarse particulate matter",
+        "de": "PM 10 grobe Partikel",
+        "nl": "PM 10 fijn stof"
+    },
+    "uiComponent": "sensor",
+    "getable": true,
+    "setable": false,
+    "units": "μg/m³",
+    "icon": "/assets/measure_ap_pm10.svg"
+}

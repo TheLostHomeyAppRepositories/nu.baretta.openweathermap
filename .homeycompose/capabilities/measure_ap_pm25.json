@@ -1,0 +1,13 @@
+{
+    "type": "number",
+    "title": {
+        "en": "PM 2.5 fine particulate matter",
+        "de": "PM 2.5 Feinstaub",
+        "nl": "PM 2.5 grove fijnstof"
+    },
+    "uiComponent": "sensor",
+    "getable": true,
+    "setable": false,
+    "units": "μg/m³",
+    "icon": "/assets/measure_ap_pm25.svg"
+}

@@ -1,0 +1,13 @@
+{
+    "type": "number",
+    "title": {
+        "en": "O₃ Ozone",
+        "de": "O₃ Ozon",
+        "nl": "O₃ Ozon"
+    },
+    "uiComponent": "sensor",
+    "getable": true,
+    "setable": false,
+    "units": "μg/m³",
+    "icon": "/assets/measure_ap_o3.svg"
+}

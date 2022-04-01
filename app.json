@@ -1,7 +1,7 @@
 {
   "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
   "id": "nu.baretta.openweathermap",
-  "version": "1.0.5",
+  "version": "1.1.2",
   "compatibility": ">=5.0.0",
   "sdk": 3,
   "name": {
@@ -360,6 +360,300 @@
             "filter": "driver_id=owmLongterm"
           }
         ]
+      },
+      {
+        "highlight": true,
+        "title": {
+          "en": "Air quality index has changed",
+          "de": "Luftqualitätsindex hat sich geändert",
+          "nl": "Luchtkwaliteitsindex is veranderd"
+        },
+        "tokens": [
+          {
+            "name": "measure_ap_aqi",
+            "type": "string",
+            "title": {
+              "en": "Air quality index (1..5)",
+              "de": "Luftqualitätsindex (1..5)",
+              "nl": "Luchtkwaliteitsindex (1..5)"
+            },
+            "example": "1"
+          }
+        ],
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=owmAirPollutionCurrent|owmAirPollutionHourly"
+          }
+        ],
+        "id": "measure_ap_aqi_changed"
+      },
+      {
+        "highlight": true,
+        "title": {
+          "en": "Air quality index (number) has changed",
+          "de": "Luftqualitätsindex (Zahl) hat sich geändert",
+          "nl": "Luchtkwaliteitsindex (nummer) is veranderd"
+        },
+        "tokens": [
+          {
+            "name": "measure_ap_aqi_nr",
+            "type": "number",
+            "title": {
+              "en": "Air quality index (1..5)",
+              "de": "Luftqualitätsindex (1..5)",
+              "nl": "Luchtkwaliteitsindex (1..5)"
+            },
+            "example": "1"
+          }
+        ],
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=owmAirPollutionCurrent|owmAirPollutionHourly"
+          }
+        ],
+        "id": "measure_ap_aqi_nr_changed"
+      },
+      {
+        "title": {
+          "en": "CO Carbon monoxide has changed",
+          "de": "CO Kohlenmonoxid hat sich geändert",
+          "nl": "CO Koolmonoxide is veranderd"
+        },
+        "tokens": [
+          {
+            "name": "measure_ap_co",
+            "type": "number",
+            "title": {
+              "en": "CO Carbon monoxide (μg/m³)",
+              "de": "CO Kohlenmonoxid (μg/m³)",
+              "nl": "CO Koolmonoxide (μg/m³)"
+            }
+          }
+        ],
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=owmAirPollutionCurrent|owmAirPollutionHourly"
+          }
+        ],
+        "id": "measure_ap_co_changed"
+      },
+      {
+        "title": {
+          "en": "NH₃ Ammonia has changed",
+          "de": "NH₃ Ammoniak hat sich geändert",
+          "nl": "NH₃ Ammoniak is veranderd"
+        },
+        "tokens": [
+          {
+            "name": "measure_ap_nh3",
+            "type": "number",
+            "title": {
+              "en": "NH₃ Ammonia (μg/m³)",
+              "de": "NH₃ Ammoniak (μg/m³)",
+              "nl": "NH₃ Ammoniak (μg/m³)"
+            }
+          }
+        ],
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=owmAirPollutionCurrent|owmAirPollutionHourly"
+          }
+        ],
+        "id": "measure_ap_nh3_changed"
+      },
+      {
+        "title": {
+          "en": "NO Nitrogen monoxide has changed",
+          "de": "NO Stickstoffmonoxid hat sich geändert",
+          "nl": "NO Stikstofmonoxide is veranderd"
+        },
+        "tokens": [
+          {
+            "name": "measure_ap_no",
+            "type": "number",
+            "title": {
+              "en": "NO Nitrogen monoxide (μg/m³)",
+              "de": "NO Stickstoffmonoxid (μg/m³)",
+              "nl": "NO Stikstofmonoxide (μg/m³)"
+            }
+          }
+        ],
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=owmAirPollutionCurrent|owmAirPollutionHourly"
+          }
+        ],
+        "id": "measure_ap_no_changed"
+      },
+      {
+        "title": {
+          "en": "NO₂ Nitrogen dioxide has changed",
+          "de": "NO₂ Stickstoffdioxid hat sich geändert",
+          "nl": "NO₂ Stikstofdioxide is veranderd"
+        },
+        "tokens": [
+          {
+            "name": "measure_ap_no2",
+            "type": "number",
+            "title": {
+              "en": "NO₂ Nitrogen dioxide (μg/m³)",
+              "de": "NO₂ Stickstoffdioxid (μg/m³)",
+              "nl": "NO₂ Stikstofdioxide (μg/m³)"
+            }
+          }
+        ],
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=owmAirPollutionCurrent|owmAirPollutionHourly"
+          }
+        ],
+        "id": "measure_ap_no2_changed"
+      },
+      {
+        "title": {
+          "en": "O₃ Ozone has changed",
+          "de": "O₃ Ozon hat sich geändert",
+          "nl": "O₃ Ozon is veranderd"
+        },
+        "tokens": [
+          {
+            "name": "measure_ap_o3",
+            "type": "number",
+            "title": {
+              "en": "O₃ Ozone (μg/m³)",
+              "de": "O₃ Ozon (μg/m³)",
+              "nl": "O₃ Ozon (μg/m³)"
+            }
+          }
+        ],
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=owmAirPollutionCurrent|owmAirPollutionHourly"
+          }
+        ],
+        "id": "measure_ap_o3_changed"
+      },
+      {
+        "highlight": true,
+        "title": {
+          "en": "PM 10 coarse particulate matter has changed",
+          "de": "PM 10 grobe Partikel hat sich verändert",
+          "nl": "PM 10 fijn stof is veranderd"
+        },
+        "tokens": [
+          {
+            "name": "measure_ap_pm10",
+            "type": "number",
+            "title": {
+              "en": "PM 10 coarse particulate matter (μg/m³)",
+              "de": "PM 10 grobe Partikel (μg/m³)",
+              "nl": "PM 10 fijn stof (μg/m³)"
+            }
+          }
+        ],
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=owmAirPollutionCurrent|owmAirPollutionHourly"
+          }
+        ],
+        "id": "measure_ap_pm10_changed"
+      },
+      {
+        "highlight": true,
+        "title": {
+          "en": "PM 2.5 fine particulate matter has changed",
+          "de": "PM 2.5 Feinstaub hat sich verändert",
+          "nl": "PM 2.5 grove fijnstof is veranderd"
+        },
+        "tokens": [
+          {
+            "name": "measure_ap_pm25",
+            "type": "number",
+            "title": {
+              "en": "PM 2.5 fine particulate matter (μg/m³)",
+              "de": "PM 2.5 Feinstaub (μg/m³)",
+              "nl": "PM 2.5 grove fijnstof (μg/m³)"
+            }
+          }
+        ],
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=owmAirPollutionCurrent|owmAirPollutionHourly"
+          }
+        ],
+        "id": "measure_ap_pm25_changed"
+      },
+      {
+        "title": {
+          "en": "SO₂ Sulphur dioxide has changed",
+          "de": "SO₂ Schwefeldioxid hat sich verändert",
+          "nl": "SO₂ Zwaveldioxide is veranderd"
+        },
+        "tokens": [
+          {
+            "name": "measure_ap_so2",
+            "type": "number",
+            "title": {
+              "en": "SO₂ Sulphur dioxide (μg/m³)",
+              "de": "SO₂ Schwefeldioxid (μg/m³)",
+              "nl": "SO₂ Zwaveldioxide (μg/m³)"
+            }
+          }
+        ],
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=owmAirPollutionCurrent|owmAirPollutionHourly"
+          }
+        ],
+        "id": "measure_ap_so2_changed "
+      },
+      {
+        "highlight": true,
+        "title": {
+          "en": "Forecast time has changed",
+          "de": "Vorhersagezeit hat sich geändert",
+          "nl": "Voorspelde tijd is veranderd"
+        },
+        "tokens": [
+          {
+            "name": "measure_forecast_time",
+            "type": "string",
+            "title": {
+              "en": "Forecast time",
+              "de": "Vorhersagezeit",
+              "nl": "Voorspelde tijd"
+            },
+            "example": "1"
+          }
+        ],
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=owmAirPollutionCurrent"
+          }
+        ],
+        "id": "measure_forecast_time_changed"
       },
       {
         "id": "MintempChanged",
@@ -2222,6 +2516,267 @@
         ]
       },
       {
+        "title": {
+          "en": "Air quality index !{{is|isn't}} higher than",
+          "de": "Luftqualitätsindex !{{ist|ist nicht}} größer als",
+          "nl": "Luchtkwaliteitsindex !{{is|is niet}} hoger dan"
+        },
+        "titleFormatted": {
+          "en": "Air quality index !{{is|isn't}} higher than [[value]]",
+          "de": "Luftqualitätsindex !{{ist|ist nicht}} größer als [[value]]",
+          "nl": "Luchtkwaliteitsindex !{{is|is niet}} hoger dan [[value]]"
+        },
+        "hint": {
+          "en": "Air quality index (1..5)",
+          "de": "Luftqualitätsindex (1..5)",
+          "nl": "Luchtkwaliteitsindex (1..5)"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=owmAirPollutionCurrent|owmAirPollutionHourly"
+          },
+          {
+            "name": "value",
+            "type": "number"
+          }
+        ],
+        "id": "measure_ap_aqi_nr"
+      },
+      {
+        "title": {
+          "en": "CO Carbon monoxide !{{is|isn't}} higher than",
+          "de": "CO Kohlenmonoxid !{{ist|ist nicht}} größer als",
+          "nl": "CO Koolmonoxide !{{is|is niet}} hoger dan"
+        },
+        "titleFormatted": {
+          "en": "CO Carbon monoxide !{{is|isn't}} higher than [[value]]",
+          "de": "CO Kohlenmonoxid !{{ist|ist nicht}} größer als [[value]]",
+          "nl": "CO Koolmonoxide !{{is|is niet}} hoger dan [[value]]"
+        },
+        "hint": {
+          "en": "CO Carbon monoxide (μg/m³)",
+          "de": "CO Kohlenmonoxid (μg/m³)",
+          "nl": "CO Koolmonoxide (μg/m³)"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=owmAirPollutionCurrent|owmAirPollutionHourly"
+          },
+          {
+            "name": "value",
+            "type": "number"
+          }
+        ],
+        "id": "measure_ap_co"
+      },
+      {
+        "title": {
+          "en": "NH₃ Ammonia !{{is|isn't}} higher than",
+          "de": "NH₃ Ammoniak !{{ist|ist nicht}} größer als",
+          "nl": "NH₃ Ammoniak !{{is|is niet}} hoger dan"
+        },
+        "titleFormatted": {
+          "en": "NH₃ Ammonia !{{is|isn't}} higher than [[value]]",
+          "de": "NH₃ Ammoniak !{{ist|ist nicht}} größer als [[value]]",
+          "nl": "NH₃ Ammoniak !{{is|is niet}} hoger dan [[value]]"
+        },
+        "hint": {
+          "en": "NH₃ Ammonia (μg/m³)",
+          "de": "NH₃ Ammoniak (μg/m³)",
+          "nl": "NH₃ Ammoniak (μg/m³)"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=owmAirPollutionCurrent|owmAirPollutionHourly"
+          },
+          {
+            "name": "value",
+            "type": "number"
+          }
+        ],
+        "id": "measure_ap_nh3"
+      },
+      {
+        "title": {
+          "en": "NO Nitrogen !{{is|isn't}} higher than",
+          "de": "NO Stickstoffmonoxid !{{ist|ist nicht}} größer als",
+          "nl": "NO Stikstofmonoxide !{{is|is niet}} hoger dan"
+        },
+        "titleFormatted": {
+          "en": "NO Nitrogen !{{is|isn't}} higher than [[value]]",
+          "de": "NO Stickstoffmonoxid !{{ist|ist nicht}} größer als [[value]]",
+          "nl": "NO Stikstofmonoxide !{{is|is niet}} hoger dan [[value]]"
+        },
+        "hint": {
+          "en": "NO Nitrogen monoxide (μg/m³)",
+          "de": "NO Stickstoffmonoxid (μg/m³)",
+          "nl": "NO Stikstofmonoxide (μg/m³)"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=owmAirPollutionCurrent|owmAirPollutionHourly"
+          },
+          {
+            "name": "value",
+            "type": "number"
+          }
+        ],
+        "id": "measure_ap_no"
+      },
+      {
+        "title": {
+          "en": "NO₂ Nitrogen !{{is|isn't}} higher than",
+          "de": "NO₂ Stickstoffdioxid !{{ist|ist nicht}} größer als",
+          "nl": "NO₂ Stikstofdioxide !{{is|is niet}} hoger dan"
+        },
+        "titleFormatted": {
+          "en": "NO₂ Nitrogen !{{is|isn't}} higher than [[value]]",
+          "de": "NO₂ Stickstoffdioxid !{{ist|ist nicht}} größer als [[value]]",
+          "nl": "NO₂ Stikstofdioxide !{{is|is niet}} hoger dan [[value]]"
+        },
+        "hint": {
+          "en": "NO₂ Nitrogen dioxide (μg/m³)",
+          "de": "NO₂ Stickstoffdioxid (μg/m³)",
+          "nl": "NO₂ Stikstofdioxide (μg/m³)"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=owmAirPollutionCurrent|owmAirPollutionHourly"
+          },
+          {
+            "name": "value",
+            "type": "number"
+          }
+        ],
+        "id": "measure_ap_no2"
+      },
+      {
+        "title": {
+          "en": "O₃ Ozone !{{is|isn't}} higher than",
+          "de": "O₃ Ozon !{{ist|ist nicht}} größer als",
+          "nl": "O₃ Ozon !{{is|is niet}} hoger dan"
+        },
+        "titleFormatted": {
+          "en": "O₃ Ozone !{{is|isn't}} higher than [[value]]",
+          "de": "O₃ Ozon !{{ist|ist nicht}} größer als [[value]]",
+          "nl": "O₃ Ozon !{{is|is niet}} hoger dan [[value]]"
+        },
+        "hint": {
+          "en": "O₃ Ozone (μg/m³)",
+          "de": "O₃ Ozon (μg/m³)",
+          "nl": "O₃ Ozon (μg/m³)"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=owmAirPollutionCurrent|owmAirPollutionHourly"
+          },
+          {
+            "name": "value",
+            "type": "number"
+          }
+        ],
+        "id": "measure_ap_o3"
+      },
+      {
+        "title": {
+          "en": "PM 10 coarse particulate matter !{{is|isn't}} higher than",
+          "de": "PM 10 grobe Partikel !{{ist|ist nicht}} größer als",
+          "nl": "PM 10 fijn stof !{{is|is niet}} hoger dan"
+        },
+        "titleFormatted": {
+          "en": "PM 10 coarse particulate matter !{{is|isn't}} higher than [[value]]",
+          "de": "PM 10 grobe Partikel !{{ist|ist nicht}} größer als [[value]]",
+          "nl": "PM 10 fijn stof !{{is|is niet}} hoger dan [[value]]"
+        },
+        "hint": {
+          "en": "PM 10 coarse particulate matter (μg/m³)",
+          "de": "PM 10 grobe Partikel (μg/m³)",
+          "nl": "PM 10 fijn stof (μg/m³)"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=owmAirPollutionCurrent|owmAirPollutionHourly"
+          },
+          {
+            "name": "value",
+            "type": "number"
+          }
+        ],
+        "id": "measure_ap_pm10"
+      },
+      {
+        "title": {
+          "en": "PM 2.5 fine particulate matter !{{is|isn't}} higher than",
+          "de": "PM 2.5 Feinstaub !{{ist|ist nicht}} größer als",
+          "nl": "PM 2.5 grove fijnstof !{{is|is niet}} hoger dan"
+        },
+        "titleFormatted": {
+          "en": "PM 2.5 fine particulate matter !{{is|isn't}} higher than [[value]]",
+          "de": "PM 2.5 Feinstaub !{{ist|ist nicht}} größer als [[value]]",
+          "nl": "PM 2.5 grove fijnstof !{{is|is niet}} hoger dan [[value]]"
+        },
+        "hint": {
+          "en": "PM 2.5 fine particulate matter (μg/m³)",
+          "de": "PM 2.5 Feinstaub (μg/m³)",
+          "nl": "PM 2.5 grove fijnstof (μg/m³)"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=owmAirPollutionCurrent|owmAirPollutionHourly"
+          },
+          {
+            "name": "value",
+            "type": "number"
+          }
+        ],
+        "id": "measure_ap_pm25"
+      },
+      {
+        "title": {
+          "en": "SO₂ Sulphur !{{is|isn't}} higher than",
+          "de": "SO₂ Schwefeldioxid !{{ist|ist nicht}} größer als",
+          "nl": "SO₂ Zwaveldioxide !{{is|is niet}} hoger dan"
+        },
+        "titleFormatted": {
+          "en": "SO₂ Sulphur !{{is|isn't}} higher than [[value]]",
+          "de": "SO₂ Schwefeldioxid !{{ist|ist nicht}} größer als [[value]]",
+          "nl": "SO₂ Zwaveldioxide !{{is|is niet}} hoger dan [[value]]"
+        },
+        "hint": {
+          "en": "SO₂ Sulphur dioxide (μg/m³)",
+          "de": "SO₂ Schwefeldioxid (μg/m³)",
+          "nl": "SO₂ Zwaveldioxide (μg/m³)"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=owmAirPollutionCurrent|owmAirPollutionHourly"
+          },
+          {
+            "name": "value",
+            "type": "number"
+          }
+        ],
+        "id": "measure_ap_so2"
+      },
+      {
         "id": "Moonphase",
         "title": {
           "en": "Moon phase !{{is|isn't}} higher than",
@@ -2943,6 +3498,227 @@
   },
   "drivers": [
     {
+      "id": "owmAirPollutionCurrent",
+      "name": {
+        "en": "Air quality current (location)",
+        "de": "Luftqualität aktuell (Standort)",
+        "nl": "luchtkwaliteit actueel (locatie)"
+      },
+      "images": {
+        "large": "/drivers/owmAirPollutionCurrent/assets/images/large.png",
+        "small": "/drivers/owmAirPollutionCurrent/assets/images/small.png"
+      },
+      "class": "sensor",
+      "connectivity": [
+        "cloud"
+      ],
+      "capabilities": [
+        "measure_forecast_time",
+        "measure_ap_aqi",
+        "measure_ap_pm10",
+        "measure_ap_pm25",
+        "measure_ap_no",
+        "measure_ap_no2",
+        "measure_ap_o3",
+        "measure_ap_co",
+        "measure_ap_so2",
+        "measure_ap_nh3",
+        "measure_ap_aqi_nr"
+      ],
+      "pair": [
+        {
+          "id": "city_geocode",
+          "navigation": {
+            "next": "list_my_devices"
+          }
+        },
+        {
+          "id": "apikey_error",
+          "navigation": {
+            "prev": "city_geocode"
+          }
+        },
+        {
+          "id": "geolocation_error",
+          "navigation": {
+            "prev": "city_geocode"
+          }
+        },
+        {
+          "id": "list_my_devices",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_my_devices",
+            "prev": "city_geocode"
+          },
+          "options": {
+            "singular": true
+          }
+        },
+        {
+          "id": "add_my_devices",
+          "template": "add_devices"
+        }
+      ],
+      "settings": [
+        {
+          "type": "group",
+          "label": {
+            "en": "Air pollution location",
+            "de": "Luftverschmutzung Standort",
+            "nl": "Luchtvervuiling locatie"
+          },
+          "children": [
+            {
+              "id": "APIKey",
+              "type": "text",
+              "value": "",
+              "label": {
+                "en": "OpenWeatherMap API key:",
+                "de": "OpenWeatherMap API-Key",
+                "nl": "OpenWeatherMap API sleutel:"
+              }
+            },
+            {
+              "id": "lat",
+              "type": "number",
+              "label": {
+                "en": "Latitude:",
+                "de": "Breitengrad:",
+                "nl": "Breedtegraad:"
+              }
+            },
+            {
+              "id": "lon",
+              "type": "number",
+              "label": {
+                "en": "Longitude:",
+                "de": "Längengrad:",
+                "nl": "Lengtegraad:"
+              }
+            },
+            {
+              "id": "pollingInterval",
+              "type": "number",
+              "value": 5,
+              "label": {
+                "en": "Polling interval:",
+                "de": "Abfrageintervall:",
+                "nl": "Polling interval:"
+              },
+              "hint": {
+                "en": "Set a polling interval. The default is 5 minutes. 1000 queries per day are allowed per API key.",
+                "de": "Setze ein Abfrageintervall. Der Standardwert sind 5 Minuten. Je API-Key sind 1000 Abfragen je Tag erlaubt.",
+                "nl": "Stel een polling-interval in. De standaardwaarde is 5 minuten. Per API-sleutel zijn 1000 queries per dag toegestaan."
+              },
+              "units": {
+                "en": "minutes",
+                "de": "Minuten",
+                "nl": "Minuten"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "owmAirPollutionHourly",
+      "name": {
+        "en": "Air quality, hourly forecast",
+        "de": "Luftqualität, stündliche Vorhersage",
+        "nl": "luchtkwaliteit, uurlijkse voorspeling"
+      },
+      "images": {
+        "large": "/drivers/owmAirPollutionHourly/assets/images/large.png",
+        "small": "/drivers/owmAirPollutionHourly/assets/images/small.png"
+      },
+      "class": "sensor",
+      "connectivity": [
+        "cloud"
+      ],
+      "capabilities": [
+        "measure_forecast_time",
+        "measure_ap_aqi",
+        "measure_ap_pm10",
+        "measure_ap_pm25",
+        "measure_ap_no",
+        "measure_ap_no2",
+        "measure_ap_o3",
+        "measure_ap_co",
+        "measure_ap_so2",
+        "measure_ap_nh3",
+        "measure_ap_aqi_nr"
+      ],
+      "pair": [
+        {
+          "id": "settings",
+          "navigation": {
+            "next": "list_my_devices"
+          }
+        },
+        {
+          "id": "location_error",
+          "navigation": {
+            "prev": "settings"
+          }
+        },
+        {
+          "id": "list_my_devices",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_my_devices",
+            "prev": "settings"
+          },
+          "options": {
+            "singular": true
+          }
+        },
+        {
+          "id": "add_my_devices",
+          "template": "add_devices"
+        }
+      ],
+      "settings": [
+        {
+          "type": "group",
+          "label": {
+            "en": "Air pollution, hourly forecast",
+            "de": "Luftverschmutzung, stündliche Vorhersage",
+            "nl": "Luchtvervuiling, uurlijkse voorspeling"
+          },
+          "children": [
+            {
+              "id": "hours",
+              "type": "number",
+              "value": 0,
+              "min": 0,
+              "max": 96,
+              "units": {
+                "en": "Hours",
+                "de": "Stunden",
+                "nl": "Uur"
+              },
+              "label": {
+                "en": "Hour difference for the forecast:",
+                "de": "Stunden-Differenz für die Vorhersage:",
+                "nl": "Uurverschil voor de voorspelling:"
+              }
+            },
+            {
+              "id": "location",
+              "type": "label",
+              "value": "",
+              "label": {
+                "en": "Linked location :",
+                "de": "Verknüpfter Standort:",
+                "nl": "Gelinkte locatie :"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
       "id": "owmCurrent",
       "deprecated": true,
       "name": {
@@ -3457,9 +4233,9 @@
     {
       "id": "owmOnecallCurrent",
       "name": {
-        "en": "Current weather (location)",
-        "de": "Aktuelles Wetter (Standort)",
-        "nl": "Actueel weerbericht (locatie)"
+        "en": "Weather, current (location)",
+        "de": "Wetter, aktuell (Standort)",
+        "nl": "Weerbericht, actueel (locatie)"
       },
       "images": {
         "large": "/drivers/owmOnecallCurrent/assets/images/large.png",
@@ -3600,9 +4376,9 @@
     {
       "id": "owmOnecallDaily",
       "name": {
-        "en": "Daily forecast",
-        "de": "Tägliche Vorhersage",
-        "nl": "Dagelijkse voorspelling"
+        "en": "Weather, daily forecast",
+        "de": "Wetter, tägliche Vorhersage",
+        "nl": "Weerbericht, dagelijkse voorspelling"
       },
       "images": {
         "large": "/drivers/owmOnecallDaily/assets/images/large.png",
@@ -3723,9 +4499,9 @@
     {
       "id": "owmOnecallHourly",
       "name": {
-        "en": "Hourly forecast",
-        "de": "Stündliche Vorhersage",
-        "nl": "Uurlijkse voorspeling"
+        "en": "Weather, hourly forecast",
+        "de": "Wetter, stündliche Vorhersage",
+        "nl": "Weerbericht, uurlijkse voorspeling"
       },
       "images": {
         "large": "/drivers/owmOnecallHourly/assets/images/large.png",
@@ -4329,14 +5105,184 @@
     "forecast_time": {
       "type": "string",
       "title": {
-        "en": "Forecast time ",
+        "en": "Forecast time",
         "de": "Vorhersagezeit",
-        "nl": "Voorspelde tijd "
+        "nl": "Voorspelde tijd"
       },
       "uiComponent": "sensor",
       "getable": true,
       "setable": false,
       "icon": "/assets/forecast_time.svg"
+    },
+    "measure_ap_aqi": {
+      "type": "enum",
+      "title": {
+        "en": "Air quality index",
+        "de": "Luftqualitätsindex",
+        "nl": "Luchtkwaliteitsindex"
+      },
+      "uiComponent": "sensor",
+      "getable": true,
+      "setable": false,
+      "icon": "/assets/measure_ap_aqi.svg",
+      "values": [
+        {
+          "id": "1",
+          "title": {
+            "en": "1 good",
+            "de": "1 gut",
+            "nl": "1 goed"
+          }
+        },
+        {
+          "id": "2",
+          "title": {
+            "en": "2 fair",
+            "de": "2 befriedigend",
+            "nl": "2 bevredigend"
+          }
+        },
+        {
+          "id": "3",
+          "title": {
+            "en": "3 moderate",
+            "de": "3 ausreichend",
+            "nl": "3 voldoende"
+          }
+        },
+        {
+          "id": "4",
+          "title": {
+            "en": "4 poor",
+            "de": "4 schlecht",
+            "nl": "4 slecht"
+          }
+        },
+        {
+          "id": "5",
+          "title": {
+            "en": "5 very poor",
+            "de": "5 sehr schlecht",
+            "nl": "5 heel slecht "
+          }
+        }
+      ]
+    },
+    "measure_ap_aqi_nr": {
+      "type": "number",
+      "title": {
+        "en": "Air quality index as number",
+        "de": "Luftqualitätsindex als Zahl",
+        "nl": "Luchtkwaliteitsindex als nummer"
+      },
+      "uiComponent": null,
+      "getable": true,
+      "setable": false,
+      "units": "AQI"
+    },
+    "measure_ap_co": {
+      "type": "number",
+      "title": {
+        "en": "CO Carbon monoxide",
+        "de": "CO Kohlenmonoxid",
+        "nl": "CO Koolmonoxide"
+      },
+      "uiComponent": "sensor",
+      "getable": true,
+      "setable": false,
+      "units": "μg/m³",
+      "icon": "/assets/measure_ap_co.svg"
+    },
+    "measure_ap_nh3": {
+      "type": "number",
+      "title": {
+        "en": "NH₃ Ammonia",
+        "de": "NH₃ Ammoniak",
+        "nl": "NH₃ Ammoniak"
+      },
+      "uiComponent": "sensor",
+      "getable": true,
+      "setable": false,
+      "units": "μg/m³",
+      "icon": "/assets/measure_ap_nh3.svg"
+    },
+    "measure_ap_no": {
+      "type": "number",
+      "title": {
+        "en": "NO Nitrogen monoxide",
+        "de": "NO Stickstoffmonoxid",
+        "nl": "NO Stikstofmonoxide"
+      },
+      "uiComponent": "sensor",
+      "getable": true,
+      "setable": false,
+      "units": "μg/m³",
+      "icon": "/assets/measure_ap_no.svg"
+    },
+    "measure_ap_no2": {
+      "type": "number",
+      "title": {
+        "en": "NO₂ Nitrogen dioxide",
+        "de": "NO₂ Stickstoffdioxid",
+        "nl": "NO₂ Stikstofdioxide"
+      },
+      "uiComponent": "sensor",
+      "getable": true,
+      "setable": false,
+      "units": "μg/m³",
+      "icon": "/assets/measure_ap_no2.svg"
+    },
+    "measure_ap_o3": {
+      "type": "number",
+      "title": {
+        "en": "O₃ Ozone",
+        "de": "O₃ Ozon",
+        "nl": "O₃ Ozon"
+      },
+      "uiComponent": "sensor",
+      "getable": true,
+      "setable": false,
+      "units": "μg/m³",
+      "icon": "/assets/measure_ap_o3.svg"
+    },
+    "measure_ap_pm10": {
+      "type": "number",
+      "title": {
+        "en": "PM 10 coarse particulate matter",
+        "de": "PM 10 grobe Partikel",
+        "nl": "PM 10 fijn stof"
+      },
+      "uiComponent": "sensor",
+      "getable": true,
+      "setable": false,
+      "units": "μg/m³",
+      "icon": "/assets/measure_ap_pm10.svg"
+    },
+    "measure_ap_pm25": {
+      "type": "number",
+      "title": {
+        "en": "PM 2.5 fine particulate matter",
+        "de": "PM 2.5 Feinstaub",
+        "nl": "PM 2.5 grove fijnstof"
+      },
+      "uiComponent": "sensor",
+      "getable": true,
+      "setable": false,
+      "units": "μg/m³",
+      "icon": "/assets/measure_ap_pm25.svg"
+    },
+    "measure_ap_so2": {
+      "type": "number",
+      "title": {
+        "en": "SO₂ Sulphur dioxide",
+        "de": "SO₂ Schwefeldioxid",
+        "nl": "SO₂ Zwaveldioxide"
+      },
+      "uiComponent": "sensor",
+      "getable": true,
+      "setable": false,
+      "units": "μg/m³",
+      "icon": "/assets/measure_ap_so2.svg"
     },
     "measure_cloudiness": {
       "type": "number",
@@ -4356,6 +5302,18 @@
       "max": 100,
       "step": 1,
       "icon": "/assets/measure_cloudiness.svg"
+    },
+    "measure_forecast_time": {
+      "type": "string",
+      "title": {
+        "en": "Forecast time ",
+        "de": "Vorhersagezeit",
+        "nl": "Voorspelde tijd "
+      },
+      "uiComponent": "sensor",
+      "getable": true,
+      "setable": false,
+      "icon": "/assets/forecast_time.svg"
     },
     "measure_humidity": {
       "type": "number",

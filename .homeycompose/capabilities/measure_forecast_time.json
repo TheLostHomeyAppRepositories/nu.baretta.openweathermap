@@ -1,9 +1,9 @@
 {
     "type": "string",
     "title": {
-        "en": "Forecast time",
+        "en": "Forecast time ",
         "de": "Vorhersagezeit",
-        "nl": "Voorspelde tijd"
+        "nl": "Voorspelde tijd "
     },
     "uiComponent": "sensor",
     "getable": true,

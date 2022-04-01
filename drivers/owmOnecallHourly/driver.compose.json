@@ -1,9 +1,9 @@
 {
     "id": "owmOnecallHourly",
     "name": {
-        "en": "Hourly forecast",
-        "de": "Stündliche Vorhersage",
-        "nl": "Uurlijkse voorspeling"
+        "en": "Weather, hourly forecast",
+        "de": "Wetter, stündliche Vorhersage",
+        "nl": "Weerbericht, uurlijkse voorspeling"
     },
     "images": {
         "large": "/drivers/owmOnecallHourly/assets/images/large.png",

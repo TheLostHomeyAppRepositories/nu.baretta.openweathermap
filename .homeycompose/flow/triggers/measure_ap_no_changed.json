@@ -1,0 +1,22 @@
+{
+    "title": {
+        "en": "NO Nitrogen monoxide has changed",
+        "de": "NO Stickstoffmonoxid hat sich geändert",
+        "nl": "NO Stikstofmonoxide is veranderd"
+    },
+    "tokens": [{
+            "name": "measure_ap_no",
+            "type": "number",
+            "title": {
+                "en": "NO Nitrogen monoxide (μg/m³)",
+                "de": "NO Stickstoffmonoxid (μg/m³)",
+                "nl": "NO Stikstofmonoxide (μg/m³)"
+            }
+        }
+    ],
+    "args": [{
+        "name": "device",
+        "type": "device",
+        "filter": "driver_id=owmAirPollutionCurrent|owmAirPollutionHourly"
+    }]
+}

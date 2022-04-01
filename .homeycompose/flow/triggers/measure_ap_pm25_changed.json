@@ -1,0 +1,23 @@
+{
+    "highlight": true,
+    "title": {
+        "en": "PM 2.5 fine particulate matter has changed",
+        "de": "PM 2.5 Feinstaub hat sich verändert",
+        "nl": "PM 2.5 grove fijnstof is veranderd"
+    },
+    "tokens": [{
+            "name": "measure_ap_pm25",
+            "type": "number",
+            "title": {
+                "en": "PM 2.5 fine particulate matter (μg/m³)",
+                "de": "PM 2.5 Feinstaub (μg/m³)",
+                "nl": "PM 2.5 grove fijnstof (μg/m³)"
+            }
+        }
+    ],
+    "args": [{
+        "name": "device",
+        "type": "device",
+        "filter": "driver_id=owmAirPollutionCurrent|owmAirPollutionHourly"
+    }]
+}

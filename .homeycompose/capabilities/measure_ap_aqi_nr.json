@@ -1,0 +1,12 @@
+{
+    "type": "number",
+    "title": {
+        "en": "Air quality index as number",
+        "de": "Luftqualitätsindex als Zahl",
+        "nl": "Luchtkwaliteitsindex als nummer"
+    },
+    "uiComponent": null,
+    "getable": true,
+    "setable": false,
+    "units": "AQI"
+}

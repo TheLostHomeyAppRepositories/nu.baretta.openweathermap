@@ -1,0 +1,22 @@
+{
+    "title": {
+        "en": "NO₂ Nitrogen dioxide has changed",
+        "de": "NO₂ Stickstoffdioxid hat sich geändert",
+        "nl": "NO₂ Stikstofdioxide is veranderd"
+    },
+    "tokens": [{
+            "name": "measure_ap_no2",
+            "type": "number",
+            "title": {
+                "en": "NO₂ Nitrogen dioxide (μg/m³)",
+                "de": "NO₂ Stickstoffdioxid (μg/m³)",
+                "nl": "NO₂ Stikstofdioxide (μg/m³)"
+            }
+        }
+    ],
+    "args": [{
+        "name": "device",
+        "type": "device",
+        "filter": "driver_id=owmAirPollutionCurrent|owmAirPollutionHourly"
+    }]
+}

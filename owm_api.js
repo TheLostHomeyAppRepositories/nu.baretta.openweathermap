@@ -77,6 +77,18 @@
         });
     }
 
+    weather.getURLAirPollution = function getURL(settings) {
+        return new Promise((resolve, reject) => {
+            getAirPollutionURL(settings, (error, url) => {
+                if (url) {
+                    resolve(url);
+                } else {
+                    reject(error);
+                }
+            });
+        });
+    }
+
     weather.getURLGeocode = function getURL(settings) {
         return new Promise((resolve, reject) => {
             getGeocodeURL(settings, (error, url) => {
@@ -194,6 +206,14 @@
             coordinateQuery = 'lat=' + settings['lat'] + '&lon=' + settings['lon'];
         // }
         let url = '/data/2.5/onecall?' + coordinateQuery + '&units=' + settings['units'] + '&lang=' + settings['language'] + '&mode=json&APPID=' + settings["APIKey"];
+        return callback(null, url);
+    };
+
+    function getAirPollutionURL(settings, callback) {
+        // AirPollutionAPI only supports lan/lot, no city geocoding
+        let coordinateQuery = null;
+        coordinateQuery = 'lat=' + settings['lat'] + '&lon=' + settings['lon'];
+        let url = '/data/2.5/air_pollution/forecast?' + coordinateQuery + '&appid=' + settings["APIKey"];
         return callback(null, url);
     };
 

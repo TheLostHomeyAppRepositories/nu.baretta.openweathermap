@@ -1,0 +1,22 @@
+{
+    "title": {
+        "en": "O₃ Ozone has changed",
+        "de": "O₃ Ozon hat sich geändert",
+        "nl": "O₃ Ozon is veranderd"
+    },
+    "tokens": [{
+            "name": "measure_ap_o3",
+            "type": "number",
+            "title": {
+                "en": "O₃ Ozone (μg/m³)",
+                "de": "O₃ Ozon (μg/m³)",
+                "nl": "O₃ Ozon (μg/m³)"
+            }
+        }
+    ],
+    "args": [{
+        "name": "device",
+        "type": "device",
+        "filter": "driver_id=owmAirPollutionCurrent|owmAirPollutionHourly"
+    }]
+}

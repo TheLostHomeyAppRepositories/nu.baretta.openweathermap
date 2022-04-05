@@ -43,6 +43,8 @@ class owmOnecallHourly extends Homey.Device {
         
         this._flowTriggerPressureChanged = this.homey.flow.getDeviceTriggerCard('PressureChanged');
 
+        this._flowTriggerDewPointChanged = this.homey.flow.getDeviceTriggerCard('DewPointChanged');
+
         this._flowTriggerRainChanged = this.homey.flow.getDeviceTriggerCard('RainChanged');
 
         this._flowTriggerPopChanged = this.homey.flow.getDeviceTriggerCard('PopChanged');
@@ -57,9 +59,9 @@ class owmOnecallHourly extends Homey.Device {
 
     async updateCapabilities(){
         // add new capabilities
-        // if (!this.hasCapability('measure_temperature_feelslike')){
-        //     await this.addCapability('measure_temperature_feelslike');
-        // }
+        if (!this.hasCapability('measure_dew_point')){
+            await this.addCapability('measure_dew_point');
+        }
     }
 
     async checkParentDevice(){
@@ -170,6 +172,7 @@ class owmOnecallHourly extends Homey.Device {
         var temp_feelslike = Math.round(data.feels_like* 10) / 10;
         var hum = data.humidity;
         var pressure = data.pressure;
+        var dewpoint = Math.round(data.dew_point * 10) / 10;
 
         var uvi = data.uvi;
         var cloudiness = data.clouds;
@@ -412,6 +415,19 @@ class owmOnecallHourly extends Homey.Device {
             triggerList.push({'trigger':this._flowTriggerPressureChanged, 'device':device, 'token':tokens, 'state':state});
             // this._flowTriggerWeatherChanged.trigger(device, tokens, state).catch(this.error)
         }
+        if (this.getCapabilityValue('measure_dew_point') !== dewpoint && dewpoint !== undefined) {
+            this.log("Dewpoint previous: " + this.getCapabilityValue('measure_dew_point'));
+            this.log("Dewpoint new: " + dewpoint);
+            let state = {
+                "measure_dew_point": dewpoint
+            };
+            let tokens = {
+                "measure_dew_point": dewpoint,
+                "location": GEOlocation
+            };
+            triggerList.push({'trigger':this._flowTriggerDewPointChanged, 'device':device, 'token':tokens, 'state':state});
+            // this._flowTriggerWeatherChanged.trigger(device, tokens, state).catch(this.error)
+        }
         if (this.getCapabilityValue('measure_rain') !== rain && rain !== undefined) {
             this.log("Rain previous: " + this.getCapabilityValue('measure_rain'));
             this.log("Rain new: " + rain);
@@ -512,6 +528,7 @@ class owmOnecallHourly extends Homey.Device {
         this.setCapabilityValue("measure_temperature_feelslike", temp_feelslike);
         this.setCapabilityValue("measure_humidity", hum);
         this.setCapabilityValue("measure_pressure", pressure);
+        this.setCapabilityValue("measure_dew_point", dewpoint);
         this.setCapabilityValue("measure_rain", rain);
         this.setCapabilityValue("measure_pop", pop);
         this.setCapabilityValue("measure_snow", snow);

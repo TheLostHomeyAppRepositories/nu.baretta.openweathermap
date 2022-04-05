@@ -18,22 +18,23 @@
         "measure_temperature",
         "measure_temperature_feelslike",
 
-        "measure_humidity",
-        "measure_cloudiness",
+        "measure_dew_point",
+        "measure_pressure",
 
-        "measure_rain",
-        "measure_snow",
+        "measure_humidity",
+        "measure_ultraviolet",
+
+        "measure_cloudiness",
+        "measure_visibility",
 
         "measure_wind_combined",
         "measure_wind_strength",
 
-        "measure_visibility",
-        "measure_pressure",
+        "measure_rain",
+        "measure_snow",
 
         "sunrise",
         "sunset",
-
-        "measure_ultraviolet",
 
         "conditioncode",
         "conditioncode_detail",

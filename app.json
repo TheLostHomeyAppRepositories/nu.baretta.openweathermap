@@ -1,7 +1,7 @@
 {
   "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
   "id": "nu.baretta.openweathermap",
-  "version": "1.1.2",
+  "version": "1.1.4",
   "compatibility": ">=5.0.0",
   "sdk": 3,
   "name": {
@@ -222,6 +222,52 @@
             "name": "ChangedCondition",
             "type": "device",
             "filter": "driver_id=owmCurrent|owmForecast|owmLongterm|owmOnecallCurrent|owmOnecallHourly|owmOnecallDaily"
+          }
+        ]
+      },
+      {
+        "id": "DewPointChanged",
+        "highlight": true,
+        "title": {
+          "en": "Dew point has changed",
+          "de": "Taupunkt hat sich geändert",
+          "nl": "Dauwpunt is veranderd"
+        },
+        "hint": {
+          "en": "Triggers when the dew point changes.",
+          "de": "Wird ausgelöst, wenn sich der Taupunkt ändert.",
+          "nl": "Triggert zodra de dauwpunt veranderd."
+        },
+        "tokens": [
+          {
+            "name": "measure_dew_point",
+            "type": "number",
+            "title": {
+              "en": "Dew point (°C)",
+              "de": "Taupunkt (°C)",
+              "nl": "Dauwpunt (°C)"
+            },
+            "example": 15
+          },
+          {
+            "name": "location",
+            "type": "string",
+            "title": {
+              "en": "Location",
+              "de": "Standort",
+              "nl": "locatie"
+            },
+            "example": {
+              "en": "Amsterdam",
+              "de": "Berlin"
+            }
+          }
+        ],
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=owmOnecallCurrent|owmOnecallHourly|owmOnecallDaily"
           }
         ]
       },
@@ -2487,6 +2533,35 @@
         ]
       },
       {
+        "id": "DewPoint",
+        "title": {
+          "en": "Dew point !{{is|isn't}} higher than",
+          "de": "Taupunkt !{{ist|ist nicht}} größer als",
+          "nl": "Dauwpunt !{{is|is niet}} hoger dan"
+        },
+        "titleFormatted": {
+          "en": "Dew point !{{is|isn't}} higher than [[degrees]]",
+          "de": "Taupunkt !{{ist|ist nicht}} größer als [[degrees]]",
+          "nl": "Dauwpunt !{{is|is niet}} hoger dan [[degrees]]"
+        },
+        "hint": {
+          "en": "Dew point in °C",
+          "de": "Taupunkt in °C",
+          "nl": "Dauwpunt in °C."
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=owmOnecallCurrent|owmOnecallHourly|owmOnecallDaily"
+          },
+          {
+            "name": "degrees",
+            "type": "number"
+          }
+        ]
+      },
+      {
         "id": "Humidity",
         "title": {
           "en": "Humidity (%) !{{is|isn't}} higher than",
@@ -4250,17 +4325,18 @@
         "description",
         "measure_temperature",
         "measure_temperature_feelslike",
+        "measure_dew_point",
+        "measure_pressure",
         "measure_humidity",
+        "measure_ultraviolet",
         "measure_cloudiness",
-        "measure_rain",
-        "measure_snow",
+        "measure_visibility",
         "measure_wind_combined",
         "measure_wind_strength",
-        "measure_visibility",
-        "measure_pressure",
+        "measure_rain",
+        "measure_snow",
         "sunrise",
         "sunset",
-        "measure_ultraviolet",
         "conditioncode",
         "conditioncode_detail",
         "measure_wind_angle",
@@ -4397,20 +4473,21 @@
         "measure_temperature_day",
         "measure_temperature_evening",
         "measure_temperature_night",
+        "measure_dew_point",
+        "measure_pressure",
         "measure_humidity",
+        "measure_pop",
         "measure_cloudiness",
-        "measure_rain",
-        "measure_snow",
+        "measure_ultraviolet",
         "measure_wind_combined",
         "measure_wind_strength",
-        "measure_pressure",
-        "measure_pop",
-        "measure_ultraviolet",
-        "moonphase_type",
+        "measure_rain",
+        "measure_snow",
         "sunrise",
         "sunset",
         "moonrise",
         "moonset",
+        "moonphase_type",
         "conditioncode",
         "conditioncode_detail",
         "measure_wind_angle",
@@ -4516,16 +4593,18 @@
         "description",
         "measure_temperature",
         "measure_temperature_feelslike",
+        "measure_dew_point",
+        "measure_pressure",
         "measure_humidity",
+        "measure_pop",
         "measure_cloudiness",
-        "measure_rain",
-        "measure_snow",
+        "measure_visibility",
         "measure_wind_combined",
         "measure_wind_strength",
-        "measure_visibility",
-        "measure_pressure",
-        "measure_pop",
+        "measure_rain",
+        "measure_snow",
         "measure_ultraviolet",
+        "moonphase_type",
         "conditioncode",
         "conditioncode_detail",
         "measure_wind_angle",
@@ -5302,6 +5381,27 @@
       "max": 100,
       "step": 1,
       "icon": "/assets/measure_cloudiness.svg"
+    },
+    "measure_dew_point": {
+      "type": "number",
+      "label": {
+        "en": "Dew point",
+        "de": "Taupunkt",
+        "nl": "Dauwpunt"
+      },
+      "title": {
+        "en": "Dew point",
+        "de": "Taupunkt",
+        "nl": "Dauwpunt"
+      },
+      "uiComponent": "sensor",
+      "getable": true,
+      "setable": false,
+      "units": {
+        "en": "°C",
+        "de": "°C"
+      },
+      "icon": "/assets/measure_dew_point.svg"
     },
     "measure_forecast_time": {
       "type": "string",

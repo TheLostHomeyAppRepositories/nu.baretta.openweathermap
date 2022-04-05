@@ -74,5 +74,13 @@
   "1.1.2": {
     "en": "Small changes for description and icons.",
     "de": "Kleine Änderungen der Beschreibung und Icons."
+  },
+  "1.1.3": {
+    "en": "Added dew point.",
+    "de": "Taupunkt ergänzt."
+  },
+  "1.1.4": {
+    "en": "Changed arrangement of capabilities.",
+    "de": "Anordnung der Sensorwerte angepasst."
   }
 }

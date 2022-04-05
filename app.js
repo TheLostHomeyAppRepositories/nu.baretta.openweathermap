@@ -93,6 +93,11 @@ class openWeatherMap extends Homey.App {
         return (args.device.getCapabilityValue('measure_pressure') > args.bar);
       })
 
+      this._dewPointCondition = this.homey.flow.getConditionCard("DewPoint")
+      .registerRunListener(async (args, state) => {
+        return (args.device.getCapabilityValue('measure_dew_point') > args.degrees);
+      })
+
       this._winddirectionCondition = this.homey.flow.getConditionCard("Winddirection")
       .registerRunListener(async (args, state) => {
         return (args.device.getCapabilityValue('measure_wind_direction_string') == args.winddirection);

@@ -60,6 +60,8 @@ class owmCurrent extends Homey.Device {
         
         this._flowTriggerPressureChanged = this.homey.flow.getDeviceTriggerCard('PressureChanged');
 
+        this._flowTriggerDewPointChanged = this.homey.flow.getDeviceTriggerCard('DewPointChanged');
+
         this._flowTriggerRainChanged = this.homey.flow.getDeviceTriggerCard('RainChanged');
         
         this._flowTriggerWindCombinedChanged = this.homey.flow.getDeviceTriggerCard('WindCombinedChanged');
@@ -85,7 +87,9 @@ class owmCurrent extends Homey.Device {
         if (!this.hasCapability('forecast_time')){
             await this.addCapability('forecast_time');
         }
-
+        if (!this.hasCapability('measure_dew_point')){
+            await this.addCapability('measure_dew_point');
+        }
 
     }
 
@@ -228,6 +232,7 @@ class owmCurrent extends Homey.Device {
                 var temp_feelslike = Math.round(data.current.feels_like* 10) / 10;
                 var hum = data.current.humidity;
                 var pressure = data.current.pressure;
+                var dewpoint = Math.round(data.current.dew_point * 10) / 10;
 
                 // return the rain in mm if present, or precipitation
                 if (data.current.precipitation) {
@@ -516,6 +521,19 @@ class owmCurrent extends Homey.Device {
                     triggerList.push({'trigger':this._flowTriggerPressureChanged, 'device':device, 'token':tokens, 'state':state});
                     // this._flowTriggerWeatherChanged.trigger(device, tokens, state).catch(this.error)
                 }
+                if (this.getCapabilityValue('measure_dew_point') !== dewpoint && dewpoint !== undefined) {
+                    this.log("Dewpoint previous: " + this.getCapabilityValue('measure_dew_point'));
+                    this.log("Dewpoint new: " + dewpoint);
+                    let state = {
+                        "measure_dew_point": dewpoint
+                    };
+                    let tokens = {
+                        "measure_dew_point": dewpoint,
+                        "location": GEOlocation
+                    };
+                    triggerList.push({'trigger':this._flowTriggerDewPointChanged, 'device':device, 'token':tokens, 'state':state});
+                    // this._flowTriggerWeatherChanged.trigger(device, tokens, state).catch(this.error)
+                }
                 if (this.getCapabilityValue('measure_rain') !== rain && rain !== undefined) {
                     this.log("Rain previous: " + this.getCapabilityValue('measure_rain'));
                     this.log("Rain new: " + rain);
@@ -604,6 +622,7 @@ class owmCurrent extends Homey.Device {
                     "measure_temperature_feelslike": temp_feelslike,
                     'measure_humidity': hum,
                     'measure_pressure': pressure,
+                    'measure_dew_point': dewpoint,
                     'measure_rain': rain,
                     'measure_snow': snow,
                     'measure_wind_combined': windcombined,

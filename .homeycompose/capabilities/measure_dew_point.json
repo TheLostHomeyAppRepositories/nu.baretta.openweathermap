@@ -1,0 +1,21 @@
+{
+    "type": "number",
+    "label": {
+        "en": "Dew point",
+        "de": "Taupunkt",
+        "nl": "Dauwpunt"
+    },
+    "title": {
+        "en": "Dew point",
+        "de": "Taupunkt",
+        "nl": "Dauwpunt"
+    },
+    "uiComponent": "sensor",
+    "getable": true,
+    "setable": false,
+    "units": {
+        "en": "°C",
+        "de": "°C"
+    },
+    "icon": "/assets/measure_dew_point.svg"
+}

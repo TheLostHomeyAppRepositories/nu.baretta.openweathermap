@@ -1,0 +1,43 @@
+{
+    "id": "DewPointChanged",
+    "highlight": true,
+    "title": {
+        "en": "Dew point has changed",
+        "de": "Taupunkt hat sich geändert",
+        "nl": "Dauwpunt is veranderd"
+    },
+    "hint": {
+        "en": "Triggers when the dew point changes.",
+        "de": "Wird ausgelöst, wenn sich der Taupunkt ändert.",
+        "nl": "Triggert zodra de dauwpunt veranderd."
+    },
+    "tokens": [{
+            "name": "measure_dew_point",
+            "type": "number",
+            "title": {
+                "en": "Dew point (°C)",
+                "de": "Taupunkt (°C)",
+                "nl": "Dauwpunt (°C)"
+            },
+            "example": 15
+        },
+        {
+            "name": "location",
+            "type": "string",
+            "title": {
+                "en": "Location",
+                "de": "Standort",
+                "nl": "locatie"
+            },
+            "example": {
+                "en": "Amsterdam",
+                "de": "Berlin"
+            }
+        }
+    ],
+    "args": [{
+        "name": "device",
+        "type": "device",
+        "filter": "driver_id=owmOnecallCurrent|owmOnecallHourly|owmOnecallDaily"
+    }]
+}

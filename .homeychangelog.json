@@ -82,5 +82,9 @@
   "1.1.4": {
     "en": "Changed arrangement of capabilities.",
     "de": "Anordnung der Sensorwerte angepasst."
+  },
+  "1.1.5": {
+    "en": "Activated Insghts for weather capabilities.",
+    "de": "Insights für Wetterwerte aktiviert."
   }
 }

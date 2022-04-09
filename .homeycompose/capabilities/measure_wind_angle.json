@@ -7,5 +7,6 @@
     },
     "uiComponent": null,
     "getable": true,
-    "setable": false
+    "setable": false,
+    "insights": true
 }

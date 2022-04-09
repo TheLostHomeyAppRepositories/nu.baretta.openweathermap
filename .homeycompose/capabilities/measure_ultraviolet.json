@@ -1,0 +1,20 @@
+{
+    "type": "number",
+    "label": {
+        "en": "Ultraviolett",
+        "de": "UV-Index",
+        "nl": "UV-index"
+    },
+    "title": {
+        "en": "UV index",
+        "de": "UV-Index",
+        "nl": "UV-index"
+    },
+    "uiComponent": "sensor",
+    "getable": true,
+    "setable": false,
+    "insights": true,
+    "units": {
+        "en": "UVI"
+    }
+}

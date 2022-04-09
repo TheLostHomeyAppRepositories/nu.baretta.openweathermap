@@ -8,5 +8,6 @@
     "uiComponent": null,
     "getable": true,
     "setable": false,
+    "insights": true,
     "units": "AQI"
 }

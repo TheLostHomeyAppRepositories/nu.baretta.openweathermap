@@ -59,6 +59,14 @@
                     }
                 },
                 {
+                    "id": "Fog",
+                    "label": {
+                        "en": "Fog",
+                        "de": "Nebel",
+                        "nl": "Mist"
+                    }
+                },
+                {
                     "id": "Thunderstorm",
                     "label": {
                         "en": "Thunderstorm",

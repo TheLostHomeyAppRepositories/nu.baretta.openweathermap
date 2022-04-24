@@ -51,6 +51,14 @@
             }
         },
         {
+            "id": "Fog",
+            "title": {
+                "en": "Fog",
+                "de": "Nebel",
+                "nl": "Mist"
+            }
+        },
+        {
             "id": "Thunderstorm",
             "title": {
                 "en": "Thunderstorm",

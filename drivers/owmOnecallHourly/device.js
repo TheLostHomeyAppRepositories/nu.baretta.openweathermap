@@ -126,7 +126,10 @@ class owmOnecallHourly extends Homey.Device {
         }
 
         let tz  = this.homey.clock.getTimezone();
-        let now = new Date(data.dt*1000).toLocaleString('de-DE', 
+        let forecast_time;
+        let hasDateLocalization = this.homey.app.hasDateLocalization();
+        if (hasDateLocalization){
+            let now = new Date(data.dt*1000).toLocaleString(this.homey.i18n.getLanguage(), 
             { 
                 hour12: false, 
                 timeZone: tz,
@@ -136,10 +139,24 @@ class owmOnecallHourly extends Homey.Device {
                 month: "2-digit",
                 year: "numeric"
             });
-        let date = now.split(", ")[0];
-        date = date.split("/")[2] + "-" + date.split("/")[0] + "-" + date.split("/")[1]; 
-        let time = now.split(", ")[1];
-        let forecast_time = date + " " + time;
+            forecast_time = now.replace(',', '');;
+        }
+        else{
+            let now = new Date(data.dt*1000).toLocaleString('de-DE', 
+                { 
+                    hour12: false, 
+                    timeZone: tz,
+                    hour: "2-digit",
+                    minute: "2-digit",
+                    day: "2-digit",
+                    month: "2-digit",
+                    year: "numeric"
+                });
+            let date = now.split(", ")[0];
+            date = date.split("/")[2] + "-" + date.split("/")[0] + "-" + date.split("/")[1]; 
+            let time = now.split(", ")[1];
+            forecast_time = date + " " + time;
+        }
 
         // now = new Date().toLocaleString('de-DE', 
         // { 
@@ -223,13 +240,6 @@ class owmOnecallHourly extends Homey.Device {
         }
 
         if (data.wind_speed) {
-            // if (units == "metric") {
-            //     // convert from m/s to km/h
-            //     var windstrength = Math.round(3.6 * data.wind_speed);
-            // } else {
-            //     // windspeed in mph
-            //     var windstrength = data.wind_speed;
-            // }
             if ( this.getSetting('windspeed_ms') == true){
                 if (units == "metric") {
                     var windstrength = data.wind_speed;
@@ -248,27 +258,32 @@ class owmOnecallHourly extends Homey.Device {
                 }
             }
         } else {
-            var windstrength = {};
+            var windstrength = 0;
         }
 
         if (data.wind_deg) {
             var windangle = data.wind_deg;
+            var winddegcompass = weather.degToCompass(windangle);
         } else {
-            var windangle = null;
+            var windangle = 0;
+            var winddegcompass = "";
         }
-        var winddegcompass = weather.degToCompass(windangle);
         if (units == "metric") {
             // convert to beaufort and concatenate in a string with wind direction
             var windspeedbeaufort = weather.beaufortFromKmh(windstrength);
         } else {
             var windspeedbeaufort = weather.beaufortFromMph(windstrength);
         }
-        var windcombined =  this.homey.__("windDirectionIcon."+winddegcompass) + 
-                            " " + 
-                            this.homey.__("windDirectionShort."+winddegcompass) + 
-                            " " +
-                            windspeedbeaufort;
-
+        if (winddegcompass != ""){
+            var windcombined =  this.homey.__("windDirectionIcon."+winddegcompass) + 
+                                " " + 
+                                this.homey.__("windDirectionShort."+winddegcompass) + 
+                                " " +
+                                windspeedbeaufort.toString();
+        }
+        else{
+            var windcombined = windspeedbeaufort.toString();
+        }
 
         this.log("Comparing variables before and after current polling interval");
 
@@ -524,7 +539,7 @@ class owmOnecallHourly extends Homey.Device {
         this.setCapabilityValue("description", description);
         this.setCapabilityValue("conditioncode", conditioncode);
         this.setCapabilityValue("conditioncode_detail", conditioncode_detail);
-        this.setCapabilityValue("measure_temperature", temp);
+        this.setCapabilityValue("measure_temperature", temp).catch(err => this.err(err));
         this.setCapabilityValue("measure_temperature_feelslike", temp_feelslike);
         this.setCapabilityValue("measure_humidity", hum);
         this.setCapabilityValue("measure_pressure", pressure);
@@ -532,11 +547,9 @@ class owmOnecallHourly extends Homey.Device {
         this.setCapabilityValue("measure_rain", rain);
         this.setCapabilityValue("measure_pop", pop);
         this.setCapabilityValue("measure_snow", snow);
-
         this.setCapabilityValue("measure_ultraviolet", uvi);
         this.setCapabilityValue("measure_cloudiness", cloudiness);
         this.setCapabilityValue("measure_visibility", visibility);
-
         this.setCapabilityValue("measure_wind_strength", windstrength);
         this.setCapabilityValue("measure_wind_direction_string", winddegcompass);
         this.setCapabilityValue("measure_wind_combined", windcombined);
@@ -546,6 +559,7 @@ class owmOnecallHourly extends Homey.Device {
         this.log("Trigger Flows...")
         for (let i=0; i<triggerList.length; i++){
             triggerList[i].trigger.trigger(triggerList[i].device, triggerList[i].token, triggerList[i].state);
+                // .catch(err => this.error(err));
         }
 
     }

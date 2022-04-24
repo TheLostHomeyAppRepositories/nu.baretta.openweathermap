@@ -194,7 +194,11 @@ class owmCurrent extends Homey.Device {
                 var conditioncode_detail_number = data.current.weather[0].id;
                 this.log("Specific conditioncode: " + data.current.weather[0].id);
 
-                let now = new Date(data.current.dt*1000).toLocaleString('de-DE', 
+                let forecast_time;
+                let lastUpdate;
+                let hasDateLocalization = this.homey.app.hasDateLocalization();
+                if (hasDateLocalization){
+                    let now = new Date(data.current.dt*1000).toLocaleString(this.homey.i18n.getLanguage(), 
                     { 
                         hour12: false, 
                         timeZone: tz,
@@ -204,25 +208,52 @@ class owmCurrent extends Homey.Device {
                         month: "2-digit",
                         year: "numeric"
                     });
-                let date = now.split(", ")[0];
-                date = date.split("/")[2] + "-" + date.split("/")[0] + "-" + date.split("/")[1]; 
-                let time = now.split(", ")[1];
-                let forecast_time = date + " " + time;
+                    forecast_time = now.replace(',', '');
 
-                now = new Date().toLocaleString('de-DE', 
-                { 
-                    hour12: false, 
-                    timeZone: tz,
-                    hour: "2-digit",
-                    minute: "2-digit",
-                    day: "2-digit",
-                    month: "2-digit",
-                    year: "numeric"
-                });
-                date = now.split(", ")[0];
-                date = date.split("/")[2] + "-" + date.split("/")[0] + "-" + date.split("/")[1]; 
-                time = now.split(", ")[1];
-                let lastUpdate = 'Last update: ' + date + " " + time;
+                    now = new Date().toLocaleString(this.homey.i18n.getLanguage(), 
+                    { 
+                        hour12: false, 
+                        timeZone: tz,
+                        hour: "2-digit",
+                        minute: "2-digit",
+                        day: "2-digit",
+                        month: "2-digit",
+                        year: "numeric"
+                    });
+                    lastUpdate = 'Last update: ' + now.replace(',', '');
+                }
+                else{
+                    let now = new Date(data.current.dt*1000).toLocaleString('de-DE', 
+                        { 
+                            hour12: false, 
+                            timeZone: tz,
+                            hour: "2-digit",
+                            minute: "2-digit",
+                            day: "2-digit",
+                            month: "2-digit",
+                            year: "numeric"
+                        });
+                    let date = now.split(", ")[0];
+                    date = date.split("/")[2] + "-" + date.split("/")[0] + "-" + date.split("/")[1]; 
+                    let time = now.split(", ")[1];
+                    forecast_time = date + " " + time;
+
+                    now = new Date().toLocaleString('de-DE', 
+                    { 
+                        hour12: false, 
+                        timeZone: tz,
+                        hour: "2-digit",
+                        minute: "2-digit",
+                        day: "2-digit",
+                        month: "2-digit",
+                        year: "numeric"
+                    });
+                    date = now.split(", ")[0];
+                    date = date.split("/")[2] + "-" + date.split("/")[0] + "-" + date.split("/")[1]; 
+                    time = now.split(", ")[1];
+                    lastUpdate = 'Last update: ' + date + " " + time;
+                    }
+
                 this.setSettings({
                     "APIState": lastUpdate
                     })
@@ -296,27 +327,32 @@ class owmCurrent extends Homey.Device {
                         }
                     }
                 } else {
-                    var windstrength = {};
+                    var windstrength = 0;
                 }
 
                 if (data.current.wind_deg) {
                     var windangle = data.current.wind_deg;
+                    var winddegcompass = weather.degToCompass(windangle);
                 } else {
-                    var windangle = null;
+                    var windangle = 0;
+                    var winddegcompass = "";
                 }
-                var winddegcompass = weather.degToCompass(windangle);
                 if (settings["units"] == "metric") {
                     // convert to beaufort and concatenate in a string with wind direction
                     var windspeedbeaufort = weather.beaufortFromKmh(windstrength);
                 } else {
                     var windspeedbeaufort = weather.beaufortFromMph(windstrength);
                 }
-                var windcombined =  this.homey.__("windDirectionIcon."+winddegcompass) + 
-                                    " " + 
-                                    this.homey.__("windDirectionShort."+winddegcompass) + 
-                                    " " +
-                                    windspeedbeaufort;
-
+                if (winddegcompass != ""){
+                    var windcombined =  this.homey.__("windDirectionIcon."+winddegcompass) + 
+                                        " " + 
+                                        this.homey.__("windDirectionShort."+winddegcompass) + 
+                                        " " +
+                                        windspeedbeaufort.toString();
+                }
+                else{
+                    var windcombined = windspeedbeaufort.toString();
+                }
                 var uvi = data.current.uvi;
                 var cloudiness = data.current.clouds;
                 var visibility = data.current.visibility;
@@ -641,8 +677,8 @@ class owmCurrent extends Homey.Device {
                 this.getCapabilities().forEach(async capability => {
                     this.log("Capability: " + capability + ":" + capabilitySet[capability]);
                     if (capabilitySet[capability] != undefined) {
-                        await this.setCapabilityValue(capability, capabilitySet[capability])
-                            .catch(err => this.log(err));
+                        await this.setCapabilityValue(capability, capabilitySet[capability]);
+                            // .catch(err => this.error(err));
                     } else {
                         this.log("Capability undefined: " + capability)
                     }
@@ -653,6 +689,7 @@ class owmCurrent extends Homey.Device {
                 this.log("Trigger Flows...")
                 for (let i=0; i<triggerList.length; i++){
                     triggerList[i].trigger.trigger(triggerList[i].device, triggerList[i].token, triggerList[i].state);
+                        // .catch(err => this.error(err));;
                 }
 
                 // Update Hourly/daily

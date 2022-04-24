@@ -27,6 +27,16 @@ class openWeatherMap extends Homey.App {
           }
       });
 
+      // Check Homey version for date conversion
+      let version = this.homey.version;
+      let versionArray = version.split(".");
+      if ( (versionArray[0] > 7) || (versionArray[0] == 7 && versionArray[1] >= 4)){
+        this.dateLocalization = true;
+      }
+      else{
+        this.dateLocalization = false;
+      }
+
       // Register Flow Condition-Listener
       this._conditioncodeCondition = this.homey.flow.getConditionCard('Conditioncode')
       .registerRunListener(async (args, state) => {
@@ -190,6 +200,11 @@ class openWeatherMap extends Homey.App {
       else
       {
       }
+    }
+
+    hasDateLocalization(){
+      return true;
+      return this.dateLocalization;
     }
 
     async setChildDevicesUnavailable(id){

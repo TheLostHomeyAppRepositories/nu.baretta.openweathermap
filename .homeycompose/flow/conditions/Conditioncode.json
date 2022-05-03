@@ -51,6 +51,14 @@
                     }
                 },
                 {
+                    "id": "Haze",
+                    "label": {
+                        "en": "Haze",
+                        "de": "Dunst",
+                        "nl": "Vaag"
+                    }
+                },        
+                {
                     "id": "Mist",
                     "label": {
                         "en": "Misty",

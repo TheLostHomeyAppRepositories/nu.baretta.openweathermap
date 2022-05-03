@@ -106,5 +106,9 @@
   "1.1.10": {
     "en": "Added localized date to OnCall devices for FW from 7.4.0.",
     "de": "Lokalisiertes Datum ergänzt für OnCall-Geräte ab FW 7.4.0."
+  },
+  "1.1.11": {
+    "en": "Added 'Haze' to weather conditions.",
+    "de": "'Dunst' als Wetterlage ergänzt."
   }
 }

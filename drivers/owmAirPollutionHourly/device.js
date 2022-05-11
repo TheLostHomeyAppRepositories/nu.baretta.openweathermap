@@ -77,7 +77,10 @@ class owmAirPollutionHourly extends Homey.Device {
         }
 
         let tz  = this.homey.clock.getTimezone();
-        let now = new Date(data.dt*1000).toLocaleString('de-DE', 
+        let forecast_time;
+        let hasDateLocalization = this.homey.app.hasDateLocalization();
+        if (hasDateLocalization){
+            let now = new Date(data.dt*1000).toLocaleString(this.homey.i18n.getLanguage(), 
             { 
                 hour12: false, 
                 timeZone: tz,
@@ -87,10 +90,39 @@ class owmAirPollutionHourly extends Homey.Device {
                 month: "2-digit",
                 year: "numeric"
             });
-        let date = now.split(", ")[0];
-        date = date.split("/")[2] + "-" + date.split("/")[0] + "-" + date.split("/")[1]; 
-        let time = now.split(", ")[1];
-        let forecast_time = date + " " + time;
+            forecast_time = now.replace(',', '');
+        }
+        else{
+            let now = new Date(data.dt*1000).toLocaleString('de-DE', 
+                { 
+                    hour12: false, 
+                    timeZone: tz,
+                    hour: "2-digit",
+                    minute: "2-digit",
+                    day: "2-digit",
+                    month: "2-digit",
+                    year: "numeric"
+                });
+            let date = now.split(", ")[0];
+            date = date.split("/")[2] + "-" + date.split("/")[0] + "-" + date.split("/")[1]; 
+            let time = now.split(", ")[1];
+            forecast_time = date + " " + time;
+        }
+        // let tz  = this.homey.clock.getTimezone();
+        // let now = new Date(data.dt*1000).toLocaleString('de-DE', 
+        //     { 
+        //         hour12: false, 
+        //         timeZone: tz,
+        //         hour: "2-digit",
+        //         minute: "2-digit",
+        //         day: "2-digit",
+        //         month: "2-digit",
+        //         year: "numeric"
+        //     });
+        // let date = now.split(", ")[0];
+        // date = date.split("/")[2] + "-" + date.split("/")[0] + "-" + date.split("/")[1]; 
+        // let time = now.split(", ")[1];
+        // let forecast_time = date + " " + time;
 
         let ap_aqi = data.main.aqi.toString();
         let ap_aqi_nr = data.main.aqi;

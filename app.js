@@ -203,7 +203,6 @@ class openWeatherMap extends Homey.App {
     }
 
     hasDateLocalization(){
-      return true;
       return this.dateLocalization;
     }
 

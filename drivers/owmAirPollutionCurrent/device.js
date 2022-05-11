@@ -106,11 +106,12 @@ class owmAirPollutionCurrent extends Homey.Device {
                 // let triggerList = [];
                 this.log(device.getData().id +" Received OWM data");
 
-                //var GEOlocation = "Lat:" + data.lat + " Lon:" +data.lon;
-                // var GEOlocation = this.getName();
                 let tz  = this.homey.clock.getTimezone();
-
-                let now = new Date(data.list[0].dt*1000).toLocaleString('de-DE', 
+                let forecast_time;
+                let lastUpdate;
+                let hasDateLocalization = this.homey.app.hasDateLocalization();
+                if (hasDateLocalization){
+                    let now = new Date(data.list[0].dt*1000).toLocaleString(this.homey.i18n.getLanguage(), 
                     { 
                         hour12: false, 
                         timeZone: tz,
@@ -120,25 +121,85 @@ class owmAirPollutionCurrent extends Homey.Device {
                         month: "2-digit",
                         year: "numeric"
                     });
-                let date = now.split(", ")[0];
-                date = date.split("/")[2] + "-" + date.split("/")[0] + "-" + date.split("/")[1]; 
-                let time = now.split(", ")[1];
-                let forecast_time = date + " " + time;
+                    forecast_time = now.replace(',', '');
 
-                now = new Date().toLocaleString('de-DE', 
-                { 
-                    hour12: false, 
-                    timeZone: tz,
-                    hour: "2-digit",
-                    minute: "2-digit",
-                    day: "2-digit",
-                    month: "2-digit",
-                    year: "numeric"
-                });
-                date = now.split(", ")[0];
-                date = date.split("/")[2] + "-" + date.split("/")[0] + "-" + date.split("/")[1]; 
-                time = now.split(", ")[1];
-                let lastUpdate = 'Last update: ' + date + " " + time;
+                    now = new Date().toLocaleString(this.homey.i18n.getLanguage(), 
+                    { 
+                        hour12: false, 
+                        timeZone: tz,
+                        hour: "2-digit",
+                        minute: "2-digit",
+                        day: "2-digit",
+                        month: "2-digit",
+                        year: "numeric"
+                    });
+                    lastUpdate = 'Last update: ' + now.replace(',', '');
+                }
+                else{
+                    let now = new Date(data.list[0].dt*1000).toLocaleString('de-DE', 
+                        { 
+                            hour12: false, 
+                            timeZone: tz,
+                            hour: "2-digit",
+                            minute: "2-digit",
+                            day: "2-digit",
+                            month: "2-digit",
+                            year: "numeric"
+                        });
+                    let date = now.split(", ")[0];
+                    date = date.split("/")[2] + "-" + date.split("/")[0] + "-" + date.split("/")[1]; 
+                    let time = now.split(", ")[1];
+                    forecast_time = date + " " + time;
+
+                    now = new Date().toLocaleString('de-DE', 
+                    { 
+                        hour12: false, 
+                        timeZone: tz,
+                        hour: "2-digit",
+                        minute: "2-digit",
+                        day: "2-digit",
+                        month: "2-digit",
+                        year: "numeric"
+                    });
+                    date = now.split(", ")[0];
+                    date = date.split("/")[2] + "-" + date.split("/")[0] + "-" + date.split("/")[1]; 
+                    time = now.split(", ")[1];
+                    lastUpdate = 'Last update: ' + date + " " + time;
+                }
+                // //var GEOlocation = "Lat:" + data.lat + " Lon:" +data.lon;
+                // // var GEOlocation = this.getName();
+                // let tz  = this.homey.clock.getTimezone();
+
+                // let now = new Date(data.list[0].dt*1000).toLocaleString('de-DE', 
+                //     { 
+                //         hour12: false, 
+                //         timeZone: tz,
+                //         hour: "2-digit",
+                //         minute: "2-digit",
+                //         day: "2-digit",
+                //         month: "2-digit",
+                //         year: "numeric"
+                //     });
+                // let date = now.split(", ")[0];
+                // date = date.split("/")[2] + "-" + date.split("/")[0] + "-" + date.split("/")[1]; 
+                // let time = now.split(", ")[1];
+                // let forecast_time = date + " " + time;
+
+                // now = new Date().toLocaleString('de-DE', 
+                // { 
+                //     hour12: false, 
+                //     timeZone: tz,
+                //     hour: "2-digit",
+                //     minute: "2-digit",
+                //     day: "2-digit",
+                //     month: "2-digit",
+                //     year: "numeric"
+                // });
+                // date = now.split(", ")[0];
+                // date = date.split("/")[2] + "-" + date.split("/")[0] + "-" + date.split("/")[1]; 
+                // time = now.split(", ")[1];
+                // let lastUpdate = 'Last update: ' + date + " " + time;
+
                 this.setSettings({
                     "APIState": lastUpdate
                     })

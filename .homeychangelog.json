@@ -110,5 +110,9 @@
   "1.1.11": {
     "en": "Added 'Haze' to weather conditions.",
     "de": "'Dunst' als Wetterlage ergänzt."
+  },
+  "1.1.12": {
+    "en": "Added localized date to AirQuality devices for FW from 7.4.0.",
+    "de": "Lokalisiertes Datum ergänzt für Luftqualität-Geräte ab FW 7.4.0."
   }
 }

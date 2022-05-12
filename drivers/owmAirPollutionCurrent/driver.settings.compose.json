@@ -34,6 +34,16 @@
             }
         },
         {
+            "id": "pollingActive",
+            "type": "checkbox",
+            "value": true,
+            "label": {
+                "en": "Polling active",
+                "de": "Abfrage aktiv",
+                "nl": "Polling  actief"
+            }
+        },
+        {
             "id": "pollingInterval",
             "type": "number",
             "value": 5,

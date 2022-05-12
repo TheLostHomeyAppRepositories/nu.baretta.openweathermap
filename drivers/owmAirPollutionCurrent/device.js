@@ -23,8 +23,9 @@ class owmAirPollutionCurrent extends Homey.Device {
         // this._flowTriggerTemperatureChanged = this.homey.flow.getDeviceTriggerCard('TemperatureChanged');
 
         //run once to get the first data
-        this.pollAirPollution(settings);
-
+        if (settings.pollingActive == true){
+            this.pollAirPollution(settings);
+        }
     } // end onInit
 
     async updateCapabilities(){
@@ -75,6 +76,16 @@ class owmAirPollutionCurrent extends Homey.Device {
             //     }
             // }
         }
+    }
+
+    async updateDevice(){
+        // Flow action for single update
+        let settings = await this.getSettings();
+        let newsettings = {};
+        newsettings['lat'] = settings['lat'];
+        newsettings['lon'] = settings['lon'];
+        newsettings["APIKey"] = settings["APIKey"];
+        this.pollOpenWeatherMapAirPollution(newsettings);
     }
 
     async pollOpenWeatherMapAirPollution(settings) {
@@ -290,6 +301,10 @@ class owmAirPollutionCurrent extends Homey.Device {
                         this.log('APIKey changed to ' + settings.newSettings.APIKey);
                         newSettings.APIKey = settings.newSettings.APIKey;
                         break;
+                    case 'pollingActive':
+                        this.log('pollingActive changed to ' + settings.newSettings.pollingActive);
+                        newSettings.pollingActive = settings.newSettings.pollingActive;
+                        break;
                     case 'pollingInterval':
                         this.log('pollingInterval changed to ' + settings.newSettings.pollingInterval);
                         newSettings.pollingInterval = settings.newSettings.pollingInterval;
@@ -303,7 +318,9 @@ class owmAirPollutionCurrent extends Homey.Device {
                 }
             }
             clearInterval(this.pollingintervalcurrent);
-            this.pollAirPollution(newSettings);
+            if (newSettings.pollingActive == true){
+                this.pollAirPollution(newSettings);
+            }
         } catch (error) {
             throw error;
         }

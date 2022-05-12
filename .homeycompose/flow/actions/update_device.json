@@ -1,0 +1,19 @@
+{
+    "title": {
+        "en": "Update data.",
+        "de": "Daten aktualisieren.",
+        "nl": "Gegevens bijwerken"
+    },
+    "hint": {
+        "en": "Updates the data once. Use this action to update the data at specific times in a flow-controlled manner.",
+        "de": "Aktualisiert einmalig die Daten. Verwende diese Aktion, um flow-gesteuert die Daten zu bestimmten Zeitpunkten zu aktualisieren.",
+        "nl": "Werkt de gegevens één keer bij. Gebruik deze actie om de gegevens op specifieke tijdstippen op een stroomgestuurde manier bij te werken."
+    },
+    "args": [
+        {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=owmOnecallCurrent|owmAirPollutionCurrent"
+        }
+    ]
+}

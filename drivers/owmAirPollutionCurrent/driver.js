@@ -136,7 +136,8 @@ class owmAirPollutionCurrentDriver extends Homey.Driver {
                             APIKey: this.settingsData["APIKey"],
                             lat: geoData[i].lat,
                             lon: geoData[i].lon,
-                            pollingInterval: this.settingsData["pollingInterval"]
+                            pollingInterval: this.settingsData["pollingInterval"],
+                            pollingActive: true
                         }
                     };
                     devices.push(device);

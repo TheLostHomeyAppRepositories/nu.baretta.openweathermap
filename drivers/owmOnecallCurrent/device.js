@@ -75,8 +75,9 @@ class owmCurrent extends Homey.Device {
         this._flowTriggerSunsetChanged = this.homey.flow.getDeviceTriggerCard('SunsetChanged');
 
         //run once to get the first data
-        this.pollWeatherCurrent(settings);
-
+        if (settings.pollingActive == true){
+            this.pollWeatherCurrent(settings);
+        }
     } // end onInit
 
     async updateCapabilities(){
@@ -112,8 +113,8 @@ class owmCurrent extends Homey.Device {
         //run once, then at interval
 
         this.pollingintervalcurrent = weather.setIntervalImmediately(_ => {
-            this.pollOpenWeatherMapCurrent(settings)
-        }, 60 * 1000 * settings.pollingInterval);
+                this.pollOpenWeatherMapCurrent(settings)
+            }, 60 * 1000 * settings.pollingInterval);
     }
 
     async setDeviceUnavailable(message){
@@ -148,6 +149,18 @@ class owmCurrent extends Homey.Device {
                 }
             }
         }
+    }
+
+    async updateDevice(){
+        // Flow action for single update
+        let settings = await this.getSettings();
+        let newsettings = {};
+        newsettings['lat'] = settings['lat'];
+        newsettings['lon'] = settings['lon'];
+        newsettings["APIKey"] = settings["APIKey"];
+        newsettings["units"] = this.homey.i18n.getUnits();
+        newsettings["language"] = this.homey.i18n.getLanguage();
+        this.pollOpenWeatherMapCurrent(newsettings);
     }
 
     async pollOpenWeatherMapCurrent(settings) {
@@ -733,6 +746,10 @@ class owmCurrent extends Homey.Device {
                         this.log('APIKey changed to ' + settings.newSettings.APIKey);
                         newSettings.APIKey = settings.newSettings.APIKey;
                         break;
+                    case 'pollingActive':
+                        this.log('pollingActive changed to ' + settings.newSettings.pollingActive);
+                        newSettings.pollingActive = settings.newSettings.pollingActive;
+                        break;
                     case 'pollingInterval':
                         this.log('pollingInterval changed to ' + settings.newSettings.pollingInterval);
                         newSettings.pollingInterval = settings.newSettings.pollingInterval;
@@ -762,7 +779,9 @@ class owmCurrent extends Homey.Device {
             newSettings["units"] = this.homey.i18n.getUnits();
             newSettings["language"] = this.homey.i18n.getLanguage();    
             clearInterval(this.pollingintervalcurrent);
-            this.pollWeatherCurrent(newSettings);
+            if (newSettings.pollingActive == true){
+                this.pollWeatherCurrent(newSettings);
+            }
         } catch (error) {
             throw error;
         }

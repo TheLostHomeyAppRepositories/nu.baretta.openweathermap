@@ -118,5 +118,9 @@
   "1.1.13": {
     "en": "Added option to deactivate polling. Added flow action for individual polling update.",
     "de": "Option zum Deaktivieren des Datenabrufs ergänzt. Flow-Aktion für individuellen Datenabruf ergänzt."
+  },
+  "1.1.14": {
+    "en": "Small fixes for timezone.",
+    "de": "Kleine Fehlerkorrektur zur Zeitzone."
   }
 }

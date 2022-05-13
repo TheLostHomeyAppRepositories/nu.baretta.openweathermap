@@ -142,7 +142,7 @@ class owmOnecallHourly extends Homey.Device {
             forecast_time = now.replace(',', '');;
         }
         else{
-            let now = new Date(data.dt*1000).toLocaleString('de-DE', 
+            let now = new Date(data.dt*1000).toLocaleString('en-US', 
                 { 
                     hour12: false, 
                     timeZone: tz,
@@ -212,7 +212,7 @@ class owmOnecallHourly extends Homey.Device {
                     var snow = data.snow['1h'];
                 }
                 // Sometimes OWM returns an empty snow object
-                if (Object.keys(data.current.snow).length == 0) {
+                if (Object.keys(data.snow).length == 0) {
                     var snow = 0;
                 }
             }

@@ -139,7 +139,7 @@ class owmOnecallDaily extends Homey.Device {
             forecast_time = now.replace(',', '');;
         }
         else{
-            let now = new Date(data.dt*1000).toLocaleString('de-DE', 
+            let now = new Date(data.dt*1000).toLocaleString('en-US', 
                 { 
                     hour12: false, 
                     timeZone: tz,
@@ -198,7 +198,7 @@ class owmOnecallDaily extends Homey.Device {
         // var visibility = data.visibility;
         var pop = Math.round(data.pop * 100);
 
-        let sunr = new Date(data.sunrise*1000).toLocaleString('de-DE', 
+        let sunr = new Date(data.sunrise*1000).toLocaleString('en-US', 
         { 
             hour12: false, 
             timeZone: tz,
@@ -210,7 +210,7 @@ class owmOnecallDaily extends Homey.Device {
         });
         let sunrise = sunr.split(", ")[1];
 
-        let suns = new Date(data.sunset*1000).toLocaleString('de-DE', 
+        let suns = new Date(data.sunset*1000).toLocaleString('en-US', 
         { 
             hour12: false, 
             timeZone: tz,
@@ -222,7 +222,7 @@ class owmOnecallDaily extends Homey.Device {
         });
         let sunset = suns.split(", ")[1];
 
-        let moonr = new Date(data.moonrise*1000).toLocaleString('de-DE', 
+        let moonr = new Date(data.moonrise*1000).toLocaleString('en-US', 
         { 
             hour12: false, 
             timeZone: tz,
@@ -234,7 +234,7 @@ class owmOnecallDaily extends Homey.Device {
         });
         let moonrise = moonr.split(", ")[1];
 
-        let moons = new Date(data.moonset*1000).toLocaleString('de-DE', 
+        let moons = new Date(data.moonset*1000).toLocaleString('en-US', 
         { 
             hour12: false, 
             timeZone: tz,
@@ -292,7 +292,7 @@ class owmOnecallDaily extends Homey.Device {
                     var snow = data.snow['1h'];
                 }
                 // Sometimes OWM returns an empty snow object
-                if (Object.keys(data.current.snow).length == 0) {
+                if (Object.keys(data.snow).length == 0) {
                     var snow = 0;
                 }
             }

@@ -236,7 +236,7 @@ class owmCurrent extends Homey.Device {
                     lastUpdate = 'Last update: ' + now.replace(',', '');
                 }
                 else{
-                    let now = new Date(data.current.dt*1000).toLocaleString('de-DE', 
+                    let now = new Date(data.current.dt*1000).toLocaleString('en-US', 
                         { 
                             hour12: false, 
                             timeZone: tz,
@@ -251,7 +251,7 @@ class owmCurrent extends Homey.Device {
                     let time = now.split(", ")[1];
                     forecast_time = date + " " + time;
 
-                    now = new Date().toLocaleString('de-DE', 
+                    now = new Date().toLocaleString('en-US', 
                     { 
                         hour12: false, 
                         timeZone: tz,
@@ -373,7 +373,7 @@ class owmCurrent extends Homey.Device {
 
                 // var sunr = new Date(data.current.sunrise * 1e3);
                 // var sunrise = sunr.getHours() + ":" + (sunr.getMinutes() < 10 ? '0' : '') + sunr.getMinutes();
-                let sunr = new Date(data.current.sunrise*1000).toLocaleString('de-DE', 
+                let sunr = new Date(data.current.sunrise*1000).toLocaleString('en-US', 
                 { 
                     hour12: false, 
                     timeZone: tz,
@@ -387,7 +387,7 @@ class owmCurrent extends Homey.Device {
 
                 // var suns = new Date(data.current.sunset * 1e3);
                 // var sunset = suns.getHours() + ":" + (suns.getMinutes() < 10 ? '0' : '') + suns.getMinutes();
-                let suns = new Date(data.current.sunset*1000).toLocaleString('de-DE', 
+                let suns = new Date(data.current.sunset*1000).toLocaleString('en-US', 
                 { 
                     hour12: false, 
                     timeZone: tz,

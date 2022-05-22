@@ -44,9 +44,21 @@ class owmForecast extends Homey.Device {
 
         this._flowTriggerSnowChanged = this.homey.flow.getDeviceTriggerCard('SnowChanged');
 
+        await this.updateCapabilities();
+
         // start polling
         this.pollWeatherHourly(settings);
     } // end onInit
+
+    async updateCapabilities(){
+        // add new capabilities
+        if (!this.hasCapability('measure_temperature.min')){
+            await this.addCapability('measure_temperature.min');
+        }
+        if (!this.hasCapability('measure_temperature.max')){
+            await this.addCapability('measure_temperature.max');
+        }
+    }
 
     onAdded() {
         let id = this.getData().id;
@@ -94,11 +106,13 @@ class owmForecast extends Homey.Device {
                 var conditioncode_detail = data.list[forecastInterval].weather[0].id;
                 this.log("Specific conditioncode: " + data.list[forecastInterval].weather[0].id);
 
-                var temp = data.list[forecastInterval].main.temp
-                var pressure = data.list[forecastInterval].main.pressure
-                var hum = data.list[forecastInterval].main.humidity
-                var cloudiness = data.list[forecastInterval].clouds.all
-                var description = data.list[forecastInterval].weather[0].description
+                var temp = data.list[forecastInterval].main.temp;
+                var temp_min = data.list[forecastInterval].main.temp_min;
+                var temp_max = data.list[forecastInterval].main.temp_max;
+                var pressure = data.list[forecastInterval].main.pressure;
+                var hum = data.list[forecastInterval].main.humidity;
+                var cloudiness = data.list[forecastInterval].clouds.all;
+                var description = data.list[forecastInterval].weather[0].description;
 
                 if (data.list[forecastInterval].snow != undefined) {
                     if (typeof (data.list[forecastInterval].snow) === "number") {
@@ -160,10 +174,10 @@ class owmForecast extends Homey.Device {
                 if (settings["units"] == "metric") {
                     // convert to beaufort and concatenate in a string with wind direction
                     var windspeedbeaufort = weather.beaufortFromKmh(windstrength);
-                    var windcombined = weather.degToCompass(settings, windangle) + " " + weather.beaufortFromKmh(windstrength)
+                    var windcombined = weather.degToCompass(windangle) + " " + weather.beaufortFromKmh(windstrength)
                 } else {
                     var windspeedbeaufort = weather.beaufortFromMph(windstrength);
-                    var windcombined = weather.degToCompass(settings, windangle) + " " + weather.beaufortFromMph(windstrength)
+                    var windcombined = weather.degToCompass(windangle) + " " + weather.beaufortFromMph(windstrength)
                 }
 
                 this.log("Comparing variables before and after current polling interval");
@@ -257,6 +271,8 @@ class owmForecast extends Homey.Device {
                     'conditioncode': conditioncode,
                     'conditioncode_detail': conditioncode_detail,
                     'measure_temperature': temp,
+                    'measure_temperature.max': temp_max,
+                    'measure_temperature.min': temp_min,
                     'measure_humidity': hum,
                     'measure_pressure': pressure,
                     'measure_rain': rain,

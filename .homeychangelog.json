@@ -122,5 +122,9 @@
   "1.1.14": {
     "en": "Small fixes for timezone.",
     "de": "Kleine Fehlerkorrektur zur Zeitzone."
+  },
+  "1.1.15": {
+    "en": "Fix for deprecated devices: min/max temperature for hourly forecast, wind direction for hourly/daily forecast.",
+    "de": "Korrektur für veraltete Geräte: Min/Max-Temp. für stündl.Vorhersage, Windrichtugn für stündl./tägl.Vorhersage."
   }
 }

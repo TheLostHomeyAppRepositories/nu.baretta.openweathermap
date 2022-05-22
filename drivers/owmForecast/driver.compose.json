@@ -14,6 +14,8 @@
     "connectivity": [ "cloud" ],
     "capabilities": [
         "measure_temperature",
+        "measure_temperature.max",
+        "measure_temperature.min",
         "measure_humidity",
         "measure_pressure",
         "measure_rain",

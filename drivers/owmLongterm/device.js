@@ -179,10 +179,10 @@ class owmLongterm extends Homey.Device {
                 if (settings["units"] == "metric") {
                     // convert to beaufort and concatenate in a string with wind direction
                     var windspeedbeaufort = weather.beaufortFromKmh(windstrength);
-                    var windcombined = weather.degToCompass(settings, windangle) + " " + weather.beaufortFromKmh(windstrength)
+                    var windcombined = weather.degToCompass(windangle) + " " + weather.beaufortFromKmh(windstrength)
                 } else {
                     var windspeedbeaufort = weather.beaufortFromMph(windstrength);
-                    var windcombined = weather.degToCompass(settings, windangle) + " " + weather.beaufortFromMph(windstrength)
+                    var windcombined = weather.degToCompass(windangle) + " " + weather.beaufortFromMph(windstrength)
                 }
 
                 this.log("Comparing variables before and after current polling interval");

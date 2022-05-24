@@ -126,5 +126,9 @@
   "1.1.15": {
     "en": "Fix for deprecated devices: min/max temperature for hourly forecast, wind direction for hourly/daily forecast.",
     "de": "Korrektur für veraltete Geräte: Min/Max-Temp. für stündl.Vorhersage, Windrichtugn für stündl./tägl.Vorhersage."
+  },
+  "1.1.16": {
+    "en": "Fixed SO2 trigger. Please repair the flows because the trigger name has changed.",
+    "de": "Korrektur des SO2-Trigger. Bitte korrigiere die betroffenen Flows, da sich der Trigger-Name geändert hat."
   }
 }

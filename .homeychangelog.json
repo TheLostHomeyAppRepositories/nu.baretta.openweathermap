@@ -130,5 +130,9 @@
   "1.1.16": {
     "en": "Fixed SO2 trigger. Please repair the flows because the trigger name has changed.",
     "de": "Korrektur des SO2-Trigger. Bitte korrigiere die betroffenen Flows, da sich der Trigger-Name geändert hat."
+  },
+  "1.1.17": {
+    "en": "Added specific weather condition to 'highlighted trigger cards'. Simplified descriptions af weather condition capability and trigger.",
+    "de": "Spezifische Wetterlage zu 'hervorgehobene Triggerkarten' hinzugefügt. Bezeichnung von Wetterlage-Attribut unf -Trigger vereinfacht."
   }
 }

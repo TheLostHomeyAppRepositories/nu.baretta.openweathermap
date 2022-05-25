@@ -1,7 +1,7 @@
 {
   "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
   "id": "nu.baretta.openweathermap",
-  "version": "1.1.16",
+  "version": "1.1.17",
   "compatibility": ">=5.0.0",
   "sdk": 3,
   "name": {
@@ -131,14 +131,14 @@
         "id": "ConditionChanged",
         "highlight": true,
         "title": {
-          "en": "The main weathercondition has changed",
-          "de": "Die Wetterlage hat sich geändert",
-          "nl": "De weersomstandigheden zijn veranderd"
+          "en": "The weather has changed",
+          "de": "Das Wetter hat sich geändert",
+          "nl": "het weer is veranderd"
         },
         "hint": {
-          "en": "Triggers when the main condition category of the weather changes, e.g. from Clouds to Clear.",
-          "de": "Wird ausgelöst, wenn sich die Wetterlage des Wetters ändert, z.B. von Bewölkt zu Klar.",
-          "nl": "Triggert zodra de categorie van de weersomstandigheden veranderd, bijv. van Bewolkt naar Helder."
+          "en": "Triggers when the weather (main weather condition) changes, e.g. from clouds to clear.",
+          "de": "Wird ausgelöst, wenn sich das Wetter (die Wetterlage) ändert, z.B. von bewölkt zu klar.",
+          "nl": "Wordt geactiveerd wanneer het weer (belangrijkste weersomstandigheden) verandert, b.v. van wolken tot helder."
         },
         "tokens": [
           {
@@ -147,7 +147,7 @@
             "title": {
               "en": "Weather condition",
               "de": "Wetterlage",
-              "nl": "Weersomstandigheid"
+              "nl": "Weerconditie"
             },
             "example": {
               "en": "Mist",
@@ -179,6 +179,7 @@
       },
       {
         "id": "ConditionDetailChanged",
+        "highlight": true,
         "title": {
           "en": "The specific weathercondition has changed",
           "de": "Die spezifische Wetterlage hat sich geändert",
@@ -2034,9 +2035,9 @@
           "nl": "Het weer !{{is|is niet}} [[argument_main]]"
         },
         "hint": {
-          "en": "Broad description of the weather.",
-          "de": "Wetter-Bezeichnung, z.B. 'Bewölkt'",
-          "nl": "Algemene beschrijving van het weer."
+          "en": "Weather condition, e.g. 'Cloudy'",
+          "de": "Wetterlage, z.B. 'Bewölkt'",
+          "nl": "Weersomstandigheden, bijv. 'Bewolkt'"
         },
         "args": [
           {
@@ -2135,19 +2136,19 @@
       {
         "id": "Conditioncode_detail",
         "title": {
-          "en": "The weather in detail !{{is|isn't}}",
-          "de": "Die Wetterlage !{{ist|ist nicht}}",
-          "nl": "Het weer in detail !{{is|is niet}}"
+          "en": "Specific weather conditions !{{is|isn't}}",
+          "de": "Spezifische Wetterlage !{{ist|ist nicht}}",
+          "nl": "Specifieke weersomstandigheden !{{is|is niet}}"
         },
         "titleFormatted": {
-          "en": "The weather in detail !{{is|isn't}} [[argument_main]]",
-          "de": "Die Wetterlage !{{ist|ist nicht}} [[argument_main]]",
-          "nl": "Het weer in detail !{{is|is niet}} [[argument_main]]"
+          "en": "Specific weather conditions !{{is|isn't}} [[argument_main]]",
+          "de": "Spezifische Wetterlage !{{ist|ist nicht}} [[argument_main]]",
+          "nl": "Specifieke weersomstandigheden !{{is|is niet}} [[argument_main]]"
         },
         "hint": {
-          "en": "Detailed description of the weather.",
-          "de": "Die Wetterlage, z.B. 'leichter Nieselregen'.",
-          "nl": "Gedetailleerde beschrijving van het weer."
+          "en": "The specific weather condition, e.g. 'light drizzle'.",
+          "de": "Die spezifische Wetterlage, z.B. 'leichter Nieselregen'.",
+          "nl": "De specifieke weersomstandigheden, bijvoorbeeld 'lichte motregen'."
         },
         "args": [
           {

@@ -11,9 +11,9 @@
         "nl": "Het weer !{{is|is niet}} [[argument_main]]"
     },
     "hint": {
-        "en": "Broad description of the weather.",
-        "de": "Wetter-Bezeichnung, z.B. 'Bewölkt'",
-        "nl": "Algemene beschrijving van het weer."
+        "en": "Weather condition, e.g. 'Cloudy'",
+        "de": "Wetterlage, z.B. 'Bewölkt'",
+        "nl": "Weersomstandigheden, bijv. 'Bewolkt'"
     },
     "args": [{
             "name": "argument_main",

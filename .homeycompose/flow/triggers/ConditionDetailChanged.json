@@ -1,5 +1,6 @@
 {
     "id": "ConditionDetailChanged",
+    "highlight": true,
     "title": {
         "en": "The specific weathercondition has changed",
         "de": "Die spezifische Wetterlage hat sich geändert",

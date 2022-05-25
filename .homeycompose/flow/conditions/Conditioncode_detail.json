@@ -1,19 +1,19 @@
 {
     "id": "Conditioncode_detail",
     "title": {
-        "en": "The weather in detail !{{is|isn't}}",
-        "de": "Die Wetterlage !{{ist|ist nicht}}",
-        "nl": "Het weer in detail !{{is|is niet}}"
+        "en": "Specific weather conditions !{{is|isn't}}",
+        "de": "Spezifische Wetterlage !{{ist|ist nicht}}",
+        "nl": "Specifieke weersomstandigheden !{{is|is niet}}"
     },
     "titleFormatted": {
-        "en": "The weather in detail !{{is|isn't}} [[argument_main]]",
-        "de": "Die Wetterlage !{{ist|ist nicht}} [[argument_main]]",
-        "nl": "Het weer in detail !{{is|is niet}} [[argument_main]]"
+        "en": "Specific weather conditions !{{is|isn't}} [[argument_main]]",
+        "de": "Spezifische Wetterlage !{{ist|ist nicht}} [[argument_main]]",
+        "nl": "Specifieke weersomstandigheden !{{is|is niet}} [[argument_main]]"
     },
     "hint": {
-        "en": "Detailed description of the weather.",
-        "de": "Die Wetterlage, z.B. 'leichter Nieselregen'.",
-        "nl": "Gedetailleerde beschrijving van het weer."
+        "en": "The specific weather condition, e.g. 'light drizzle'.",
+        "de": "Die spezifische Wetterlage, z.B. 'leichter Nieselregen'.",
+        "nl": "De specifieke weersomstandigheden, bijvoorbeeld 'lichte motregen'."
     },
     "args": [{
             "name": "argument_main",

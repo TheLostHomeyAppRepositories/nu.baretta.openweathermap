@@ -2,14 +2,14 @@
     "id": "ConditionChanged",
     "highlight": true,
     "title": {
-        "en": "The main weathercondition has changed",
-        "de": "Die Wetterlage hat sich geändert",
-        "nl": "De weersomstandigheden zijn veranderd"
+        "en": "The weather has changed",
+        "de": "Das Wetter hat sich geändert",
+        "nl": "het weer is veranderd"
     },
     "hint": {
-        "en": "Triggers when the main condition category of the weather changes, e.g. from Clouds to Clear.",
-        "de": "Wird ausgelöst, wenn sich die Wetterlage des Wetters ändert, z.B. von Bewölkt zu Klar.",
-        "nl": "Triggert zodra de categorie van de weersomstandigheden veranderd, bijv. van Bewolkt naar Helder."
+        "en": "Triggers when the weather (main weather condition) changes, e.g. from clouds to clear.",
+        "de": "Wird ausgelöst, wenn sich das Wetter (die Wetterlage) ändert, z.B. von bewölkt zu klar.",
+        "nl": "Wordt geactiveerd wanneer het weer (belangrijkste weersomstandigheden) verandert, b.v. van wolken tot helder."
     },
     "tokens": [{
             "name": "conditioncode",
@@ -17,7 +17,7 @@
             "title": {
                 "en": "Weather condition",
                 "de": "Wetterlage",
-                "nl": "Weersomstandigheid"
+                "nl": "Weerconditie"
             },
             "example": {
                 "en": "Mist",

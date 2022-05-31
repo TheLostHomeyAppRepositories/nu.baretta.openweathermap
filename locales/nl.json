@@ -36,7 +36,8 @@
          "geolocationError1": "Geen locatie gevonden.",
          "geolocationError2": "Controleer de plaatsnaam die je hebt ingevoerd.",
          "locationError1": "Er is geen weerlocatie beschikbaar.",
-         "locationError2": "Voeg eerst een apparaat toe voor 'Huidig ​​weer'."
+         "locationError2": "Voeg eerst een apparaat toe voor 'Huidig ​​weer'.",
+         "alert": "waarschuwingen"
       }
    },
    "device_unavailable_reason":{

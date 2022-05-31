@@ -1,0 +1,13 @@
+{
+    "type": "string",
+    "title": {
+        "en": "Alert 3: Start",
+        "de": "Warnung 3: Beginn",
+        "nl": "Waarschuwing 3: Begin"
+    },
+    "getable": true,
+    "setable": false,
+    "uiComponent": "sensor",
+    "insights": false,
+    "icon": "/assets/warning_time.svg"
+}

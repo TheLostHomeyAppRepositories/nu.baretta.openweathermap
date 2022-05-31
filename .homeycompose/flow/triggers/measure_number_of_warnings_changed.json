@@ -1,0 +1,32 @@
+{
+    "highlight": true,
+    "title": {
+        "en": "The number of warnings has changed",
+        "de": "Die Anzahl der Warnungen hat sich geändert",
+        "nl": "Het aantal waarschuwingen is gewijzigd"
+    },
+    "hint": {
+        "en": "The number of warnings has changed.",
+        "de": "Die Anzahl der Warnungen hat sich geändert.",
+        "nl": "Het aantal waarschuwingen is gewijzigd"
+    },
+    "args": [
+        {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=owmOnecallAlerts"
+        }
+    ],
+    "tokens": [
+        {
+            "name": "measure_number_of_warnings",
+            "type": "number",
+            "title": {
+                "en": "Number of warnings",
+                "de": "Anzahl der Warnungen",
+                "nl": "Aantal waarschuwingen"
+            },
+            "example": 1
+        }
+    ]
+}

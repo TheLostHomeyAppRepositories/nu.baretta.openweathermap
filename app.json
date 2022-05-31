@@ -1,7 +1,7 @@
 {
   "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
   "id": "nu.baretta.openweathermap",
-  "version": "1.1.17",
+  "version": "1.2.0",
   "compatibility": ">=5.0.0",
   "sdk": 3,
   "name": {
@@ -82,6 +82,48 @@
   },
   "flow": {
     "triggers": [
+      {
+        "highlight": true,
+        "title": {
+          "en": "Warning alarm has been deactivated",
+          "de": "Warnungs-Alarm wurde deaktiviert",
+          "nl": "Waarschuwingsalarm is gedeactiveerd"
+        },
+        "hint": {
+          "en": "The alarm in the device has been deactivated. This happens as soon as the last warning has been cleared.",
+          "de": "Der Alarm im Gerät wurde deaktiviert. Dies geschieht, sobald die letzte Warnung aufgehoben wurde.",
+          "nl": "Het alarm in het apparaat is gedeactiveerd. Dit gebeurt zodra de laatste waarschuwing is gewist."
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=owmOnecallAlerts"
+          }
+        ],
+        "id": "alarm_warnings_false"
+      },
+      {
+        "highlight": true,
+        "title": {
+          "en": "Warning alarm has been activated",
+          "de": "Warnungs-Alarm wurde aktiviert",
+          "nl": "Waarschuwingsalarm is geactiveerd"
+        },
+        "hint": {
+          "en": "The alarm in the device has been activated. This happens as soon as the first warning is reported.",
+          "de": "Der Alarm im Gerät wurde aktiviert. Dies geschieht, sobald die erste Warnung gemeldet wird.",
+          "nl": "Het alarm in het apparaat is geactiveerd. Dit gebeurt zodra de eerste waarschuwing wordt gemeld."
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=owmOnecallAlerts"
+          }
+        ],
+        "id": "alarm_warnings_true"
+      },
       {
         "id": "CloudinessChanged",
         "title": {
@@ -701,6 +743,39 @@
           }
         ],
         "id": "measure_forecast_time_changed"
+      },
+      {
+        "highlight": true,
+        "title": {
+          "en": "The number of warnings has changed",
+          "de": "Die Anzahl der Warnungen hat sich geändert",
+          "nl": "Het aantal waarschuwingen is gewijzigd"
+        },
+        "hint": {
+          "en": "The number of warnings has changed.",
+          "de": "Die Anzahl der Warnungen hat sich geändert.",
+          "nl": "Het aantal waarschuwingen is gewijzigd"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=owmOnecallAlerts"
+          }
+        ],
+        "tokens": [
+          {
+            "name": "measure_number_of_warnings",
+            "type": "number",
+            "title": {
+              "en": "Number of warnings",
+              "de": "Anzahl der Warnungen",
+              "nl": "Aantal waarschuwingen"
+            },
+            "example": 1
+          }
+        ],
+        "id": "measure_number_of_warnings_changed"
       },
       {
         "id": "MintempChanged",
@@ -1713,6 +1788,21 @@
         ]
       },
       {
+        "title": {
+          "en": "The alerts have changed",
+          "de": "Die Warnungen haben sich geändert",
+          "nl": "De waarschuwingen zijn veranderd"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=owmOnecallAlerts"
+          }
+        ],
+        "id": "warning_hash_changed"
+      },
+      {
         "id": "WeatherChanged",
         "highlight": true,
         "title": {
@@ -1993,6 +2083,21 @@
       }
     ],
     "conditions": [
+      {
+        "title": {
+          "en": "Warnings !{{are|aren't}} present",
+          "de": "Warnungen !{{sind|sind nicht}} vorhanden",
+          "nl": "Waarschuwingen !{{is|is niet}} aanwezig"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=owmOnecallAlerts"
+          }
+        ],
+        "id": "alarm_warnings"
+      },
       {
         "id": "Clouds",
         "title": {
@@ -2867,6 +2972,35 @@
           }
         ],
         "id": "measure_ap_so2"
+      },
+      {
+        "title": {
+          "en": "Number of warnings !{{is|isn't}} higher than",
+          "de": "Anzahl der Warnungen !{{ist|ist nicht}} größer als",
+          "nl": "Aantal waarschuwingen !{{is|is niet}} hoger dan"
+        },
+        "titleFormatted": {
+          "en": "Number of warnings !{{is|isn't}} higher than [[value]]",
+          "de": "Anzahl der Warnungen !{{ist|ist nicht}} größer als [[value]]",
+          "nl": "Aantal waarschuwingen !{{is|is niet}} hoger dan [[value]]"
+        },
+        "hint": {
+          "en": "Number of warnings (1..5)",
+          "de": "Anzahl der Warnungen (1..5)",
+          "nl": "Aantal waarschuwingen (1..5)"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=owmOnecallAlerts"
+          },
+          {
+            "name": "value",
+            "type": "number"
+          }
+        ],
+        "id": "measure_number_of_warnings"
       },
       {
         "id": "Moonphase",
@@ -4357,6 +4491,94 @@
       ]
     },
     {
+      "id": "owmOnecallAlerts",
+      "name": {
+        "en": "Weather alerts",
+        "de": "Wetter-Warnungen",
+        "nl": "Weerwaarschuwingen"
+      },
+      "images": {
+        "large": "/drivers/owmOnecallAlerts/assets/images/large.png",
+        "small": "/drivers/owmOnecallAlerts/assets/images/small.png"
+      },
+      "class": "sensor",
+      "connectivity": [
+        "cloud"
+      ],
+      "capabilities": [
+        "alarm_warnings",
+        "measure_number_of_warnings",
+        "warnings_hash",
+        "warnings_01_start",
+        "warnings_01_end",
+        "warnings_01_event",
+        "warnings_01_tags",
+        "warnings_01_description",
+        "warnings_02_start",
+        "warnings_02_end",
+        "warnings_02_event",
+        "warnings_02_tags",
+        "warnings_02_description",
+        "warnings_03_start",
+        "warnings_03_end",
+        "warnings_03_event",
+        "warnings_03_tags",
+        "warnings_03_description",
+        "warnings_04_start",
+        "warnings_04_end",
+        "warnings_04_event",
+        "warnings_04_tags",
+        "warnings_04_description",
+        "warnings_05_start",
+        "warnings_05_end",
+        "warnings_05_event",
+        "warnings_05_tags",
+        "warnings_05_description"
+      ],
+      "pair": [
+        {
+          "id": "list_my_devices",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_my_devices"
+          },
+          "options": {
+            "singular": true
+          }
+        },
+        {
+          "id": "location_error",
+          "navigation": {}
+        },
+        {
+          "id": "add_my_devices",
+          "template": "add_devices"
+        }
+      ],
+      "settings": [
+        {
+          "type": "group",
+          "label": {
+            "en": "OpenWeatherMap alerts",
+            "de": "OpenWeatherMap Warnungen",
+            "nl": "OpenWeatherMap waarschuwingen"
+          },
+          "children": [
+            {
+              "id": "location",
+              "type": "label",
+              "value": "",
+              "label": {
+                "en": "Linked location :",
+                "de": "Verknüpfter Standort:",
+                "nl": "Gelinkte locatie :"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
       "id": "owmOnecallCurrent",
       "name": {
         "en": "Weather, current (location)",
@@ -4753,6 +4975,29 @@
     }
   ],
   "capabilities": {
+    "alarm_warnings": {
+      "type": "boolean",
+      "title": {
+        "en": "Warnings present",
+        "de": "Warnungen vorhanden",
+        "nl": "Waarschuwingen aanwezig"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "insights": true,
+      "insightsTitleTrue": {
+        "en": "Warnings present",
+        "de": "Warnungen vorhanden",
+        "nl": "Waarschuwingen aanwezig"
+      },
+      "insightsTitleFalse": {
+        "en": "Warnings not present",
+        "de": "Keine Warnungen vorhanden",
+        "nl": "Waarschuwingen niet aanwezig"
+      },
+      "icon": "/assets/alarm_warnings.svg"
+    },
     "conditioncode": {
       "type": "enum",
       "title": {
@@ -5526,6 +5771,19 @@
       },
       "icon": "/assets/measure_humidity.svg"
     },
+    "measure_number_of_warnings": {
+      "type": "number",
+      "title": {
+        "en": "Number of warnings",
+        "de": "Anzahl der Warnungen",
+        "nl": "Aantal waarschuwingen"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "insights": true,
+      "icon": "/assets/measure_number_of_warnings.svg"
+    },
     "measure_pop": {
       "type": "number",
       "label": {
@@ -6037,6 +6295,344 @@
       "getable": true,
       "setable": false,
       "icon": "/assets/sunset.svg"
+    },
+    "warnings_01_description": {
+      "type": "string",
+      "title": {
+        "en": "Alert 1: Description",
+        "de": "Warnung 1: Beschreibung",
+        "nl": "Waarschuwing 1: Omschrijving"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": null,
+      "insights": false,
+      "icon": "/assets/warning_description.svg"
+    },
+    "warnings_01_end": {
+      "type": "string",
+      "title": {
+        "en": "Alert 1: End",
+        "de": "Warnung 1: Ende",
+        "nl": "Waarschuwing 1: Einde"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "insights": false,
+      "icon": "/assets/warning_time.svg"
+    },
+    "warnings_01_event": {
+      "type": "string",
+      "title": {
+        "en": "Alert 1: Event",
+        "de": "Warnung 1: Ereignis",
+        "nl": "Waarschuwing 1: Evenement"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "insights": false,
+      "icon": "/assets/warning_event.svg"
+    },
+    "warnings_01_start": {
+      "type": "string",
+      "title": {
+        "en": "Alert 1: Start",
+        "de": "Warnung 1: Beginn",
+        "nl": "Waarschuwing 1: Begin"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "insights": false,
+      "icon": "/assets/warning_time.svg"
+    },
+    "warnings_01_tags": {
+      "type": "string",
+      "title": {
+        "en": "Alert 1: Tags",
+        "de": "Warnung 1: Tags",
+        "nl": "Waarschuwing 1: Label"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "insights": false,
+      "icon": "/assets/warning_tag.svg"
+    },
+    "warnings_02_description": {
+      "type": "string",
+      "title": {
+        "en": "Alert 2: Description",
+        "de": "Warnung 2: Beschreibung",
+        "nl": "Waarschuwing 2: Omschrijving"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": null,
+      "insights": false,
+      "icon": "/assets/warning_description.svg"
+    },
+    "warnings_02_end": {
+      "type": "string",
+      "title": {
+        "en": "Alert 2: End",
+        "de": "Warnung 2: Ende",
+        "nl": "Waarschuwing 2: Einde"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "insights": false,
+      "icon": "/assets/warning_time.svg"
+    },
+    "warnings_02_event": {
+      "type": "string",
+      "title": {
+        "en": "Alert 2: Event",
+        "de": "Warnung 2: Ereignis",
+        "nl": "Waarschuwing 2: Evenement"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "insights": false,
+      "icon": "/assets/warning_event.svg"
+    },
+    "warnings_02_start": {
+      "type": "string",
+      "title": {
+        "en": "Alert 2: Start",
+        "de": "Warnung 2: Beginn",
+        "nl": "Waarschuwing 2: Begin"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "insights": false,
+      "icon": "/assets/warning_time.svg"
+    },
+    "warnings_02_tags": {
+      "type": "string",
+      "title": {
+        "en": "Alert 2: Tags",
+        "de": "Warnung 2: Tags",
+        "nl": "Waarschuwing 2: Label"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "insights": false,
+      "icon": "/assets/warning_tag.svg"
+    },
+    "warnings_03_description": {
+      "type": "string",
+      "title": {
+        "en": "Alert 3: Description",
+        "de": "Warnung 3: Beschreibung",
+        "nl": "Waarschuwing 3: Omschrijving"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": null,
+      "insights": false,
+      "icon": "/assets/warning_description.svg"
+    },
+    "warnings_03_end": {
+      "type": "string",
+      "title": {
+        "en": "Alert 3: End",
+        "de": "Warnung 3: Ende",
+        "nl": "Waarschuwing 3: Einde"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "insights": false,
+      "icon": "/assets/warning_time.svg"
+    },
+    "warnings_03_event": {
+      "type": "string",
+      "title": {
+        "en": "Alert 3: Event",
+        "de": "Warnung 3: Ereignis",
+        "nl": "Waarschuwing 3: Evenement"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "insights": false,
+      "icon": "/assets/warning_event.svg"
+    },
+    "warnings_03_start": {
+      "type": "string",
+      "title": {
+        "en": "Alert 3: Start",
+        "de": "Warnung 3: Beginn",
+        "nl": "Waarschuwing 3: Begin"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "insights": false,
+      "icon": "/assets/warning_time.svg"
+    },
+    "warnings_03_tags": {
+      "type": "string",
+      "title": {
+        "en": "Alert 3: Tags",
+        "de": "Warnung 3: Tags",
+        "nl": "Waarschuwing 3: Label"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "insights": false,
+      "icon": "/assets/warning_tag.svg"
+    },
+    "warnings_04_description": {
+      "type": "string",
+      "title": {
+        "en": "Alert 4: Description",
+        "de": "Warnung 4: Beschreibung",
+        "nl": "Waarschuwing 4: Omschrijving"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": null,
+      "insights": false,
+      "icon": "/assets/warning_description.svg"
+    },
+    "warnings_04_end": {
+      "type": "string",
+      "title": {
+        "en": "Alert 4: End",
+        "de": "Warnung 4: Ende",
+        "nl": "Waarschuwing 4: Einde"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "insights": false,
+      "icon": "/assets/warning_time.svg"
+    },
+    "warnings_04_event": {
+      "type": "string",
+      "title": {
+        "en": "Alert 4: Event",
+        "de": "Warnung 4: Ereignis",
+        "nl": "Waarschuwing 4: Evenement"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "insights": false,
+      "icon": "/assets/warning_event.svg"
+    },
+    "warnings_04_start": {
+      "type": "string",
+      "title": {
+        "en": "Alert 4: Start",
+        "de": "Warnung 4: Beginn",
+        "nl": "Waarschuwing 4: Begin"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "insights": false,
+      "icon": "/assets/warning_time.svg"
+    },
+    "warnings_04_tags": {
+      "type": "string",
+      "title": {
+        "en": "Alert 4: Tags",
+        "de": "Warnung 4: Tags",
+        "nl": "Waarschuwing 4: Label"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "insights": false,
+      "icon": "/assets/warning_tag.svg"
+    },
+    "warnings_05_description": {
+      "type": "string",
+      "title": {
+        "en": "Alert 5: Description",
+        "de": "Warnung 5: Beschreibung",
+        "nl": "Waarschuwing 5: Omschrijving"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": null,
+      "insights": false,
+      "icon": "/assets/warning_description.svg"
+    },
+    "warnings_05_end": {
+      "type": "string",
+      "title": {
+        "en": "Alert 5: End",
+        "de": "Warnung 5: Ende",
+        "nl": "Waarschuwing 5: Einde"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "insights": false,
+      "icon": "/assets/warning_time.svg"
+    },
+    "warnings_05_event": {
+      "type": "string",
+      "title": {
+        "en": "Alert 5: Event",
+        "de": "Warnung 5: Ereignis",
+        "nl": "Waarschuwing 5: Evenement"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "insights": false,
+      "icon": "/assets/warning_event.svg"
+    },
+    "warnings_05_start": {
+      "type": "string",
+      "title": {
+        "en": "Alert 5: Start",
+        "de": "Warnung 5: Beginn",
+        "nl": "Waarschuwing 5: Begin"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "insights": false,
+      "icon": "/assets/warning_time.svg"
+    },
+    "warnings_05_tags": {
+      "type": "string",
+      "title": {
+        "en": "Alert 5: Tags",
+        "de": "Warnung 5: Tags",
+        "nl": "Waarschuwing 5: Label"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "insights": false,
+      "icon": "/assets/warning_tag.svg"
+    },
+    "warnings_hash": {
+      "type": "string",
+      "title": {
+        "en": "Alerts (hash value)",
+        "de": "Warnungen (Hash-Wert)",
+        "nl": "Waarschuwingen (hash-waarde)"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": null,
+      "insights": false,
+      "icon": "/assets/measure_number_of_warnings.svg"
     }
   }
 }

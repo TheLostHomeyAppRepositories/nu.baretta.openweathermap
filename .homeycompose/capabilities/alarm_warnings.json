@@ -1,0 +1,23 @@
+{
+    "type": "boolean",
+    "title": {
+        "en": "Warnings present",
+        "de": "Warnungen vorhanden",
+        "nl": "Waarschuwingen aanwezig"
+    },
+    "getable": true,
+    "setable": false,
+    "uiComponent": "sensor",
+    "insights": true,
+    "insightsTitleTrue": { 
+        "en": "Warnings present",
+        "de": "Warnungen vorhanden",
+        "nl": "Waarschuwingen aanwezig"
+    },
+    "insightsTitleFalse": { 
+        "en": "Warnings not present",
+        "de": "Keine Warnungen vorhanden",
+        "nl": "Waarschuwingen niet aanwezig"
+    },
+    "icon": "/assets/alarm_warnings.svg"
+}

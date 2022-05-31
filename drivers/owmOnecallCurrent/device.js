@@ -705,12 +705,18 @@ class owmCurrent extends Homey.Device {
                         // .catch(err => this.error(err));;
                 }
 
-                // Update Hourly/daily
+                // Update Hourly/daily/alerts
                 if (data.hourly){
                     await this.updateChildHourly(data.hourly)
                 }
                 if (data.daily){
                     await this.updateChildDaily(data.daily)
+                }
+                if (data.alerts){
+                    await this.updateChildAlerts(data.alerts)
+                }
+                else{
+                    await this.updateChildAlerts([])
                 }
             })
             .catch(error => {
@@ -729,6 +735,15 @@ class owmCurrent extends Homey.Device {
 
     async updateChildDaily(data){
         let devices = this.homey.drivers.getDriver('owmOnecallDaily').getDevices();
+        for (let i=0; i<devices.length; i++){
+            if (devices[i].getData().locationId == this.getData().id){
+                devices[i].updateDevice(data)
+            }
+        }
+    }
+
+    async updateChildAlerts(data){
+        let devices = this.homey.drivers.getDriver('owmOnecallAlerts').getDevices();
         for (let i=0; i<devices.length; i++){
             if (devices[i].getData().locationId == this.getData().id){
                 devices[i].updateDevice(data)

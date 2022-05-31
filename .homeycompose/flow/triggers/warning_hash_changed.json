@@ -1,0 +1,14 @@
+{
+    "title": {
+        "en": "The alerts have changed",
+        "de": "Die Warnungen haben sich geändert",
+        "nl": "De waarschuwingen zijn veranderd"
+    },
+    "args": [
+        {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=owmOnecallAlerts"
+        }
+    ]
+}

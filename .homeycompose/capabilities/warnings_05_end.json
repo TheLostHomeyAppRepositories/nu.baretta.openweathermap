@@ -1,0 +1,13 @@
+{
+    "type": "string",
+    "title": {
+        "en": "Alert 5: End",
+        "de": "Warnung 5: Ende",
+        "nl": "Waarschuwing 5: Einde"
+    },
+    "getable": true,
+    "setable": false,
+    "uiComponent": "sensor",
+    "insights": false,
+    "icon": "/assets/warning_time.svg"
+}

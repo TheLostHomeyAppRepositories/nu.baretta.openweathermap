@@ -134,5 +134,9 @@
   "1.1.17": {
     "en": "Added specific weather condition to 'highlighted trigger cards'. Simplified descriptions af weather condition capability and trigger.",
     "de": "Spezifische Wetterlage zu 'hervorgehobene Triggerkarten' hinzugefügt. Bezeichnung von Wetterlage-Attribut unf -Trigger vereinfacht."
+  },
+  "1.2.0": {
+    "en": "Added weather alerts. Add a warning device to a location and receive warnings in difficult weather conditions.",
+    "de": "Wetter-Warnungen hinzugefügt. Ergänze ein Warn-Gerät für einen Standort und erhalte Warnungen bei schwierigen Wetterbedingungen."
   }
 }

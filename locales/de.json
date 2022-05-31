@@ -36,7 +36,8 @@
          "geolocationError1": "Es wurde kein Standort gefunden.",
          "geolocationError2": "Bitte prüfe den eingegebenen Name der Stadt.",
          "locationError1": "Es ist kein Wetter-Standort vorhanden.",
-         "locationError2": "Bitte füge zuerst ein Gerät für 'Aktuelles Wetter' ein."
+         "locationError2": "Bitte füge zuerst ein Gerät für 'Aktuelles Wetter' ein.",
+         "alert": "Warnungen"
       }
    },
    "device_unavailable_reason":{

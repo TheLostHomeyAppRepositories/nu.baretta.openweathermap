@@ -1,0 +1,13 @@
+{
+    "title": {
+        "en": "Warnings !{{are|aren't}} present",
+        "de": "Warnungen !{{sind|sind nicht}} vorhanden",
+        "nl": "Waarschuwingen !{{is|is niet}} aanwezig"
+    },
+    "args": [{
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=owmOnecallAlerts"
+        }
+    ]
+}

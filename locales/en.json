@@ -36,7 +36,8 @@
          "geolocationError1": "No location found.",
          "geolocationError2": "Please check the city name you entered.",
          "locationError1": "There is no weather location available.",
-         "locationError2": "Please add a device for 'Current Weather' first."
+         "locationError2": "Please add a device for 'Current Weather' first.",
+         "alert": "alerts"
       }
    },
    "device_unavailable_reason":{

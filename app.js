@@ -191,6 +191,16 @@ class openWeatherMap extends Homey.App {
         return (args.device.getCapabilityValue('measure_ap_so2') > args.value);
       })
 
+      // Flow Conditions for Alerts devices 
+      this._measure_number_of_warningsCondition = this.homey.flow.getConditionCard("measure_number_of_warnings")
+      .registerRunListener(async (args, state) => {
+        return (args.device.getCapabilityValue('measure_number_of_warnings') > args.value);
+      })
+      this._measure_alarm_warningsCondition = this.homey.flow.getConditionCard("alarm_warnings")
+      .registerRunListener(async (args, state) => {
+        return (args.device.getCapabilityValue('alarm_warnings'));
+      })
+
       // Register Flow-Action-Listener
       // Single device update for OWM-current and AirPollutionCurrent 
       this._flowActionUpdateDevice = this.homey.flow.getActionCard('update_device');

@@ -1,0 +1,13 @@
+{
+    "type": "string",
+    "title": {
+        "en": "Alert 3: Event",
+        "de": "Warnung 3: Ereignis",
+        "nl": "Waarschuwing 3: Evenement"
+    },
+    "getable": true,
+    "setable": false,
+    "uiComponent": "sensor",
+    "insights": false,
+    "icon": "/assets/warning_event.svg"
+}

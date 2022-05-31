@@ -1,0 +1,13 @@
+{
+    "type": "string",
+    "title": {
+        "en": "Alerts (hash value)",
+        "de": "Warnungen (Hash-Wert)",
+        "nl": "Waarschuwingen (hash-waarde)"
+    },
+    "getable": true,
+    "setable": false,
+    "uiComponent": null,
+    "insights": false,
+    "icon": "/assets/measure_number_of_warnings.svg"
+}

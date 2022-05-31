@@ -1,0 +1,13 @@
+{
+    "type": "string",
+    "title": {
+        "en": "Alert 4: Tags",
+        "de": "Warnung 4: Tags",
+        "nl": "Waarschuwing 4: Label"
+    },
+    "getable": true,
+    "setable": false,
+    "uiComponent": "sensor",
+    "insights": false,
+    "icon": "/assets/warning_tag.svg"
+}

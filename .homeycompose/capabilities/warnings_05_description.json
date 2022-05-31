@@ -1,0 +1,13 @@
+{
+    "type": "string",
+    "title": {
+        "en": "Alert 5: Description",
+        "de": "Warnung 5: Beschreibung",
+        "nl": "Waarschuwing 5: Omschrijving"
+    },
+    "getable": true,
+    "setable": false,
+    "uiComponent": null,
+    "insights": false,
+    "icon": "/assets/warning_description.svg"
+}

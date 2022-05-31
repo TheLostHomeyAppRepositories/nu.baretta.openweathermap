@@ -1,0 +1,21 @@
+[{
+    "type": "group",
+    "label": {
+        "en": "OpenWeatherMap alerts",
+        "de": "OpenWeatherMap Warnungen",
+        "nl": "OpenWeatherMap waarschuwingen"
+    },
+    "children": [
+        {
+            "id": "location",
+            "type": "label",
+            "value": "",
+            "label": {
+                "en": "Linked location :",
+                "de": "Verknüpfter Standort:",
+                "nl": "Gelinkte locatie :"
+            }
+        }
+    ]
+}
+]

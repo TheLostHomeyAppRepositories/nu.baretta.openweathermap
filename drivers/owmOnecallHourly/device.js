@@ -62,6 +62,10 @@ class owmOnecallHourly extends Homey.Device {
         if (!this.hasCapability('measure_dew_point')){
             await this.addCapability('measure_dew_point');
         }
+        if (!this.hasCapability('conditioncode_text')){
+            await this.addCapability('conditioncode_text');
+        }
+
     }
 
     async checkParentDevice(){
@@ -181,6 +185,8 @@ class owmOnecallHourly extends Homey.Device {
 
         var conditioncode = data.weather[0].main;
         this.log("Main conditioncode: " + data.weather[0].main);
+        var conditioncodeText = this.homey.app.getConditioncodeText(conditioncode);
+
         var conditioncode_detail = data.weather[0].id.toString();
         var conditioncode_detail_number = data.weather[0].id;
         this.log("Specific conditioncode: " + data.weather[0].id);
@@ -538,6 +544,7 @@ class owmOnecallHourly extends Homey.Device {
         this.setCapabilityValue("forecast_time", forecast_time);
         this.setCapabilityValue("description", description);
         this.setCapabilityValue("conditioncode", conditioncode);
+        this.setCapabilityValue("conditioncode_text", conditioncodeText);
         this.setCapabilityValue("conditioncode_detail", conditioncode_detail);
         this.setCapabilityValue("measure_temperature", temp).catch(err => this.err(err));
         this.setCapabilityValue("measure_temperature_feelslike", temp_feelslike);

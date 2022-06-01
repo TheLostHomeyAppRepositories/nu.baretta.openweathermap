@@ -91,6 +91,9 @@ class owmCurrent extends Homey.Device {
         if (!this.hasCapability('measure_dew_point')){
             await this.addCapability('measure_dew_point');
         }
+        if (!this.hasCapability('conditioncode_text')){
+            await this.addCapability('conditioncode_text');
+        }
 
     }
 
@@ -202,6 +205,7 @@ class owmCurrent extends Homey.Device {
 
                 var conditioncode = data.current.weather[0].main;
                 this.log("Main conditioncode: " + data.current.weather[0].main);
+                var conditioncodeText = this.homey.app.getConditioncodeText(conditioncode);
 
                 var conditioncode_detail = data.current.weather[0].id.toString();
                 var conditioncode_detail_number = data.current.weather[0].id;
@@ -666,6 +670,7 @@ class owmCurrent extends Homey.Device {
                 const capabilitySet = {
                     'forecast_time': forecast_time,
                     'conditioncode': conditioncode,
+                    'conditioncode_text': conditioncodeText,
                     'conditioncode_detail': conditioncode_detail,
                     'measure_temperature': temp,
                     "measure_temperature_feelslike": temp_feelslike,

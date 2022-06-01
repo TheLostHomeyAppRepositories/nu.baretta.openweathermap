@@ -1,0 +1,12 @@
+{
+    "type": "string",
+    "title": {
+        "en": "Weather condition description",
+        "de": "Wetterlage Bezeichnung",
+        "nl": "Weerconditie aanduiding"
+    },
+    "uiComponent": null,
+    "getable": true,
+    "setable": false,
+    "icon": "/assets/conditioncode.svg"
+}

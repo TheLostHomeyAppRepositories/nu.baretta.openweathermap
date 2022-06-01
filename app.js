@@ -223,6 +223,14 @@ class openWeatherMap extends Homey.App {
       return this.dateLocalization;
     }
 
+    getConditioncodeText(conditioncode){
+      let condlist = this.manifest.capabilities.conditioncode.values;
+      let cond = condlist.find(cond => cond.id == conditioncode);
+      let lang = this.homey.i18n.getLanguage();
+      let condText = cond.title[lang];
+      return condText;
+    }
+
     async setChildDevicesUnavailable(id){
       let childList = this.homey.drivers.getDriver('owmOnecallHourly').getDevices();
       for (let i=0; i<childList.length; i++){

@@ -52,7 +52,9 @@
 
         "measure_wind_angle",
         "measure_wind_direction_string",
-        "measure_windstrength_beaufort"
+        "measure_windstrength_beaufort",
+
+        "conditioncode_text"
 
     ],
     "pair": [{

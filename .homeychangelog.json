@@ -138,5 +138,9 @@
   "1.2.0": {
     "en": "Added weather alerts. Add a warning device to a location and receive warnings in difficult weather conditions.",
     "de": "Wetter-Warnungen hinzugefügt. Ergänze ein Warn-Gerät für einen Standort und erhalte Warnungen bei schwierigen Wetterbedingungen."
+  },
+  "1.2.1": {
+    "en": "Added capability for weather condition description for use as global flow tag.",
+    "de": "Attribut für Wetterlage-Bezeichnung hinzugefügt zur Verwendung als globales Flow-Tag."
   }
 }

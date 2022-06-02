@@ -227,7 +227,10 @@ class openWeatherMap extends Homey.App {
       let condlist = this.manifest.capabilities.conditioncode.values;
       let cond = condlist.find(cond => cond.id == conditioncode);
       let lang = this.homey.i18n.getLanguage();
-      let condText = cond.title[lang];
+      let condText = "";
+      if (cond.title[lang]){
+        condText = cond.title[lang];
+      }
       return condText;
     }
 

@@ -142,5 +142,9 @@
   "1.2.1": {
     "en": "Added capability for weather condition description for use as global flow tag.",
     "de": "Attribut für Wetterlage-Bezeichnung hinzugefügt zur Verwendung als globales Flow-Tag."
+  },
+  "1.2.2": {
+    "en": "Added capability for weather condition description for use as global flow tag.",
+    "de": "Attribut für Wetterlage-Bezeichnung hinzugefügt zur Verwendung als globales Flow-Tag."
   }
 }

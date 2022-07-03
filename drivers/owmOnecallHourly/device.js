@@ -565,8 +565,10 @@ class owmOnecallHourly extends Homey.Device {
 
         this.log("Trigger Flows...")
         for (let i=0; i<triggerList.length; i++){
-            triggerList[i].trigger.trigger(triggerList[i].device, triggerList[i].token, triggerList[i].state);
+            if (triggerList[i].trigger){
+                triggerList[i].trigger.trigger(triggerList[i].device, triggerList[i].token, triggerList[i].state);
                 // .catch(err => this.error(err));
+            }
         }
 
     }

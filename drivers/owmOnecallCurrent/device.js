@@ -800,6 +800,9 @@ class owmCurrent extends Homey.Device {
             }
             newSettings["units"] = this.homey.i18n.getUnits();
             newSettings["language"] = this.homey.i18n.getLanguage();    
+            newSettings['lat'] = settings.newSettings['lat'];
+            newSettings['lon'] = settings.newSettings['lon'];
+            newSettings["APIKey"] = settings.newSettings["APIKey"];
             clearInterval(this.pollingintervalcurrent);
             if (newSettings.pollingActive == true){
                 this.pollWeatherCurrent(newSettings);

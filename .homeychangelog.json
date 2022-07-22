@@ -150,5 +150,9 @@
   "1.2.3": {
     "en": "Small bugfiy for async device init.",
     "de": "Kleien Korrektur für asynchrone Geräte-Initialisierung."
+  },
+  "1.2.4": {
+    "en": "Adjusted Beaufort scale. Fixed 'alarm has changed' trigger.",
+    "de": "Beaufort-Skala angepasst. Trigger 'Alarm hat sich geändert' wurde korrigiert"
   }
 }

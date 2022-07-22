@@ -114,7 +114,7 @@
     }
 
     weather.beaufortFromKmh = function beaufortFromKmh(kmh) {
-        let beaufortKmhLimits = [1, 6, 11, 19, 30, 39, 50, 61, 74, 87, 102, 117, 177, 249, 332, 418, 512];
+        let beaufortKmhLimits = [1, 6, 11, 19, 28, 38, 49, 61, 74, 88, 102, 117 ];
         // undefined for negative values...
         if (kmh < 0 || kmh == undefined) return undefined;
 

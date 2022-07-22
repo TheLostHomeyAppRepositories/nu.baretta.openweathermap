@@ -65,31 +65,31 @@ class owmOnecallAlerts extends Homey.Device {
         // Update alarm capabilities 1..5
         for(let i=0; i<5; i++){
             if (i < alerts.length){
-                this.updateAlert(i, alerts[i])
+                await this.updateAlert(i, alerts[i])
             }
             else{
-                this.clearAlert(i);
+                await this.clearAlert(i);
             }
         }
 
         // Set number of warnings capability
         let numberOfWarnings = alerts.length;
-        this.setCapabilityValue("measure_number_of_warnings", numberOfWarnings);        
-
-        // Alerts has value (to check for changed content)
-        let hash = crypto.createHash('sha1').update(JSON.stringify(alerts)).digest('base64').toString();
-        this.setCapabilityValue("warnings_hash", hash);        
+        await this.setCapabilityValue("measure_number_of_warnings", numberOfWarnings);        
 
         // Set alarm capability
         let alarm = false;
         if (alerts.length > 0){
             alarm = true;
         }
-        this.setCapabilityValue("alarm_warnings", alarm);        
+        await this.setCapabilityValue("alarm_warnings", alarm);        
 
+        // Alerts has value (to check for changed content)
+        let hash = crypto.createHash('sha1').update(JSON.stringify(alerts)).digest('base64').toString();
+        await this.setCapabilityValue("warnings_hash", hash);        
+        
     }
 
-    updateAlert(index, alert){
+    async updateAlert(index, alert){
         // let language = this.homey.i18n.getLanguage();
         let GEOlocation = this.getName();
 
@@ -172,24 +172,24 @@ class owmOnecallAlerts extends Homey.Device {
         if (index_str.length < 2){
             index_str = "0" + index_str;
         }
-        this.setCapabilityValue("warnings_"+index_str+"_start", start).catch(error => {});
-        this.setCapabilityValue("warnings_"+index_str+"_end", end).catch(error => {});
-        this.setCapabilityValue("warnings_"+index_str+"_event", event).catch(error => {});
-        this.setCapabilityValue("warnings_"+index_str+"_tags", tags).catch(error => {});
-        this.setCapabilityValue("warnings_"+index_str+"_description", description).catch(error => {});
+        await this.setCapabilityValue("warnings_"+index_str+"_start", start).catch(error => {});
+        await this.setCapabilityValue("warnings_"+index_str+"_end", end).catch(error => {});
+        await this.setCapabilityValue("warnings_"+index_str+"_event", event).catch(error => {});
+        await this.setCapabilityValue("warnings_"+index_str+"_tags", tags).catch(error => {});
+        await this.setCapabilityValue("warnings_"+index_str+"_description", description).catch(error => {});
 
     }
 
-    clearAlert(index){
+    async clearAlert(index){
         let index_str = (index+1).toString();
         if (index_str.length < 2){
             index_str = "0" + index_str;
         }
-        this.setCapabilityValue("warnings_"+index_str+"_start", "").catch(error => {});
-        this.setCapabilityValue("warnings_"+index_str+"_end", "").catch(error => {});
-        this.setCapabilityValue("warnings_"+index_str+"_event", "").catch(error => {});
-        this.setCapabilityValue("warnings_"+index_str+"_tags", "").catch(error => {});
-        this.setCapabilityValue("warnings_"+index_str+"_description", "").catch(error => {});
+        await this.setCapabilityValue("warnings_"+index_str+"_start", "").catch(error => {});
+        await this.setCapabilityValue("warnings_"+index_str+"_end", "").catch(error => {});
+        await this.setCapabilityValue("warnings_"+index_str+"_event", "").catch(error => {});
+        await this.setCapabilityValue("warnings_"+index_str+"_tags", "").catch(error => {});
+        await this.setCapabilityValue("warnings_"+index_str+"_description", "").catch(error => {});
     }
 
     // parameters: {settings, newSettingsObj, changedKeysArr}

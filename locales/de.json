@@ -24,6 +24,7 @@
          "titleDaily": "OpenWeather - füge eine tägliche Vorhersage hinzu...",
          "apiKey": "Gib den OpenWeatherMap API-Key an.",
          "apiKey2": "Ein API-Key ist erhältlich unter http://openweathermap.org.",
+         "apiVersion": "Gibt die zu verwendende OneCall API-Version an.",
          "city": "Gib den Standort an (Stadt).",
          "autolocation": "Wurde kein Standort angegeben, wird Homeys Standort verwendet.",
          "updateInterval": "Gib das Aktualisierungs-Intervall an (in Minuten):",

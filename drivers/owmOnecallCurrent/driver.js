@@ -30,6 +30,7 @@ class owmOnecallDriver extends Homey.Driver {
   
         this.settingsData = {
             "APIKey": apiKey,
+            "APIVersion": "2.5",
             "GEOlocationCity": "",
             "pollingInterval": 5
         };
@@ -103,6 +104,7 @@ class owmOnecallDriver extends Homey.Driver {
                 },
                 settings:{
                     APIKey: this.settingsData["APIKey"],
+                    APIVersion: this.settingsData["APIVersion"],
                     lat: this.settingsData["lat"],
                     lon: this.settingsData["lon"],
                     pollingInterval: this.settingsData["pollingInterval"]
@@ -128,6 +130,7 @@ class owmOnecallDriver extends Homey.Driver {
                         },
                         settings:{
                             APIKey: this.settingsData["APIKey"],
+                            APIVersion: this.settingsData["APIVersion"],
                             lat: geoData[i].lat,
                             lon: geoData[i].lon,
                             pollingInterval: this.settingsData["pollingInterval"],

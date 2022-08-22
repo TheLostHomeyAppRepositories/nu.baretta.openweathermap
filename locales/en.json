@@ -24,6 +24,7 @@
          "titleDaily": "OpenWeather - add a daily forecast...",
          "apiKey": "Enter the OpenWeatherMap API key.",
          "apiKey2": "An API key can be obtained at http://openweathermap.org.",
+         "apiVersion": "Specifies the OneCall API version to use.",
          "city": "Enter a location (city name).",
          "autolocation": "When left blank Homey's location will be used.",
          "updateInterval": "Enter the update frequency (minutes):",

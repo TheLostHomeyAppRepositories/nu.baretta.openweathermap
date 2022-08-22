@@ -154,5 +154,9 @@
   "1.2.4": {
     "en": "Adjusted Beaufort scale. Fixed 'alarm has changed' trigger.",
     "de": "Beaufort-Skala angepasst. Trigger 'Alarm hat sich geändert' wurde korrigiert"
+  },
+  "1.2.5": {
+    "en": "Added API version selection for OneCall API for current weather/location device.",
+    "de": "Auswahl für API-Version der OneCall-API für Aktuelles Wetter/Standort ergänzt."
   }
 }

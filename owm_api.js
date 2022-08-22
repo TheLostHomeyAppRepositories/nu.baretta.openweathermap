@@ -205,7 +205,19 @@
         // } else {
             coordinateQuery = 'lat=' + settings['lat'] + '&lon=' + settings['lon'];
         // }
-        let url = '/data/2.5/onecall?' + coordinateQuery + '&units=' + settings['units'] + '&lang=' + settings['language'] + '&mode=json&APPID=' + settings["APIKey"];
+        let url = "";
+        switch (settings["APIVersion"]){
+            case "2.5":
+                url = '/data/2.5/onecall?';
+                break;
+            case "3.0":
+                url = '/data/3.0/onecall?';
+                break; 
+            default:
+                url = '/data/3.0/onecall?';
+                break;
+        }
+        url = url + coordinateQuery + '&units=' + settings['units'] + '&lang=' + settings['language'] + '&mode=json&APPID=' + settings["APIKey"];
         return callback(null, url);
     };
 
@@ -230,6 +242,7 @@
             })
             .catch(err => {
                 console.log(`problem with request: ${err.message}`);
+                return callback(err, null);
             });
     }
 

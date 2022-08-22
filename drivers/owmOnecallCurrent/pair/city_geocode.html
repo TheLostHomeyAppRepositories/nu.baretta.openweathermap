@@ -5,6 +5,7 @@
     Homey.emit("getSettings").then(function (settings) {
         if (settings){
             document.getElementById('apiKey').value = settings.APIKey; 
+            document.getElementById('apiVersion').value = settings.APIVersion; 
             document.getElementById('city').value = settings.GEOlocationCity; 
             document.getElementById('interval').value = settings.pollingInterval; 
         }
@@ -13,6 +14,7 @@
     function settingsChanged(){
         let value = {
             "APIKey": document.getElementById('apiKey').value,
+            "APIVersion": document.getElementById('apiVersion').value,
             "GEOlocationCity": document.getElementById('city').value,
             "pollingInterval": parseInt(document.getElementById('interval').value)
         };
@@ -24,10 +26,21 @@
 
 <div id="OWMsetup" class="tabcontent">
     <fieldset>
-        <div class="field row">
+        <div class="api">
             <label for="apiKey"><span data-i18n="pair.oneCallAPI.apiKey"></span></label>
             <label for="apiKey"><span data-i18n="pair.oneCallAPI.apiKey2"></span></label>
             <input id="apiKey" type="text" value="" oninput="settingsChanged()"/>
+            <label for="apiVersion"><span data-i18n="pair.oneCallAPI.apiVersion"></span></label>
+            <br>
+            <select id="apiVersion" name="apiVersion" oninput="settingsChanged()">
+                <option value="2.5" selected>OneCall 2.5</option>
+                <option value="3.0">OneCall 3.0</option>
+            </select>
+        </div>
+    </fieldset>
+
+    <fieldset>
+        <div class="options">
             <label for="city"><span data-i18n="pair.oneCallAPI.city"></span></label>
             <label for="city"><span data-i18n="pair.oneCallAPI.autolocation"></span></label>
             <input id="city" type="text" value="" oninput="settingsChanged()"/>

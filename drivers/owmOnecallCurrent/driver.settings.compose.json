@@ -5,14 +5,35 @@
         "de": "OpenWeatherMap Wetter und Standort",
         "nl": "OpenWeatherMap weer en locatie"
     },
-    "children": [{
+    "children": [
+        {
             "id": "APIKey",
             "type": "text",
             "value": "",
             "label": {
-                "en": "OpenWeatherMap API key:",
+                "en": "OpenWeatherMap API key",
                 "de": "OpenWeatherMap API-Key", 
-                "nl": "OpenWeatherMap API sleutel:"
+                "nl": "OpenWeatherMap API sleutel"
+            }
+        },
+        {
+            "id": "APIVersion",
+            "type": "dropdown",
+            "value": "2.5",
+            "values": [
+                {
+                    "id": "2.5",
+                    "label": {"en": "OneCall 2.5"}
+                },
+                {
+                    "id": "3.0",
+                    "label": {"en": "OneCall 3.0"}
+                }
+            ],
+            "label": {
+                "en": "OpenWeatherMap API version",
+                "de": "OpenWeatherMap API-Version", 
+                "nl": "OpenWeatherMap API versie"
             }
         },
         {

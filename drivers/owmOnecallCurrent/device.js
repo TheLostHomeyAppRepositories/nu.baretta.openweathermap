@@ -161,6 +161,7 @@ class owmCurrent extends Homey.Device {
         newsettings['lat'] = settings['lat'];
         newsettings['lon'] = settings['lon'];
         newsettings["APIKey"] = settings["APIKey"];
+        newsettings["APIVersion"] = settings["APIVersion"];
         newsettings["units"] = this.homey.i18n.getUnits();
         newsettings["language"] = this.homey.i18n.getLanguage();
         this.pollOpenWeatherMapCurrent(newsettings);
@@ -803,6 +804,7 @@ class owmCurrent extends Homey.Device {
             newSettings['lat'] = settings.newSettings['lat'];
             newSettings['lon'] = settings.newSettings['lon'];
             newSettings["APIKey"] = settings.newSettings["APIKey"];
+            newSettings["APIVersion"] = settings.newSettings["APIVersion"];
             clearInterval(this.pollingintervalcurrent);
             if (newSettings.pollingActive == true){
                 this.pollWeatherCurrent(newSettings);

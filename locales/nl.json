@@ -24,6 +24,7 @@
          "titleDaily": "OpenWeather - een dagelijkse voorspelling toevoegen...",
          "apiKey": "Voer de OpenWeatherMap API key in.",
          "apiKey2": "Een API-sleutel kan worden verkregen op http://openweathermap.org.",
+         "apiVersion": "Specificeert de OneCall API-versie die moet worden gebruikt.",
          "city": "Vul een locatie in (plaatsnaam).",
          "autolocation": "Indien leeg zal Homey's locatie gebruikt worden.",
          "updateInterval": "Vul de update frequentie in (minuten):",

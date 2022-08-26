@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <g transform="matrix(0.522563,0,0,0.522563,13.5,12)">
+        <g id="map-marker-outline.svg">
+            <g>
+                <path d="M12,6.5C13.371,6.5 14.5,7.629 14.5,9C14.5,10.371 13.371,11.5 12,11.5C10.629,11.5 9.5,10.371 9.5,9C9.5,7.629 10.629,6.5 12,6.5M12,2C15.84,2 19,5.16 19,9C19,14.25 12,22 12,22C12,22 5,14.25 5,9C5,5.16 8.16,2 12,2M12,4C9.257,4 7,6.257 7,9C7,10 7,12 12,18.71C17,12 17,10 17,9C17,6.257 14.743,4 12,4Z" style="fill-rule:nonzero;"/>
+            </g>
+        </g>
+    </g>
+    <g transform="matrix(0.916667,0,0,0.916667,-2.5,-1.5)">
+        <g id="weather-sunny.svg">
+            <g>
+                <path d="M12,7C14.743,7 17,9.257 17,12C17,14.743 14.743,17 12,17C9.257,17 7,14.743 7,12C7,9.257 9.257,7 12,7M12,9C10.354,9 9,10.354 9,12C9,13.646 10.354,15 12,15C13.646,15 15,13.646 15,12C15,10.354 13.646,9 12,9M12,2L14.39,5.42C13.65,5.15 12.84,5 12,5C11.16,5 10.35,5.15 9.61,5.42L12,2M3.34,7L7.5,6.65C6.9,7.16 6.36,7.78 5.94,8.5C5.5,9.24 5.25,10 5.11,10.79L3.34,7M3.36,17L5.12,13.23C5.26,14 5.53,14.78 5.95,15.5C6.37,16.24 6.91,16.86 7.5,17.37L3.36,17M20.65,7L18.88,10.79C18.74,10 18.47,9.23 18.05,8.5C17.63,7.78 17.1,7.15 16.5,6.64L20.65,7M20.64,17L16.5,17.36C17.09,16.85 17.62,16.22 18.04,15.5C18.46,14.77 18.73,14 18.87,13.21L20.64,17M12,22L9.59,18.56C10.33,18.83 11.14,19 12,19C12.82,19 13.63,18.83 14.37,18.56L12,22Z" style="fill-rule:nonzero;"/>
+            </g>
+        </g>
+    </g>
+    <g transform="matrix(1,0,0,1,-17,19.6252)">
+        <text x="17px" y="4.223px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:4.5px;">Free <tspan x="27.255px 30.256px " y="4.223px 4.223px ">AP</tspan>I</text>
+    </g>
+</svg>

@@ -37,6 +37,6 @@
     "args": [{
         "name": "VisibilityChanged",
         "type": "device",
-        "filter": "driver_id=owmCurrent|owmOnecallCurrent|owmOnecallHourly"
+        "filter": "driver_id=owmCurrent|owmOnecallCurrent|owmOnecallHourly|owmCurrentWeather"
     }]
 }

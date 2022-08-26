@@ -18,7 +18,7 @@
     "args": [{
             "name": "device",
             "type": "device",
-            "filter": "driver_id=owmOnecallCurrent"
+            "filter": "driver_id=owmOnecallCurrent|owmCurrentWeather"
         },
         {
             "name": "degrees",

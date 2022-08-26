@@ -2,12 +2,17 @@
 // need Homey module, see SDK Guidelines
 const Homey = require('homey');
 const weather = require('../../owm_api.js');
-// const crypto = require('crypto');
 
-class owmOnecallDriver extends Homey.Driver {
+class owmCurrentWeatherDriver extends Homey.Driver {
 
     getExistingAPIKey(){
         let devices = this.homey.drivers.getDriver('owmOnecallCurrent').getDevices();
+        for (let i=0; i<devices.length; i++){
+            if (devices[i].getSettings('APIKey')){
+                return devices[i].getSetting('APIKey');
+            }
+        }
+        devices = this.homey.drivers.getDriver('owmCurrentWeather').getDevices();
         for (let i=0; i<devices.length; i++){
             if (devices[i].getSettings('APIKey')){
                 return devices[i].getSetting('APIKey');
@@ -30,7 +35,6 @@ class owmOnecallDriver extends Homey.Driver {
   
         this.settingsData = {
             "APIKey": apiKey,
-            "APIVersion": "3.0",
             "GEOlocationCity": "",
             "pollingInterval": 5
         };
@@ -104,7 +108,6 @@ class owmOnecallDriver extends Homey.Driver {
                 },
                 settings:{
                     APIKey: this.settingsData["APIKey"],
-                    APIVersion: this.settingsData["APIVersion"],
                     lat: this.settingsData["lat"],
                     lon: this.settingsData["lon"],
                     pollingInterval: this.settingsData["pollingInterval"]
@@ -130,7 +133,6 @@ class owmOnecallDriver extends Homey.Driver {
                         },
                         settings:{
                             APIKey: this.settingsData["APIKey"],
-                            APIVersion: this.settingsData["APIVersion"],
                             lat: geoData[i].lat,
                             lon: geoData[i].lon,
                             pollingInterval: this.settingsData["pollingInterval"],
@@ -164,4 +166,4 @@ class owmOnecallDriver extends Homey.Driver {
     }
 
 }
-module.exports = owmOnecallDriver;
+module.exports = owmCurrentWeatherDriver;

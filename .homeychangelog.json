@@ -158,5 +158,9 @@
   "1.2.5": {
     "en": "Added API version selection for OneCall API for current weather/location device.",
     "de": "Auswahl für API-Version der OneCall-API für Aktuelles Wetter/Standort ergänzt."
+  },
+  "1.3.0": {
+    "en": "Added new device for the older but still free Current Weather API. It's a variant of the old 'Current weather' device, adapted to keep compatible with the API.",
+    "de": "Neues Gerät für die ältere, aber immer noch kostenlose Current Weather API hinzugefügt. Es ist eine Variante des alten 'Aktuelles Wetter' Gerätes, angepasst, um mit der API kompatibel zu bleiben."
   }
 }

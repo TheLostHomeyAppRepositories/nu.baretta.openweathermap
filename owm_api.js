@@ -65,6 +65,18 @@
         });
     }
 
+    weather.getURLCurrentWeather = function getURL(settings) {
+        return new Promise((resolve, reject) => {
+            getCurrentWeatherURL(settings, (error, url) => {
+                if (url) {
+                    resolve(url);
+                } else {
+                    reject(error);
+                }
+            });
+        });
+    }
+
     weather.getURLOnecall = function getURL(settings) {
         return new Promise((resolve, reject) => {
             getOnecallURL(settings, (error, url) => {
@@ -189,6 +201,14 @@
             coordinateQuery = 'lat=' + settings['lat'] + '&lon=' + settings['lon'];
         }
         let url = '/data/2.5/forecast/daily?' + coordinateQuery + '&units=' + settings['units'] + '&lang=' + settings['language'] + '&mode=json&APPID=' + settings["APIKey"] + '&cnt=16';
+        return callback(null, url);
+    };
+
+    function getCurrentWeatherURL(settings, callback) {
+        // OncallAPI only supports lan/lot, no city geocoding
+        let coordinateQuery = 'lat=' + settings['lat'] + '&lon=' + settings['lon'];
+        let url = '/data/2.5/weather?';
+        url = url + coordinateQuery + '&units=' + settings['units'] + '&lang=' + settings['language'] + '&mode=json&APPID=' + settings["APIKey"];
         return callback(null, url);
     };
 

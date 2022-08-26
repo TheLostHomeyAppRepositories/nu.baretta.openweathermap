@@ -408,7 +408,7 @@
         {
             "name": "device",
             "type": "device",
-            "filter": "driver_id=owmCurrent|owmForecast|owmLongterm|owmOnecallCurrent|owmOnecallHourly|owmOnecallDaily"
+            "filter": "driver_id=owmCurrent|owmForecast|owmLongterm|owmOnecallCurrent|owmOnecallHourly|owmOnecallDaily|owmCurrentWeather"
         }
     ]
 }

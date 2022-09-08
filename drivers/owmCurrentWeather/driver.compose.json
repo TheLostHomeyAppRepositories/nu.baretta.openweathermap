@@ -2,7 +2,7 @@
     "id": "owmCurrentWeather",
     "name": {
         "en": "Weather, current (free Current Weather API)",
-        "de": "Wetter, aktuell (freie Current Weather API)",
+        "de": "7. Wetter, aktuell (freie Current Weather API)",
         "nl": "Weerbericht, actueel (vrij Current Weather API)"
     },
     "images": {

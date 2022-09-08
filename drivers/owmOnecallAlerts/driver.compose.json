@@ -2,14 +2,14 @@
     "id": "owmOnecallHourly",
     "name": {
         "en": "Weather alerts",
-        "de": "Wetter-Warnungen",
+        "de": "4. Wetter-Warnungen",
         "nl": "Weerwaarschuwingen"
     },
     "images": {
         "large": "/drivers/owmOnecallAlerts/assets/images/large.png",
         "small": "/drivers/owmOnecallAlerts/assets/images/small.png"
     },
-    "class": "sensor",
+    "class": "other",
     "connectivity": [ "cloud" ],
     "capabilities": [
         "alarm_warnings",

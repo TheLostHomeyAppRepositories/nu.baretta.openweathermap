@@ -2,14 +2,14 @@
     "id": "owmOnecallDaily",
     "name": {
         "en": "Weather, daily forecast",
-        "de": "Wetter, tägliche Vorhersage",
+        "de": "3. Wetter, tägliche Vorhersage",
         "nl": "Weerbericht, dagelijkse voorspelling"
     },
     "images": {
         "large": "/drivers/owmOnecallDaily/assets/images/large.png",
         "small": "/drivers/owmOnecallDaily/assets/images/small.png"
     },
-    "class": "sensor",
+    "class": "other",
     "connectivity": [ "cloud" ],
     "capabilities": [
         "forecast_time",

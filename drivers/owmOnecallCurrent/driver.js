@@ -4,7 +4,7 @@ const Homey = require('homey');
 const weather = require('../../owm_api.js');
 // const crypto = require('crypto');
 
-class owmOnecallDriver extends Homey.Driver {
+class owmOnecallCurrentDriver extends Homey.Driver {
 
     getExistingAPIKey(){
         let devices = this.homey.drivers.getDriver('owmOnecallCurrent').getDevices();
@@ -164,4 +164,4 @@ class owmOnecallDriver extends Homey.Driver {
     }
 
 }
-module.exports = owmOnecallDriver;
+module.exports = owmOnecallCurrentDriver;

@@ -5,7 +5,7 @@ const Homey = require('homey');
 const weather = require('../../owm_api.js');
 const intervalCurrent = 5;
 
-class owmCurrent extends Homey.Device {
+class owmOnecallCurrent extends Homey.Device {
 
     async onInit() {
         let name = this.getName() + '_' + this.getData().id;
@@ -814,4 +814,4 @@ class owmCurrent extends Homey.Device {
         }
     }
 }
-module.exports = owmCurrent;
+module.exports = owmOnecallCurrent;

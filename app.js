@@ -237,15 +237,30 @@ class openWeatherMap extends Homey.App {
     async setChildDevicesUnavailable(id){
       let childList = this.homey.drivers.getDriver('owmOnecallHourly').getDevices();
       for (let i=0; i<childList.length; i++){
+        try{
           if (childList[i].getData().locationId == id){
               childList[i].setUnavailable(this.homey.__("device_unavailable_reason.location_not_available"));
           }
+        }
+        catch(error){this.error("setChildDevicesUnavailable(): Device not found: LocationID ", id)}
       }
       childList = this.homey.drivers.getDriver('owmOnecallDaily').getDevices();
       for (let i=0; i<childList.length; i++){
+        try{
           if (childList[i].getData().locationId == id){
               childList[i].setUnavailable(this.homey.__("device_unavailable_reason.location_not_available"));
           }
+        }
+        catch(error){this.error("setChildDevicesUnavailable(): Device not found: LocationID ", id)}
+      }
+      childList = this.homey.drivers.getDriver('owmOnecallAlerts').getDevices();
+      for (let i=0; i<childList.length; i++){
+        try{
+          if (childList[i].getData().locationId == id){
+              childList[i].setUnavailable(this.homey.__("device_unavailable_reason.location_not_available"));
+          }
+        }
+        catch(error){this.error("setChildDevicesUnavailable(): Device not found: LocationID ", id)}
       }
 
     }

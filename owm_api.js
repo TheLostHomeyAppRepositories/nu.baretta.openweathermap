@@ -250,7 +250,7 @@
     };
 
     function getGeocodeURL(settings, callback) {
-        let url = '/geo/1.0/direct?q=' + encodeURIComponent(settings["GEOlocationCity"]) + '&limit=10' + '&APPID=' + settings["APIKey"];
+        let url = '/geo/1.0/direct?q=' + encodeURIComponent(settings["GEOlocationCity"]) + '&limit=5' + '&APPID=' + settings["APIKey"];
         return callback(null, url);
     };
 

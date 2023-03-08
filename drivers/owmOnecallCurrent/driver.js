@@ -43,6 +43,10 @@ class owmOnecallCurrentDriver extends Homey.Driver {
             return await this.onSettingsChanged(data);
         });
 
+        session.setHandler("getCityList", async (query) => {
+            return await this.onGetCityList(query);
+        });
+
         session.setHandler("getSettings", async () => {
             this.log("getSettings: ");
             this.log(this.settingsData);
@@ -61,6 +65,38 @@ class owmOnecallCurrentDriver extends Homey.Driver {
         this.log(data);
         this.settingsData = data;
         return true;
+    }
+
+    async onGetCityList(query){
+        // Check APIKey with a call without city
+        let cities = [];
+        let url = await weather.getURLGeocode(this.settingsData);
+        try{
+            let geoData = await weather.getWeatherData(url);
+            if (!geoData || geoData.cod == 401){
+                return [];
+            }
+            for (let i=0; i<geoData.length; i++){
+                let name = geoData[i].name;
+                if (geoData[i].state != undefined){
+                    name = name + ',' + geoData[i].state;
+                    if (geoData[i].country != undefined){
+                        name = name + ',' + geoData[i].country;
+                    }
+                }
+                let city = {
+                    nameComplete: name, 
+                    name: geoData[i].name,
+                    country: geoData[i].country,
+                    state: geoData[i].state
+                }
+                cities.push(city);
+            }
+            return cities;
+        }
+        catch(error){
+            return [];
+        }        
     }
 
    /**

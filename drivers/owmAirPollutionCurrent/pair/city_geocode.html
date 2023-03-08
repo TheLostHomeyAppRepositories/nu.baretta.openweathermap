@@ -1,3 +1,5 @@
+<link rel="stylesheet" type="text/css" href="../../../assets/css/autoComplete.css"/>
+
 <script type="application/javascript">
 
     Homey.setTitle(Homey.__("pair.oneCallAPI.title"));
@@ -20,19 +22,61 @@
             //document.getElementById('found_nr').value = result; 
         });
     }
-  </script>
+</script>
 
-<div id="OWMsetup" class="tabcontent">
-    <fieldset>
-        <div class="field row">
-            <label for="apiKey"><span data-i18n="pair.oneCallAPI.apiKey"></span></label>
-            <label for="apiKey"><span data-i18n="pair.oneCallAPI.apiKey2"></span></label>
-            <input id="apiKey" type="text" value="" oninput="settingsChanged()"/>
-            <label for="city"><span data-i18n="pair.oneCallAPI.city"></span></label>
-            <label for="city"><span data-i18n="pair.oneCallAPI.autolocation"></span></label>
-            <input id="city" type="text" value="" oninput="settingsChanged()"/>
-            <label for="interval"><span data-i18n="pair.oneCallAPI.updateInterval"></span></label>
-            <input id="interval" type="number" value="60" oninput="settingsChanged()"/>
-        </div>
-    </fieldset>
-</div>
+<fieldset class="homey-form-fieldset">
+    <div class="homey-form-group">
+        <label for="apiKey" class="homey-form-label"><span data-i18n="pair.oneCallAPI.apiKey"></span><br><span data-i18n="pair.oneCallAPI.apiKey2"></span></label>
+        <!-- <label for="apiKey" class="homey-form-label"><span data-i18n="pair.oneCallAPI.apiKey2"></span></label> -->
+        <input id="apiKey"  class="homey-form-input" type="text" value="" oninput="settingsChanged()"/>
+    </div>
+    <div class="homey-form-group">
+        <label for="city" class="homey-form-label"><span data-i18n="pair.oneCallAPI.city"></span><br><span data-i18n="pair.oneCallAPI.autolocation"></span></label>
+        <!-- <label for="city" class="homey-form-label"><span data-i18n="pair.oneCallAPI.autolocation"></span></label> -->
+        <input id="city"  class="homey-form-input" type="text" value="" oninput="settingsChanged()"/>
+    </div>
+    <div class="homey-form-group">
+        <label for="interval" class="homey-form-label"><span data-i18n="pair.oneCallAPI.updateInterval"></span></label>
+        <input id="interval"  class="homey-form-input" type="number" value="5" oninput="settingsChanged()"/>
+    </div>
+</fieldset>
+
+<script src="../../../assets/js/autoComplete.min.js"></script>
+
+<script>
+    (function () {
+        let autoCompleteJS = new autoComplete({
+            selector: "#city",
+            placeHolder: Homey.__("pair.oneCallAPI.city"),
+            debounce: 300,
+            threshold: 3,
+            data: {
+                src : (query) => {
+                    return Homey.emit("getCityList", query).then(function (result) {
+                        return result;
+                    });
+                },
+                keys: ["nameComplete"]
+            },
+            resultsList:{
+                maxResults: 100,
+                noResults: true
+            },
+            resultItem: {
+                highlight: true
+            },
+            events: {
+                input: {
+                    selection: (event) => {
+                        let value = event.detail.selection.value.nameComplete;
+                        autoCompleteJS.input.value = value;
+                        settingsChanged();
+                    }
+                }
+            },
+            trigger: (query) => {
+                return true; // Search also for empty field
+            },
+        });
+    })();
+</script>

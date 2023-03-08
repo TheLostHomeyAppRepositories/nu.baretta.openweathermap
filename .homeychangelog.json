@@ -170,5 +170,9 @@
   "1.3.2": {
     "en": "Prevent crash on device deletion.",
     "de": "Verhindern eines Abbruchs bei Löschen von Geräten."
+  },
+  "1.3.3": {
+    "en": "Improved pair view: added autocomplete selection for location/city.",
+    "de": "Pairing-Dialog verbessert: Autocomplete-Suche fürStandort/Stadt."
   }
 }

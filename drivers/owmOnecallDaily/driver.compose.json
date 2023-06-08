@@ -25,16 +25,16 @@
         "measure_temperature_night",
 
         "measure_dew_point",
-        "measure_pressure",
-
         "measure_humidity",
-        "measure_pop",
 
+        "measure_pop",
         "measure_cloudiness",
-        "measure_ultraviolet",
 
         "measure_wind_combined",
         "measure_wind_strength",
+
+        "measure_wind_gust",
+        "measure_pressure",
 
         "measure_rain",
         "measure_snow",
@@ -46,6 +46,7 @@
         "moonset",
 
         "moonphase_type",
+        "measure_ultraviolet",
 
         "conditioncode",
         "conditioncode_detail",

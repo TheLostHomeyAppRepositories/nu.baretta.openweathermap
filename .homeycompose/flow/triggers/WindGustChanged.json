@@ -1,0 +1,43 @@
+{
+    "id": "WindGustChanged",
+    "highlight": true,
+    "title": {
+        "en": "Gusts of wind (km/h) has changed",
+        "de": "Windböen (km/h) hat sich geändert",
+        "nl": "Windvlagen (km/h) is veranderd"
+    },
+    "hint": {
+        "en": "Triggers when gusts of wind (km/h) changes.",
+        "de": "Wird ausgelöst, wenn sich die Windböen (km/h) ändern.",
+        "nl": "Triggert zodra de windvlagen (km/h) veranderd."
+    },
+    "tokens": [{
+            "name": "measure_wind_gust",
+            "type": "number",
+            "title": {
+                "en": "Gusts of wind (km/h)",
+                "de": "Windböen (km/h)",
+                "nl": "Windvlagen (km/h)"
+            },
+            "example": 5
+        },
+        {
+            "name": "location",
+            "type": "string",
+            "title": {
+                "en": "Location",
+                "de": "Standort",
+                "nl": "locatie"
+            },
+            "example": {
+                "en": "Amsterdam",
+                "de": "Berlin"
+            }
+        }
+    ],
+    "args": [{
+        "name": "device",
+        "type": "device",
+        "filter": "driver_id=owmOnecallCurrent|owmOnecallHourly|owmOnecallDaily"
+    }]
+}

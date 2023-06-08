@@ -123,6 +123,11 @@ class openWeatherMap extends Homey.App {
         return (args.device.getCapabilityValue('measure_wind_strength') > args.windspeed);
       })
 
+      this._windgustCondition = this.homey.flow.getConditionCard("Windgust")
+      .registerRunListener(async (args, state) => {
+        return (args.device.getCapabilityValue('measure_wind_gust') > args.windgust);
+      })
+
       this._visibilityCondition = this.homey.flow.getConditionCard("Visibility")
       .registerRunListener(async (args, state) => {
         return (args.device.getCapabilityValue('measure_visibility') > args.visibility);

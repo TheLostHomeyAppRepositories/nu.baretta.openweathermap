@@ -1,0 +1,28 @@
+{
+    "id": "Windgust",
+    "title": {
+        "en": "Gusts of wind (km/h) !{{is|isn't}} higher than",
+        "de": "Windböen (km/h) !{{ist|ist nicht}} größer als",
+        "nl": "Windvlagen (km/h) !{{is|is niet}} hoger dan"
+    },
+    "titleFormatted": {
+        "en": "Gusts of wind (km/h) !{{is|isn't}} higher than [[windgust]]",
+        "de": "Windböen (km/h) !{{ist|ist nicht}} größer als [[windgust]]",
+        "nl": "Windvlagen (km/h) !{{is|is niet}} hoger dan [[windgust]]"
+    },
+    "hint": {
+        "en": "Gusts of wind in km/h.",
+        "de": "Windböen in km/h.",
+        "nl": "Windvlagen in km/h."
+    },
+    "args": [{
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=owmOnecallCurrent|owmOnecallHourly|owmOnecallDaily"
+        },
+        {
+            "name": "windgust",
+            "type": "number"
+        }
+    ]
+}

@@ -19,10 +19,7 @@
         "measure_temperature_feelslike",
 
         "measure_dew_point",
-        "measure_pressure",
-
         "measure_humidity",
-        "measure_ultraviolet",
 
         "measure_cloudiness",
         "measure_visibility",
@@ -30,11 +27,16 @@
         "measure_wind_combined",
         "measure_wind_strength",
 
+        "measure_wind_gust",
+        "measure_pressure",
+
         "measure_rain",
         "measure_snow",
 
         "sunrise",
         "sunset",
+
+        "measure_ultraviolet",
 
         "conditioncode",
         "conditioncode_detail",
@@ -42,7 +44,6 @@
         "measure_wind_angle",
         "measure_wind_direction_string",
         "measure_windstrength_beaufort",
-
         "conditioncode_text"
     ],
     "pair": [{

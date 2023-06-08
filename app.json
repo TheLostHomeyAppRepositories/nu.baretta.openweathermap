@@ -1,7 +1,7 @@
 {
   "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
   "id": "nu.baretta.openweathermap",
-  "version": "1.3.3",
+  "version": "1.3.4",
   "compatibility": ">=8.1.1",
   "sdk": 3,
   "name": {
@@ -2036,6 +2036,52 @@
         ]
       },
       {
+        "id": "WindGustChanged",
+        "highlight": true,
+        "title": {
+          "en": "Gusts of wind (km/h) has changed",
+          "de": "Windböen (km/h) hat sich geändert",
+          "nl": "Windvlagen (km/h) is veranderd"
+        },
+        "hint": {
+          "en": "Triggers when gusts of wind (km/h) changes.",
+          "de": "Wird ausgelöst, wenn sich die Windböen (km/h) ändern.",
+          "nl": "Triggert zodra de windvlagen (km/h) veranderd."
+        },
+        "tokens": [
+          {
+            "name": "measure_wind_gust",
+            "type": "number",
+            "title": {
+              "en": "Gusts of wind (km/h)",
+              "de": "Windböen (km/h)",
+              "nl": "Windvlagen (km/h)"
+            },
+            "example": 5
+          },
+          {
+            "name": "location",
+            "type": "string",
+            "title": {
+              "en": "Location",
+              "de": "Standort",
+              "nl": "locatie"
+            },
+            "example": {
+              "en": "Amsterdam",
+              "de": "Berlin"
+            }
+          }
+        ],
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=owmOnecallCurrent|owmOnecallHourly|owmOnecallDaily"
+          }
+        ]
+      },
+      {
         "id": "WindStrengthChanged",
         "highlight": true,
         "title": {
@@ -3692,6 +3738,35 @@
         ]
       },
       {
+        "id": "Windgust",
+        "title": {
+          "en": "Gusts of wind (km/h) !{{is|isn't}} higher than",
+          "de": "Windböen (km/h) !{{ist|ist nicht}} größer als",
+          "nl": "Windvlagen (km/h) !{{is|is niet}} hoger dan"
+        },
+        "titleFormatted": {
+          "en": "Gusts of wind (km/h) !{{is|isn't}} higher than [[windgust]]",
+          "de": "Windböen (km/h) !{{ist|ist nicht}} größer als [[windgust]]",
+          "nl": "Windvlagen (km/h) !{{is|is niet}} hoger dan [[windgust]]"
+        },
+        "hint": {
+          "en": "Gusts of wind in km/h.",
+          "de": "Windböen in km/h.",
+          "nl": "Windvlagen in km/h."
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=owmOnecallCurrent|owmOnecallHourly|owmOnecallDaily"
+          },
+          {
+            "name": "windgust",
+            "type": "number"
+          }
+        ]
+      },
+      {
         "id": "Windspeed",
         "title": {
           "en": "Wind speed (km/h) !{{is|isn't}} higher than",
@@ -4754,17 +4829,18 @@
         "measure_temperature",
         "measure_temperature_feelslike",
         "measure_dew_point",
-        "measure_pressure",
         "measure_humidity",
-        "measure_ultraviolet",
         "measure_cloudiness",
         "measure_visibility",
         "measure_wind_combined",
         "measure_wind_strength",
+        "measure_wind_gust",
+        "measure_pressure",
         "measure_rain",
         "measure_snow",
         "sunrise",
         "sunset",
+        "measure_ultraviolet",
         "conditioncode",
         "conditioncode_detail",
         "measure_wind_angle",
@@ -4937,13 +5013,13 @@
         "measure_temperature_evening",
         "measure_temperature_night",
         "measure_dew_point",
-        "measure_pressure",
         "measure_humidity",
         "measure_pop",
         "measure_cloudiness",
-        "measure_ultraviolet",
         "measure_wind_combined",
         "measure_wind_strength",
+        "measure_wind_gust",
+        "measure_pressure",
         "measure_rain",
         "measure_snow",
         "sunrise",
@@ -4951,6 +5027,7 @@
         "moonrise",
         "moonset",
         "moonphase_type",
+        "measure_ultraviolet",
         "conditioncode",
         "conditioncode_detail",
         "measure_wind_angle",
@@ -5058,16 +5135,17 @@
         "measure_temperature",
         "measure_temperature_feelslike",
         "measure_dew_point",
-        "measure_pressure",
         "measure_humidity",
         "measure_pop",
+        "measure_pressure",
         "measure_cloudiness",
         "measure_visibility",
         "measure_wind_combined",
         "measure_wind_strength",
+        "measure_wind_gust",
+        "measure_ultraviolet",
         "measure_rain",
         "measure_snow",
-        "measure_ultraviolet",
         "moonphase_type",
         "conditioncode",
         "conditioncode_detail",
@@ -6314,6 +6392,24 @@
       "uiComponent": null,
       "getable": true,
       "setable": false
+    },
+    "measure_wind_gust": {
+      "type": "number",
+      "title": {
+        "en": "Gusts of wind",
+        "de": "Windböen",
+        "nl": "Windvlagen"
+      },
+      "uiComponent": "sensor",
+      "getable": true,
+      "setable": false,
+      "insights": true,
+      "units": {
+        "en": "km/h",
+        "de": "km/h",
+        "nl": "km/h"
+      },
+      "icon": "/assets/measure_wind_gust.svg"
     },
     "measure_wind_strength": {
       "type": "number",

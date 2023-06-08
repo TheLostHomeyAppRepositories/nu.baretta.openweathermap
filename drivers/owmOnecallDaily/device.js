@@ -34,6 +34,7 @@ class owmOnecallDaily extends Homey.Device {
         this._flowTriggerWindDirectionCompassChanged = this.homey.flow.getDeviceTriggerCard('WindDirectionCompassChanged');
         this._flowTriggerWindCombinedChanged = this.homey.flow.getDeviceTriggerCard('WindCombinedChanged');
         this._flowTriggerWindStrengthChanged = this.homey.flow.getDeviceTriggerCard('WindStrengthChanged');
+        this._flowTriggerWindGustChanged = this.homey.flow.getDeviceTriggerCard('WindGustChanged');
         this._flowTriggerWindAngleChanged = this.homey.flow.getDeviceTriggerCard('WindAngleChanged');
 
         this._flowTriggerUltravioletChanged = this.homey.flow.getDeviceTriggerCard('UltravioletChanged');
@@ -61,6 +62,9 @@ class owmOnecallDaily extends Homey.Device {
         }
         if (!this.hasCapability('conditioncode_text')){
             await this.addCapability('conditioncode_text');
+        }
+        if (!this.hasCapability('measure_wind_gust')){
+            await this.addCapability('measure_wind_gust');
         }
 
     }
@@ -347,6 +351,29 @@ class owmOnecallDaily extends Homey.Device {
         else {
             var windstrength = 0;
         }
+
+        if (data.wind_gust) {
+            if ( this.getSetting('windspeed_ms') == true){
+                if (settings["units"] == "metric") {
+                    var windgust = data.wind_gust;
+                } else {
+                    // mph to m/s
+                    var windgust = Math.round(data.wind_gust / 2.237);
+                }
+            }
+            else{
+                if (settings["units"] == "metric") {
+                    // convert from m/s to km/h
+                    var windgust = Math.round(3.6 * data.wind_gust);
+                } else {
+                    // windspeed in mph
+                    var windgust = data.wind_gust;
+                }
+            }
+        } else {
+            var windgust = 0;
+        }
+
 
         if (data.wind_deg) {
             var windangle = data.wind_deg;
@@ -673,6 +700,19 @@ class owmOnecallDaily extends Homey.Device {
             triggerList.push({'trigger':this._flowTriggerWindStrengthChanged, 'device':device, 'token':tokens, 'state':state});
             // this._flowTriggerWeatherChanged.trigger(device, tokens, state).catch(this.error)
         }
+        if (this.getCapabilityValue('measure_wind_gust') !== windgust && windgust !== undefined) {
+            this.log("Wind_gust previous: " + this.getCapabilityValue('measure_wind_gust'));
+            this.log("Wind_gust new: " + windgust);
+            let state = {
+                "measure_wind_gust": windgust
+            };
+            let tokens = {
+                "measure_wind_gust": windgust,
+                "location": GEOlocation
+            };
+            triggerList.push({'trigger':this._flowTriggerWindGustChanged, 'device':device, 'token':tokens, 'state':state});
+            // this._flowTriggerWeatherChanged.trigger(device, tokens, state).catch(this.error)
+        }
         if (this.getCapabilityValue('measure_wind_angle') !== windangle && windangle !== undefined) {
             this.log("Wind_angle previous: " + this.getCapabilityValue('measure_wind_angle'));
             this.log("Wind_angle new: " + windangle);
@@ -784,6 +824,7 @@ class owmOnecallDaily extends Homey.Device {
         this.setCapabilityValue("moonphase_type", moonphase_type);
 
         this.setCapabilityValue("measure_wind_strength", windstrength);
+        this.setCapabilityValue("measure_wind_gust", windgust);
         this.setCapabilityValue("measure_wind_direction_string", winddegcompass);
         this.setCapabilityValue("measure_wind_combined", windcombined);
         this.setCapabilityValue("measure_wind_angle", windangle);

@@ -354,7 +354,7 @@ class owmOnecallDaily extends Homey.Device {
 
         if (data.wind_gust) {
             if ( this.getSetting('windspeed_ms') == true){
-                if (settings["units"] == "metric") {
+                if (units == "metric") {
                     var windgust = data.wind_gust;
                 } else {
                     // mph to m/s
@@ -362,7 +362,7 @@ class owmOnecallDaily extends Homey.Device {
                 }
             }
             else{
-                if (settings["units"] == "metric") {
+                if (units == "metric") {
                     // convert from m/s to km/h
                     var windgust = Math.round(3.6 * data.wind_gust);
                 } else {

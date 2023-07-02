@@ -378,6 +378,11 @@ class owmOnecallDaily extends Homey.Device {
         if (data.wind_deg) {
             var windangle = data.wind_deg;
             var winddegcompass = weather.degToCompass(windangle);
+            if (winddegcompass == undefined){
+                this.log("Could not get wind compass text for windangle: "+windangle);
+                winddegcompass = "";
+            }
+
         } else {
             var windangle = 0;
             var winddegcompass = "";

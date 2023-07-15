@@ -799,41 +799,84 @@ class owmOnecallDaily extends Homey.Device {
             // this._flowTriggerWeatherChanged.trigger(device, tokens, state).catch(this.error)
         }
 
-        this.setCapabilityValue("forecast_time", forecast_time);
-        this.setCapabilityValue("description", description);
-        this.setCapabilityValue("conditioncode", conditioncode);
-        this.setCapabilityValue("conditioncode_text", conditioncodeText);
-        this.setCapabilityValue("conditioncode_detail", conditioncode_detail);
-        this.setCapabilityValue("measure_temperature_min", temp_min);
-        this.setCapabilityValue("measure_temperature_max", temp_max);
-        this.setCapabilityValue("measure_temperature_morning", temp_morning);
-        this.setCapabilityValue("measure_temperature_day", temp_day);
-        this.setCapabilityValue("measure_temperature_evening", temp_evening);
-        this.setCapabilityValue("measure_temperature_night", temp_night);
-        // this.setCapabilityValue("measure_temperature_feelslike", temp_feelslike).catch(err => this.err(err));
-        this.setCapabilityValue("measure_humidity", hum);
-        this.setCapabilityValue("measure_pressure", pressure);
-        this.setCapabilityValue("measure_dew_point", dewpoint);
-        this.setCapabilityValue("measure_rain", rain);
-        this.setCapabilityValue("measure_pop", pop);
-        this.setCapabilityValue("measure_snow", snow);
+        const capabilitySet = {
+            'forecast_time': forecast_time,
+            'description': description,
+            'conditioncode': conditioncode,
+            'conditioncode_text': conditioncodeText,
+            'conditioncode_detail': conditioncode_detail,
+            'measure_temperature_min': temp_min,
+            'measure_temperature_max': temp_max,
+            'measure_temperature_morning': temp_morning,
+            'measure_temperature_day': temp_day,
+            'measure_temperature_evening': temp_evening,
+            'measure_temperature_night': temp_night,
+            'measure_humidity': hum,
+            'measure_pressure': pressure,
+            'measure_dew_point': dewpoint,
+            'measure_rain': rain,
+            'measure_pop': pop,
+            'measure_snow': snow,
+            'measure_ultraviolet': uvi,
+            'measure_cloudiness': cloudiness,
+            'sunrise': sunrise,
+            'sunset': sunset,
+            'moonrise': moonrise,
+            'moonset': moonset,
+            'moonphase_type': moonphase_type,
+            'measure_wind_strength': windstrength,
+            'measure_wind_gust': windgust,
+            'measure_wind_direction_string': winddegcompass,
+            'measure_wind_combined': windcombined,
+            'measure_wind_angle': windangle,
+            'measure_windstrength_beaufort': windspeedbeaufort
+        };
 
-        this.setCapabilityValue("measure_ultraviolet", uvi);
-        this.setCapabilityValue("measure_cloudiness", cloudiness);
-        // this.setCapabilityValue("measure_visibility", visibility);
+        this.getCapabilities().forEach(async capability => {
+            this.log("Capability: " + capability + ":" + capabilitySet[capability]);
+            if (capabilitySet[capability] != undefined) {
+                await this.setCapabilityValue(capability, capabilitySet[capability]);
+                    // .catch(err => this.error(err));
+            } else {
+                this.log("Capability undefined: " + capability)
+            }
+        });
 
-        this.setCapabilityValue("sunrise", sunrise);
-        this.setCapabilityValue("sunset", sunset);
-        this.setCapabilityValue("moonrise", moonrise);
-        this.setCapabilityValue("moonset", moonset);
-        this.setCapabilityValue("moonphase_type", moonphase_type);
+        // this.setCapabilityValue("forecast_time", forecast_time);
+        // this.setCapabilityValue("description", description);
+        // this.setCapabilityValue("conditioncode", conditioncode);
+        // this.setCapabilityValue("conditioncode_text", conditioncodeText);
+        // this.setCapabilityValue("conditioncode_detail", conditioncode_detail);
+        // this.setCapabilityValue("measure_temperature_min", temp_min);
+        // this.setCapabilityValue("measure_temperature_max", temp_max);
+        // this.setCapabilityValue("measure_temperature_morning", temp_morning);
+        // this.setCapabilityValue("measure_temperature_day", temp_day);
+        // this.setCapabilityValue("measure_temperature_evening", temp_evening);
+        // this.setCapabilityValue("measure_temperature_night", temp_night);
+        // // this.setCapabilityValue("measure_temperature_feelslike", temp_feelslike).catch(err => this.err(err));
+        // this.setCapabilityValue("measure_humidity", hum);
+        // this.setCapabilityValue("measure_pressure", pressure);
+        // this.setCapabilityValue("measure_dew_point", dewpoint);
+        // this.setCapabilityValue("measure_rain", rain);
+        // this.setCapabilityValue("measure_pop", pop);
+        // this.setCapabilityValue("measure_snow", snow);
 
-        this.setCapabilityValue("measure_wind_strength", windstrength);
-        this.setCapabilityValue("measure_wind_gust", windgust);
-        this.setCapabilityValue("measure_wind_direction_string", winddegcompass);
-        this.setCapabilityValue("measure_wind_combined", windcombined);
-        this.setCapabilityValue("measure_wind_angle", windangle);
-        this.setCapabilityValue("measure_windstrength_beaufort", windspeedbeaufort);
+        // this.setCapabilityValue("measure_ultraviolet", uvi);
+        // this.setCapabilityValue("measure_cloudiness", cloudiness);
+        // // this.setCapabilityValue("measure_visibility", visibility);
+
+        // this.setCapabilityValue("sunrise", sunrise);
+        // this.setCapabilityValue("sunset", sunset);
+        // this.setCapabilityValue("moonrise", moonrise);
+        // this.setCapabilityValue("moonset", moonset);
+        // this.setCapabilityValue("moonphase_type", moonphase_type);
+
+        // this.setCapabilityValue("measure_wind_strength", windstrength);
+        // this.setCapabilityValue("measure_wind_gust", windgust);
+        // this.setCapabilityValue("measure_wind_direction_string", winddegcompass);
+        // this.setCapabilityValue("measure_wind_combined", windcombined);
+        // this.setCapabilityValue("measure_wind_angle", windangle);
+        // this.setCapabilityValue("measure_windstrength_beaufort", windspeedbeaufort);
 
         this.log("Trigger Flows...")
         for (let i=0; i<triggerList.length; i++){

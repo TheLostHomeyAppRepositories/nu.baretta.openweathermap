@@ -154,12 +154,17 @@ class owmForecast extends Homey.Device {
 
                 if (data.list[forecastInterval].wind.deg) {
                     var windangle = data.list[forecastInterval].wind.deg;
+                    var winddegcompass = weather.degToCompass(windangle);
+                    if (winddegcompass == undefined){
+                        this.log("Could not get wind compass text for windangle: "+windangle);
+                        winddegcompass = "";
+                    }
                 } else {
                     var windangle = null;
+                    var winddegcompass = "";
                 }
 
                 if (data.list[forecastInterval].wind.speed) {
-                    var winddegcompass = weather.degToCompass(windangle);
                     if (settings["units"] == "metric") {
                         // convert from m/s to km/h
                         var windstrength = Math.round(3.6 * data.list[forecastInterval].wind.speed);

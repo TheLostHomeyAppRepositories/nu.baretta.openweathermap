@@ -190,5 +190,9 @@
   "1.3.7": {
     "en": "Fixed crash caused by missing capabilities.",
     "de": "Verhindern von Abbrüchen durch fehlende Capabilities."
+  },
+  "1.3.8": {
+    "en": "Fixed crash caused by invalid wind direction (deprecated devices).",
+    "de": "Verhindern von Abbrüchen durch fehlenderhafte Windrichtung (veraltete Geräte)."
   }
 }

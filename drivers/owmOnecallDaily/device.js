@@ -56,17 +56,97 @@ class owmOnecallDaily extends Homey.Device {
     } // end onInit
 
     async updateCapabilities(){
-        // add new capabilities
+        // add missing capabilities
+        if (!this.hasCapability('forecast_time')){
+            await this.addCapability('forecast_time');
+        }
+        if (!this.hasCapability('description')){
+            await this.addCapability('description');
+        }
+        if (!this.hasCapability('measure_temperature_min')){
+            await this.addCapability('measure_temperature_min');
+        }
+        if (!this.hasCapability('measure_temperature_max')){
+            await this.addCapability('measure_temperature_max');
+        }
+        if (!this.hasCapability('measure_temperature_morning')){
+            await this.addCapability('measure_temperature_morning');
+        }
+        if (!this.hasCapability('measure_temperature_day')){
+            await this.addCapability('measure_temperature_day');
+        }
+        if (!this.hasCapability('measure_temperature_evening')){
+            await this.addCapability('measure_temperature_evening');
+        }
+        if (!this.hasCapability('measure_temperature_night')){
+            await this.addCapability('measure_temperature_night');
+        }
         if (!this.hasCapability('measure_dew_point')){
             await this.addCapability('measure_dew_point');
         }
-        if (!this.hasCapability('conditioncode_text')){
-            await this.addCapability('conditioncode_text');
+        if (!this.hasCapability('measure_humidity')){
+            await this.addCapability('measure_humidity');
+        }
+        if (!this.hasCapability('measure_pop')){
+            await this.addCapability('measure_pop');
+        }
+        if (!this.hasCapability('measure_cloudiness')){
+            await this.addCapability('measure_cloudiness');
+        }
+        if (!this.hasCapability('measure_wind_combined')){
+            await this.addCapability('measure_wind_combined');
+        }
+        if (!this.hasCapability('measure_wind_strength')){
+            await this.addCapability('measure_wind_strength');
         }
         if (!this.hasCapability('measure_wind_gust')){
             await this.addCapability('measure_wind_gust');
         }
-
+        if (!this.hasCapability('measure_pressure')){
+            await this.addCapability('measure_pressure');
+        }
+        if (!this.hasCapability('measure_rain')){
+            await this.addCapability('measure_rain');
+        }
+        if (!this.hasCapability('measure_snow')){
+            await this.addCapability('measure_snow');
+        }
+        if (!this.hasCapability('sunrise')){
+            await this.addCapability('sunrise');
+        }
+        if (!this.hasCapability('sunset')){
+            await this.addCapability('sunset');
+        }
+        if (!this.hasCapability('moonrise')){
+            await this.addCapability('moonrise');
+        }
+        if (!this.hasCapability('moonset')){
+            await this.addCapability('moonset');
+        }
+        if (!this.hasCapability('moonphase_type')){
+            await this.addCapability('moonphase_type');
+        }
+        if (!this.hasCapability('measure_ultraviolet')){
+            await this.addCapability('measure_ultraviolet');
+        }
+        if (!this.hasCapability('conditioncode')){
+            await this.addCapability('conditioncode');
+        }
+        if (!this.hasCapability('conditioncode_detail')){
+            await this.addCapability('conditioncode_detail');
+        }
+        if (!this.hasCapability('measure_wind_angle')){
+            await this.addCapability('measure_wind_angle');
+        }
+        if (!this.hasCapability('measure_wind_direction_string')){
+            await this.addCapability('measure_wind_direction_string');
+        }
+        if (!this.hasCapability('measure_windstrength_beaufort')){
+            await this.addCapability('measure_windstrength_beaufort');
+        }
+        if (!this.hasCapability('conditioncode_text')){
+            await this.addCapability('conditioncode_text');
+        }
     }
 
     async checkParentDevice(){
@@ -832,15 +912,15 @@ class owmOnecallDaily extends Homey.Device {
             'measure_windstrength_beaufort': windspeedbeaufort
         };
 
-        this.getCapabilities().forEach(async capability => {
+        let capabilities = this.getCapabilities();
+        for (let capability of capabilities) {
             this.log("Capability: " + capability + ":" + capabilitySet[capability]);
             if (capabilitySet[capability] != undefined) {
-                await this.setCapabilityValue(capability, capabilitySet[capability]);
-                    // .catch(err => this.error(err));
+                await this.setCapabilityValue(capability, capabilitySet[capability]).catch(err => this.log(err.message));
             } else {
                 this.log("Capability undefined: " + capability)
             }
-        });
+        };
 
         // this.setCapabilityValue("forecast_time", forecast_time);
         // this.setCapabilityValue("description", description);

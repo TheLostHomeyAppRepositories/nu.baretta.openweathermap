@@ -79,7 +79,7 @@ class owmCurrent extends Homey.Device {
         weather.getURLCurrent(settings).then(url => {
                 return weather.getWeatherData(url);
             })
-            .then(data => {
+            .then(async data => {
                 let device = this;
                 let triggerList = [];
                 this.log(device.getData().id +" Received OWM data");
@@ -337,15 +337,15 @@ class owmCurrent extends Homey.Device {
                     'sunset': sunset
                 };
 
-                this.getCapabilities().forEach(async capability => {
-                    this.log("Capability: " + capability + ":" + capabilitySet[capability]);
+                let capabilities = this.getCapabilities();
+                for (let capability of capabilities) {
+                            this.log("Capability: " + capability + ":" + capabilitySet[capability]);
                     if (capabilitySet[capability] != undefined) {
-                        await this.setCapabilityValue(capability, capabilitySet[capability])
-                            .catch(err => this.log(err));
+                        await this.setCapabilityValue(capability, capabilitySet[capability]).catch(err => this.log(err.message));
                     } else {
                         this.log("Capability undefined: " + capability)
                     }
-                });
+                };
 
                 this.log("Trigger Flows...")
                 for (let i=0; i<triggerList.length; i++){

@@ -638,15 +638,15 @@ class owmCurrenWeather extends Homey.Device {
                     'sunset': sunset
                 };
 
-                this.getCapabilities().forEach(async capability => {
-                    this.log("Capability: " + capability + ":" + capabilitySet[capability]);
+                let capabilities = this.getCapabilities();
+                for (let capability of capabilities) {
+                            this.log("Capability: " + capability + ":" + capabilitySet[capability]);
                     if (capabilitySet[capability] != undefined) {
-                        await this.setCapabilityValue(capability, capabilitySet[capability]);
-                            // .catch(err => this.error(err));
+                        await this.setCapabilityValue(capability, capabilitySet[capability]).catch(err => this.log(err.message));
                     } else {
                         this.log("Capability undefined: " + capability)
                     }
-                });
+                };
 
                 // await this.setCapabilityOptions( "measure_wind_strength", {"units": "m/s" } );
         

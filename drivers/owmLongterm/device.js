@@ -358,15 +358,15 @@ class owmLongterm extends Homey.Device {
                     'description': description
                 };
 
-                this.getCapabilities().forEach(capability => {
-                    this.log("Capability: " + capability + ":" + capabilitySet[capability]);
+                let capabilities = this.getCapabilities();
+                for (let capability of capabilities) {
+                            this.log("Capability: " + capability + ":" + capabilitySet[capability]);
                     if (capabilitySet[capability] != undefined) {
-                        this.setCapabilityValue(capability, capabilitySet[capability])
-                            .catch(err => this.log(err));
+                        this.setCapabilityValue(capability, capabilitySet[capability]).catch(err => this.log(err.message));
                     } else {
                         this.log("Capability undefined: " + capability)
                     }
-                });
+                };
 
                 this.log("Trigger Flows...")
                 for (let i=0; i<triggerList.length; i++){

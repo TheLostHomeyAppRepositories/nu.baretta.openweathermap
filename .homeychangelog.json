@@ -198,5 +198,9 @@
   "1.3.9": {
     "en": "Fixed crash caused by missing capabilities.",
     "de": "Verhindern von Abbrüchen durch fehlende Capabilities."
+  },
+  "1.3.10": {
+    "en": "Adjusted missing capabilities check.",
+    "de": "Anpassung der Prüfung auf fehlende Capabilities."
   }
 }

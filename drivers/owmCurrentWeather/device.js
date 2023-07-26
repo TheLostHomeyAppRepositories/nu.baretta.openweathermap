@@ -69,9 +69,16 @@ class owmCurrenWeather extends Homey.Device {
 
     async updateCapabilities(){
         // add new capabilities
-        // if (!this.hasCapability('measure_temperature_feelslike')){
-        //     await this.addCapability('measure_temperature_feelslike');
-        // }
+        let capabilities = [];
+        try{
+            capabilities = this.homey.app.manifest.drivers.filter((e) => {return (e.id == this.driver.id);})[0].capabilities;
+        }
+        catch (error){}
+        for (let i=0; i<capabilities.length; i++){
+            if (!this.hasCapability(capabilities[i])){
+                await this.addCapability(capabilities[i]);
+            }
+        }
     }
 
     onAdded() {

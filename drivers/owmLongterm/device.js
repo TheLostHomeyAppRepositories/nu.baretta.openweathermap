@@ -73,6 +73,16 @@ class owmLongterm extends Homey.Device {
 
     } // end onDeleted
 
+    async setDeviceUnavailable(message){
+        this.setUnavailable(message);
+    }
+
+    async setDeviceAvailable(){
+        if ( !this.getAvailable() ){
+            await this.setAvailable();
+        }
+    }
+
     pollWeatherDaily(settings) {
         //run once, then at interval
         let pollminutes = 15;
@@ -87,7 +97,24 @@ class owmLongterm extends Homey.Device {
         weather.getURLDaily(settings).then(url => {
                 return weather.getWeatherData(url);
             })
-            .then(data => {
+            .then(async data => {
+                if (!data || !data.weather || data.cod != 200){
+                    if (data.message && data.cod>200){
+                        this.log("API error message!");
+                        this.log(data);
+                        this.setDeviceUnavailable(data.message);
+                        return;
+                    }
+                    else{
+                        this.log("No wether data found!");
+                        this.setDeviceUnavailable(this.homey.__("device_unavailable_reason.no_api_result"));
+                        return;
+                    }
+                }
+                else{
+                    this.setDeviceAvailable();
+                }
+
                 let device = this;
                 let triggerList = [];
                 let forecastInterval = this.getSetting('forecastInterval');
@@ -370,7 +397,7 @@ class owmLongterm extends Homey.Device {
 
                 this.log("Trigger Flows...")
                 for (let i=0; i<triggerList.length; i++){
-                    triggerList[i].trigger.trigger(triggerList[i].device, triggerList[i].token, triggerList[i].state);
+                    triggerList[i].trigger.trigger(triggerList[i].device, triggerList[i].token, triggerList[i].state).catch(err => this.log(err.message));
                 }
 
             })

@@ -649,7 +649,7 @@ class owmCurrenWeather extends Homey.Device {
                 for (let capability of capabilities) {
                             this.log("Capability: " + capability + ":" + capabilitySet[capability]);
                     if (capabilitySet[capability] != undefined) {
-                        await this.setCapabilityValue(capability, capabilitySet[capability]).catch(err => this.log(err.message));
+                        this.setCapabilityValue(capability, capabilitySet[capability]).catch(err => this.log(err.message));
                     } else {
                         this.log("Capability undefined: " + capability)
                     }
@@ -660,8 +660,7 @@ class owmCurrenWeather extends Homey.Device {
                 this.log("Trigger Flows...")
                 for (let i=0; i<triggerList.length; i++){
                     if (triggerList[i].trigger){
-                        triggerList[i].trigger.trigger(triggerList[i].device, triggerList[i].token, triggerList[i].state);
-                        // .catch(err => this.error(err));;
+                        triggerList[i].trigger.trigger(triggerList[i].device, triggerList[i].token, triggerList[i].state).catch(err => this.log(err.message));
                     }
                 }
 

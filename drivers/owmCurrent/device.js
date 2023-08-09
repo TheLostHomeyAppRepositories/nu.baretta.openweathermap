@@ -65,6 +65,16 @@ class owmCurrent extends Homey.Device {
 
     } // end onDeleted
 
+    async setDeviceUnavailable(message){
+        this.setUnavailable(message);
+    }
+
+    async setDeviceAvailable(){
+        if ( !this.getAvailable() ){
+            await this.setAvailable();
+        }
+    }
+
     pollWeatherCurrent(settings) {
         //run once, then at interval
         let pollminutes = 10;
@@ -80,6 +90,23 @@ class owmCurrent extends Homey.Device {
                 return weather.getWeatherData(url);
             })
             .then(async data => {
+                if (!data || !data.weather || data.cod != 200){
+                    if (data.message && data.cod>200){
+                        this.log("API error message!");
+                        this.log(data);
+                        this.setDeviceUnavailable(data.message);
+                        return;
+                    }
+                    else{
+                        this.log("No wether data found!");
+                        this.setDeviceUnavailable(this.homey.__("device_unavailable_reason.no_api_result"));
+                        return;
+                    }
+                }
+                else{
+                    this.setDeviceAvailable();
+                }
+
                 let device = this;
                 let triggerList = [];
                 this.log(device.getData().id +" Received OWM data");
@@ -267,7 +294,7 @@ class owmCurrent extends Homey.Device {
                     //this._flowTriggerVisibilityChanged.trigger(device, tokens, state).catch(this.error)
                 }
                 if (this.getCapabilityValue('measure_snow') !== snow && snow !== undefined) {
-                    this.log("snow has changed. Previous snow: " + this.getCapabilityValue('measure_snow') + " New visibility: " + visibility);
+                    this.log("snow has changed. Previous snow: " + this.getCapabilityValue('measure_snow') + " New snow: " + snow);
                     let state = {
                         "measure_visibility": snow
                     };
@@ -341,7 +368,7 @@ class owmCurrent extends Homey.Device {
                 for (let capability of capabilities) {
                             this.log("Capability: " + capability + ":" + capabilitySet[capability]);
                     if (capabilitySet[capability] != undefined) {
-                        await this.setCapabilityValue(capability, capabilitySet[capability]).catch(err => this.log(err.message));
+                        this.setCapabilityValue(capability, capabilitySet[capability]).catch(err => this.log(err.message));
                     } else {
                         this.log("Capability undefined: " + capability)
                     }
@@ -349,7 +376,7 @@ class owmCurrent extends Homey.Device {
 
                 this.log("Trigger Flows...")
                 for (let i=0; i<triggerList.length; i++){
-                    triggerList[i].trigger.trigger(triggerList[i].device, triggerList[i].token, triggerList[i].state).catch(this.error);
+                    triggerList[i].trigger.trigger(triggerList[i].device, triggerList[i].token, triggerList[i].state).catch(this.error).catch(err => this.log(err.message));
                 }
 
             })

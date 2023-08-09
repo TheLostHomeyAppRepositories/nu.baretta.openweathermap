@@ -1,6 +1,5 @@
 {
     "id": "owmCurrent",
-    "deprecated": true,
     "name": {
         "en": "Current weather [deprecated]",
         "de": "Aktuelles Wetter [veraltet]",

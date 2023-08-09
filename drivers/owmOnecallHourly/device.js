@@ -621,34 +621,10 @@ class owmOnecallHourly extends Homey.Device {
             }
         };
 
-        // this.setCapabilityValue("forecast_time", forecast_time);
-        // this.setCapabilityValue("description", description);
-        // this.setCapabilityValue("conditioncode", conditioncode);
-        // this.setCapabilityValue("conditioncode_text", conditioncodeText);
-        // this.setCapabilityValue("conditioncode_detail", conditioncode_detail);
-        // this.setCapabilityValue("measure_temperature", temp).catch(err => this.err(err));
-        // this.setCapabilityValue("measure_temperature_feelslike", temp_feelslike);
-        // this.setCapabilityValue("measure_humidity", hum);
-        // this.setCapabilityValue("measure_pressure", pressure);
-        // this.setCapabilityValue("measure_dew_point", dewpoint);
-        // this.setCapabilityValue("measure_rain", rain);
-        // this.setCapabilityValue("measure_pop", pop);
-        // this.setCapabilityValue("measure_snow", snow);
-        // this.setCapabilityValue("measure_ultraviolet", uvi);
-        // this.setCapabilityValue("measure_cloudiness", cloudiness);
-        // this.setCapabilityValue("measure_visibility", visibility);
-        // this.setCapabilityValue("measure_wind_strength", windstrength);
-        // this.setCapabilityValue("measure_wind_gust", windgust);
-        // this.setCapabilityValue("measure_wind_direction_string", winddegcompass);
-        // this.setCapabilityValue("measure_wind_combined", windcombined);
-        // this.setCapabilityValue("measure_wind_angle", windangle);
-        // this.setCapabilityValue("measure_windstrength_beaufort", windspeedbeaufort);
-
         this.log("Trigger Flows...")
         for (let i=0; i<triggerList.length; i++){
             if (triggerList[i].trigger){
-                triggerList[i].trigger.trigger(triggerList[i].device, triggerList[i].token, triggerList[i].state);
-                // .catch(err => this.error(err));
+                triggerList[i].trigger.trigger(triggerList[i].device, triggerList[i].token, triggerList[i].state).catch(err => this.log(err.message));
             }
         }
 

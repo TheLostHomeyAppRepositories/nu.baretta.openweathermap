@@ -1,7 +1,6 @@
 "use strict";
 // need Homey module, see SDK Guidelines
 const Homey = require('homey');
-const weather = require('../../owm_api.js');
 
 class owmOnecallHourlyDriver extends Homey.Driver {
     onPair(session) {

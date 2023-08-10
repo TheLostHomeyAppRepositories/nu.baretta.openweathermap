@@ -1,7 +1,7 @@
 "use strict";
 // need Homey module, see SDK Guidelines
 const Homey = require('homey');
-const weather = require('../../owm_api.js');
+const owm = require('../../lib/owm_api.js');
 
 class owmCurrentWeatherDriver extends Homey.Driver {
 
@@ -74,9 +74,9 @@ class owmCurrentWeatherDriver extends Homey.Driver {
     async onGetCityList(query){
         // Check APIKey with a call without city
         let cities = [];
-        let url = await weather.getURLGeocode(this.settingsData);
+        let url = await owm.getGeocodeURL(this.settingsData);
         try{
-            let geoData = await weather.getWeatherData(url);
+            let geoData = await owm.getWeatherData(url);
             if (!geoData || geoData.cod == 401){
                 return [];
             }
@@ -124,9 +124,9 @@ class owmCurrentWeatherDriver extends Homey.Driver {
                 return;
             }
             // Check APIKey with a call without city
-            let url = await weather.getURLGeocode(this.settingsData);
+            let url = await owm.getURLGeocode(this.settingsData);
             try{
-                let geoData = await weather.getWeatherData(url);
+                let geoData = await owm.getWeatherData(url);
                 if (!geoData || geoData.cod == 401){
                     await session.showView("apikey_error");
                 }
@@ -152,9 +152,9 @@ class owmCurrentWeatherDriver extends Homey.Driver {
             devices.push(device);
         }
         else{
-            let url = await weather.getURLGeocode(this.settingsData);
+            let url = await owm.getGeocodeURL(this.settingsData);
             try{
-                let geoData = await weather.getWeatherData(url);
+                let geoData = await owm.getWeatherData(url);
                 if (!geoData || geoData.cod == 401){
                     await session.showView("apikey_error");
                 }

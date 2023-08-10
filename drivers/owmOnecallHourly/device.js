@@ -1,7 +1,7 @@
 'use strict';
 
 const Homey = require('homey');
-const weather = require('../../owm_api.js');
+const owm = require('../../lib/owm_api_deprecated.js');
 
 class owmOnecallHourly extends Homey.Device {
 
@@ -296,7 +296,7 @@ class owmOnecallHourly extends Homey.Device {
 
         if (data.wind_deg) {
             var windangle = data.wind_deg;
-            var winddegcompass = weather.degToCompass(windangle);
+            var winddegcompass = owm.degToCompass(windangle);
             if (winddegcompass == undefined){
                 this.log("Could not get wind compass text for windangle: "+windangle);
                 winddegcompass = "";
@@ -308,9 +308,9 @@ class owmOnecallHourly extends Homey.Device {
         }
         if (units == "metric") {
             // convert to beaufort and concatenate in a string with wind direction
-            var windspeedbeaufort = weather.beaufortFromKmh(windstrength);
+            var windspeedbeaufort = owm.beaufortFromKmh(windstrength);
         } else {
-            var windspeedbeaufort = weather.beaufortFromMph(windstrength);
+            var windspeedbeaufort = owm.beaufortFromMph(windstrength);
         }
         if (winddegcompass != ""){
             var windcombined =  this.homey.__("windDirectionIcon."+winddegcompass) + 

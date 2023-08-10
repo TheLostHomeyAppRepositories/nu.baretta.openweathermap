@@ -206,5 +206,9 @@
   "1.3.11": {
     "en": "Added availability message to deprecated devices.",
     "de": "Verfügbarkeits-Info für veraltete Geräte ergänzt."
+  },
+  "1.3.12": {
+    "en": "Code cleanup for 'CurrentWeather (free API) device'.",
+    "de": "Code-Bereinigung für 'Aktuelles Wetter (freie API) Gerät."
   }
 }

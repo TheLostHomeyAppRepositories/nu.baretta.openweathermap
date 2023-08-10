@@ -2,7 +2,7 @@
 'use strict';
 
 const Homey = require('homey');
-const weather = require('../../owm_api.js');
+const owm = require('../../lib/owm_api_deprecated.js');
 const intervalCurrent = 5;
 
 class owmCurrent extends Homey.Device {
@@ -79,15 +79,15 @@ class owmCurrent extends Homey.Device {
         //run once, then at interval
         let pollminutes = 10;
 
-        this.pollingintervalcurrent = weather.setIntervalImmediately(_ => {
+        this.pollingintervalcurrent = owm.setIntervalImmediately(_ => {
             this.pollOpenWeatherMapCurrent(settings)
         }, 60000 * pollminutes);
     }
 
     async pollOpenWeatherMapCurrent(settings) {
 
-        weather.getURLCurrent(settings).then(url => {
-                return weather.getWeatherData(url);
+        owm.getURLCurrent(settings).then(url => {
+                return owm.getWeatherData(url);
             })
             .then(async data => {
                 if (!data || !data.weather || data.cod != 200){
@@ -183,7 +183,7 @@ class owmCurrent extends Homey.Device {
 
                 if (data.wind.deg) {
                     var windangle = data.wind.deg;
-                    var winddegcompass = weather.degToCompass(windangle);
+                    var winddegcompass = owm.degToCompass(windangle);
                     if (winddegcompass == undefined){
                         this.log("Could not get wind compass text for windangle: "+windangle);
                         winddegcompass = "";
@@ -194,10 +194,10 @@ class owmCurrent extends Homey.Device {
                 }
                 if (settings["units"] == "metric") {
                     // convert to beaufort and concatenate in a string with wind direction
-                    var windspeedbeaufort = weather.beaufortFromKmh(windstrength);
+                    var windspeedbeaufort = owm.beaufortFromKmh(windstrength);
                     var windcombined = winddegcompass + " " + windspeedbeaufort;
                 } else {
-                    var windspeedbeaufort = weather.beaufortFromMph(windstrength);
+                    var windspeedbeaufort = owm.beaufortFromMph(windstrength);
                     var windcombined = winddegcompass + " " + windspeedbeaufort;
                 }
                 var cloudiness = data.clouds.all;

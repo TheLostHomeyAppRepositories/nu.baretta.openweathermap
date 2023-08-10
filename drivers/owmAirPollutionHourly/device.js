@@ -1,7 +1,6 @@
 'use strict';
 
 const Homey = require('homey');
-const weather = require('../../owm_api.js');
 
 class owmAirPollutionHourly extends Homey.Device {
 

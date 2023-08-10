@@ -1,6 +1,5 @@
 {
     "id": "owmCurrentWeather",
-    "deprecated": true,
     "name": {
         "en": "Weather, current (free Current Weather API)",
         "de": "7. Wetter, aktuell (freie Current Weather API)",

@@ -2,14 +2,14 @@
 
 const { throws } = require('assert');
 const Homey = require('homey');
-const owm = require('../../lib/owm_api_deprecated.js');
+const weather = require('../../owm_api.js');
 const intervalCurrent = 5;
 
-class owmOnecallCurrent extends Homey.Device {
+class owmCurrenWeather extends Homey.Device {
 
     async onInit() {
         let name = this.getName() + '_' + this.getData().id;
-        this.log('OnecallCurrent init: '+name);
+        this.log('CurrentWeather init: '+name);
 
         await this.updateCapabilities();
 
@@ -35,45 +35,30 @@ class owmOnecallCurrent extends Homey.Device {
 
         // Flows
         this._flowTriggerTemperatureChanged = this.homey.flow.getDeviceTriggerCard('TemperatureChanged');
-
         this._flowTriggerTemperatureFeelslikeChanged = this.homey.flow.getDeviceTriggerCard('TemperatureFeelslikeChanged');
+        this._flowTriggerTemperatureMinChanged = this.homey.flow.getDeviceTriggerCard('TemperatureMinChanged');
+        this._flowTriggerTemperatureMaxChanged = this.homey.flow.getDeviceTriggerCard('TemperatureMaxChanged');
 
         this._flowTriggerConditionChanged = this.homey.flow.getDeviceTriggerCard('ConditionChanged');
-
         this._flowTriggerConditionDetailChanged = this.homey.flow.getDeviceTriggerCard('ConditionDetailChanged');
-
         this._flowTriggerWeatherChanged = this.homey.flow.getDeviceTriggerCard('WeatherChanged');
 
         this._flowTriggerWindBeaufortChanged = this.homey.flow.getDeviceTriggerCard('WindBeaufortChanged');
-
         this._flowTriggerWindDirectionCompassChanged = this.homey.flow.getDeviceTriggerCard('WindDirectionCompassChanged');
-
-        this._flowTriggerUltravioletChanged = this.homey.flow.getDeviceTriggerCard('UltravioletChanged');
-
-        this._flowTriggerCloudinessChanged = this.homey.flow.getDeviceTriggerCard('CloudinessChanged');
-
-        this._flowTriggerVisibilityChanged = this.homey.flow.getDeviceTriggerCard('VisibilityChanged');
-
-        this._flowTriggerSnowChanged = this.homey.flow.getDeviceTriggerCard('SnowChanged');
-
-        this._flowTriggerHumidityChanged = this.homey.flow.getDeviceTriggerCard('HumidityChanged');
-        
-        this._flowTriggerPressureChanged = this.homey.flow.getDeviceTriggerCard('PressureChanged');
-
-        this._flowTriggerDewPointChanged = this.homey.flow.getDeviceTriggerCard('DewPointChanged');
-
-        this._flowTriggerRainChanged = this.homey.flow.getDeviceTriggerCard('RainChanged');
-        
         this._flowTriggerWindCombinedChanged = this.homey.flow.getDeviceTriggerCard('WindCombinedChanged');
-        
         this._flowTriggerWindStrengthChanged = this.homey.flow.getDeviceTriggerCard('WindStrengthChanged');
-
-        this._flowTriggerWindGustChanged = this.homey.flow.getDeviceTriggerCard('WindGustChanged');
-
         this._flowTriggerWindAngleChanged = this.homey.flow.getDeviceTriggerCard('WindAngleChanged');
 
-        this._flowTriggerSunriseChanged = this.homey.flow.getDeviceTriggerCard('SunriseChanged');
+        this._flowTriggerHumidityChanged = this.homey.flow.getDeviceTriggerCard('HumidityChanged');
+        this._flowTriggerPressureChanged = this.homey.flow.getDeviceTriggerCard('PressureChanged');
 
+        this._flowTriggerCloudinessChanged = this.homey.flow.getDeviceTriggerCard('CloudinessChanged');
+        this._flowTriggerVisibilityChanged = this.homey.flow.getDeviceTriggerCard('VisibilityChanged');
+
+        this._flowTriggerRainChanged = this.homey.flow.getDeviceTriggerCard('RainChanged');
+        this._flowTriggerSnowChanged = this.homey.flow.getDeviceTriggerCard('SnowChanged');
+
+        this._flowTriggerSunriseChanged = this.homey.flow.getDeviceTriggerCard('SunriseChanged');
         this._flowTriggerSunsetChanged = this.homey.flow.getDeviceTriggerCard('SunsetChanged');
 
         //run once to get the first data
@@ -83,7 +68,7 @@ class owmOnecallCurrent extends Homey.Device {
     } // end onInit
 
     async updateCapabilities(){
-        // add missing capabilities
+        // add new capabilities
         let capabilities = [];
         try{
             capabilities = this.homey.app.manifest.drivers.filter((e) => {return (e.id == this.driver.id);})[0].capabilities;
@@ -107,49 +92,23 @@ class owmOnecallCurrent extends Homey.Device {
         let id = this.getData().id;
         clearInterval(this.pollingintervalcurrent);
         this.log('device deleted:', id);
-
-        this.homey.app.setChildDevicesUnavailable(id);
     } // end onDeleted
 
     pollWeatherCurrent(settings) {
         //run once, then at interval
 
-        this.pollingintervalcurrent = owm.setIntervalImmediately(_ => {
+        this.pollingintervalcurrent = weather.setIntervalImmediately(_ => {
                 this.pollOpenWeatherMapCurrent(settings)
             }, 60 * 1000 * settings.pollingInterval);
     }
 
     async setDeviceUnavailable(message){
         this.setUnavailable(message);
-        let childList = this.homey.drivers.getDriver('owmOnecallHourly').getDevices();
-        for (let i=0; i<childList.length; i++){
-            if (childList[i].getData().locationId == this.getData().id){
-                childList[i].setUnavailable(this.homey.__("device_unavailable_reason.location_not_available"));
-            }
-        }
-        childList = this.homey.drivers.getDriver('owmOnecallDaily').getDevices();
-        for (let i=0; i<childList.length; i++){
-            if (childList[i].getData().locationId == this.getData().id){
-                childList[i].setUnavailable(this.homey.__("device_unavailable_reason.location_not_available"));
-            }
-        }
     }
 
     async setDeviceAvailable(){
         if ( !this.getAvailable() ){
             await this.setAvailable();
-            let childList = this.homey.drivers.getDriver('owmOnecallHourly').getDevices();
-            for (let i=0; i<childList.length; i++){
-                if (childList[i].getData().locationId == this.getData().id){
-                    childList[i].setAvailable();
-                }
-            }
-            childList = this.homey.drivers.getDriver('owmOnecallDaily').getDevices();
-            for (let i=0; i<childList.length; i++){
-                if (childList[i].getData().locationId == this.getData().id){
-                    childList[i].setAvailable();
-                }
-            }
         }
     }
 
@@ -160,7 +119,6 @@ class owmOnecallCurrent extends Homey.Device {
         newsettings['lat'] = settings['lat'];
         newsettings['lon'] = settings['lon'];
         newsettings["APIKey"] = settings["APIKey"];
-        newsettings["APIVersion"] = settings["APIVersion"];
         newsettings["units"] = this.homey.i18n.getUnits();
         newsettings["language"] = this.homey.i18n.getLanguage();
         this.pollOpenWeatherMapCurrent(newsettings);
@@ -168,14 +126,14 @@ class owmOnecallCurrent extends Homey.Device {
 
     async pollOpenWeatherMapCurrent(settings) {
 
-        owm.getURLOnecall(settings).then(url => {
+        weather.getURLCurrentWeather(settings).then(url => {
                 //this.log("OnCall-URL: "+url);
-                return owm.getWeatherData(url);
+                return weather.getWeatherData(url);
             })
             .then(async (data) => {
                 // this.log("Result:");
                 // this.log(data);
-                if (!data.current){
+                if (!data || !data.weather || data.cod != 200){
                     if (data.message && data.cod>200){
                         this.log("API error message!");
                         this.log(data);
@@ -203,19 +161,19 @@ class owmOnecallCurrent extends Homey.Device {
                 //     .catch(this.error);
                 let tz  = this.homey.clock.getTimezone();
 
-                var conditioncode = data.current.weather[0].main;
-                this.log("Main conditioncode: " + data.current.weather[0].main);
+                var conditioncode = data.weather[0].main;
+                this.log("Main conditioncode: " + data.weather[0].main);
                 var conditioncodeText = this.homey.app.getConditioncodeText(conditioncode);
 
-                var conditioncode_detail = data.current.weather[0].id.toString();
-                var conditioncode_detail_number = data.current.weather[0].id;
-                this.log("Specific conditioncode: " + data.current.weather[0].id);
+                var conditioncode_detail = data.weather[0].id.toString();
+                var conditioncode_detail_number = data.weather[0].id;
+                this.log("Specific conditioncode: " + data.weather[0].id);
 
                 let forecast_time;
                 let lastUpdate;
                 let hasDateLocalization = this.homey.app.hasDateLocalization();
                 if (hasDateLocalization){
-                    let now = new Date(data.current.dt*1000).toLocaleString(this.homey.i18n.getLanguage(), 
+                    let now = new Date(data.dt*1000).toLocaleString(this.homey.i18n.getLanguage(), 
                     { 
                         hour12: false, 
                         timeZone: tz,
@@ -240,7 +198,7 @@ class owmOnecallCurrent extends Homey.Device {
                     lastUpdate = 'Last update: ' + now.replace(',', '');
                 }
                 else{
-                    let now = new Date(data.current.dt*1000).toLocaleString('en-US', 
+                    let now = new Date(data.dt*1000).toLocaleString('en-US', 
                         { 
                             hour12: false, 
                             timeZone: tz,
@@ -276,29 +234,25 @@ class owmOnecallCurrent extends Homey.Device {
                     })
                     .catch(this.error);
                     
-                var temp = Math.round(data.current.temp * 10) / 10;
-                var temp_feelslike = Math.round(data.current.feels_like* 10) / 10;
-                var hum = data.current.humidity;
-                var pressure = data.current.pressure;
-                var dewpoint = Math.round(data.current.dew_point * 10) / 10;
+                var temp = Math.round(data.main.temp * 10) / 10;
+                var temp_feelslike = Math.round(data.main.feels_like* 10) / 10;
+                var temp_min = Math.round(data.main.temp_min * 10) / 10;
+                var temp_max = Math.round(data.main.temp_max * 10) / 10;
+                var hum = data.main.humidity;
+                var pressure = data.main.pressure;
 
-                // return the rain in mm if present, or precipitation
-                if (data.current.precipitation) {
-                    var rain = data.current.precipitation.value;
-                }
-
-                if (data.current.snow != undefined) {
-                    if (typeof (data.current.snow) === "number") {
-                        var snow = data.current.snow
-                    } else if (typeof (data.current.snow) === "object") {
-                        if (data.current.snow['3h'] != undefined) {
-                            var snow = data.current.snow['3h'] / 3;
+                if (data.snow != undefined) {
+                    if (typeof (data.snow) === "number") {
+                        var snow = data.snow
+                    } else if (typeof (data.snow) === "object") {
+                        if (data.snow['3h'] != undefined) {
+                            var snow = data.snow['3h'] / 3;
                         }
-                        if (data.current.snow['1h'] != undefined) {
-                            var snow = data.current.snow['1h'];
+                        if (data.snow['1h'] != undefined) {
+                            var snow = data.snow['1h'];
                         }
                         // Sometimes OWM returns an empty snow object
-                        if (Object.keys(data.current.snow).length == 0) {
+                        if (Object.keys(data.snow).length == 0) {
                             var snow = 0;
                         }
                     }
@@ -306,18 +260,18 @@ class owmOnecallCurrent extends Homey.Device {
                     var snow = 0;
                 }
 
-                if (data.current.rain != undefined) {
-                    if (typeof (data.current.rain) === "number") {
-                        var rain = data.current.rain
-                    } else if (typeof (data.current.rain) === "object") {
-                        if (data.current.rain['3h'] != undefined) {
-                            var rain = data.current.rain['3h'] / 3;
+                if (data.rain != undefined) {
+                    if (typeof (data.rain) === "number") {
+                        var rain = data.rain
+                    } else if (typeof (data.rain) === "object") {
+                        if (data.rain['3h'] != undefined) {
+                            var rain = data.rain['3h'] / 3;
                         }
-                        if (data.current.rain['1h'] != undefined) {
-                            var rain = data.current.rain['1h'];
+                        if (data.rain['1h'] != undefined) {
+                            var rain = data.rain['1h'];
                         }
                         // Sometimes OWM returns an empty rain object
-                        if (Object.keys(data.current.rain).length == 0) {
+                        if (Object.keys(data.rain).length == 0) {
                             var rain = 0;
                         }
                     }
@@ -325,66 +279,40 @@ class owmOnecallCurrent extends Homey.Device {
                     var rain = 0;
                 }
 
-                if (data.current.wind_speed) {
+                if (data.wind.speed) {
                     if ( this.getSetting('windspeed_ms') == true){
                         if (settings["units"] == "metric") {
-                            var windstrength = data.current.wind_speed;
+                            var windstrength = data.wind.speed;
                         } else {
                             // mph to m/s
-                            var windstrength = Math.round(data.current.wind_speed / 2.237);
+                            var windstrength = Math.round(data.wind.speed / 2.237);
                         }
                     }
                     else{
                         if (settings["units"] == "metric") {
                             // convert from m/s to km/h
-                            var windstrength = Math.round(3.6 * data.current.wind_speed);
+                            var windstrength = Math.round(3.6 * data.wind.speed);
                         } else {
                             // windspeed in mph
-                            var windstrength = data.current.wind_speed;
+                            var windstrength = data.wind.speed;
                         }
                     }
                 } else {
                     var windstrength = 0;
                 }
 
-                if (data.current.wind_gust) {
-                    if ( this.getSetting('windspeed_ms') == true){
-                        if (settings["units"] == "metric") {
-                            var windgust = data.current.wind_gust;
-                        } else {
-                            // mph to m/s
-                            var windgust = Math.round(data.current.wind_gust / 2.237);
-                        }
-                    }
-                    else{
-                        if (settings["units"] == "metric") {
-                            // convert from m/s to km/h
-                            var windgust = Math.round(3.6 * data.current.wind_gust);
-                        } else {
-                            // windspeed in mph
-                            var windgust = data.current.wind_gust;
-                        }
-                    }
-                } else {
-                    var windgust = 0;
-                }
-
-                if (data.current.wind_deg) {
-                    var windangle = data.current.wind_deg;
-                    var winddegcompass = owm.degToCompass(windangle);
-                    if (winddegcompass == undefined){
-                        this.log("Could not get wind compass text for windangle: "+windangle);
-                        winddegcompass = "";
-                    }
+                if (data.wind.deg) {
+                    var windangle = data.wind.deg;
+                    var winddegcompass = weather.degToCompass(windangle);
                 } else {
                     var windangle = 0;
                     var winddegcompass = "";
                 }
                 if (settings["units"] == "metric") {
                     // convert to beaufort and concatenate in a string with wind direction
-                    var windspeedbeaufort = owm.beaufortFromKmh(windstrength);
+                    var windspeedbeaufort = weather.beaufortFromKmh(windstrength);
                 } else {
-                    var windspeedbeaufort = owm.beaufortFromMph(windstrength);
+                    var windspeedbeaufort = weather.beaufortFromMph(windstrength);
                 }
                 if (winddegcompass != ""){
                     var windcombined =  this.homey.__("windDirectionIcon."+winddegcompass) + 
@@ -396,14 +324,13 @@ class owmOnecallCurrent extends Homey.Device {
                 else{
                     var windcombined = windspeedbeaufort.toString();
                 }
-                var uvi = data.current.uvi;
-                var cloudiness = data.current.clouds;
-                var visibility = data.current.visibility;
-                var description = data.current.weather[0].description;
+                var cloudiness = data.clouds.all;
+                var visibility = data.visibility;
+                var description = data.weather[0].description;
 
-                // var sunr = new Date(data.current.sunrise * 1e3);
+                // var sunr = new Date(data.sunrise * 1e3);
                 // var sunrise = sunr.getHours() + ":" + (sunr.getMinutes() < 10 ? '0' : '') + sunr.getMinutes();
-                let sunr = new Date(data.current.sunrise*1000).toLocaleString('en-US', 
+                let sunr = new Date(data.sys.sunrise*1000).toLocaleString('en-US', 
                 { 
                     hour12: false, 
                     timeZone: tz,
@@ -415,9 +342,9 @@ class owmOnecallCurrent extends Homey.Device {
                 });
                 let sunrise = sunr.split(", ")[1];
 
-                // var suns = new Date(data.current.sunset * 1e3);
+                // var suns = new Date(data.sunset * 1e3);
                 // var sunset = suns.getHours() + ":" + (suns.getMinutes() < 10 ? '0' : '') + suns.getMinutes();
-                let suns = new Date(data.current.sunset*1000).toLocaleString('en-US', 
+                let suns = new Date(data.sys.sunset*1000).toLocaleString('en-US', 
                 { 
                     hour12: false, 
                     timeZone: tz,
@@ -457,20 +384,33 @@ class owmOnecallCurrent extends Homey.Device {
                     triggerList.push({'trigger':this._flowTriggerTemperatureFeelslikeChanged, 'device':device, 'token':tokens, 'state':state});
                     // this._flowTriggerTemperatureFeelslikeChanged.trigger(device, tokens, state).catch(this.error)
                 }
-                if (this.getCapabilityValue('measure_ultraviolet') !== uvi && uvi !== undefined) {
-                    this.log("UV index previous: " + this.getCapabilityValue('measure_ultraviolet'));
-                    this.log("UV index new: " + uvi);
+                if (this.getCapabilityValue('measure_temperature_min') !== temp_min && temp_min !== undefined) {
+                    this.log("Temp Min. previous: " + this.getCapabilityValue('measure_temperature_min') );
+                    this.log("Temp Min. new: " + temp_min );
                     let state = {
-                        "measure_ultraviolet": uvi
+                        "measure_temperature_min": temp_min
                     };
                     let tokens = {
-                        "measure_ultraviolet": uvi,
+                        "measure_temperature_min": temp_min,
                         "location": GEOlocation
                     };
-                    triggerList.push({'trigger':this._flowTriggerUltravioletChanged, 'device':device, 'token':tokens, 'state':state});
-                    // this._flowTriggerUltravioletChanged.trigger(device, tokens, state).catch(this.error)
+                    triggerList.push({'trigger':this._flowTriggerTemperatureMinChanged, 'device':device, 'token':tokens, 'state':state});
+                    // this._flowTriggerTemperatureChanged.trigger(device, tokens, state).catch(this.error)
                 }
-                if (this.getCapabilityValue('measure_cloudiness') !== cloudiness && cloudiness !== undefined) {
+                if (this.getCapabilityValue('measure_temperature_max') !== temp_max && temp_max !== undefined) {
+                    this.log("Temp Max. previous: " + this.getCapabilityValue('measure_temperature_max') );
+                    this.log("Temp Max. new: " + temp_max );
+                    let state = {
+                        "measure_temperature_max": temp_max
+                    };
+                    let tokens = {
+                        "measure_temperature_max": temp_max,
+                        "location": GEOlocation
+                    };
+                    triggerList.push({'trigger':this._flowTriggerTemperatureMaxChanged, 'device':device, 'token':tokens, 'state':state});
+                    // this._flowTriggerTemperatureChanged.trigger(device, tokens, state).catch(this.error)
+                }
+                        if (this.getCapabilityValue('measure_cloudiness') !== cloudiness && cloudiness !== undefined) {
                     this.log("Cloudiness previous: " + this.getCapabilityValue('measure_cloudiness')); 
                     this.log("Cloudiness new: " + cloudiness);
                     let state = {
@@ -495,6 +435,19 @@ class owmOnecallCurrent extends Homey.Device {
                     };
                     triggerList.push({'trigger':this._flowTriggerVisibilityChanged, 'device':device, 'token':tokens, 'state':state});
                     // this._flowTriggerVisibilityChanged.trigger(device, tokens, state).catch(this.error)
+                }
+                if (this.getCapabilityValue('measure_rain') !== rain && rain !== undefined) {
+                    this.log("Rain previous: " + this.getCapabilityValue('measure_rain'));
+                    this.log("Rain new: " + rain);
+                    let state = {
+                        "measure_rain": rain
+                    };
+                    let tokens = {
+                        "measure_rain": rain,
+                        "location": GEOlocation
+                    };
+                    triggerList.push({'trigger':this._flowTriggerRainChanged, 'device':device, 'token':tokens, 'state':state});
+                    // this._flowTriggerWeatherChanged.trigger(device, tokens, state).catch(this.error)
                 }
                 if (this.getCapabilityValue('measure_snow') !== snow && snow !== undefined) {
                     this.log("Snow previous: " + this.getCapabilityValue('measure_snow'));
@@ -600,32 +553,6 @@ class owmOnecallCurrent extends Homey.Device {
                     triggerList.push({'trigger':this._flowTriggerPressureChanged, 'device':device, 'token':tokens, 'state':state});
                     // this._flowTriggerWeatherChanged.trigger(device, tokens, state).catch(this.error)
                 }
-                if (this.getCapabilityValue('measure_dew_point') !== dewpoint && dewpoint !== undefined) {
-                    this.log("Dewpoint previous: " + this.getCapabilityValue('measure_dew_point'));
-                    this.log("Dewpoint new: " + dewpoint);
-                    let state = {
-                        "measure_dew_point": dewpoint
-                    };
-                    let tokens = {
-                        "measure_dew_point": dewpoint,
-                        "location": GEOlocation
-                    };
-                    triggerList.push({'trigger':this._flowTriggerDewPointChanged, 'device':device, 'token':tokens, 'state':state});
-                    // this._flowTriggerWeatherChanged.trigger(device, tokens, state).catch(this.error)
-                }
-                if (this.getCapabilityValue('measure_rain') !== rain && rain !== undefined) {
-                    this.log("Rain previous: " + this.getCapabilityValue('measure_rain'));
-                    this.log("Rain new: " + rain);
-                    let state = {
-                        "measure_rain": rain
-                    };
-                    let tokens = {
-                        "measure_rain": rain,
-                        "location": GEOlocation
-                    };
-                    triggerList.push({'trigger':this._flowTriggerRainChanged, 'device':device, 'token':tokens, 'state':state});
-                    // this._flowTriggerWeatherChanged.trigger(device, tokens, state).catch(this.error)
-                }
                 if (this.getCapabilityValue('measure_wind_combined') !== windcombined && windcombined !== undefined) {
                     this.log("Wind_combined previous: " + this.getCapabilityValue('measure_wind_combined'));
                     this.log("Wind_combined new: " + windcombined);
@@ -678,19 +605,6 @@ class owmOnecallCurrent extends Homey.Device {
                     triggerList.push({'trigger':this._flowTriggerWindStrengthChanged, 'device':device, 'token':tokens, 'state':state});
                     // this._flowTriggerWeatherChanged.trigger(device, tokens, state).catch(this.error)
                 }
-                if (this.getCapabilityValue('measure_wind_gust') !== windgust && windgust !== undefined) {
-                    this.log("Wind_gust previous: " + this.getCapabilityValue('measure_wind_gust'));
-                    this.log("Wind_gust new: " + windgust);
-                    let state = {
-                        "measure_wind_gust": windgust
-                    };
-                    let tokens = {
-                        "measure_wind_gust": windgust,
-                        "location": GEOlocation
-                    };
-                    triggerList.push({'trigger':this._flowTriggerWindGustChanged, 'device':device, 'token':tokens, 'state':state});
-                    // this._flowTriggerWeatherChanged.trigger(device, tokens, state).catch(this.error)
-                }
                 if (this.getCapabilityValue('measure_wind_angle') !== windangle && windangle !== undefined) {
                     this.log("Wind_angle previous: " + this.getCapabilityValue('measure_wind_angle'));
                     this.log("Wind_angle new: " + windangle);
@@ -713,18 +627,17 @@ class owmOnecallCurrent extends Homey.Device {
                     'conditioncode_detail': conditioncode_detail,
                     'measure_temperature': temp,
                     "measure_temperature_feelslike": temp_feelslike,
+                    "measure_temperature_min": temp_min,
+                    "measure_temperature_max": temp_max,
                     'measure_humidity': hum,
                     'measure_pressure': pressure,
-                    'measure_dew_point': dewpoint,
                     'measure_rain': rain,
                     'measure_snow': snow,
                     'measure_wind_combined': windcombined,
                     'measure_wind_strength': windstrength,
-                    'measure_wind_gust': windgust,
                     'measure_wind_angle': windangle,
                     'measure_windstrength_beaufort': windspeedbeaufort,
                     'measure_wind_direction_string': winddegcompass,
-                    'measure_ultraviolet': uvi,
                     'measure_cloudiness': cloudiness,
                     'measure_visibility': visibility,
                     'description': description,
@@ -751,50 +664,10 @@ class owmOnecallCurrent extends Homey.Device {
                     }
                 }
 
-                // Update Hourly/daily/alerts
-                if (data.hourly){
-                    await this.updateChildHourly(data.hourly)
-                }
-                if (data.daily){
-                    await this.updateChildDaily(data.daily)
-                }
-                if (data.alerts){
-                    await this.updateChildAlerts(data.alerts)
-                }
-                else{
-                    await this.updateChildAlerts([])
-                }
             })
             .catch(error => {
                 this.log(error);
             });
-    }
-
-    async updateChildHourly(data){
-        let devices = this.homey.drivers.getDriver('owmOnecallHourly').getDevices();
-        for (let i=0; i<devices.length; i++){
-            if (devices[i].getData().locationId == this.getData().id){
-                devices[i].updateDevice(data)
-            }
-        }
-    }
-
-    async updateChildDaily(data){
-        let devices = this.homey.drivers.getDriver('owmOnecallDaily').getDevices();
-        for (let i=0; i<devices.length; i++){
-            if (devices[i].getData().locationId == this.getData().id){
-                devices[i].updateDevice(data)
-            }
-        }
-    }
-
-    async updateChildAlerts(data){
-        let devices = this.homey.drivers.getDriver('owmOnecallAlerts').getDevices();
-        for (let i=0; i<devices.length; i++){
-            if (devices[i].getData().locationId == this.getData().id){
-                devices[i].updateDevice(data)
-            }
-        }
     }
 
     // parameters: {settings, newSettingsObj, changedKeysArr}
@@ -842,7 +715,6 @@ class owmOnecallCurrent extends Homey.Device {
             newSettings['lat'] = settings.newSettings['lat'];
             newSettings['lon'] = settings.newSettings['lon'];
             newSettings["APIKey"] = settings.newSettings["APIKey"];
-            newSettings["APIVersion"] = settings.newSettings["APIVersion"];
             clearInterval(this.pollingintervalcurrent);
             if (newSettings.pollingActive == true){
                 this.pollWeatherCurrent(newSettings);
@@ -852,4 +724,4 @@ class owmOnecallCurrent extends Homey.Device {
         }
     }
 }
-module.exports = owmOnecallCurrent;
+module.exports = owmCurrenWeather;

@@ -2,7 +2,7 @@
 
 const { throws } = require('assert');
 const Homey = require('homey');
-const weather = require('../../owm_api.js');
+const owm = require('../../lib/owm_api_deprecated.js');
 const intervalCurrent = 5;
 
 class owmAirPollutionCurrent extends Homey.Device {
@@ -51,7 +51,7 @@ class owmAirPollutionCurrent extends Homey.Device {
     pollAirPollution(settings) {
         //run once, then at interval
 
-        this.pollingintervalcurrent = weather.setIntervalImmediately(_ => {
+        this.pollingintervalcurrent = owm.setIntervalImmediately(_ => {
             this.pollOpenWeatherMapAirPollution(settings)
         }, 60 * 1000 * settings.pollingInterval);
     }
@@ -90,9 +90,9 @@ class owmAirPollutionCurrent extends Homey.Device {
 
     async pollOpenWeatherMapAirPollution(settings) {
 
-        weather.getURLAirPollution(settings).then(url => {
+        owm.getURLAirPollution(settings).then(url => {
                 //this.log("OnCall-URL: "+url);
-                return weather.getWeatherData(url);
+                return owm.getWeatherData(url);
             })
             .then(async (data) => {
                 // this.log("Result:");

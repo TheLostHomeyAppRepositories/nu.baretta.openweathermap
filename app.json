@@ -1,7 +1,7 @@
 {
   "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
   "id": "nu.baretta.openweathermap",
-  "version": "1.3.12",
+  "version": "1.3.14",
   "compatibility": ">=8.1.1",
   "sdk": 3,
   "name": {
@@ -3823,9 +3823,9 @@
     {
       "id": "owmAirPollutionCurrent",
       "name": {
-        "en": "Air quality current (location)",
+        "en": "5. Air quality current (location)",
         "de": "5. Luftqualität aktuell (Standort)",
-        "nl": "luchtkwaliteit actueel (locatie)"
+        "nl": "5. luchtkwaliteit actueel (locatie)"
       },
       "images": {
         "large": "/drivers/owmAirPollutionCurrent/assets/images/large.png",
@@ -3957,9 +3957,9 @@
     {
       "id": "owmAirPollutionHourly",
       "name": {
-        "en": "Air quality, hourly forecast",
+        "en": "6. Air quality, hourly forecast",
         "de": "6. Luftqualität, stündliche Vorhersage",
-        "nl": "luchtkwaliteit, uurlijkse voorspeling"
+        "nl": "6. luchtkwaliteit, uurlijkse voorspeling"
       },
       "images": {
         "large": "/drivers/owmAirPollutionHourly/assets/images/large.png",
@@ -4177,9 +4177,9 @@
     {
       "id": "owmCurrentWeather",
       "name": {
-        "en": "Weather, current (free Current Weather API)",
+        "en": "7. Weather, current (free Current Weather API)",
         "de": "7. Wetter, aktuell (freie Current Weather API)",
-        "nl": "Weerbericht, actueel (vrij Current Weather API)"
+        "nl": "7. Weerbericht, actueel (vrij Current Weather API)"
       },
       "images": {
         "large": "/drivers/owmCurrentWeather/assets/images/large.png",
@@ -4723,9 +4723,9 @@
     {
       "id": "owmOnecallAlerts",
       "name": {
-        "en": "Weather alerts",
+        "en": "4. Weather alerts",
         "de": "4. Wetter-Warnungen",
-        "nl": "Weerwaarschuwingen"
+        "nl": "4. Weerwaarschuwingen"
       },
       "images": {
         "large": "/drivers/owmOnecallAlerts/assets/images/large.png",
@@ -4811,9 +4811,9 @@
     {
       "id": "owmOnecallCurrent",
       "name": {
-        "en": "Weather, current (location)",
+        "en": "1. Weather, current (location)",
         "de": "1. Wetter, aktuell (Standort)",
-        "nl": "Weerbericht, actueel (locatie)"
+        "nl": "1. Weerbericht, actueel (locatie)"
       },
       "images": {
         "large": "/drivers/owmOnecallCurrent/assets/images/large.png",
@@ -4924,6 +4924,11 @@
                 "en": "OpenWeatherMap API version",
                 "de": "OpenWeatherMap API-Version",
                 "nl": "OpenWeatherMap API versie"
+              },
+              "hint": {
+                "en": "If you have an older API key without payment information that is already unlocked for the OneCall API, then choose 'OneCall 2.5'. If you have a new OneCall API key with payment information, then choose 'OneCall 3.0'.",
+                "de": "Wenn du einen älteren API-Key ohne Zahlungsinformationen besitzt, der bereits für OneCall-API freigeschaltet ist, dann wähle 'OneCall 2.5'. Wenn du einen neuen OneCall API-Key mit Zahlungsinformationen besitzt, dann wähle 'OneCall 3,.0'.",
+                "nl": "Als je een oudere API-sleutel zonder betalingsinformatie hebt, die al is ontgrendeld voor de OneCall-API, kies dan 'OneCall 2.5'. Als je een nieuwe OneCall API-sleutel hebt met betalingsinformatie, kies dan 'OneCall 3.0'."
               }
             },
             {
@@ -4991,9 +4996,9 @@
     {
       "id": "owmOnecallDaily",
       "name": {
-        "en": "Weather, daily forecast",
+        "en": "3. Weather, daily forecast",
         "de": "3. Wetter, tägliche Vorhersage",
-        "nl": "Weerbericht, dagelijkse voorspelling"
+        "nl": "3. Weerbericht, dagelijkse voorspelling"
       },
       "images": {
         "large": "/drivers/owmOnecallDaily/assets/images/large.png",
@@ -5117,9 +5122,9 @@
     {
       "id": "owmOnecallHourly",
       "name": {
-        "en": "Weather, hourly forecast",
+        "en": "2. Weather, hourly forecast",
         "de": "2. Wetter, stündliche Vorhersage",
-        "nl": "Weerbericht, uurlijkse voorspeling"
+        "nl": "2. Weerbericht, uurlijkse voorspeling"
       },
       "images": {
         "large": "/drivers/owmOnecallHourly/assets/images/large.png",
@@ -5146,7 +5151,6 @@
         "measure_ultraviolet",
         "measure_rain",
         "measure_snow",
-        "moonphase_type",
         "conditioncode",
         "conditioncode_detail",
         "measure_wind_angle",
@@ -6445,7 +6449,7 @@
         "nl": "Beaufort"
       },
       "min": 0,
-      "max": 12,
+      "max": 17,
       "step": 1
     },
     "moonphase": {

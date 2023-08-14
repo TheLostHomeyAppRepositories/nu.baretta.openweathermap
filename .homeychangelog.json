@@ -210,5 +210,13 @@
   "1.3.12": {
     "en": "Code cleanup for 'CurrentWeather (free API) device'.",
     "de": "Code-Bereinigung für 'Aktuelles Wetter (freie API) Gerät."
+  },
+  "1.3.13": {
+    "en": "Code cleanup for 'CurrentWeather (free API) device'.",
+    "de": "Code-Bereinigung für 'Aktuelles Wetter (freie API) Gerät."
+  },
+  "1.3.14": {
+    "en": "Code cleanup for Onecall & AirQuality devices.",
+    "de": "Code-Bereinigung für Onecall & AirQuality Geräte."
   }
 }

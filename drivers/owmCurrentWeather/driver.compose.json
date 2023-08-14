@@ -1,9 +1,9 @@
 {
     "id": "owmCurrentWeather",
     "name": {
-        "en": "Weather, current (free Current Weather API)",
+        "en": "7. Weather, current (free Current Weather API)",
         "de": "7. Wetter, aktuell (freie Current Weather API)",
-        "nl": "Weerbericht, actueel (vrij Current Weather API)"
+        "nl": "7. Weerbericht, actueel (vrij Current Weather API)"
     },
     "images": {
         "large": "/drivers/owmCurrentWeather/assets/images/large.png",

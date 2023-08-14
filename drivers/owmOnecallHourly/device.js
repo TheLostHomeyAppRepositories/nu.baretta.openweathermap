@@ -1,61 +1,25 @@
 'use strict';
 
 const Homey = require('homey');
-const owm = require('../../lib/owm_api_deprecated.js');
+const owm = require('../../lib/owm_api.js');
 
 class owmOnecallHourly extends Homey.Device {
 
     async onInit() {
-        let name = this.getName() + '_' + this.getData().id;
-        this.log('OnecallHourly init: '+name);
+        this.log('OnecallHourly init: ', this.getName(), this.getData().id);
 
         await this.updateCapabilities();
+
         await this.checkParentDevice();
         // // Intervall to check parent device is still existing
         // this.checkParentInterval = setInterval(_ => {
         //     this.checkParentDevice()
         // }, 60 * 1000 * 2);
 
+        this.data = require('./data.js').DATA_DEF;
+
         // Flows
-        this._flowTriggerTemperatureChanged = this.homey.flow.getDeviceTriggerCard('TemperatureChanged');
-
-        this._flowTriggerTemperatureFeelslikeChanged = this.homey.flow.getDeviceTriggerCard('TemperatureFeelslikeChanged');
-
-        this._flowTriggerConditionChanged = this.homey.flow.getDeviceTriggerCard('ConditionChanged');
-
-        this._flowTriggerConditionDetailChanged = this.homey.flow.getDeviceTriggerCard('ConditionDetailChanged');
-
-        this._flowTriggerWeatherChanged = this.homey.flow.getDeviceTriggerCard('WeatherChanged');
-
-        this._flowTriggerWindBeaufortChanged = this.homey.flow.getDeviceTriggerCard('WindBeaufortChanged');
-
-        this._flowTriggerWindDirectionCompassChanged = this.homey.flow.getDeviceTriggerCard('WindDirectionCompassChanged');
-
-        this._flowTriggerUltravioletChanged = this.homey.flow.getDeviceTriggerCard('UltravioletChanged');
-
-        this._flowTriggerCloudinessChanged = this.homey.flow.getDeviceTriggerCard('CloudinessChanged');
-
-        this._flowTriggerVisibilityChanged = this.homey.flow.getDeviceTriggerCard('VisibilityChanged');
-
-        this._flowTriggerSnowChanged = this.homey.flow.getDeviceTriggerCard('SnowChanged');
-
-        this._flowTriggerHumidityChanged = this.homey.flow.getDeviceTriggerCard('HumidityChanged');
-        
-        this._flowTriggerPressureChanged = this.homey.flow.getDeviceTriggerCard('PressureChanged');
-
-        this._flowTriggerDewPointChanged = this.homey.flow.getDeviceTriggerCard('DewPointChanged');
-
-        this._flowTriggerRainChanged = this.homey.flow.getDeviceTriggerCard('RainChanged');
-
-        this._flowTriggerPopChanged = this.homey.flow.getDeviceTriggerCard('PopChanged');
-
-        this._flowTriggerWindCombinedChanged = this.homey.flow.getDeviceTriggerCard('WindCombinedChanged');
-        
-        this._flowTriggerWindStrengthChanged = this.homey.flow.getDeviceTriggerCard('WindStrengthChanged');
-
-        this._flowTriggerWindGustChanged = this.homey.flow.getDeviceTriggerCard('WindGustChanged');
-
-        this._flowTriggerWindAngleChanged = this.homey.flow.getDeviceTriggerCard('WindAngleChanged');
+        this.registerFlowTrigger();
 
     } // end onInit
 
@@ -71,6 +35,11 @@ class owmOnecallHourly extends Homey.Device {
                 await this.addCapability(capabilities[i]);
             }
         }
+
+        if (this.hasCapability('moonphase_type')){
+            await this.removeCapability('moonphase_type');
+        }
+
     }
 
     async checkParentDevice(){
@@ -88,17 +57,12 @@ class owmOnecallHourly extends Homey.Device {
     }
 
     onAdded() {
-        let id = this.getData().id;
-        this.log('device added: ', id);
-
+        this.log('device added: ',  this.getName(), this.getData().id);
     } // end onAdded
 
     onDeleted() {
-
-        let id = this.getData().id;
-        clearInterval(this.checkParentInterval);
-        this.log('device deleted:', id);
-
+        this.homey.clearInterval(this.checkParentInterval);
+        this.log('device deleted:', this.getName(), this.getData().id);
     } // end onDeleted
 
     async setDeviceUnavailable(message){
@@ -111,15 +75,42 @@ class owmOnecallHourly extends Homey.Device {
         }
     }
 
+        registerFlowTrigger(){
+        let dataKeys = Object.keys(this.data);
+        for(let i=0; i<dataKeys.length; i++){
+            let item = this.data[dataKeys[i]]; 
+            if (item.trigger != undefined){
+                try{
+                    item['trigger_instance'] = this.homey.flow.getDeviceTriggerCard(item.trigger);
+                }
+                catch(error){
+                    this.log("Error registzering trigger '", item.trigger, "': ", error.message);
+                }
+            }
+        }
+    }
+
+    getDataCapability(capability){
+        if (this.data == undefined){
+            throw new Error("Device definition not found.");
+        }
+        if (this.data[capability] == undefined){
+            throw new Error("Device definition not found for capability: "+capability);
+        }
+        return this.data[capability];
+    }
     async updateDevice(hourlyData){
-        this.log(this.getData().id +" Received OWM hourly data");
+        if (this.data == undefined){
+            this.log("No data definition found.");
+            this.setDeviceUnavailable(this.homey.__("device_unavailable_reason.no_definition"));
+            return;
+        }
+        let dataKeys = Object.keys(this.data);
+
+        this.log(this.getName(), this.getData().id, " Received OWM hourly data");
 
         let units = this.homey.i18n.getUnits();
-        // let language = this.homey.i18n.getLanguage();
         let GEOlocation = this.getName();
-
-        let device = this;
-        let triggerList = [];
 
         let hours = parseInt(this.getSetting("hours"));
         if (hours == null || hours < 0 || hours > 47){
@@ -166,468 +157,206 @@ class owmOnecallHourly extends Homey.Device {
             let time = now.split(", ")[1];
             forecast_time = date + " " + time;
         }
+        this.getDataCapability('forecast_time')['value'] = forecast_time;
 
-        // now = new Date().toLocaleString('de-DE', 
-        // { 
-        //     hour12: false, 
-        //     timeZone: tz,
-        //     hour: "2-digit",
-        //     minute: "2-digit",
-        //     day: "2-digit",
-        //     month: "2-digit",
-        //     year: "numeric"
-        // });
-        // date = now.split(", ")[0];
-        // date = date.split("/")[2] + "-" + date.split("/")[0] + "-" + date.split("/")[1]; 
-        // time = now.split(", ")[1];
-        // let lastUpdate = 'Last update: ' + date + " " + time;
-        // this.setSettings({
-        //     "APIState": lastUpdate
-        //     })
-        //     .catch(this.error);
+        this.getDataCapability('conditioncode')['value'] = data.weather[0].main;
+        this.getDataCapability('conditioncode_text')['value'] = this.homey.app.getConditioncodeText(data.weather[0].main);
 
-        let description = data.weather[0].description;
+        this.getDataCapability('conditioncode_detail')['value'] = data.weather[0].id.toString();
+        this.getDataCapability('conditioncode_detail').trigger_token.push({
+            "trigger_token_id": "conditioncode",
+            "trigger_token_value":data.weather[0].id
+        })
+        // this.getDataCapability('conditioncode_detail')['trigger_token_value'] = data.weather[0].id;
 
-        var conditioncode = data.weather[0].main;
-        this.log("Main conditioncode: " + data.weather[0].main);
-        var conditioncodeText = this.homey.app.getConditioncodeText(conditioncode);
+        this.getDataCapability('description')['value'] = data.weather[0].description;
 
-        var conditioncode_detail = data.weather[0].id.toString();
-        var conditioncode_detail_number = data.weather[0].id;
-        this.log("Specific conditioncode: " + data.weather[0].id);
+        this.getDataCapability('measure_temperature')['value'] = Math.round(data.temp* 10) / 10;
+        this.getDataCapability('measure_temperature_feelslike')['value'] = Math.round(data.feels_like* 10) / 10;
 
-        var temp = Math.round(data.temp* 10) / 10;
-        var temp_feelslike = Math.round(data.feels_like* 10) / 10;
-        var hum = data.humidity;
-        var pressure = data.pressure;
-        var dewpoint = Math.round(data.dew_point * 10) / 10;
+        this.getDataCapability('measure_humidity')['value'] = data.humidity;
+        this.getDataCapability('measure_pressure')['value'] = data.pressure;
+        this.getDataCapability('measure_dew_point')['value'] = Math.round(data.dew_point * 10) / 10;
 
-        var uvi = data.uvi;
-        var cloudiness = data.clouds;
-        var visibility = data.visibility;
-        var pop = Math.round(data.pop * 100);
+        this.getDataCapability('measure_ultraviolet')['value'] = data.uvi;
+        this.getDataCapability('measure_cloudiness')['value'] = data.clouds;
+        this.getDataCapability('measure_pop')['value'] = Math.round(data.pop * 100);
+        this.getDataCapability('measure_visibility')['value'] = data.visibility;
 
         // return the rain in mm if present, or precipitation
+        let rain = 0;
         if (data.precipitation) {
-            var rain = data.precipitation.value;
+            rain = data.precipitation.value;
         }
-
-        if (data.snow != undefined) {
-            if (typeof (data.snow) === "number") {
-                var snow = data.snow
-            } else if (typeof (data.snow) === "object") {
-                if (data.snow['3h'] != undefined) {
-                    var snow = data.snow['3h'] / 3;
-                }
-                if (data.snow['1h'] != undefined) {
-                    var snow = data.snow['1h'];
-                }
-                // Sometimes OWM returns an empty snow object
-                if (Object.keys(data.snow).length == 0) {
-                    var snow = 0;
-                }
-            }
-        } else {
-            var snow = 0;
-        }
-
         if (data.rain != undefined) {
             if (typeof (data.rain) === "number") {
-                var rain = data.rain
+                rain = data.rain
             } else if (typeof (data.rain) === "object") {
                 if (data.rain['3h'] != undefined) {
-                    var rain = data.rain['3h'] / 3;
+                    rain = data.rain['3h'] / 3;
                 }
                 if (data.rain['1h'] != undefined) {
-                    var rain = data.rain['1h'];
+                    rain = data.rain['1h'];
                 }
                 // Sometimes OWM returns an empty rain object
                 if (Object.keys(data.rain).length == 0) {
-                    var rain = 0;
+                    rain = 0;
                 }
             }
         } else {
-            var rain = 0;
+            rain = 0;
         }
+        this.getDataCapability('measure_rain')['value'] = rain;
 
+        let snow = 0;
+        if (data.snow != undefined) {
+            if (typeof (data.snow) === "number") {
+                snow = data.snow
+            } else if (typeof (data.snow) === "object") {
+                if (data.snow['3h'] != undefined) {
+                    snow = data.snow['3h'] / 3;
+                }
+                if (data.snow['1h'] != undefined) {
+                    snow = data.snow['1h'];
+                }
+                // Sometimes OWM returns an empty snow object
+                if (Object.keys(data.snow).length == 0) {
+                    snow = 0;
+                }
+            }
+        } else {
+            snow = 0;
+        }
+        this.getDataCapability('measure_snow')['value'] = snow;
+
+        let windstrength = 0;
         if (data.wind_speed) {
             if ( this.getSetting('windspeed_ms') == true){
                 if (units == "metric") {
-                    var windstrength = data.wind_speed;
+                    windstrength = data.wind_speed;
                 } else {
                     // mph to m/s
-                    var windstrength = Math.round(data.wind_speed / 2.237);
+                    windstrength = Math.round(data.wind_speed / 2.237);
                 }
             }
             else{
                 if (units == "metric") {
                     // convert from m/s to km/h
-                    var windstrength = Math.round(3.6 * data.wind_speed);
+                    windstrength = Math.round(3.6 * data.wind_speed);
                 } else {
                     // windspeed in mph
-                    var windstrength = data.wind_speed;
+                    windstrength = data.wind_speed;
                 }
             }
         } else {
-            var windstrength = 0;
+            windstrength = 0;
         }
+        this.getDataCapability('measure_wind_strength')['value'] = windstrength;
 
+        let windspeedbeaufort = 0;
+        if (units == "metric") {
+            // convert to beaufort and concatenate in a string with wind direction
+            windspeedbeaufort = owm.beaufortFromKmh(windstrength);
+        } else {
+            windspeedbeaufort = owm.beaufortFromMph(windstrength);
+        }
+        this.getDataCapability('measure_windstrength_beaufort')['value'] = windspeedbeaufort;
+
+        let windgust = 0;
         if (data.wind_gust) {
             if ( this.getSetting('windspeed_ms') == true){
                 if (units == "metric") {
-                    var windgust = data.wind_gust;
+                    windgust = data.wind_gust;
                 } else {
                     // mph to m/s
-                    var windgust = Math.round(data.wind_gust / 2.237);
+                    windgust = Math.round(data.wind_gust / 2.237);
                 }
             }
             else{
                 if (units == "metric") {
                     // convert from m/s to km/h
-                    var windgust = Math.round(3.6 * data.wind_gust);
+                    windgust = Math.round(3.6 * data.wind_gust);
                 } else {
                     // windspeed in mph
-                    var windgust = data.wind_gust;
+                    windgust = data.wind_gust;
                 }
             }
         } else {
-            var windgust = 0;
+            windgust = 0;
         }
+        this.getDataCapability('measure_wind_gust')['value'] = windgust;
 
+        let windangle = 0;
+        let winddegcompass = "";
         if (data.wind_deg) {
-            var windangle = data.wind_deg;
-            var winddegcompass = owm.degToCompass(windangle);
+            windangle = data.wind_deg;
+            winddegcompass = owm.degToCompass(windangle);
             if (winddegcompass == undefined){
                 this.log("Could not get wind compass text for windangle: "+windangle);
                 winddegcompass = "";
             }
 
-        } else {
-            var windangle = 0;
-            var winddegcompass = "";
         }
-        if (units == "metric") {
-            // convert to beaufort and concatenate in a string with wind direction
-            var windspeedbeaufort = owm.beaufortFromKmh(windstrength);
-        } else {
-            var windspeedbeaufort = owm.beaufortFromMph(windstrength);
-        }
+        this.getDataCapability('measure_wind_angle')['value'] = windangle;
+        this.getDataCapability('measure_wind_direction_string')['value'] = winddegcompass;
+
+        let windcombined = windspeedbeaufort.toString();
         if (winddegcompass != ""){
-            var windcombined =  this.homey.__("windDirectionIcon."+winddegcompass) + 
-                                " " + 
-                                this.homey.__("windDirectionShort."+winddegcompass) + 
-                                " " +
-                                windspeedbeaufort.toString();
+            windcombined =  this.homey.__("windDirectionIcon."+winddegcompass) + 
+                            " " + 
+                            this.homey.__("windDirectionShort."+winddegcompass) + 
+                            " " +
+                            windspeedbeaufort.toString();
         }
-        else{
-            var windcombined = windspeedbeaufort.toString();
-        }
+        this.getDataCapability('measure_wind_combined')['value'] = windcombined;
 
-        this.log("Comparing variables before and after current polling interval");
-
-        if (this.getCapabilityValue('measure_temperature') !== temp && temp !== undefined) {
-            this.log("Temp. previous: " + this.getCapabilityValue('measure_temperature') );
-            this.log("Temp. new: " + temp );
-            let state = {
-                "measure_temperature": temp
-            };
-            let tokens = {
-                "measure_temperature": temp,
-                "location": GEOlocation
-            };
-            triggerList.push({'trigger':this._flowTriggerTemperatureChanged, 'device':device, 'token':tokens, 'state':state});
-            // this._flowTriggerTemperatureChanged.trigger(device, tokens, state).catch(this.error)
-        }
-        if (this.getCapabilityValue('measure_temperature_feelslike') !== temp_feelslike && temp_feelslike !== undefined) {
-            this.log("Temp.FeelsLike previous: " + this.getCapabilityValue('measure_temperature_feelslike') );
-            this.log("Temp.FeelsLike new: " + temp_feelslike );
-            let state = {
-                "measure_temperature_feelslike": temp_feelslike
-            };
-            let tokens = {
-                "measure_temperature_feelslike": temp_feelslike,
-                "location": GEOlocation
-            };
-            triggerList.push({'trigger':this._flowTriggerTemperatureFeelslikeChanged, 'device':device, 'token':tokens, 'state':state});
-            // this._flowTriggerTemperatureFeelslikeChanged.trigger(device, tokens, state).catch(this.error)
-        }
-        if (this.getCapabilityValue('measure_ultraviolet') !== uvi && uvi !== undefined) {
-            this.log("UV index previous: " + this.getCapabilityValue('measure_ultraviolet'));
-            this.log("UV index new: " + uvi);
-            let state = {
-                "measure_ultraviolet": uvi
-            };
-            let tokens = {
-                "measure_ultraviolet": uvi,
-                "location": GEOlocation
-            };
-            triggerList.push({'trigger':this._flowTriggerUltravioletChanged, 'device':device, 'token':tokens, 'state':state});
-            // this._flowTriggerUltravioletChanged.trigger(device, tokens, state).catch(this.error)
-        }
-        if (this.getCapabilityValue('measure_cloudiness') !== cloudiness && cloudiness !== undefined) {
-            this.log("Cloudiness previous: " + this.getCapabilityValue('measure_cloudiness')); 
-            this.log("Cloudiness new: " + cloudiness);
-            let state = {
-                "measure_cloudiness": cloudiness
-            };
-            let tokens = {
-                "measure_cloudiness": cloudiness,
-                "location": GEOlocation
-            };
-            triggerList.push({'trigger':this._flowTriggerCloudinessChanged, 'device':device, 'token':tokens, 'state':state});
-            // this._flowTriggerCloudinessChanged.trigger(device, tokens, state).catch(this.error)
-        }
-        if (this.getCapabilityValue('measure_visibility') !== visibility && visibility !== undefined) {
-            this.log("Visibility previous: " + this.getCapabilityValue('measure_visibility'));
-            this.log("Visibility new: " + visibility);
-            let state = {
-                "measure_visibility": visibility
-            };
-            let tokens = {
-                "measure_visibility": visibility,
-                "location": GEOlocation
-            };
-            triggerList.push({'trigger':this._flowTriggerVisibilityChanged, 'device':device, 'token':tokens, 'state':state});
-            // this._flowTriggerVisibilityChanged.trigger(device, tokens, state).catch(this.error)
-        }
-        if (this.getCapabilityValue('measure_snow') !== snow && snow !== undefined) {
-            this.log("Snow previous: " + this.getCapabilityValue('measure_snow'));
-            this.log("Snow new: " + snow);
-            let state = {
-                "measure_visibility": snow
-            };
-            let tokens = {
-                "measure_snow": snow,
-                "location": GEOlocation
-            };
-            triggerList.push({'trigger':this._flowTriggerSnowChanged, 'device':device, 'token':tokens, 'state':state});
-            // this._flowTriggerSnowChanged.trigger(device, tokens, state).catch(this.error)
-        }
-        if (this.getCapabilityValue('conditioncode') !== conditioncode && conditioncode !== undefined) {
-            this.log("Conditioncode previous: " + this.getCapabilityValue('conditioncode'));
-            this.log("Conditioncode new: " + conditioncode);
-            let state = {
-                "conditioncode": conditioncode
-            };
-            let tokens = {
-                "conditioncode": conditioncode,
-                "location": GEOlocation
-            };
-            triggerList.push({'trigger':this._flowTriggerConditionChanged, 'device':device, 'token':tokens, 'state':state});
-            // this._flowTriggerConditionChanged.trigger(device, tokens, state).catch(this.error)
-        }
-        if (this.getCapabilityValue('conditioncode_detail') !== conditioncode_detail && conditioncode_detail !== undefined) {
-            this.log("Conditioncode_detail previous: " + this.getCapabilityValue('conditioncode_detail'));
-            this.log("Conditioncode_detail new: " + conditioncode_detail);
-            let state = {
-                "conditioncode": conditioncode_detail_number
-            };
-            let tokens = {
-                "conditioncode": conditioncode_detail_number,
-                "location": GEOlocation
-            };
-            triggerList.push({'trigger':this._flowTriggerConditionDetailChanged, 'device':device, 'token':tokens, 'state':state});
-            // this._flowTriggerConditionDetailChanged.trigger(device, tokens, state).catch(this.error)
-        }
-        if (this.getCapabilityValue('description') !== description && description !== undefined) {
-            this.log("Description previous: " + this.getCapabilityValue('description'));
-            this.log("Description new: " + description);
-            let state = {
-                "description": description
-            };
-            let tokens = {
-                "description": description,
-                "location": GEOlocation
-            };
-            triggerList.push({'trigger':this._flowTriggerWeatherChanged, 'device':device, 'token':tokens, 'state':state});
-            // this._flowTriggerWeatherChanged.trigger(device, tokens, state).catch(this.error)
-        }
-        if (this.getCapabilityValue('measure_humidity') !== hum && hum !== undefined) {
-            this.log("Humidity previous: " + this.getCapabilityValue('measure_humidity'));
-            this.log("Humidity new: " + hum);
-            let state = {
-                "measure_humidity": hum
-            };
-            let tokens = {
-                "measure_humidity": hum,
-                "location": GEOlocation
-            };
-            triggerList.push({'trigger':this._flowTriggerHumidityChanged, 'device':device, 'token':tokens, 'state':state});
-            // this._flowTriggerWeatherChanged.trigger(device, tokens, state).catch(this.error)
-        }
-        if (this.getCapabilityValue('measure_pressure') !== pressure && pressure !== undefined) {
-            this.log("Pressure previous: " + this.getCapabilityValue('measure_pressure'));
-            this.log("Pressure new: " + pressure);
-            let state = {
-                "measure_pressure": pressure
-            };
-            let tokens = {
-                "measure_pressure": pressure,
-                "location": GEOlocation
-            };
-            triggerList.push({'trigger':this._flowTriggerPressureChanged, 'device':device, 'token':tokens, 'state':state});
-            // this._flowTriggerWeatherChanged.trigger(device, tokens, state).catch(this.error)
-        }
-        if (this.getCapabilityValue('measure_dew_point') !== dewpoint && dewpoint !== undefined) {
-            this.log("Dewpoint previous: " + this.getCapabilityValue('measure_dew_point'));
-            this.log("Dewpoint new: " + dewpoint);
-            let state = {
-                "measure_dew_point": dewpoint
-            };
-            let tokens = {
-                "measure_dew_point": dewpoint,
-                "location": GEOlocation
-            };
-            triggerList.push({'trigger':this._flowTriggerDewPointChanged, 'device':device, 'token':tokens, 'state':state});
-            // this._flowTriggerWeatherChanged.trigger(device, tokens, state).catch(this.error)
-        }
-        if (this.getCapabilityValue('measure_rain') !== rain && rain !== undefined) {
-            this.log("Rain previous: " + this.getCapabilityValue('measure_rain'));
-            this.log("Rain new: " + rain);
-            let state = {
-                "measure_rain": rain
-            };
-            let tokens = {
-                "measure_rain": rain,
-                "location": GEOlocation
-            };
-            triggerList.push({'trigger':this._flowTriggerRainChanged, 'device':device, 'token':tokens, 'state':state});
-            // this._flowTriggerWeatherChanged.trigger(device, tokens, state).catch(this.error)
-        }
-        if (this.getCapabilityValue('measure_pop') !== pop && pop !== undefined) {
-            this.log("Pop previous: " + this.getCapabilityValue('measure_pop'));
-            this.log("Pop new: " + rain);
-            let state = {
-                "measure_pop": pop
-            };
-            let tokens = {
-                "measure_pop": pop,
-                "location": GEOlocation
-            };
-            triggerList.push({'trigger':this._flowTriggerPopChanged, 'device':device, 'token':tokens, 'state':state});
-            // this._flowTriggerWeatherChanged.trigger(device, tokens, state).catch(this.error)
-        }
-        if (this.getCapabilityValue('measure_wind_combined') !== windcombined && windcombined !== undefined) {
-            this.log("Wind_combined previous: " + this.getCapabilityValue('measure_wind_combined'));
-            this.log("Wind_combined new: " + windcombined);
-            let state = {
-                "measure_wind_combined": windcombined
-            };
-            let tokens = {
-                "measure_wind_combined": windcombined,
-                "location": GEOlocation
-            };
-            triggerList.push({'trigger':this._flowTriggerWindCombinedChanged, 'device':device, 'token':tokens, 'state':state});
-            // this._flowTriggerWeatherChanged.trigger(device, tokens, state).catch(this.error)
-        }
-        if (this.getCapabilityValue('measure_windstrength_beaufort') !== windspeedbeaufort && windspeedbeaufort !== undefined) {
-            this.log("Windstrength previous: " + this.getCapabilityValue('measure_windstrength_beaufort') );
-            this.log("Windstrength new: " + windspeedbeaufort );
-            let state = {
-                "measure_windstrength_beaufort": windspeedbeaufort
-            };
-            let tokens = {
-                "measure_windstrength_beaufort": windspeedbeaufort,
-                "location": GEOlocation
-            };
-            triggerList.push({'trigger':this._flowTriggerWindBeaufortChanged, 'device':device, 'token':tokens, 'state':state});
-            // this._flowTriggerWindBeaufortChanged.trigger(device, tokens, state).catch(this.error)
-        }
-        if (this.getCapabilityValue('measure_wind_direction_string') !== winddegcompass && winddegcompass !== undefined) {
-            this.log("Wind_direction_string previous: " + this.getCapabilityValue('measure_wind_direction_string') );
-            this.log("Wind_direction_string new: " + winddegcompass );
-            let state = {
-                "measure_wind_direction_string": winddegcompass
-            };
-            let tokens = {
-                "measure_wind_direction_string": winddegcompass,
-                "location": GEOlocation
-            };
-            triggerList.push({'trigger':this._flowTriggerWindDirectionCompassChanged, 'device':device, 'token':tokens, 'state':state});
-            // this._flowTriggerWindDirectionCompassChanged.trigger(device, tokens, state).catch(this.error)
-        }
-        if (this.getCapabilityValue('measure_wind_strength') !== windstrength && windstrength !== undefined) {
-            this.log("Wind_strength previous: " + this.getCapabilityValue('measure_wind_strength'));
-            this.log("Wind_strength new: " + windstrength);
-            let state = {
-                "measure_wind_strength": windstrength
-            };
-            let tokens = {
-                "measure_wind_strength": windstrength,
-                "location": GEOlocation
-            };
-            triggerList.push({'trigger':this._flowTriggerWindStrengthChanged, 'device':device, 'token':tokens, 'state':state});
-            // this._flowTriggerWeatherChanged.trigger(device, tokens, state).catch(this.error)
-        }
-        if (this.getCapabilityValue('measure_wind_gust') !== windgust && windgust !== undefined) {
-            this.log("Wind_gust previous: " + this.getCapabilityValue('measure_wind_gust'));
-            this.log("Wind_gust new: " + windgust);
-            let state = {
-                "measure_wind_gust": windgust
-            };
-            let tokens = {
-                "measure_wind_gust": windgust,
-                "location": GEOlocation
-            };
-            triggerList.push({'trigger':this._flowTriggerWindGustChanged, 'device':device, 'token':tokens, 'state':state});
-            // this._flowTriggerWeatherChanged.trigger(device, tokens, state).catch(this.error)
-        }
-        if (this.getCapabilityValue('measure_wind_angle') !== windangle && windangle !== undefined) {
-            this.log("Wind_angle previous: " + this.getCapabilityValue('measure_wind_angle'));
-            this.log("Wind_angle new: " + windangle);
-            let state = {
-                "measure_wind_angle": windangle
-            };
-            let tokens = {
-                "measure_wind_angle": windangle,
-                "location": GEOlocation
-            };
-            triggerList.push({'trigger':this._flowTriggerWindAngleChanged, 'device':device, 'token':tokens, 'state':state});
-            // this._flowTriggerWeatherChanged.trigger(device, tokens, state).catch(this.error)
-        }
-
-        const capabilitySet = {
-            'forecast_time': forecast_time,
-            'description': description,
-            'conditioncode': conditioncode,
-            'conditioncode_text': conditioncodeText,
-            'conditioncode_detail': conditioncode_detail,
-            'measure_temperature': temp,
-            'measure_temperature_feelslike': temp_feelslike,
-            'measure_humidity': hum,
-            'measure_pressure': pressure,
-            'measure_dew_point': dewpoint,
-            'measure_rain': rain,
-            'measure_pop': pop,
-            'measure_snow': snow,
-            'measure_ultraviolet': uvi,
-            'measure_cloudiness': cloudiness,
-            'measure_visibility': visibility,
-            'measure_wind_strength': windstrength,
-            'measure_wind_gust': windgust,
-            'measure_wind_direction_string': winddegcompass,
-            'measure_wind_combined': windcombined,
-            'measure_wind_angle': windangle,
-            'measure_windstrength_beaufort': windspeedbeaufort
-        };
-
-        let capabilities = this.getCapabilities();
-        for (let capability of capabilities) {
-            this.log("Capability: " + capability + ":" + capabilitySet[capability]);
-            if (capabilitySet[capability] != undefined) {
-                await this.setCapabilityValue(capability, capabilitySet[capability]).catch(err => this.log(err.message));
-            } else {
-                this.log("Capability undefined: " + capability)
-            }
-        };
-
-        this.log("Trigger Flows...")
-        for (let i=0; i<triggerList.length; i++){
-            if (triggerList[i].trigger){
-                triggerList[i].trigger.trigger(triggerList[i].device, triggerList[i].token, triggerList[i].state).catch(err => this.log(err.message));
+        // CAPABILITIES: Compare values and update changed capabilities.
+        // TRIGGER: Compare values to start trigger after capability update.
+        for (let i=0; i<dataKeys.length; i++){
+            let item = this.data[dataKeys[i]]; 
+            let capability = dataKeys[i];
+            if (dataKeys[i] != undefined){
+                if (this.getCapabilityValue(capability) != item.value){
+                    this.log(this.getName() + " Data changed: " + capability + ": " + this.getCapabilityValue(capability) + " => " + item.value);
+                    await this.setCapabilityValue(capability, item.value);
+                    // .catch(error => this.log(error.message));
+                    // Store temporary value to trigger flows for changed capabilities
+                    if (item.trigger != undefined){
+                        item['trigger_start'] = true;
+                    }
+                }
             }
         }
 
+        // TRIGGER: Trigger flows for changed capabilities
+        for (let i=0; i<dataKeys.length; i++){
+            let item = this.data[dataKeys[i]]; 
+            let capability = dataKeys[i];
+            if (item.trigger != undefined != undefined && item['trigger_start'] == true){
+                let state = {};
+                let token = {
+                    "location": GEOlocation
+                };
+                if (item.trigger_token_id != undefined){
+                    state[item.trigger_token_id] = item.trigger_token_value;
+                    token[item.trigger_token_id] = item.trigger_token_value;
+                }
+                else if (item.trigger_token != undefined){
+                    for (let j=0; j<item.trigger_token.length; j++){
+                        state[item.trigger_token[j].trigger_token_id] = item.trigger_token[j].trigger_token_value;
+                        token[item.trigger_token[j].trigger_token_id] = item.trigger_token[j].trigger_token_value;
+                    }
+                }
+                else{
+                    state[capability] = item.value;
+                    token[capability] = item.value;
+                }                   
+                this.log(this.getName() + " Trigger flow: " + item.trigger);
+                item['trigger_start'] = false;
+                await item.trigger_instance.trigger(this, token, state);
+                // .catch(error => this.log(error.message));
+            }
+        }
     }
 
     // parameters: {settings, newSettingsObj, changedKeysArr}
@@ -668,7 +397,7 @@ class owmOnecallHourly extends Homey.Device {
                         }
                         break;
                     default:
-                        this.log("Key not matched: " + i);
+                        this.log("Ignore settings key: " + i + " " + settings.changedKeys[i]);
                         break;
                 }
             }

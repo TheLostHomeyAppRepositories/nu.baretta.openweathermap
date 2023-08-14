@@ -1,9 +1,9 @@
 {
     "id": "owmOnecallAlerts",
     "name": {
-        "en": "Weather alerts",
+        "en": "4. Weather alerts",
         "de": "4. Wetter-Warnungen",
-        "nl": "Weerwaarschuwingen"
+        "nl": "4. Weerwaarschuwingen"
     },
     "images": {
         "large": "/drivers/owmOnecallAlerts/assets/images/large.png",

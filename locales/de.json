@@ -44,7 +44,8 @@
    "device_unavailable_reason":{
       "no_api_result": "Fehler beim OneCall-API-Aufruf.",
       "location_deleted": "Der Standort wurde gelöscht.",
-      "location_not_available": "Der Standort ist nicht verfügbar."
+      "location_not_available": "Der Standort ist nicht verfügbar.",
+      "no_definition": "Gerätedefinition wurde nicht gefunden."
    },
    "windDirectionShort":{
       "N": "N",

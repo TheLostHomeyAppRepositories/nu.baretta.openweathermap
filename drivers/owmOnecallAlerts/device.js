@@ -6,12 +6,14 @@ const crypto = require('crypto');
 class owmOnecallAlerts extends Homey.Device {
 
     async onInit() {
-        let name = this.getName() + '_' + this.getData().id;
-        this.log('OnecallAlerts init: '+name);
+        this.log('OnecallAlerts init: ', this.getName(), this.getData().id);
 
         await this.updateCapabilities();
         await this.checkParentDevice();
-
+        // // Intervall to check parent device is still existing
+        // this.checkParentInterval = this.homey.setInterval(_ => {
+        //     this.checkParentDevice()
+        // }, 60 * 1000 * 2);
     } // end onInit
 
     async updateCapabilities(){
@@ -43,17 +45,12 @@ class owmOnecallAlerts extends Homey.Device {
     }
 
     onAdded() {
-        let id = this.getData().id;
-        this.log('device added: ', id);
-
+        this.log('device added: ', this.getName(), this.getData().id);
     } // end onAdded
 
     onDeleted() {
-
-        let id = this.getData().id;
-        clearInterval(this.checkParentInterval);
-        this.log('device deleted:', id);
-
+        this.homey.clearInterval(this.checkParentInterval);
+        this.log('device deleted:', this.getName(), this.getData().id);
     } // end onDeleted
 
     async setDeviceUnavailable(message){
@@ -99,8 +96,6 @@ class owmOnecallAlerts extends Homey.Device {
     async updateAlert(index, alert){
         // let language = this.homey.i18n.getLanguage();
         let GEOlocation = this.getName();
-
-        let device = this;
 
         let tz  = this.homey.clock.getTimezone();
         let hasDateLocalization = this.homey.app.hasDateLocalization();

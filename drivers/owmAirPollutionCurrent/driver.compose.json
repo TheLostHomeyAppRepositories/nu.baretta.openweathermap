@@ -1,9 +1,9 @@
 {
     "id": "owmAirPollutionCurrent",
     "name": {
-        "en": "Air quality current (location)",
+        "en": "5. Air quality current (location)",
         "de": "5. Luftqualität aktuell (Standort)",
-        "nl": "luchtkwaliteit actueel (locatie)"
+        "nl": "5. luchtkwaliteit actueel (locatie)"
     },
     "images": {
         "large": "/drivers/owmAirPollutionCurrent/assets/images/large.png",

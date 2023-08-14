@@ -5,18 +5,32 @@ const Homey = require('homey');
 class owmAirPollutionHourly extends Homey.Device {
 
     async onInit() {
-        let name = this.getName() + '_' + this.getData().id;
-        this.log('OnecallHourly init: '+name);
+        this.log('OnecallHourly init: ', this.getName(), this.getData().id);
 
         await this.updateCapabilities();
+
         await this.checkParentDevice();
+        // // Intervall to check parent device is still existing
+        // this.checkParentInterval = this.homey.setInterval(_ => {
+        //     this.checkParentDevice()
+        // }, 60 * 1000 * 2);
+
+        this.data = require('./data.js').DATA_DEF;
+
     } // end onInit
 
     async updateCapabilities(){
-        // add new capabilities
-        // if (!this.hasCapability('measure_temperature_feelslike')){
-        //     await this.addCapability('measure_temperature_feelslike');
-        // }
+        // add missing capabilities
+        let capabilities = [];
+        try{
+            capabilities = this.homey.app.manifest.drivers.filter((e) => {return (e.id == this.driver.id);})[0].capabilities;
+        }
+        catch (error){}
+        for (let i=0; i<capabilities.length; i++){
+            if (!this.hasCapability(capabilities[i])){
+                await this.addCapability(capabilities[i]);
+            }
+        }
     }
 
     async checkParentDevice(){
@@ -34,17 +48,12 @@ class owmAirPollutionHourly extends Homey.Device {
     }
 
     onAdded() {
-        let id = this.getData().id;
-        this.log('device added: ', id);
-
+        this.log('device added: ',  this.getName(), this.getData().id);
     } // end onAdded
 
     onDeleted() {
-
-        let id = this.getData().id;
-        clearInterval(this.checkParentInterval);
-        this.log('device deleted:', id);
-
+        this.homey.clearInterval(this.checkParentInterval);
+        this.log('device deleted:', this.getName(), this.getData().id);
     } // end onDeleted
 
     async setDeviceUnavailable(message){
@@ -57,10 +66,25 @@ class owmAirPollutionHourly extends Homey.Device {
         }
     }
 
-    async updateDevice(hourlyData){
-        this.log(this.getData().id +" Received AirPollution hourly data");
+    getDataCapability(capability){
+        if (this.data == undefined){
+            throw new Error("Device definition not found.");
+        }
+        if (this.data[capability] == undefined){
+            throw new Error("Device definition not found for capability: "+capability);
+        }
+        return this.data[capability];
+    }
 
-        let device = this;
+    async updateDevice(hourlyData){
+        if (this.data == undefined){
+            this.log("No data definition found.");
+            this.setDeviceUnavailable(this.homey.__("device_unavailable_reason.no_definition"));
+            return;
+        }
+        let dataKeys = Object.keys(this.data);
+
+        this.log(this.getName(), this.getData().id, " Received AirPollution hourly data");
 
         let hours = parseInt(this.getSetting("hours"));
         if (hours == null || hours < 0 || hours > 96){
@@ -107,58 +131,37 @@ class owmAirPollutionHourly extends Homey.Device {
             let time = now.split(", ")[1];
             forecast_time = date + " " + time;
         }
-        // let tz  = this.homey.clock.getTimezone();
-        // let now = new Date(data.dt*1000).toLocaleString('de-DE', 
-        //     { 
-        //         hour12: false, 
-        //         timeZone: tz,
-        //         hour: "2-digit",
-        //         minute: "2-digit",
-        //         day: "2-digit",
-        //         month: "2-digit",
-        //         year: "numeric"
-        //     });
-        // let date = now.split(", ")[0];
-        // date = date.split("/")[2] + "-" + date.split("/")[0] + "-" + date.split("/")[1]; 
-        // let time = now.split(", ")[1];
-        // let forecast_time = date + " " + time;
 
-        let ap_aqi = data.main.aqi.toString();
-        let ap_aqi_nr = data.main.aqi;
-        let ap_pm10 = data.components.pm10;
-        let ap_pm25 = data.components.pm2_5;
-        let ap_no = data.components.no;
-        let ap_no2 = data.components.no2;
-        let ap_o3 = data.components.o3;
-        let ap_co = data.components.co;
-        let ap_so2 = data.components.so2;
-        let ap_nh3 = data.components.nh3;
+        this.getDataCapability('measure_forecast_time')['value'] = forecast_time;
 
-        // update each interval, even if unchanged.
-        const capabilitySet = {
-            'measure_ap_pm10': ap_pm10,
-            'measure_ap_pm25': ap_pm25,
-            'measure_ap_no': ap_no,
-            'measure_ap_no2': ap_no2,
-            'measure_ap_o3': ap_o3,
-            'measure_ap_co': ap_co,
-            'measure_ap_so2': ap_so2,
-            'measure_ap_nh3': ap_nh3,
-            'measure_ap_aqi': ap_aqi,
-            'measure_ap_aqi_nr': ap_aqi_nr,
-            'measure_forecast_time': forecast_time
-        };
+        this.getDataCapability('measure_ap_pm10')['value'] = data.components.pm10;
+        this.getDataCapability('measure_ap_pm25')['value'] = data.components.pm2_5;
+        this.getDataCapability('measure_ap_no')['value'] = data.components.no;
+        this.getDataCapability('measure_ap_no2')['value'] = data.components.no2;
+        this.getDataCapability('measure_ap_o3')['value'] = data.components.o3;
+        this.getDataCapability('measure_ap_co')['value'] = data.components.co;
+        this.getDataCapability('measure_ap_so2')['value'] = data.components.so2;
+        this.getDataCapability('measure_ap_nh3')['value'] = data.components.nh3;
+        this.getDataCapability('measure_ap_aqi')['value'] = data.main.aqi.toString();
+        this.getDataCapability('measure_ap_aqi_nr')['value'] = data.main.aqi;
 
-        let capabilities = this.getCapabilities();
-        for (let capability of capabilities) {
-            this.log("Capability: " + capability + ":" + capabilitySet[capability]);
-            if (capabilitySet[capability] != undefined) {
-                await this.setCapabilityValue(capability, capabilitySet[capability]).catch(err => this.log(err.message));
-            } else {
-                this.log("Capability undefined: " + capability)
+        // CAPABILITIES: Compare values and update changed capabilities.
+        // TRIGGER: Compare values to start trigger after capability update.
+        for (let i=0; i<dataKeys.length; i++){
+            let item = this.data[dataKeys[i]]; 
+            let capability = dataKeys[i];
+            if (dataKeys[i] != undefined){
+                if (this.getCapabilityValue(capability) != item.value){
+                    this.log(this.getName() + " Data changed: " + capability + ": " + this.getCapabilityValue(capability) + " => " + item.value);
+                    await this.setCapabilityValue(capability, item.value);
+                    // .catch(error => this.log(error.message));
+                    // Store temporary value to trigger flows for changed capabilities
+                    if (item.trigger != undefined){
+                        item['trigger_start'] = true;
+                    }
+                }
             }
-        };
-
+        }
     }
 
     // parameters: {settings, newSettingsObj, changedKeysArr}
@@ -174,7 +177,7 @@ class owmAirPollutionHourly extends Homey.Device {
                         }
                         break;
                     default:
-                        this.log("Key not matched: " + i);
+                        this.log("Ignore settings key: " + i + " " + settings.changedKeys[i]);
                         break;
                 }
             }

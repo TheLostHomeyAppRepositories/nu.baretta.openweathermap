@@ -8,12 +8,11 @@ const INTERVAL_CURRENT = 5;
 class owmCurrenWeather extends Homey.Device {
 
     async onInit() {
-        this.log('CurrentWeather init: '+this.getName() + ' ' + this.getData().id);
+        this.log('CurrentWeather init: ', this.getName(), this.getData().id);
 
         await this.updateCapabilities();
 
-        this.data = require('./data.js');
-        this.dataKeys = Object.keys(this.data);
+        this.data = require('./data.js').DATA_DEF;
 
         let settings = await this.getSettings();
         if (!settings.pollingInterval || settings.pollingInterval == 0){
@@ -48,14 +47,12 @@ class owmCurrenWeather extends Homey.Device {
     }
 
     onAdded() {
-        let id = this.getData().id;
-        this.log('device added: ', id);
-
+        this.log('device added: ', this.getName(), this.getData().id);
     } // end onAdded
 
     onDeleted() {
         this.homey.clearInterval(this.pollinginterval);
-        this.log('device deleted:', this.getData().id);
+        this.log('device deleted:', this.getName(), this.getData().id);
     } // end onDeleted
 
     async setDeviceUnavailable(message){
@@ -69,9 +66,9 @@ class owmCurrenWeather extends Homey.Device {
     }
 
     registerFlowTrigger(){
-        
-        for(let i=0; i<this.dataKeys.length; i++){
-            let item = this.data[this.dataKeys[i]]; 
+        let dataKeys = Object.keys(this.data);
+        for(let i=0; i<dataKeys.length; i++){
+            let item = this.data[dataKeys[i]]; 
             if (item.trigger != undefined){
                 try{
                     item['trigger_instance'] = this.homey.flow.getDeviceTriggerCard(item.trigger);
@@ -84,11 +81,12 @@ class owmCurrenWeather extends Homey.Device {
     }
 
     getDataCapability(capability){
-        // for(let i=0; i<this.data.length; i++){
-        //     if (this.data[i]['capability'] == capability){
-        //         return this.data[i];
-        //     }
-        // }
+        if (this.data == undefined){
+            throw new Error("Device definition not found.");
+        }
+        if (this.data[capability] == undefined){
+            throw new Error("Device definition not found for capability: "+capability);
+        }
         return this.data[capability];
     }
 
@@ -101,6 +99,12 @@ class owmCurrenWeather extends Homey.Device {
     }
 
     async pollWeatherData(settings) {
+        if (this.data == undefined){
+            this.log("No data definition found.");
+            this.setDeviceUnavailable(this.homey.__("device_unavailable_reason.no_definition"));
+            return;
+        }
+        let dataKeys = Object.keys(this.data);
         let data;
         try{
             let url = owm.getCurrentWeatherURL(settings);
@@ -127,12 +131,11 @@ class owmCurrenWeather extends Homey.Device {
             this.setDeviceAvailable();
         }
 
-        this.log(this.getName() + ' ' + this.getData().id +" Received OWM data");
+        this.log(this.getName(), this.getData().id, " Received OWM data");
 
-        //var GEOlocation = "Lat:" + data.lat + " Lon:" +data.lon;
         var GEOlocation = this.getName();
-        let tz  = this.homey.clock.getTimezone();
 
+        let tz  = this.homey.clock.getTimezone();
         let forecast_time;
         let lastUpdate;
         let hasDateLocalization = this.homey.app.hasDateLocalization();
@@ -204,7 +207,11 @@ class owmCurrenWeather extends Homey.Device {
         this.getDataCapability('conditioncode_text')['value'] = this.homey.app.getConditioncodeText(data.weather[0].main);
 
         this.getDataCapability('conditioncode_detail')['value'] = data.weather[0].id.toString();
-        this.getDataCapability('conditioncode_detail')['trigger_token_value'] = data.weather[0].id;
+        this.getDataCapability('conditioncode_detail').trigger_token.push({
+            "trigger_token_id": "conditioncode",
+            "trigger_token_value":data.weather[0].id
+        })
+        // this.getDataCapability('conditioncode_detail')['trigger_token_value'] = data.weather[0].id;
 
         this.getDataCapability('description')['value'] = data.weather[0].description;
 
@@ -289,7 +296,7 @@ class owmCurrenWeather extends Homey.Device {
         } else {
             windspeedbeaufort = owm.beaufortFromMph(windstrength);
         }
-        this.getDataCapability('measure_windstrength_beaufort')['value'] = windstrength;
+        this.getDataCapability('measure_windstrength_beaufort')['value'] = windspeedbeaufort;
 
         let windangle = 0;
         let winddegcompass = "";
@@ -343,10 +350,10 @@ class owmCurrenWeather extends Homey.Device {
 
         // CAPABILITIES: Compare values and update changed capabilities.
         // TRIGGER: Compare values to start trigger after capability update.
-        for (let i=0; i<this.dataKeys.length; i++){
-            let item = this.data[this.dataKeys[i]]; 
-            let capability = this.dataKeys[i];
-            if (this.dataKeys[i] != undefined){
+        for (let i=0; i<dataKeys.length; i++){
+            let item = this.data[dataKeys[i]]; 
+            let capability = dataKeys[i];
+            if (dataKeys[i] != undefined){
                 if (this.getCapabilityValue(capability) != item.value){
                     this.log(this.getName() + " Data changed: " + capability + ": " + this.getCapabilityValue(capability) + " => " + item.value);
                     await this.setCapabilityValue(capability, item.value);
@@ -360,9 +367,9 @@ class owmCurrenWeather extends Homey.Device {
         }
 
         // TRIGGER: Trigger flows for changed capabilities
-        for (let i=0; i<this.dataKeys.length; i++){
-            let item = this.data[this.dataKeys[i]]; 
-            let capability = this.dataKeys[i];
+        for (let i=0; i<dataKeys.length; i++){
+            let item = this.data[dataKeys[i]]; 
+            let capability = dataKeys[i];
             if (item.trigger != undefined != undefined && item['trigger_start'] == true){
                 let state = {};
                 let token = {
@@ -371,6 +378,12 @@ class owmCurrenWeather extends Homey.Device {
                 if (item.trigger_token_id != undefined){
                     state[item.trigger_token_id] = item.trigger_token_value;
                     token[item.trigger_token_id] = item.trigger_token_value;
+                }
+                else if (item.trigger_token != undefined){
+                    for (let j=0; j<item.trigger_token.length; j++){
+                        state[item.trigger_token[j].trigger_token_id] = item.trigger_token[j].trigger_token_value;
+                        token[item.trigger_token[j].trigger_token_id] = item.trigger_token[j].trigger_token_value;
+                    }
                 }
                 else{
                     state[capability] = item.value;

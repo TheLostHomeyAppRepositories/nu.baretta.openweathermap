@@ -10,17 +10,11 @@ const DATA_DEF = {
     "measure_temperature_feelslike":{
         "trigger": "TemperatureFeelslikeChanged"
     },
-    "measure_temperature_min":{
-        "trigger": "TemperatureMinChanged"
-    },
-    "measure_temperature_max":{
-        "trigger": "TemperatureMaxChanged"
+    "measure_dew_point":{
+        "trigger": "DewPointChanged"
     },
     "measure_humidity":{
         "trigger": "HumidityChanged"
-    },
-    "measure_pressure":{
-        "trigger": "PressureChanged"
     },
     "measure_cloudiness":{
         "trigger": "CloudinessChanged"
@@ -34,6 +28,12 @@ const DATA_DEF = {
     "measure_wind_strength":{
         "trigger": "WindStrengthChanged"
     },
+    "measure_wind_gust":{
+        "trigger": "WindGustChanged"
+    },
+    "measure_pressure":{
+        "trigger": "PressureChanged"
+    },
     "measure_rain":{
         "trigger": "RainChanged"
     },
@@ -45,6 +45,9 @@ const DATA_DEF = {
     },
     "sunset":{
         "trigger": "SunsetChanged"
+    },
+    "measure_ultraviolet":{
+        "trigger": "UltravioletChanged"
     },
     "conditioncode":{
         "trigger": "ConditionChanged"

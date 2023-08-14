@@ -1,9 +1,9 @@
 {
     "id": "owmAirPollutionHourly",
     "name": {
-        "en": "Air quality, hourly forecast",
+        "en": "6. Air quality, hourly forecast",
         "de": "6. Luftqualität, stündliche Vorhersage",
-        "nl": "luchtkwaliteit, uurlijkse voorspeling"
+        "nl": "6. luchtkwaliteit, uurlijkse voorspeling"
     },
     "images": {
         "large": "/drivers/owmAirPollutionHourly/assets/images/large.png",

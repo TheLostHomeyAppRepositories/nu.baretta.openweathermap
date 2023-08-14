@@ -34,6 +34,11 @@
                 "en": "OpenWeatherMap API version",
                 "de": "OpenWeatherMap API-Version", 
                 "nl": "OpenWeatherMap API versie"
+            },
+            "hint": {
+                "en": "If you have an older API key without payment information that is already unlocked for the OneCall API, then choose 'OneCall 2.5'. If you have a new OneCall API key with payment information, then choose 'OneCall 3.0'.",
+                "de": "Wenn du einen älteren API-Key ohne Zahlungsinformationen besitzt, der bereits für OneCall-API freigeschaltet ist, dann wähle 'OneCall 2.5'. Wenn du einen neuen OneCall API-Key mit Zahlungsinformationen besitzt, dann wähle 'OneCall 3,.0'.",
+                "nl": "Als je een oudere API-sleutel zonder betalingsinformatie hebt, die al is ontgrendeld voor de OneCall-API, kies dan 'OneCall 2.5'. Als je een nieuwe OneCall API-sleutel hebt met betalingsinformatie, kies dan 'OneCall 3.0'."
             }
         },
         {

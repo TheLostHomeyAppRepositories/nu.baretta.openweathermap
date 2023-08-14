@@ -44,7 +44,8 @@
    "device_unavailable_reason":{
       "no_api_result": "Fout bij het aanvragen van OneCall API.",
       "location_deleted": "De locatie is verwijderd.",
-      "location_not_available": "De locatie is niet beschikbaar."
+      "location_not_available": "De locatie is niet beschikbaar.",
+      "no_definition": "Apparaatdefinitie is niet gevonden."
    },
    "windDirectionShort":{
       "N": "N",

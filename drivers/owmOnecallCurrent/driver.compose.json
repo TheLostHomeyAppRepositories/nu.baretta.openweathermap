@@ -1,9 +1,9 @@
 {
     "id": "owmOnecallCurrent",
     "name": {
-        "en": "Weather, current (location)",
+        "en": "1. Weather, current (location)",
         "de": "1. Wetter, aktuell (Standort)",
-        "nl": "Weerbericht, actueel (locatie)"
+        "nl": "1. Weerbericht, actueel (locatie)"
     },
     "images": {
         "large": "/drivers/owmOnecallCurrent/assets/images/large.png",

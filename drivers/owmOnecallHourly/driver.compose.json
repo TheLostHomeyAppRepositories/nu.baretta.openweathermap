@@ -1,9 +1,9 @@
 {
     "id": "owmOnecallHourly",
     "name": {
-        "en": "Weather, hourly forecast",
+        "en": "2. Weather, hourly forecast",
         "de": "2. Wetter, stündliche Vorhersage",
-        "nl": "Weerbericht, uurlijkse voorspeling"
+        "nl": "2. Weerbericht, uurlijkse voorspeling"
     },
     "images": {
         "large": "/drivers/owmOnecallHourly/assets/images/large.png",
@@ -35,8 +35,6 @@
 
         "measure_rain",
         "measure_snow",
-
-        "moonphase_type",
 
         "conditioncode",
         "conditioncode_detail",

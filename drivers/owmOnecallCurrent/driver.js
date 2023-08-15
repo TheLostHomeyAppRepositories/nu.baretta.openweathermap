@@ -138,7 +138,6 @@ class owmOnecallCurrentDriver extends Homey.Driver {
                 data: {
                   id: deviceId
                 },
-                capabilities: [],
                 settings:{
                     APIKey: this.settingsData["APIKey"],
                     APIVersion: this.settingsData["APIVersion"],
@@ -165,7 +164,6 @@ class owmOnecallCurrentDriver extends Homey.Driver {
                         data: {
                           id: deviceId
                         },
-                        capabilities: [],
                         settings:{
                             APIKey: this.settingsData["APIKey"],
                             APIVersion: this.settingsData["APIVersion"],

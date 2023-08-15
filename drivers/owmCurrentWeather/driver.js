@@ -142,7 +142,6 @@ class owmCurrentWeatherDriver extends Homey.Driver {
                 data: {
                   id: deviceId
                 },
-                capabilities: [],
                 settings:{
                     APIKey: this.settingsData["APIKey"],
                     lat: this.settingsData["lat"],

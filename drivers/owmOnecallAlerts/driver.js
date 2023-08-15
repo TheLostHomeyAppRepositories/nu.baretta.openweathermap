@@ -31,7 +31,6 @@ class owmOnecallAlertsDriver extends Homey.Driver {
                     id: this.getUIID(),
                     locationId: locations[i].getData().id
                 },
-                capabilities: [],
                 settings:{
                     location: locations[i].getName()
                 }

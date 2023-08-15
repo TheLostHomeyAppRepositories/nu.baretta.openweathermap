@@ -20,7 +20,7 @@ class owmCurrentDriver extends Homey.Driver {
 
         // this is called when the user presses save settings button in pair.html
         session.setHandler('get_devices', async (data) => {
-            devices = device_data;
+            devices = data;
             return devices;
         });
 

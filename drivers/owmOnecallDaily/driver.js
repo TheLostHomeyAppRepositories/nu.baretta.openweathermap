@@ -57,7 +57,6 @@ class owmOnecallDailyDriver extends Homey.Driver {
                     id: this.getUIID(),
                     locationId: locations[i].getData().id
                 },
-                capabilities: [],
                 settings:{
                     days: parseInt(this.settingsData.days),
                     location: locations[i].getName()

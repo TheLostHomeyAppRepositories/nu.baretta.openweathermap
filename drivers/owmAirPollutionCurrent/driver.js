@@ -125,7 +125,7 @@ class owmAirPollutionCurrentDriver extends Homey.Driver {
                 return;
             }
             // Check APIKey with a call without city
-            let url = await owm.getGeocodeURL(this.settingsData);
+            let url = owm.getGeocodeURL(this.settingsData);
             try{
                 let geoData = await owm.getWeatherData(url);
                 if (!geoData || geoData.cod == 401){
@@ -143,7 +143,6 @@ class owmAirPollutionCurrentDriver extends Homey.Driver {
                 data: {
                   id: deviceId
                 },
-                capabilities: [],
                 settings:{
                     APIKey: this.settingsData["APIKey"],
                     lat: this.settingsData["lat"],
@@ -169,7 +168,6 @@ class owmAirPollutionCurrentDriver extends Homey.Driver {
                         data: {
                           id: deviceId
                         },
-                        capabilkities: [],
                         settings:{
                             APIKey: this.settingsData["APIKey"],
                             lat: geoData[i].lat,

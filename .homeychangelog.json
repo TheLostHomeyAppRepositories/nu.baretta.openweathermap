@@ -226,5 +226,13 @@
   "1.4.0": {
     "en": "Code cleanup.",
     "de": "Code-Bereinigung."
+  },
+  "1.4.1": {
+    "en": "Fix for invalid data in current weather device (free API)",
+    "de": "Korrektur für ungültige Daten in Aktuelles Wetter Gerät (freie API)."
+  },
+  "1.4.2": {
+    "en": "Fix for invalid data in OneCall/AirQuality devices",
+    "de": "Korrektur für ungültige Daten in Onecall/AirQuality Geräten."
   }
 }

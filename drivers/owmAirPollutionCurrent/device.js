@@ -121,8 +121,8 @@ class owmAirPollutionCurrent extends Homey.Device {
         catch(error){
             this.log("Error reading OWM data:", error.message);
         }
-        if (!data.list){
-            if (data.message && data.cod>200){
+        if (!data || !data.list){
+            if (data && data.message && data.cod>200){
                 this.log("API error message!");
                 this.log(data);
                 this.setDeviceUnavailable(data.message);

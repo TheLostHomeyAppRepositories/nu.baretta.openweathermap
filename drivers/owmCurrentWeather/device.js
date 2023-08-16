@@ -114,8 +114,8 @@ class owmCurrenWeather extends Homey.Device {
             this.log("Error reading OWM data:", error.message);
         }
 
-        if (!data || !data.weather || data.cod != 200){
-            if (data.message && data.cod>200){
+        if (!data || !data.main || !data.weather){
+            if (data && data.message && data.cod>200){
                 this.log("API error message!");
                 this.log(data);
                 this.setDeviceUnavailable(data.message);

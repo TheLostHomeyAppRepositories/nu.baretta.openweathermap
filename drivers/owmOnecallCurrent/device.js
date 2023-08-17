@@ -58,47 +58,57 @@ class owmOnecallCurrent extends Homey.Device {
     } // end onDeleted
 
     async setDeviceUnavailable(message){
-        this.setUnavailable(message);
-        let childList = this.homey.drivers.getDriver('owmOnecallHourly').getDevices();
-        for (let i=0; i<childList.length; i++){
-            if (childList[i].getData().locationId == this.getData().id){
-                childList[i].setUnavailable(this.homey.__("device_unavailable_reason.location_not_available"));
-            }
-        }
-        childList = this.homey.drivers.getDriver('owmOnecallDaily').getDevices();
-        for (let i=0; i<childList.length; i++){
-            if (childList[i].getData().locationId == this.getData().id){
-                childList[i].setUnavailable(this.homey.__("device_unavailable_reason.location_not_available"));
-            }
-        }
-        childList = this.homey.drivers.getDriver('owmOnecallAlerts').getDevices();
-        for (let i=0; i<childList.length; i++){
-            if (childList[i].getData().locationId == this.getData().id){
-                childList[i].setUnavailable(this.homey.__("device_unavailable_reason.location_not_available"));
-            }
-        }
-    }
-
-    async setDeviceAvailable(){
-        if ( !this.getAvailable() ){
-            await this.setAvailable();
+        try{
+            await this.setUnavailable(message);
             let childList = this.homey.drivers.getDriver('owmOnecallHourly').getDevices();
             for (let i=0; i<childList.length; i++){
                 if (childList[i].getData().locationId == this.getData().id){
-                    childList[i].setAvailable();
+                    await childList[i].setUnavailable(this.homey.__("device_unavailable_reason.location_not_available"));
                 }
             }
             childList = this.homey.drivers.getDriver('owmOnecallDaily').getDevices();
             for (let i=0; i<childList.length; i++){
                 if (childList[i].getData().locationId == this.getData().id){
-                    childList[i].setAvailable();
+                    await childList[i].setUnavailable(this.homey.__("device_unavailable_reason.location_not_available"));
                 }
             }
             childList = this.homey.drivers.getDriver('owmOnecallAlerts').getDevices();
             for (let i=0; i<childList.length; i++){
                 if (childList[i].getData().locationId == this.getData().id){
-                    childList[i].setAvailable();
+                    await childList[i].setUnavailable(this.homey.__("device_unavailable_reason.location_not_available"));
                 }
+            }
+        }
+        catch (error){
+            this.log("Error setting device unavailable: ", error.message);
+        }
+    }
+
+    async setDeviceAvailable(){
+        if ( !this.getAvailable() ){
+            try{
+                await this.setAvailable();
+                let childList = this.homey.drivers.getDriver('owmOnecallHourly').getDevices();
+                for (let i=0; i<childList.length; i++){
+                    if (childList[i].getData().locationId == this.getData().id){
+                        await childList[i].setAvailable();
+                    }
+                }
+                childList = this.homey.drivers.getDriver('owmOnecallDaily').getDevices();
+                for (let i=0; i<childList.length; i++){
+                    if (childList[i].getData().locationId == this.getData().id){
+                        await childList[i].setAvailable();
+                    }
+                }
+                childList = this.homey.drivers.getDriver('owmOnecallAlerts').getDevices();
+                for (let i=0; i<childList.length; i++){
+                    if (childList[i].getData().locationId == this.getData().id){
+                        await childList[i].setAvailable();
+                    }
+                }
+            }
+            catch (error){
+                this.log("Error setting device available: ", error.message);
             }
         }
     }
@@ -135,10 +145,6 @@ class owmOnecallCurrent extends Homey.Device {
             () => this.pollWeatherData(settings).catch(error => console.log(error)),
             ( 60 * 1000 * settings.pollingInterval) );
     }
-
-
-
-
 
     async pollWeatherData(settings) {
         if (this.data == undefined){

@@ -62,12 +62,22 @@ class owmOnecallDaily extends Homey.Device {
     } // end onDeleted
 
     async setDeviceUnavailable(message){
-        await this.setUnavailable(message);
+        try{
+            await this.setUnavailable(message);
+        }
+        catch (error){
+            this.log("Error setting device unavailable: ", error.message);
+        }
     }
 
     async setDeviceAvailable(){
         if ( !this.getAvailable() ){
-            await this.setAvailable();
+            try{
+                await this.setAvailable();
+            }
+            catch (error){
+                this.log("Error setting device available: ", error.message);
+            }
         }
     }
 

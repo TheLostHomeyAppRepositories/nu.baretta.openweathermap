@@ -65,23 +65,33 @@ class owmAirPollutionCurrent extends Homey.Device {
     }
 
     async setDeviceUnavailable(message){
-        this.setUnavailable(message);
-        let childList = this.homey.drivers.getDriver('owmAirPollutionHourly').getDevices();
-        for (let i=0; i<childList.length; i++){
-            if (childList[i].getData().locationId == this.getData().id){
-                childList[i].setUnavailable(this.homey.__("device_unavailable_reason.location_not_available"));
+        try{
+            await this.setUnavailable(message);
+            let childList = this.homey.drivers.getDriver('owmAirPollutionHourly').getDevices();
+            for (let i=0; i<childList.length; i++){
+                if (childList[i].getData().locationId == this.getData().id){
+                    await  childList[i].setUnavailable(this.homey.__("device_unavailable_reason.location_not_available"));
+                }
             }
+        }
+        catch (error){
+            this.log("Error setting device unavailable: ", error.message);
         }
     }
 
     async setDeviceAvailable(){
         if ( !this.getAvailable() ){
-            await this.setAvailable();
-            let childList = this.homey.drivers.getDriver('owmAirPollutionHourly').getDevices();
-            for (let i=0; i<childList.length; i++){
-                if (childList[i].getData().locationId == this.getData().id){
-                    childList[i].setAvailable();
+            try{
+                await this.setAvailable();
+                let childList = this.homey.drivers.getDriver('owmAirPollutionHourly').getDevices();
+                for (let i=0; i<childList.length; i++){
+                    if (childList[i].getData().locationId == this.getData().id){
+                        await childList[i].setAvailable();
+                    }
                 }
+            }
+            catch (error){
+                this.log("Error setting device available: ", error.message);
             }
         }
     }

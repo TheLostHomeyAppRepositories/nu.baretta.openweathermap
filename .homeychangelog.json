@@ -234,5 +234,9 @@
   "1.4.2": {
     "en": "Fix for invalid data in OneCall/AirQuality devices",
     "de": "Korrektur für ungültige Daten in Onecall/AirQuality Geräten."
+  },
+  "1.4.3": {
+    "en": "Fix for unavailable (deprecated) hourly/daily forecast devices.",
+    "de": "Korrektur für nicht verfügbare (veraltete) tägliche/stündliche Vorhersage-Geräte."
   }
 }

@@ -72,12 +72,22 @@ class owmForecast extends Homey.Device {
     } // end onDeleted
 
     async setDeviceUnavailable(message){
-        this.setUnavailable(message);
+        try{
+            await this.setUnavailable(message);
+        }
+        catch (error){
+            this.log("Error setting device unavailable: ", error.message);
+        }
     }
 
     async setDeviceAvailable(){
         if ( !this.getAvailable() ){
-            await this.setAvailable();
+            try{
+                await this.setAvailable();
+            }
+            catch (error){
+                this.log("Error setting device available: ", error.message);
+            }
         }
     }
 
@@ -98,7 +108,7 @@ class owmForecast extends Homey.Device {
                 return owm.getWeatherData(url);
             })
             .then(async data => {
-                if (!data || !data.weather || data.cod != 200){
+                if (!data || !data.list || data.cod != 200){
                     if (data.message && data.cod>200){
                         this.log("API error message!");
                         this.log(data);

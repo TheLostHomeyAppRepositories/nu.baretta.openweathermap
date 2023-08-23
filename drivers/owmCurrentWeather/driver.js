@@ -74,7 +74,7 @@ class owmCurrentWeatherDriver extends Homey.Driver {
     async onGetCityList(query){
         // Check APIKey with a call without city
         let cities = [];
-        let url = await owm.getGeocodeURL(this.settingsData);
+        let url = owm.getGeocodeURL(this.settingsData);
         try{
             let geoData = await owm.getWeatherData(url);
             if (!geoData || geoData.cod == 401){
@@ -124,7 +124,7 @@ class owmCurrentWeatherDriver extends Homey.Driver {
                 return;
             }
             // Check APIKey with a call without city
-            let url = await owm.getURLGeocode(this.settingsData);
+            let url = owm.getGeocodeURL(this.settingsData);
             try{
                 let geoData = await owm.getWeatherData(url);
                 if (!geoData || geoData.cod == 401){
@@ -152,7 +152,7 @@ class owmCurrentWeatherDriver extends Homey.Driver {
             devices.push(device);
         }
         else{
-            let url = await owm.getGeocodeURL(this.settingsData);
+            let url = owm.getGeocodeURL(this.settingsData);
             try{
                 let geoData = await owm.getWeatherData(url);
                 if (!geoData || geoData.cod == 401){

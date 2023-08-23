@@ -238,5 +238,9 @@
   "1.4.3": {
     "en": "Fix for unavailable (deprecated) hourly/daily forecast devices.",
     "de": "Korrektur für nicht verfügbare (veraltete) tägliche/stündliche Vorhersage-Geräte."
+  },
+  "1.4.4": {
+    "en": "Fix for URL error in pair view.",
+    "de": "Korrektur für URL-Fehler in Pair-Dialog."
   }
 }

@@ -242,5 +242,9 @@
   "1.4.4": {
     "en": "Fix for URL error in pair view.",
     "de": "Korrektur für URL-Fehler in Pair-Dialog."
+  },
+  "1.4.5": {
+    "en": "Clear capability if value is not provided by OWM.",
+    "de": "Lösche Attribut, wenn keine OWM-Daten verfügbar sind."
   }
 }

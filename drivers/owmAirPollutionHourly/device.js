@@ -163,6 +163,9 @@ class owmAirPollutionHourly extends Homey.Device {
             if (dataKeys[i] != undefined){
                 if (this.getCapabilityValue(capability) != item.value){
                     this.log(this.getName() + " Data changed: " + capability + ": " + this.getCapabilityValue(capability) + " => " + item.value);
+                    if (item.value == undefined){
+                        item.value = null;
+                    }
                     await this.setCapabilityValue(capability, item.value);
                     // .catch(error => this.log(error.message));
                     // Store temporary value to trigger flows for changed capabilities

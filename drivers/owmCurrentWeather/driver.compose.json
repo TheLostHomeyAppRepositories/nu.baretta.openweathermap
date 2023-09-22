@@ -1,9 +1,9 @@
 {
     "id": "owmCurrentWeather",
     "name": {
-        "en": "7. Weather, current (free Current Weather API)",
-        "de": "7. Wetter, aktuell (freie Current Weather API)",
-        "nl": "7. Weerbericht, actueel (vrij Current Weather API)"
+        "en": "8. Weather, current (free Current Weather API)",
+        "de": "8. Wetter, aktuell (freie Current Weather API)",
+        "nl": "8. Weerbericht, actueel (vrij Current Weather API)"
     },
     "images": {
         "large": "/drivers/owmCurrentWeather/assets/images/large.png",
@@ -45,11 +45,18 @@
 
         "conditioncode_text"
     ],
-    "pair": [{
-        "id": "city_geocode",
-        "navigation": {
-            "next": "list_my_devices"
-          }
+    "pair": [
+        {
+            "id": "city_geocode",
+            "navigation": {
+                "next": "list_my_devices"
+            }
+        },
+        {
+            "id": "instructions",
+            "navigation": {
+                "prev": "city_geocode"
+            }
         },
         {
             "id": "apikey_error",

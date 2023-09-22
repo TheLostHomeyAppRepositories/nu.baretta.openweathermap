@@ -39,6 +39,6 @@
     "args": [{
         "name": "ChangedWindDirectionCompass",
         "type": "device",
-        "filter": "driver_id=owmCurrent|owmForecast|owmLongterm|owmOnecallCurrent|owmOnecallHourly|owmOnecallDaily|owmCurrentWeather"
+        "filter": "driver_id=owmCurrent|owmForecast|owmLongterm|owmOnecallCurrent|owmOnecallHourly|owmOnecallDaily|owmCurrentWeather|owmOnecallDailySummary"
     }]
 }

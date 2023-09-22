@@ -1,50 +1,40 @@
 {
-    "id": "owmOnecallCurrent",
+    "id": "owmOnecallDailySummary",
     "name": {
-        "en": "1. Weather, current (location)",
-        "de": "1. Wetter, aktuell (Standort)",
-        "nl": "1. Weerbericht, actueel (locatie)"
+        "en": "5. Weather, daily summary",
+        "de": "5. Wetter, tägliche Zusammenfassung",
+        "nl": "5. Weerbericht, dagelijkse samenvatting"
     },
     "images": {
-        "large": "/drivers/owmOnecallCurrent/assets/images/large.png",
-        "small": "/drivers/owmOnecallCurrent/assets/images/small.png"
+        "large": "/drivers/owmOnecallDailySummary/assets/images/large.png",
+        "small": "/drivers/owmOnecallDailySummary/assets/images/small.png"
     },
     "class": "other",
     "connectivity": [ "cloud" ],
     "capabilities": [
         "forecast_time",
-        "description",
+        "measure_cloudiness",
 
-        "measure_temperature",
-        "measure_temperature_feelslike",
-
-        "measure_dew_point",
+        "measure_rain",
         "measure_humidity",
 
-        "measure_cloudiness",
-        "measure_visibility",
+        "measure_temperature_min",
+        "measure_temperature_max",
+
+        "measure_temperature_morning",
+        "measure_temperature_day",
+
+        "measure_temperature_evening",
+        "measure_temperature_night",
 
         "measure_wind_combined",
         "measure_wind_strength",
 
-        "measure_wind_gust",
         "measure_pressure",
-
-        "measure_rain",
-        "measure_snow",
-
-        "sunrise",
-        "sunset",
-
-        "measure_ultraviolet",
-
-        "conditioncode",
-        "conditioncode_detail",
 
         "measure_wind_angle",
         "measure_wind_direction_string",
-        "measure_windstrength_beaufort",
-        "conditioncode_text"
+        "measure_windstrength_beaufort"
     ],
     "pair": [
         {

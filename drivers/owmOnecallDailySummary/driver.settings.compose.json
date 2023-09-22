@@ -1,9 +1,9 @@
 [{
     "type": "group",
     "label": {
-        "en": "OpenWeatherMap Current weather (free Current Weather API)",
-        "de": "OpenWeatherMap Aktuelles Wetter (freie Current Weather API)",
-        "nl": "OpenWeatherMap Huidig ​​weer (vrij Current Weather API)"
+        "en": "OpenWeatherMap daily summary and location",
+        "de": "OpenWeatherMap tägliche Zusammenfassung und Standort",
+        "nl": "OpenWeatherMap dagelijkse samenvatting en locatie"
     },
     "children": [
         {
@@ -32,6 +32,23 @@
                 "en": "Longitude:",
                 "de": "Längengrad:",
                 "nl": "Lengtegraad:"
+            }
+        },
+        {
+            "id": "days",
+            "type": "number",
+            "value": -1,
+            "min": -365,
+            "max": 4,
+            "units": { 
+                "en": "Days",
+                "de": "Tage",
+                "nl": "Dagen"
+             },
+            "label": {
+                "en": "Day difference for the historical data or forecast:",
+                "de": "Tages-Differenz für die historischen Daten oder die Vorhersage:", 
+                "nl": "dagelijks verschil voor de historische gegevens of voorspelling:"
             }
         },
         {

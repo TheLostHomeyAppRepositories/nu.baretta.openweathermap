@@ -38,6 +38,6 @@
     "args": [{
         "name": "device",
         "type": "device",
-        "filter": "driver_id=owmOnecallDaily"
+        "filter": "driver_id=owmOnecallDaily|owmOnecallDailySummary"
     }]
 }

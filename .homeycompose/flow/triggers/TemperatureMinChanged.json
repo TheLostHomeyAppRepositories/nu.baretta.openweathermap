@@ -38,6 +38,6 @@
     "args": [{
         "name": "device",
         "type": "device",
-        "filter": "driver_id=owmOnecallDaily|owmCurrentWeather"
+        "filter": "driver_id=owmOnecallDaily|owmCurrentWeather|owmOnecallDailySummary"
     }]
 }

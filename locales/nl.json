@@ -22,6 +22,7 @@
          "title": "OpenWeather - Voeg een locatie toe ...",
          "titleHourly": "OpenWeather - een voorspelling per uur toevoegen...",
          "titleDaily": "OpenWeather - een dagelijkse voorspelling toevoegen...",
+         "titleDailySummary": "OpenWeather - voeg een dagelijkse samenvatting toe (historische gegevens en 4-daagse voorspelling)...",
          "apiKey": "Voer de OpenWeatherMap API key in.",
          "apiKey2": "Een API-sleutel kan worden verkregen op http://openweathermap.org.",
          "apiVersion": "Specificeert de OneCall API-versie die moet worden gebruikt.",
@@ -32,13 +33,22 @@
          "hours2": "Voorbeelden: '0' voor een actuele prognose. '5' voor een voorspelling voor 5 uur.",
          "days": "Voer het dagverschil in voor de voorspelling.",
          "days2": "Voorbeelden: '0' voor een huidige voorspelling. '5' voor een voorspelling in 5 dagen.",
+         "daysSummary": "Voer het dagelijkse verschil in voor de historische gegevens of prognose.",
+         "daysSummary2": "Voorbeelden: '0' de huidige dag. '-1' voor gisteren. '4' voor een voorspelling over 4 dagen.",
          "pairError": "Device setup error", 
          "apiKeyError": "Voer een geldige API-sleutel in.",
          "geolocationError1": "Geen locatie gevonden.",
          "geolocationError2": "Controleer de plaatsnaam die je hebt ingevoerd.",
          "locationError1": "Er is geen weerlocatie beschikbaar.",
          "locationError2": "Voeg eerst een apparaat toe voor 'Huidig ​​weer'.",
-         "alert": "waarschuwingen"
+         "alert": "waarschuwingen",
+         "instructions": "Instructies",
+         "instructions01": "Om dit apparaat te gebruiken is een <b>OneCall API 3.0-sleutel</b> vereist.<br>Voor de sleutel is een abonnement vereist, maar deze bevat dagelijks 1000 gratis API-aanroepen.<br>Bezoek de <a href='javascript:void(0);' onclick='showUrl(\"https://openweathermap.org/price\");'>OWM-prijslijst</a> voor details, <a href='javascript:void(0);' onclick='showUrl(\"https://home.openweathermap.org/users/sign_up\");'>maak een account aan</a> en <a href='javascript:void(0);' onclick='showUrl(\"https://home.openweathermap.org/subscriptions/billing_info/onecall_30/base?key=base&service=onecall_30\");'>abonneer u</a> op een OneCall 3.0 API-sleutel.",
+         "instructions02": "Indien er al een oude API-sleutel (zonder abonnement) werd gebruikt met OneCall API 2.5, kan deze sleutel ook worden gebruikt. Om dit te doen, selecteert u “API versie 2.5” bij het toevoegen van het apparaat of in de apparaatinstellingen."
+      },
+      "freeAPI":{
+         "instructions": "Instructies",
+         "instructions01": "Om dit apparaat te gebruiken is een <b>Free-API-sleutel</b> vereist.<br>De sleutel bevat dagelijks 1000 gratis API-aanroepen.<br>Bezoek de <a href='javascript:void(0);' onclick='showUrl(\"https://openweathermap.org/price\");'>OWM-prijslijst</a> voor meer informatie, <a href='javascript:void(0);' onclick='showUrl(\"https://home.openweathermap.org/users/sign_up\");'>maak een account aan</a> en ontvang een Free-API-sleutel."
       }
    },
    "device_unavailable_reason":{

@@ -1,9 +1,9 @@
 {
     "id": "owmAirPollutionCurrent",
     "name": {
-        "en": "5. Air quality current (location)",
-        "de": "5. Luftqualität aktuell (Standort)",
-        "nl": "5. luchtkwaliteit actueel (locatie)"
+        "en": "6. Air quality current (location)",
+        "de": "6. Luftqualität aktuell (Standort)",
+        "nl": "6. luchtkwaliteit actueel (locatie)"
     },
     "images": {
         "large": "/drivers/owmAirPollutionCurrent/assets/images/large.png",
@@ -29,11 +29,18 @@
 
         "measure_ap_aqi_nr"
     ],
-    "pair": [{
-        "id": "city_geocode",
-        "navigation": {
-            "next": "list_my_devices"
-          }
+    "pair": [
+        {
+            "id": "city_geocode",
+            "navigation": {
+                "next": "list_my_devices"
+            }
+        },
+        {
+            "id": "instructions",
+            "navigation": {
+                "prev": "city_geocode"
+            }
         },
         {
             "id": "apikey_error",

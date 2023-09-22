@@ -10,7 +10,7 @@
         "restart": true,
         "name": "Attach OpenWeather to Homey Dev",
         "address": "192.168.1.13",
-        "port": 9222,
+        "port": 9230,
         "localRoot": "${workspaceFolder}",
         "remoteRoot": "/"
     },
@@ -20,7 +20,7 @@
         "restart": true,
         "name": "Attach OpenWeather to Homey Pro",
         "address": "192.168.1.12",
-        "port": 9222,
+        "port": 9230,
         "localRoot": "${workspaceFolder}",
         "remoteRoot": "/"
     },
@@ -30,7 +30,7 @@
         "restart": true,
         "name": "Attach OpenWeather to Homey Pro23",
         "address": "192.168.1.14",
-        "port": 9222,
+        "port": 9230,
         "localRoot": "${workspaceFolder}",
         "remoteRoot": "/app/"
     }

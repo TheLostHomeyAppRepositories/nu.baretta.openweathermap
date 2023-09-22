@@ -22,6 +22,10 @@
             //document.getElementById('found_nr').value = result; 
         });
     }
+
+    function onClickInstructions(){
+        Homey.showView("instructions");
+    }
 </script>
 
 <fieldset class="homey-form-fieldset">
@@ -29,6 +33,11 @@
         <label for="apiKey" class="homey-form-label"><span data-i18n="pair.oneCallAPI.apiKey"></span><br><span data-i18n="pair.oneCallAPI.apiKey2"></span></label>
         <!-- <label for="apiKey" class="homey-form-label"><span data-i18n="pair.oneCallAPI.apiKey2"></span></label> -->
         <input id="apiKey"  class="homey-form-input" type="text" value="" oninput="settingsChanged()"/>
+        <br>
+        <button class="homey-button-secondary-shadow-full" type="button"
+            onclick="onClickInstructions()"
+            data-i18n="pair.oneCallAPI.instructions">
+        </button>
     </div>
     <div class="homey-form-group">
         <label for="city" class="homey-form-label"><span data-i18n="pair.oneCallAPI.city"></span><br><span data-i18n="pair.oneCallAPI.autolocation"></span></label>

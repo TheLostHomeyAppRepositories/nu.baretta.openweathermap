@@ -100,5 +100,24 @@
             }
         }
     ]
+},
+{
+    "type": "group",
+    "label": {
+        "en": "Device Information",
+        "de": "Geräte-Information",
+        "nl": "Apparaat informatie"
+    },
+    "children": [
+        {
+            "id": "APIState",
+            "type": "label",
+            "label": {
+                "en": "Last update",
+                "de": "Letzte Aktualisierung",
+                "nl": "laatste update"
+            }
+        }
+    ]
 }
 ]

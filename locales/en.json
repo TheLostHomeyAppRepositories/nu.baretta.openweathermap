@@ -22,6 +22,7 @@
          "title": "OpenWeather - add a location...",
          "titleHourly": "OpenWeather - add an hourly forecast...",
          "titleDaily": "OpenWeather - add a daily forecast...",
+         "titleDailySummary": "OpenWeather - add a daily summary (historical data and 4 day forecast)...",
          "apiKey": "Enter the OpenWeatherMap API key.",
          "apiKey2": "An API key can be obtained at http://openweathermap.org.",
          "apiVersion": "Specifies the OneCall API version to use.",
@@ -32,13 +33,22 @@
          "hours2": "Examples: '0' for a current prediction. '5' for a forecast in 5 hours.",
          "days": "Enter the day difference for the forecast.",
          "days2": "Examples: '0' for a current prediction. '5' for a forecast in 5 days.",
+         "daysSummary": "Enter the day difference for the historical data or forecast.",
+         "daysSummary2": "Examples: '0' for a current day. '-1' for summary of yesterday. '4' for a forecast in 4 days.",
          "pairError": "Device setup error.", 
          "apiKeyError": "Please enter a valid API key.",
          "geolocationError1": "No location found.",
          "geolocationError2": "Please check the city name you entered.",
          "locationError1": "There is no weather location available.",
          "locationError2": "Please add a device for 'Current Weather' first.",
-         "alert": "alerts"
+         "alert": "alerts",
+         "instructions": "Instructions",
+         "instructions01": "To use this device, you need an <b>OneCall API 3.0 key</b>.<br>The key needs a subscription, but includes 1000 free API calls daily.<br>Please check <a href='javascript:void(0);' onclick='showUrl(\"https://openweathermap.org/price\");'>OWM price list</a> for details, <a href='javascript:void(0);' onclick='showUrl(\"https://home.openweathermap.org/users/sign_up\");'>create an account</a> and <a href='javascript:void(0);' onclick='showUrl(\"https://home.openweathermap.org/subscriptions/billing_info/onecall_30/base?key=base&service=onecall_30\");'>subscribe</a> your OneCall 3.0 API key.",
+         "instructions02": "If you already used an old API key (without subscription) with the OneCall API 2.5, you can also use this key. Select 'API version 2.5' in pair view or device settings."
+      },
+      "freeAPI":{
+         "instructions": "Instructions",
+         "instructions01": "To use this device, you need an <b>Free API key</b>.<br>The key includes 1000 free API calls daily.<br>Please check <a href='javascript:void(0);' onclick='showUrl(\"https://openweathermap.org/price\");'>OWM price list</a> for details, <a href='javascript:void(0);' onclick='showUrl(\"https://home.openweathermap.org/users/sign_up\");'>create an account</a> and get your FreeAPI key."
       }
    },
    "device_unavailable_reason":{

@@ -1,7 +1,7 @@
 {
   "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
   "id": "nu.baretta.openweathermap",
-  "version": "1.4.5",
+  "version": "1.5.0",
   "compatibility": ">=8.1.1",
   "sdk": 3,
   "name": {
@@ -165,7 +165,7 @@
           {
             "name": "ChangedCloudiness",
             "type": "device",
-            "filter": "driver_id=owmCurrent|owmForecast|owmLongterm|owmOnecallCurrent|owmOnecallHourly|owmOnecallDaily|owmCurrentWeather"
+            "filter": "driver_id=owmCurrent|owmForecast|owmLongterm|owmOnecallCurrent|owmOnecallHourly|owmOnecallDaily|owmCurrentWeather|owmOnecallDailySummary"
           }
         ]
       },
@@ -401,7 +401,7 @@
           {
             "name": "device",
             "type": "device",
-            "filter": "driver_id=owmOnecallCurrent|owmOnecallHourly|owmOnecallDaily|owmCurrentWeather"
+            "filter": "driver_id=owmOnecallCurrent|owmOnecallHourly|owmOnecallDaily|owmCurrentWeather|owmOnecallDailySummary"
           }
         ]
       },
@@ -1143,7 +1143,7 @@
           {
             "name": "device",
             "type": "device",
-            "filter": "driver_id=owmOnecallCurrent|owmOnecallHourly|owmOnecallDaily|owmCurrentWeather"
+            "filter": "driver_id=owmOnecallCurrent|owmOnecallHourly|owmOnecallDaily|owmCurrentWeather|owmOnecallDailySummary"
           }
         ]
       },
@@ -1189,7 +1189,7 @@
           {
             "name": "device",
             "type": "device",
-            "filter": "driver_id=owmOnecallCurrent|owmOnecallHourly|owmOnecallDaily|owmCurrentWeather"
+            "filter": "driver_id=owmOnecallCurrent|owmOnecallHourly|owmOnecallDaily|owmCurrentWeather|owmOnecallDailySummary"
           }
         ]
       },
@@ -1416,7 +1416,7 @@
           {
             "name": "device",
             "type": "device",
-            "filter": "driver_id=owmOnecallDaily"
+            "filter": "driver_id=owmOnecallDaily|owmOnecallDailySummary"
           }
         ]
       },
@@ -1462,7 +1462,7 @@
           {
             "name": "device",
             "type": "device",
-            "filter": "driver_id=owmOnecallDaily"
+            "filter": "driver_id=owmOnecallDaily|owmOnecallDailySummary"
           }
         ]
       },
@@ -1554,7 +1554,7 @@
           {
             "name": "device",
             "type": "device",
-            "filter": "driver_id=owmOnecallDaily|owmCurrentWeather"
+            "filter": "driver_id=owmOnecallDaily|owmCurrentWeather|owmOnecallDailySummary"
           }
         ]
       },
@@ -1600,7 +1600,7 @@
           {
             "name": "device",
             "type": "device",
-            "filter": "driver_id=owmOnecallDaily|owmCurrentWeather"
+            "filter": "driver_id=owmOnecallDaily|owmCurrentWeather|owmOnecallDailySummary"
           }
         ]
       },
@@ -1646,7 +1646,7 @@
           {
             "name": "device",
             "type": "device",
-            "filter": "driver_id=owmOnecallDaily"
+            "filter": "driver_id=owmOnecallDaily|owmOnecallDailySummary"
           }
         ]
       },
@@ -1692,7 +1692,7 @@
           {
             "name": "device",
             "type": "device",
-            "filter": "driver_id=owmOnecallDaily"
+            "filter": "driver_id=owmOnecallDaily|owmOnecallDailySummary"
           }
         ]
       },
@@ -1892,7 +1892,7 @@
           {
             "name": "device",
             "type": "device",
-            "filter": "driver_id=owmOnecallCurrent|owmOnecallHourly|owmOnecallDaily|owmCurrentWeather"
+            "filter": "driver_id=owmOnecallCurrent|owmOnecallHourly|owmOnecallDaily|owmCurrentWeather|owmOnecallDailySummary"
           }
         ]
       },
@@ -1937,7 +1937,7 @@
           {
             "name": "ChangedWindspeedBeaufort",
             "type": "device",
-            "filter": "driver_id=owmCurrent|owmForecast|owmLongterm|owmOnecallCurrent|owmOnecallHourly|owmOnecallDaily|owmCurrentWeather"
+            "filter": "driver_id=owmCurrent|owmForecast|owmLongterm|owmOnecallCurrent|owmOnecallHourly|owmOnecallDaily|owmCurrentWeather|owmOnecallDailySummary"
           }
         ]
       },
@@ -1984,7 +1984,7 @@
           {
             "name": "device",
             "type": "device",
-            "filter": "driver_id=owmOnecallCurrent|owmOnecallHourly|owmOnecallDaily|owmCurrentWeather"
+            "filter": "driver_id=owmOnecallCurrent|owmOnecallHourly|owmOnecallDaily|owmCurrentWeather|owmOnecallDailySummary"
           }
         ]
       },
@@ -2031,7 +2031,7 @@
           {
             "name": "ChangedWindDirectionCompass",
             "type": "device",
-            "filter": "driver_id=owmCurrent|owmForecast|owmLongterm|owmOnecallCurrent|owmOnecallHourly|owmOnecallDaily|owmCurrentWeather"
+            "filter": "driver_id=owmCurrent|owmForecast|owmLongterm|owmOnecallCurrent|owmOnecallHourly|owmOnecallDaily|owmCurrentWeather|owmOnecallDailySummary"
           }
         ]
       },
@@ -2123,7 +2123,7 @@
           {
             "name": "device",
             "type": "device",
-            "filter": "driver_id=owmOnecallCurrent|owmOnecallHourly|owmOnecallDaily|owmCurrentWeather"
+            "filter": "driver_id=owmOnecallCurrent|owmOnecallHourly|owmOnecallDaily|owmCurrentWeather|owmOnecallDailySummary"
           }
         ]
       }
@@ -2165,7 +2165,7 @@
           {
             "name": "device",
             "type": "device",
-            "filter": "driver_id=owmCurrent|owmForecast|owmLongterm|owmOnecallCurrent|owmOnecallHourly|owmOnecallDaily|owmCurrentWeather"
+            "filter": "driver_id=owmCurrent|owmForecast|owmLongterm|owmOnecallCurrent|owmOnecallHourly|owmOnecallDaily|owmCurrentWeather|owmOnecallDailySummary"
           },
           {
             "name": "cloudiness",
@@ -2750,7 +2750,7 @@
           {
             "name": "device",
             "type": "device",
-            "filter": "driver_id=owmCurrent|owmForecast|owmLongterm|owmOnecallCurrent|owmOnecallHourly|owmOnecallDaily|owmCurrentWeather"
+            "filter": "driver_id=owmCurrent|owmForecast|owmLongterm|owmOnecallCurrent|owmOnecallHourly|owmOnecallDaily|owmCurrentWeather|owmOnecallDailySummary"
           },
           {
             "name": "humidity",
@@ -3222,7 +3222,7 @@
           {
             "name": "device",
             "type": "device",
-            "filter": "driver_id=owmCurrent|owmForecast|owmLongterm|owmOnecallCurrent|owmOnecallHourly|owmOnecallDaily|owmCurrentWeather"
+            "filter": "driver_id=owmCurrent|owmForecast|owmLongterm|owmOnecallCurrent|owmOnecallHourly|owmOnecallDaily|owmCurrentWeather|owmOnecallDailySummary"
           },
           {
             "name": "bar",
@@ -3251,7 +3251,7 @@
           {
             "name": "device",
             "type": "device",
-            "filter": "driver_id=owmOnecallCurrent|owmOnecallHourly|owmOnecallDaily|owmCurrentWeather"
+            "filter": "driver_id=owmOnecallCurrent|owmOnecallHourly|owmOnecallDaily|owmCurrentWeather|owmOnecallDailySummary"
           },
           {
             "name": "rain",
@@ -3338,7 +3338,7 @@
           {
             "name": "device",
             "type": "device",
-            "filter": "driver_id=owmOnecallDaily"
+            "filter": "driver_id=owmOnecallDaily|owmOnecallDailySummary"
           },
           {
             "name": "degrees",
@@ -3367,7 +3367,7 @@
           {
             "name": "device",
             "type": "device",
-            "filter": "driver_id=owmLongterm|owmOnecallDaily"
+            "filter": "driver_id=owmLongterm|owmOnecallDaily|owmOnecallDailySummary"
           },
           {
             "name": "degrees",
@@ -3425,7 +3425,7 @@
           {
             "name": "device",
             "type": "device",
-            "filter": "driver_id=owmLongterm|owmOnecallDaily|owmCurrentWeather"
+            "filter": "driver_id=owmLongterm|owmOnecallDaily|owmCurrentWeather|owmOnecallDailySummary"
           },
           {
             "name": "degrees",
@@ -3454,7 +3454,7 @@
           {
             "name": "device",
             "type": "device",
-            "filter": "driver_id=owmLongterm|owmOnecallDaily|owmCurrentWeather"
+            "filter": "driver_id=owmLongterm|owmOnecallDaily|owmCurrentWeather|owmOnecallDailySummary"
           },
           {
             "name": "degrees",
@@ -3483,7 +3483,7 @@
           {
             "name": "device",
             "type": "device",
-            "filter": "driver_id=owmLongterm|owmOnecallDaily"
+            "filter": "driver_id=owmLongterm|owmOnecallDaily|owmOnecallDailySummary"
           },
           {
             "name": "degrees",
@@ -3512,7 +3512,7 @@
           {
             "name": "device",
             "type": "device",
-            "filter": "driver_id=owmLongterm|owmOnecallDaily"
+            "filter": "driver_id=owmLongterm|owmOnecallDaily|owmOnecallDailySummary"
           },
           {
             "name": "degrees",
@@ -3570,7 +3570,7 @@
           {
             "name": "device",
             "type": "device",
-            "filter": "driver_id=owmCurrent|owmForecast|owmLongterm|owmOnecallCurrent|owmOnecallHourly|owmOnecallDaily|owmCurrentWeather"
+            "filter": "driver_id=owmCurrent|owmForecast|owmLongterm|owmOnecallCurrent|owmOnecallHourly|owmOnecallDaily|owmCurrentWeather|owmOnecallDailySummary"
           },
           {
             "name": "winddirection",
@@ -3729,7 +3729,7 @@
           {
             "name": "device",
             "type": "device",
-            "filter": "driver_id=owmCurrent|owmForecast|owmLongterm|owmOnecallCurrent|owmOnecallHourly|owmOnecallDaily|owmCurrentWeather"
+            "filter": "driver_id=owmCurrent|owmForecast|owmLongterm|owmOnecallCurrent|owmOnecallHourly|owmOnecallDaily|owmCurrentWeather|owmOnecallDailySummary"
           },
           {
             "name": "windforce",
@@ -3787,7 +3787,7 @@
           {
             "name": "device",
             "type": "device",
-            "filter": "driver_id=owmCurrent|owmForecast|owmLongterm|owmOnecallCurrent|owmOnecallHourly|owmOnecallDaily|owmCurrentWeather"
+            "filter": "driver_id=owmCurrent|owmForecast|owmLongterm|owmOnecallCurrent|owmOnecallHourly|owmOnecallDaily|owmCurrentWeather|owmOnecallDailySummary"
           },
           {
             "name": "windspeed",
@@ -3812,7 +3812,7 @@
           {
             "name": "device",
             "type": "device",
-            "filter": "driver_id=owmOnecallCurrent|owmAirPollutionCurrent|owmCurrentWeather"
+            "filter": "driver_id=owmOnecallCurrent|owmAirPollutionCurrent|owmCurrentWeather|owmOnecallDailySummary"
           }
         ],
         "id": "update_device"
@@ -3823,9 +3823,9 @@
     {
       "id": "owmAirPollutionCurrent",
       "name": {
-        "en": "5. Air quality current (location)",
-        "de": "5. Luftqualität aktuell (Standort)",
-        "nl": "5. luchtkwaliteit actueel (locatie)"
+        "en": "6. Air quality current (location)",
+        "de": "6. Luftqualität aktuell (Standort)",
+        "nl": "6. luchtkwaliteit actueel (locatie)"
       },
       "images": {
         "large": "/drivers/owmAirPollutionCurrent/assets/images/large.png",
@@ -3853,6 +3853,12 @@
           "id": "city_geocode",
           "navigation": {
             "next": "list_my_devices"
+          }
+        },
+        {
+          "id": "instructions",
+          "navigation": {
+            "prev": "city_geocode"
           }
         },
         {
@@ -3951,15 +3957,34 @@
               }
             }
           ]
+        },
+        {
+          "type": "group",
+          "label": {
+            "en": "Device Information",
+            "de": "Geräte-Information",
+            "nl": "Apparaat informatie"
+          },
+          "children": [
+            {
+              "id": "APIState",
+              "type": "label",
+              "label": {
+                "en": "Last update",
+                "de": "Letzte Aktualisierung",
+                "nl": "laatste update"
+              }
+            }
+          ]
         }
       ]
     },
     {
       "id": "owmAirPollutionHourly",
       "name": {
-        "en": "6. Air quality, hourly forecast",
-        "de": "6. Luftqualität, stündliche Vorhersage",
-        "nl": "6. luchtkwaliteit, uurlijkse voorspeling"
+        "en": "7. Air quality, hourly forecast",
+        "de": "7. Luftqualität, stündliche Vorhersage",
+        "nl": "7. luchtkwaliteit, uurlijkse voorspeling"
       },
       "images": {
         "large": "/drivers/owmAirPollutionHourly/assets/images/large.png",
@@ -4177,9 +4202,9 @@
     {
       "id": "owmCurrentWeather",
       "name": {
-        "en": "7. Weather, current (free Current Weather API)",
-        "de": "7. Wetter, aktuell (freie Current Weather API)",
-        "nl": "7. Weerbericht, actueel (vrij Current Weather API)"
+        "en": "8. Weather, current (free Current Weather API)",
+        "de": "8. Wetter, aktuell (freie Current Weather API)",
+        "nl": "8. Weerbericht, actueel (vrij Current Weather API)"
       },
       "images": {
         "large": "/drivers/owmCurrentWeather/assets/images/large.png",
@@ -4218,6 +4243,12 @@
           "id": "city_geocode",
           "navigation": {
             "next": "list_my_devices"
+          }
+        },
+        {
+          "id": "instructions",
+          "navigation": {
+            "prev": "city_geocode"
           }
         },
         {
@@ -4323,6 +4354,25 @@
                 "en": "Wind speed in m/s",
                 "de": "Windgeschwindigkeit in m/s",
                 "nl": "Windsnelheid in m/s"
+              }
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "label": {
+            "en": "Device Information",
+            "de": "Geräte-Information",
+            "nl": "Apparaat informatie"
+          },
+          "children": [
+            {
+              "id": "APIState",
+              "type": "label",
+              "label": {
+                "en": "Last update",
+                "de": "Letzte Aktualisierung",
+                "nl": "laatste update"
               }
             }
           ]
@@ -4856,6 +4906,12 @@
           }
         },
         {
+          "id": "instructions",
+          "navigation": {
+            "prev": "city_geocode"
+          }
+        },
+        {
           "id": "apikey_error",
           "navigation": {
             "prev": "city_geocode"
@@ -4990,6 +5046,25 @@
               }
             }
           ]
+        },
+        {
+          "type": "group",
+          "label": {
+            "en": "Device Information",
+            "de": "Geräte-Information",
+            "nl": "Apparaat informatie"
+          },
+          "children": [
+            {
+              "id": "APIState",
+              "type": "label",
+              "label": {
+                "en": "Last update",
+                "de": "Letzte Aktualisierung",
+                "nl": "laatste update"
+              }
+            }
+          ]
         }
       ]
     },
@@ -5113,6 +5188,197 @@
                 "en": "Wind speed in m/s",
                 "de": "Windgeschwindigkeit in m/s",
                 "nl": "Windsnelheid in m/s"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "owmOnecallDailySummary",
+      "name": {
+        "en": "5. Weather, daily summary",
+        "de": "5. Wetter, tägliche Zusammenfassung",
+        "nl": "5. Weerbericht, dagelijkse samenvatting"
+      },
+      "images": {
+        "large": "/drivers/owmOnecallDailySummary/assets/images/large.png",
+        "small": "/drivers/owmOnecallDailySummary/assets/images/small.png"
+      },
+      "class": "other",
+      "connectivity": [
+        "cloud"
+      ],
+      "capabilities": [
+        "forecast_time",
+        "measure_cloudiness",
+        "measure_rain",
+        "measure_humidity",
+        "measure_temperature_min",
+        "measure_temperature_max",
+        "measure_temperature_morning",
+        "measure_temperature_day",
+        "measure_temperature_evening",
+        "measure_temperature_night",
+        "measure_wind_combined",
+        "measure_wind_strength",
+        "measure_pressure",
+        "measure_wind_angle",
+        "measure_wind_direction_string",
+        "measure_windstrength_beaufort"
+      ],
+      "pair": [
+        {
+          "id": "city_geocode",
+          "navigation": {
+            "next": "list_my_devices"
+          }
+        },
+        {
+          "id": "instructions",
+          "navigation": {
+            "prev": "city_geocode"
+          }
+        },
+        {
+          "id": "apikey_error",
+          "navigation": {
+            "prev": "city_geocode"
+          }
+        },
+        {
+          "id": "geolocation_error",
+          "navigation": {
+            "prev": "city_geocode"
+          }
+        },
+        {
+          "id": "list_my_devices",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_my_devices",
+            "prev": "city_geocode"
+          },
+          "options": {
+            "singular": true
+          }
+        },
+        {
+          "id": "add_my_devices",
+          "template": "add_devices"
+        }
+      ],
+      "settings": [
+        {
+          "type": "group",
+          "label": {
+            "en": "OpenWeatherMap daily summary and location",
+            "de": "OpenWeatherMap tägliche Zusammenfassung und Standort",
+            "nl": "OpenWeatherMap dagelijkse samenvatting en locatie"
+          },
+          "children": [
+            {
+              "id": "APIKey",
+              "type": "text",
+              "value": "",
+              "label": {
+                "en": "OpenWeatherMap API key",
+                "de": "OpenWeatherMap API-Key",
+                "nl": "OpenWeatherMap API sleutel"
+              }
+            },
+            {
+              "id": "lat",
+              "type": "number",
+              "label": {
+                "en": "Latitude:",
+                "de": "Breitengrad:",
+                "nl": "Breedtegraad:"
+              }
+            },
+            {
+              "id": "lon",
+              "type": "number",
+              "label": {
+                "en": "Longitude:",
+                "de": "Längengrad:",
+                "nl": "Lengtegraad:"
+              }
+            },
+            {
+              "id": "days",
+              "type": "number",
+              "value": -1,
+              "min": -365,
+              "max": 4,
+              "units": {
+                "en": "Days",
+                "de": "Tage",
+                "nl": "Dagen"
+              },
+              "label": {
+                "en": "Day difference for the historical data or forecast:",
+                "de": "Tages-Differenz für die historischen Daten oder die Vorhersage:",
+                "nl": "dagelijks verschil voor de historische gegevens of voorspelling:"
+              }
+            },
+            {
+              "id": "pollingActive",
+              "type": "checkbox",
+              "value": true,
+              "label": {
+                "en": "Polling active",
+                "de": "Abfrage aktiv",
+                "nl": "Polling  actief"
+              }
+            },
+            {
+              "id": "pollingInterval",
+              "type": "number",
+              "value": 5,
+              "label": {
+                "en": "Polling interval:",
+                "de": "Abfrageintervall:",
+                "nl": "Polling interval:"
+              },
+              "hint": {
+                "en": "Set a polling interval. The default is 5 minutes. 1000 queries per day are allowed per API key.",
+                "de": "Setze ein Abfrageintervall. Der Standardwert sind 5 Minuten. Je API-Key sind 1000 Abfragen je Tag erlaubt.",
+                "nl": "Stel een polling-interval in. De standaardwaarde is 5 minuten. Per API-sleutel zijn 1000 queries per dag toegestaan."
+              },
+              "units": {
+                "en": "minutes",
+                "de": "Minuten",
+                "nl": "Minuten"
+              }
+            },
+            {
+              "id": "windspeed_ms",
+              "type": "checkbox",
+              "value": false,
+              "label": {
+                "en": "Wind speed in m/s",
+                "de": "Windgeschwindigkeit in m/s",
+                "nl": "Windsnelheid in m/s"
+              }
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "label": {
+            "en": "Device Information",
+            "de": "Geräte-Information",
+            "nl": "Apparaat informatie"
+          },
+          "children": [
+            {
+              "id": "APIState",
+              "type": "label",
+              "label": {
+                "en": "Last update",
+                "de": "Letzte Aktualisierung",
+                "nl": "laatste update"
               }
             }
           ]

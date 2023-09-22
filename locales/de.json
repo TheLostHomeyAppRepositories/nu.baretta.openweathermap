@@ -22,6 +22,7 @@
          "title": "OpenWeather - füge einen Standort hinzu...",
          "titleHourly": "OpenWeather - füge eine stündliche Vorhersage hinzu...",
          "titleDaily": "OpenWeather - füge eine tägliche Vorhersage hinzu...",
+         "titleDailySummary": "OpenWeather - füge eine tägliche Zusammenfassung hinzu (historische Daten und 4-Tages-Vorhersage)...",
          "apiKey": "Gib den OpenWeatherMap API-Key an.",
          "apiKey2": "Ein API-Key ist erhältlich unter http://openweathermap.org.",
          "apiVersion": "Gibt die zu verwendende OneCall API-Version an.",
@@ -32,13 +33,22 @@
          "hours2": "Beispiele: '0' für eine aktuelle Vorhersage. '5' für eine Vorhersage in 5 Stunden.",
          "days": "Gib die Tages-Differenz für die Vorhersage an.",
          "days2": "Beispiele: '0' für eine aktuelle Vorhersage. '5' für eine Vorhersage in 5 Tagen.",
+         "daysSummary": "Gib die Tages-Differenz für die historischen Daten oder Vorhersage an.",
+         "daysSummary2": "Beispiele: '0' den aktuellen Tag. '-1' für gestern. '4' für eine Vorhersage in 4 Tagen.",
          "pairError": "Fehler beim Einrichten des Gerätes.", 
          "apiKeyError": "Bitte gib einen gültigen API-Key an.",
          "geolocationError1": "Es wurde kein Standort gefunden.",
          "geolocationError2": "Bitte prüfe den eingegebenen Name der Stadt.",
          "locationError1": "Es ist kein Wetter-Standort vorhanden.",
          "locationError2": "Bitte füge zuerst ein Gerät für 'Aktuelles Wetter' ein.",
-         "alert": "Warnungen"
+         "alert": "Warnungen",
+         "instructions": "Anleitung",
+         "instructions01": "Um dieses Gerät nutzen zu können, wird ein <b>OneCall API 3.0-Schlüssel</b> benötigt.<br>Der Schlüssel erfordert ein Abonnement, beinhaltet aber täglich 1000 kostenlose API-Aufrufe.<br>Besuche die <a href='javascript:void(0);' onclick='showUrl(\"https://openweathermap.org/price\");'>OWM-Preisliste</a> für Details, <a href='javascript:void(0);' onclick='showUrl(\"https://home.openweathermap.org/users/sign_up\");'>erstelle ein Konto</a> und <a href='javascript:void(0);' onclick='showUrl(\"https://home.openweathermap.org/subscriptions/billing_info/onecall_30/base?key=base&service=onecall_30\");'>abonniere</a> einen OneCall 3.0 API-Schlüssel.",
+         "instructions02": "Wenn mit der OneCall API 2.5 bereits ein alter API-Schlüssel (ohne Abonnement) verwendet wurde, so kann dieser Schlüssel ebenfalls verwendet werden. Wähle dazu „API-Version 2.5“ beim Hinzufügen des Gerätes oder in den Geräteeinstellungen."
+      },
+      "freeAPI":{
+         "instructions": "Anleitung",
+         "instructions01": "Um dieses Gerät nutzen zu können, wird ein <b>Free-API-Schlüssel</b> benötigt.<br>Der Schlüssel beinhaltet täglich 1000 kostenlose API-Aufrufe.<br>Besuche die <a href='javascript:void(0);' onclick='showUrl(\"https://openweathermap.org/price\");'>OWM-Preisliste</a> für Details, <a href='javascript:void(0);' onclick='showUrl(\"https://home.openweathermap.org/users/sign_up\");'>erstelle ein Konto</a> und erhalte einen Free-API-Schlüssel."
       }
    },
    "device_unavailable_reason":{

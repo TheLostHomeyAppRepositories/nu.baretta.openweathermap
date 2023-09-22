@@ -454,8 +454,8 @@ class owmOnecallDaily extends Homey.Device {
                 }                   
                 this.log(this.getName() + " Trigger flow: " + item.trigger);
                 item['trigger_start'] = false;
-                await item.trigger_instance.trigger(this, token, state);
-                // .catch(error => this.log(error.message));
+                await item.trigger_instance.trigger(this, token, state)
+                    .catch(error => this.log(error.message));
             }
         }
     }

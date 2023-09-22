@@ -246,5 +246,13 @@
   "1.4.5": {
     "en": "Clear capability if value is not provided by OWM.",
     "de": "Lösche Attribut, wenn keine OWM-Daten verfügbar sind."
+  },
+  "1.4.6": {
+    "en": "Check for invalid values before triggering flows.",
+    "de": "Prüfe auf ungültige Werte vor Flows-Trigger-Auslösung."
+  },
+  "1.5.0": {
+    "en": "Added OneCall API device for historical daily summary. Added instructions to pair view.",
+    "de": "OneCall API Gerät für historische tägliche Zusammenfassung ergänzt. Anleitung für Greät-Hinzufügen-Dialog ergänzt"
   }
 }

@@ -172,7 +172,7 @@ class owmCurrenWeather extends Homey.Device {
                 month: "2-digit",
                 year: "numeric"
             });
-            lastUpdate = 'Last update: ' + now.replace(',', '');
+            lastUpdate = now.replace(',', '');
         }
         else{
             let now = new Date(data.dt*1000).toLocaleString('en-US', 
@@ -203,7 +203,7 @@ class owmCurrenWeather extends Homey.Device {
             date = now.split(", ")[0];
             date = date.split("/")[2] + "-" + date.split("/")[0] + "-" + date.split("/")[1]; 
             time = now.split(", ")[1];
-            lastUpdate = 'Last update: ' + date + " " + time;
+            lastUpdate = date + " " + time;
             }
 
         this.setSettings({
@@ -401,8 +401,8 @@ class owmCurrenWeather extends Homey.Device {
                 }                   
                 this.log(this.getName() + " Trigger flow: " + item.trigger);
                 item['trigger_start'] = false;
-                await item.trigger_instance.trigger(this, token, state);
-                // .catch(error => this.log(error.message));
+                await item.trigger_instance.trigger(this, token, state)
+                    .catch(error => this.log(error.message));
             }
         }
     }

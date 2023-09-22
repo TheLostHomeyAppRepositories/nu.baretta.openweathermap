@@ -177,7 +177,7 @@ class owmAirPollutionCurrent extends Homey.Device {
                 month: "2-digit",
                 year: "numeric"
             });
-            lastUpdate = 'Last update: ' + now.replace(',', '');
+            lastUpdate = now.replace(',', '');
         }
         else{
             let now = new Date(data.list[0].dt*1000).toLocaleString('de-DE', 
@@ -208,7 +208,7 @@ class owmAirPollutionCurrent extends Homey.Device {
             date = now.split(", ")[0];
             date = date.split("/")[2] + "-" + date.split("/")[0] + "-" + date.split("/")[1]; 
             time = now.split(", ")[1];
-            lastUpdate = 'Last update: ' + date + " " + time;
+            lastUpdate = date + " " + time;
         }
 
         this.setSettings({

@@ -2,12 +2,12 @@
 
 <script type="application/javascript">
 
-    Homey.setTitle(Homey.__("pair.oneCallAPI.title"));
+    Homey.setTitle(Homey.__("pair.oneCallAPI.titleDailySummary"));
 
     Homey.emit("getSettings").then(function (settings) {
         if (settings){
             document.getElementById('apiKey').value = settings.APIKey; 
-            document.getElementById('apiVersion').value = settings.APIVersion; 
+            document.getElementById('days').value = settings.days; 
             document.getElementById('city').value = settings.GEOlocationCity; 
             document.getElementById('interval').value = settings.pollingInterval; 
         }
@@ -16,7 +16,7 @@
     function settingsChanged(){
         let value = {
             "APIKey": document.getElementById('apiKey').value,
-            "APIVersion": document.getElementById('apiVersion').value,
+            "days": document.getElementById('days').value,
             "GEOlocationCity": document.getElementById('city').value,
             "pollingInterval": parseInt(document.getElementById('interval').value)
         };
@@ -43,16 +43,16 @@
         </button>
     </div>
     <div class="homey-form-group">
-        <label for="apiVersion" class="homey-form-label"><span data-i18n="pair.oneCallAPI.apiVersion"></span></label>
-        <select id="apiVersion" class="homey-form-select" name="apiVersion" oninput="settingsChanged()">
-            <option value="2.5" selected>OneCall 2.5</option>
-            <option value="3.0">OneCall 3.0</option>
-        </select>
-    </div>
-    <div class="homey-form-group">
         <label for="city" class="homey-form-label"><span data-i18n="pair.oneCallAPI.city"></span><br><span data-i18n="pair.oneCallAPI.autolocation"></span></label>
         <!-- <label for="city" class="homey-form-label"><span data-i18n="pair.oneCallAPI.autolocation"></span></label> -->
         <input id="city"  class="homey-form-input" type="text" value="" oninput="settingsChanged()"/>
+    </div>
+    <div class="homey-form-group">
+        <label for="days"><span data-i18n="pair.oneCallAPI.daysSummary"></span></label>
+        <br>
+        <label for="days"><span data-i18n="pair.oneCallAPI.daysSummary2"></span></label>
+        <br>
+        <input id="days" type="number" value="-1" min="-365" max="4" oninput="settingsChanged()"/>
     </div>
     <div class="homey-form-group">
         <label for="interval" class="homey-form-label"><span data-i18n="pair.oneCallAPI.updateInterval"></span></label>

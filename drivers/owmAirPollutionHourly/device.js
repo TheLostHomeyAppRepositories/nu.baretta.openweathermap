@@ -153,7 +153,12 @@ class owmAirPollutionHourly extends Homey.Device {
         this.getDataCapability('measure_ap_so2')['value'] = data.components.so2;
         this.getDataCapability('measure_ap_nh3')['value'] = data.components.nh3;
         this.getDataCapability('measure_ap_aqi')['value'] = data.main.aqi.toString();
-        this.getDataCapability('measure_ap_aqi_nr')['value'] = data.main.aqi;
+        if (data.main.aqi < 1  || data.main.aqi > 5){
+            this.getDataCapability('measure_ap_aqi_nr')['value'] = undefined; 
+        }
+        else{   
+            this.getDataCapability('measure_ap_aqi_nr')['value'] = data.main.aqi;
+        }
 
         // CAPABILITIES: Compare values and update changed capabilities.
         // TRIGGER: Compare values to start trigger after capability update.

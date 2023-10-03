@@ -227,7 +227,12 @@ class owmAirPollutionCurrent extends Homey.Device {
         this.getDataCapability('measure_ap_so2')['value'] = data.list[0].components.so2;
         this.getDataCapability('measure_ap_nh3')['value'] = data.list[0].components.nh3;
         this.getDataCapability('measure_ap_aqi')['value'] = data.list[0].main.aqi.toString();
-        this.getDataCapability('measure_ap_aqi_nr')['value'] = data.list[0].main.aqi;
+        if (data.list[0].main.aqi < 1  || data.list[0].main.aqi > 5){
+            this.getDataCapability('measure_ap_aqi_nr')['value'] = undefined; 
+        }
+        else{   
+            this.getDataCapability('measure_ap_aqi_nr')['value'] = data.list[0].main.aqi;
+        }
 
         // CAPABILITIES: Compare values and update changed capabilities.
         // TRIGGER: Compare values to start trigger after capability update.

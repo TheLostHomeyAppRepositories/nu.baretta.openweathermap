@@ -258,5 +258,9 @@
   "1.5.1": {
     "en": "Fix for invalid air quality index.",
     "de": "Korrektur für ungültigen Luftqqalitäts-Index."
+  },
+  "1.5.2": {
+    "en": "Fix for wrong data in multiple hourly/daily forecast devices.",
+    "de": "Korrektur für falsche Werte in mehrfachen Stündlichen/Täglichen Vorhersagen."
   }
 }

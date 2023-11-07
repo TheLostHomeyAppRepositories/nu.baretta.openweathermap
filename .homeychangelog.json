@@ -262,5 +262,9 @@
   "1.5.2": {
     "en": "Fix for wrong data in multiple hourly/daily forecast devices.",
     "de": "Korrektur für falsche Werte in mehrfachen Stündlichen/Täglichen Vorhersagen."
+  },
+  "1.5.3": {
+    "en": "Check for valid air quality data.",
+    "de": "Prüfung auf gültige Luftqualitätsdaten."
   }
 }

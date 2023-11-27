@@ -266,5 +266,9 @@
   "1.5.3": {
     "en": "Check for valid air quality data.",
     "de": "Prüfung auf gültige Luftqualitätsdaten."
+  },
+  "1.5.4": {
+    "en": "Added weather 'dust' for OneCall current weather.",
+    "de": "Wetter 'Staub' ergänzt für OneCall Aktuelles Wetter."
   }
 }

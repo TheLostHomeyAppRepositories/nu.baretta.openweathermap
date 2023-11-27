@@ -89,6 +89,14 @@
                 "de": "Extremwetter",
                 "nl": "Extreem"
             }
+        },
+        {
+            "id": "Dust",
+            "title": {
+                "en": "Dust",
+                "de": "Staub",
+                "nl": "Stof"
+            }
         }
     ]
 }

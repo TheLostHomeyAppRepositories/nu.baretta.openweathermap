@@ -270,5 +270,9 @@
   "1.5.4": {
     "en": "Added weather 'dust' for OneCall current weather.",
     "de": "Wetter 'Staub' ergänzt für OneCall Aktuelles Wetter."
+  },
+  "1.5.5": {
+    "en": "Fix for invalid API data in CurrentWeather device.",
+    "de": "Korrektur für ungültige API-Daten im Aktuelles-Wetter Gerät."
   }
 }

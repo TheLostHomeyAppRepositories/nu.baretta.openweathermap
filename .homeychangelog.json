@@ -274,5 +274,9 @@
   "1.5.5": {
     "en": "Fix for invalid API data in CurrentWeather device.",
     "de": "Korrektur für ungültige API-Daten im Aktuelles-Wetter Gerät."
+  },
+  "1.6.0": {
+    "en": "Adjusted flow trigger for Homey FW 12.2.0.",
+    "de": "Flow-Trigger angepasst für Homey-FW 12.2.0."
   }
 }

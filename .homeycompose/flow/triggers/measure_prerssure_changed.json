@@ -1,0 +1,29 @@
+{
+    "deprecated": true,
+    "title": {
+        "en": "Air pressure has changed",
+        "de": "Luftdruck hat sich geändert",
+        "nl": "Luchtdruk is veranderd"
+    },
+    "hint": {
+        "en": "Triggers when the air pressure changes.",
+        "de": "Wird ausgelöst, wenn sich die Luftdruck ändert.",
+        "nl": "Triggert zodra de Luchtdruk veranderd."
+    },
+    "tokens": [{
+            "name": "measure_pressure",
+            "type": "number",
+            "title": {
+                "en": "Air pressure (mbar)",
+                "de": "Luftdruck (mbar)",
+                "nl": "Luchtdruk (mbar)"
+            },
+            "example": 1035
+        }
+    ],
+    "args": [{
+        "name": "device",
+        "type": "device",
+        "filter": "driver_id=owmOnecallCurrent|owmOnecallHourly|owmOnecallDaily|owmCurrentWeather|owmOnecallDailySummary"
+    }]
+}

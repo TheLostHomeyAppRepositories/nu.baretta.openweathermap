@@ -1,0 +1,29 @@
+{
+    "deprecated": true,
+    "title": {
+        "en": "Precipitation has changed",
+        "de": "Niederschlag hat sich geändert",
+        "nl": "Neerslag is veranderd"
+    },
+    "hint": {
+        "en": "Triggers when the precipitation changes.",
+        "de": "Wird ausgelöst, wenn sich die Niederschlag ändert.",
+        "nl": "Triggert zodra de neerslag veranderd."
+    },
+    "tokens": [{
+            "name": "measure_rain",
+            "type": "number",
+            "title": {
+                "en": "Precipitation (mm)",
+                "de": "Niederschlag (mm)",
+                "nl": "Neerslag (mm)"
+            },
+            "example": 5
+        }
+    ],
+    "args": [{
+        "name": "device",
+        "type": "device",
+        "filter": "driver_id=owmOnecallCurrent|owmOnecallHourly|owmOnecallDaily|owmCurrentWeather|owmOnecallDailySummary"
+    }]
+}

@@ -1,7 +1,7 @@
 {
   "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
   "id": "nu.baretta.openweathermap",
-  "version": "1.6.0",
+  "version": "1.6.1",
   "compatibility": ">=8.1.1",
   "sdk": 3,
   "name": {
@@ -986,6 +986,51 @@
               "nl": "Maanfase (type)"
             },
             "example": "NM"
+          },
+          {
+            "name": "location",
+            "type": "string",
+            "title": {
+              "en": "Location",
+              "de": "Standort",
+              "nl": "locatie"
+            },
+            "example": {
+              "en": "Amsterdam",
+              "de": "Berlin"
+            }
+          }
+        ],
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=owmOnecallDaily"
+          }
+        ]
+      },
+      {
+        "id": "MoonphaseValueChanged",
+        "title": {
+          "en": "Moon phase (value) has changed",
+          "de": "Mondphase (Wert) hat sich geändert",
+          "nl": "Maanfase (waarde) is veranderd"
+        },
+        "hint": {
+          "en": "Triggers when the moon phase changes.",
+          "de": "Wird ausgelöst, wenn sich der Mondphase ändert.",
+          "nl": "Triggert zodra de maanfase veranderd."
+        },
+        "tokens": [
+          {
+            "name": "moonphase",
+            "type": "number",
+            "title": {
+              "en": "Moon phase (0=new moon, 0.25=first quarter, 0.5=full, 0.75=last quarter, 1=new moon)",
+              "de": "Mondphase (0=Neumond, 0,25=erstes Viertel, 0,5=Vollmond, 0,75=letztes Viertel, 1=Neumond)",
+              "nl": "Maanfase (0=nieuwe maan, 0,25=eerste kwartier, 0,5=vol, 0,75=laatste kwartier, 1=nieuwe maan)"
+            },
+            "example": 0.25
           },
           {
             "name": "location",
@@ -5245,7 +5290,8 @@
         "measure_wind_angle",
         "measure_wind_direction_string",
         "measure_windstrength_beaufort",
-        "conditioncode_text"
+        "conditioncode_text",
+        "moonphase"
       ],
       "pair": [
         {
@@ -6865,7 +6911,7 @@
         "de": "Mondphase",
         "nl": "Maanfase"
       },
-      "uiComponent": "sensor",
+      "uiComponent": null,
       "getable": true,
       "setable": false,
       "icon": "/assets/moonphase.svg"

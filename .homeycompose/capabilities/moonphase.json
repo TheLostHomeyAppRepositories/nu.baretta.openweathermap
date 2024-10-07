@@ -5,7 +5,7 @@
         "de": "Mondphase",
         "nl": "Maanfase"
     },
-    "uiComponent": "sensor",
+    "uiComponent": null,
     "getable": true,
     "setable": false,
     "icon": "/assets/moonphase.svg"

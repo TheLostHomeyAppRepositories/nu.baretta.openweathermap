@@ -88,6 +88,9 @@ class owmOnecallDaily extends Homey.Device {
                 "trigger": "MoonphaseChanged",
                 "trigger_token": []
             },
+            "moonphase":{
+                "trigger": "MoonphaseValueChanged",
+            },
             "measure_ultraviolet":{
                 "trigger": "UltravioletChanged"
             },
@@ -363,6 +366,7 @@ class owmOnecallDaily extends Homey.Device {
         else if ( moonphase > 0.938 && moonphase <= 1 ){
             moonphase_type = 'NM';
         }
+        this.getDataCapability('moonphase')['value'] = moonphase;
         this.getDataCapability('moonphase_type')['value'] = moonphase_type;
         this.getDataCapability('moonphase_type').trigger_token.push({
             "trigger_token_id": "moonphase_type",

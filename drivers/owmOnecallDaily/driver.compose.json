@@ -55,8 +55,9 @@
         "measure_wind_direction_string",
         "measure_windstrength_beaufort",
 
-        "conditioncode_text"
+        "conditioncode_text",
 
+        "moonphase"
     ],
     "pair": [{
         "id": "settings",

@@ -278,5 +278,9 @@
   "1.6.0": {
     "en": "Adjusted flow trigger for Homey FW 12.2.0.",
     "de": "Flow-Trigger angepasst für Homey-FW 12.2.0."
+  },
+  "1.6.1": {
+    "en": "Added trigger for moonphase value.",
+    "de": "Trigger für Mondphasenwert hinzugefügt."
   }
 }

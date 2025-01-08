@@ -97,6 +97,14 @@
                 "de": "Staub",
                 "nl": "Stof"
             }
+        },
+        {
+            "id": "Smoke",
+            "title": {
+                "en": "Smoke",
+                "de": "Rauch",
+                "nl": "Raak"
+            }
         }
     ]
 }

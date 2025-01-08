@@ -75,6 +75,14 @@
                     }
                 },
                 {
+                    "id": "Smoke",
+                    "label": {
+                        "en": "Smoke",
+                        "de": "Rauch",
+                        "nl": "Rook"
+                    }
+                },
+                {
                     "id": "Thunderstorm",
                     "label": {
                         "en": "Thunderstorm",

@@ -282,5 +282,9 @@
   "1.6.1": {
     "en": "Added trigger for moonphase value.",
     "de": "Trigger für Mondphasenwert hinzugefügt."
+  },
+  "1.6.2": {
+    "en": "Added weather 'smoke' for OneCall current weather.",
+    "de": "Wetter 'Rauch' ergänzt für OneCall Aktuelles Wetter."
   }
 }

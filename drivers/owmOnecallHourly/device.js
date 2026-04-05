@@ -163,7 +163,7 @@ class owmOnecallHourly extends Homey.Device {
                     item['trigger_instance'] = this.homey.flow.getDeviceTriggerCard(item.trigger);
                 }
                 catch(error){
-                    this.log("Error registzering trigger '", item.trigger, "': ", error.message);
+                    this.log("Error registering trigger '", item.trigger, "': ", error.message);
                 }
             }
         }

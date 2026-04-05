@@ -1,123 +1,191 @@
-[{
-    "type": "group",
-    "label": {
-        "en": "OpenWeatherMap weather and location",
-        "de": "OpenWeatherMap Wetter und Standort",
-        "nl": "OpenWeatherMap weer en locatie"
-    },
-    "children": [
-        {
-            "id": "APIKey",
-            "type": "text",
-            "value": "",
-            "label": {
-                "en": "OpenWeatherMap API key",
-                "de": "OpenWeatherMap API-Key", 
-                "nl": "OpenWeatherMap API sleutel"
-            }
+[
+    {
+        "type": "group",
+        "label": {
+            "en": "OpenWeatherMap weather and location",
+            "de": "OpenWeatherMap Wetter und Standort",
+            "nl": "OpenWeatherMap weer en locatie"
         },
-        {
-            "id": "APIVersion",
-            "type": "dropdown",
-            "value": "2.5",
-            "values": [
-                {
-                    "id": "2.5",
-                    "label": {"en": "OneCall 2.5"}
-                },
-                {
-                    "id": "3.0",
-                    "label": {"en": "OneCall 3.0"}
+        "children": [
+            {
+                "id": "APIKey",
+                "type": "text",
+                "value": "",
+                "label": {
+                    "en": "OpenWeatherMap API key",
+                    "de": "OpenWeatherMap API-Key", 
+                    "nl": "OpenWeatherMap API sleutel"
                 }
-            ],
-            "label": {
-                "en": "OpenWeatherMap API version",
-                "de": "OpenWeatherMap API-Version", 
-                "nl": "OpenWeatherMap API versie"
             },
-            "hint": {
-                "en": "If you have an older API key without payment information that is already unlocked for the OneCall API, then choose 'OneCall 2.5'. If you have a new OneCall API key with payment information, then choose 'OneCall 3.0'.",
-                "de": "Wenn du einen älteren API-Key ohne Zahlungsinformationen besitzt, der bereits für OneCall-API freigeschaltet ist, dann wähle 'OneCall 2.5'. Wenn du einen neuen OneCall API-Key mit Zahlungsinformationen besitzt, dann wähle 'OneCall 3,.0'.",
-                "nl": "Als je een oudere API-sleutel zonder betalingsinformatie hebt, die al is ontgrendeld voor de OneCall-API, kies dan 'OneCall 2.5'. Als je een nieuwe OneCall API-sleutel hebt met betalingsinformatie, kies dan 'OneCall 3.0'."
-            }
-        },
-        {
-            "id": "lat",
-            "type": "number",
-            "label": {
-                "en": "Latitude:",
-                "de": "Breitengrad:",
-                "nl": "Breedtegraad:"
-            }
-        },
-        {
-            "id": "lon",
-            "type": "number",
-            "label": {
-                "en": "Longitude:",
-                "de": "Längengrad:",
-                "nl": "Lengtegraad:"
-            }
-        },
-        {
-            "id": "pollingActive",
-            "type": "checkbox",
-            "value": true,
-            "label": {
-                "en": "Polling active",
-                "de": "Abfrage aktiv",
-                "nl": "Polling  actief"
-            }
-        },
-        {
-            "id": "pollingInterval",
-            "type": "number",
-            "value": 5,
-            "label": {
-                "en": "Polling interval:",
-                "de": "Abfrageintervall:",
-                "nl": "Polling interval:"
+            {
+                "id": "APIVersion",
+                "type": "dropdown",
+                "value": "2.5",
+                "values": [
+                    {
+                        "id": "2.5",
+                        "label": {"en": "OneCall 2.5"}
+                    },
+                    {
+                        "id": "3.0",
+                        "label": {"en": "OneCall 3.0"}
+                    }
+                ],
+                "label": {
+                    "en": "OpenWeatherMap API version",
+                    "de": "OpenWeatherMap API-Version", 
+                    "nl": "OpenWeatherMap API versie"
+                },
+                "hint": {
+                    "en": "If you have an older API key without payment information that is already unlocked for the OneCall API, then choose 'OneCall 2.5'. If you have a new OneCall API key with payment information, then choose 'OneCall 3.0'.",
+                    "de": "Wenn du einen älteren API-Key ohne Zahlungsinformationen besitzt, der bereits für OneCall-API freigeschaltet ist, dann wähle 'OneCall 2.5'. Wenn du einen neuen OneCall API-Key mit Zahlungsinformationen besitzt, dann wähle 'OneCall 3,.0'.",
+                    "nl": "Als je een oudere API-sleutel zonder betalingsinformatie hebt, die al is ontgrendeld voor de OneCall-API, kies dan 'OneCall 2.5'. Als je een nieuwe OneCall API-sleutel hebt met betalingsinformatie, kies dan 'OneCall 3.0'."
+                }
             },
-            "hint": {
-                "en": "Set a polling interval. The default is 5 minutes. 1000 queries per day are allowed per API key.",
-                "de": "Setze ein Abfrageintervall. Der Standardwert sind 5 Minuten. Je API-Key sind 1000 Abfragen je Tag erlaubt.",
-                "nl": "Stel een polling-interval in. De standaardwaarde is 5 minuten. Per API-sleutel zijn 1000 queries per dag toegestaan."
+            {
+                "id": "lat",
+                "type": "number",
+                "label": {
+                    "en": "Latitude:",
+                    "de": "Breitengrad:",
+                    "nl": "Breedtegraad:"
+                }
             },
-            "units": { 
-                "en": "minutes",
-                "de": "Minuten",
-                "nl": "Minuten"
+            {
+                "id": "lon",
+                "type": "number",
+                "label": {
+                    "en": "Longitude:",
+                    "de": "Längengrad:",
+                    "nl": "Lengtegraad:"
+                }
+            },
+            {
+                "id": "pollingActive",
+                "type": "checkbox",
+                "value": true,
+                "label": {
+                    "en": "Polling active",
+                    "de": "Abfrage aktiv",
+                    "nl": "Polling  actief"
+                }
+            },
+            {
+                "id": "pollingInterval",
+                "type": "number",
+                "value": 5,
+                "label": {
+                    "en": "Polling interval:",
+                    "de": "Abfrageintervall:",
+                    "nl": "Polling interval:"
+                },
+                "hint": {
+                    "en": "Set a polling interval. The default is 5 minutes. 1000 queries per day are allowed per API key.",
+                    "de": "Setze ein Abfrageintervall. Der Standardwert sind 5 Minuten. Je API-Key sind 1000 Abfragen je Tag erlaubt.",
+                    "nl": "Stel een polling-interval in. De standaardwaarde is 5 minuten. Per API-sleutel zijn 1000 queries per dag toegestaan."
+                },
+                "units": { 
+                    "en": "minutes",
+                    "de": "Minuten",
+                    "nl": "Minuten"
+                }
+            },
+            {
+                "id": "windspeed_ms",
+                "type": "checkbox",
+                "value": false,
+                "label": {
+                    "en": "Wind speed in m/s",
+                    "de": "Windgeschwindigkeit in m/s",
+                    "nl": "Windsnelheid in m/s"
+                }
+            },
+            {
+                "id": "language",
+                "type": "dropdown",
+                "value": "--",
+                "label": { 
+                    "en": "Language",
+                    "de": "Sprache",
+                    "nl": "Taal"
+                },
+                "values": [
+                    { "id": "--", "label": {
+                            "en": "Homey language settings",
+                            "de": "Homey-Spracheinstellungen",
+                            "nl": "Homey-taalinstellingen"
+                        }
+                    },
+                    { "id": "sq", "label": "Albanian" },
+                    { "id": "af", "label": "Afrikaans" },
+                    { "id": "ar", "label": "Arabic" },
+                    { "id": "az", "label": "Azerbaijani" },
+                    { "id": "eu", "label": "Basque" },
+                    { "id": "be", "label": "Belarusian" },
+                    { "id": "bg", "label": "Bulgarian" },
+                    { "id": "ca", "label": "Catalan" },
+                    { "id": "zh_cn", "label": "Chinese Simplified" },
+                    { "id": "zh_tw", "label": "Chinese Traditional" },
+                    { "id": "hr", "label": "Croatian" },
+                    { "id": "cz", "label": "Czech" },
+                    { "id": "da", "label": "Danish" },
+                    { "id": "nl", "label": "Dutch" },
+                    { "id": "en", "label": "English" },
+                    { "id": "fi", "label": "Finnish" },
+                    { "id": "fr", "label": "French" },
+                    { "id": "gl", "label": "Galician" },
+                    { "id": "de", "label": "German" },
+                    { "id": "el", "label": "Greek" },
+                    { "id": "he", "label": "Hebrew" },
+                    { "id": "hi", "label": "Hindi" },
+                    { "id": "hu", "label": "Hungarian" },
+                    { "id": "is", "label": "Icelandic" },
+                    { "id": "id", "label": "Indonesian" },
+                    { "id": "it", "label": "Italian" },
+                    { "id": "ja", "label": "Japanese" },
+                    { "id": "kr", "label": "Korean" },
+                    { "id": "ku", "label": "Kurmanji (Kurdish)" },
+                    { "id": "la", "label": "Latvian" },
+                    { "id": "lt", "label": "Lithuanian" },
+                    { "id": "mk", "label": "Macedonian" },
+                    { "id": "no", "label": "Norwegian" },
+                    { "id": "fa", "label": "Persian (Farsi)" },
+                    { "id": "pl", "label": "Polish" },
+                    { "id": "pt", "label": "Portuguese" },
+                    { "id": "pt_br", "label": "Português Brasil" },
+                    { "id": "ro", "label": "Romanian" },
+                    { "id": "ru", "label": "Russian" },
+                    { "id": "sr", "label": "Serbian" },
+                    { "id": "sk", "label": "Slovak" },
+                    { "id": "sl", "label": "Slovenian" },
+                    { "id": "es", "label": "Spanish" },
+                    { "id": "sv", "label": "Swedish" },
+                    { "id": "th", "label": "Thai" },
+                    { "id": "tr", "label": "Turkish" },
+                    { "id": "uk", "label": "Ukrainian" },
+                    { "id": "vi", "label": "Vietnamese" },
+                    { "id": "zu", "label": "Zulu" }        
+                ]
             }
-        },
-        {
-            "id": "windspeed_ms",
-            "type": "checkbox",
-            "value": false,
-            "label": {
-                "en": "Wind speed in m/s",
-                "de": "Windgeschwindigkeit in m/s",
-                "nl": "Windsnelheid in m/s"
-            }
-        }
-    ]
-},
-{
-    "type": "group",
-    "label": {
-        "en": "Device Information",
-        "de": "Geräte-Information",
-        "nl": "Apparaat informatie"
+        ]
     },
-    "children": [
-        {
-            "id": "APIState",
-            "type": "label",
-            "label": {
-                "en": "Last update",
-                "de": "Letzte Aktualisierung",
-                "nl": "laatste update"
+    {
+        "type": "group",
+        "label": {
+            "en": "Device Information",
+            "de": "Geräte-Information",
+            "nl": "Apparaat informatie"
+        },
+        "children": [
+            {
+                "id": "APIState",
+                "type": "label",
+                "label": {
+                    "en": "Last update",
+                    "de": "Letzte Aktualisierung",
+                    "nl": "laatste update"
+                }
             }
-        }
-    ]
-}
+        ]
+    }
 ]

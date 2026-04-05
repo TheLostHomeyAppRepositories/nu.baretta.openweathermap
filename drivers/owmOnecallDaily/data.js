@@ -4,6 +4,9 @@ const DATA_DEF = {
     "description":{
         "trigger": "WeatherChanged"
     },
+    "summary":{
+        "trigger": "SummaryChanged"
+    },
     "measure_temperature_min":{
         "trigger": "TemperatureMinChanged"
     },

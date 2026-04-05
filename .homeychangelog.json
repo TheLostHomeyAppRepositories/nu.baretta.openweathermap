@@ -286,5 +286,9 @@
   "1.6.2": {
     "en": "Added weather 'smoke' for OneCall current weather.",
     "de": "Wetter 'Rauch' ergänzt für OneCall Aktuelles Wetter."
+  },
+  "1.7.0": {
+    "en": "Added summary to OneCall daily forecast.",
+    "de": "Zusammenfassungä zu OneCall Täglicher Vorhersage hinzugefügt."
   }
 }

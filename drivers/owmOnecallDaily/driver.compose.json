@@ -57,7 +57,9 @@
 
         "conditioncode_text",
 
-        "moonphase"
+        "moonphase",
+        
+        "summary"
     ],
     "pair": [{
         "id": "settings",

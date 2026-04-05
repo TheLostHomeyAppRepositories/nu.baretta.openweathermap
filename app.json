@@ -1416,6 +1416,50 @@
         ]
       },
       {
+        "title": {
+          "en": "The weather summary has changed",
+          "de": "Die Wetter-Zusammenfassung hat sich geændert",
+          "nl": "Het weer samenvatting is veranderd"
+        },
+        "hint": {
+          "en": "Triggers when the summary of the weather changes.",
+          "de": "Wird ausgelöst, wenn sich die Wetter-Zumsammenfassung geändert hat",
+          "nl": "Triggert zodra de samenvatting van het weer veranderd."
+        },
+        "tokens": [
+          {
+            "name": "summary",
+            "type": "string",
+            "title": {
+              "en": "Weather summary",
+              "de": "Wetter-Zusammenfassung",
+              "nl": "Weersamenvatting"
+            }
+          },
+          {
+            "name": "location",
+            "type": "string",
+            "title": {
+              "en": "Location",
+              "de": "Standort",
+              "nl": "locatie"
+            },
+            "example": {
+              "en": "Amsterdam",
+              "de": "Berlin"
+            }
+          }
+        ],
+        "args": [
+          {
+            "name": "ChangedSummary",
+            "type": "device",
+            "filter": "driver_id=owmOnecallDaily"
+          }
+        ],
+        "id": "SummaryChanged"
+      },
+      {
         "id": "SunriseChanged",
         "title": {
           "en": "Sunrise has changed",
@@ -5229,6 +5273,222 @@
                 "de": "Windgeschwindigkeit in m/s",
                 "nl": "Windsnelheid in m/s"
               }
+            },
+            {
+              "id": "language",
+              "type": "dropdown",
+              "value": "--",
+              "label": {
+                "en": "Language",
+                "de": "Sprache",
+                "nl": "Taal"
+              },
+              "values": [
+                {
+                  "id": "--",
+                  "label": {
+                    "en": "Homey language settings",
+                    "de": "Homey-Spracheinstellungen",
+                    "nl": "Homey-taalinstellingen"
+                  }
+                },
+                {
+                  "id": "sq",
+                  "label": "Albanian"
+                },
+                {
+                  "id": "af",
+                  "label": "Afrikaans"
+                },
+                {
+                  "id": "ar",
+                  "label": "Arabic"
+                },
+                {
+                  "id": "az",
+                  "label": "Azerbaijani"
+                },
+                {
+                  "id": "eu",
+                  "label": "Basque"
+                },
+                {
+                  "id": "be",
+                  "label": "Belarusian"
+                },
+                {
+                  "id": "bg",
+                  "label": "Bulgarian"
+                },
+                {
+                  "id": "ca",
+                  "label": "Catalan"
+                },
+                {
+                  "id": "zh_cn",
+                  "label": "Chinese Simplified"
+                },
+                {
+                  "id": "zh_tw",
+                  "label": "Chinese Traditional"
+                },
+                {
+                  "id": "hr",
+                  "label": "Croatian"
+                },
+                {
+                  "id": "cz",
+                  "label": "Czech"
+                },
+                {
+                  "id": "da",
+                  "label": "Danish"
+                },
+                {
+                  "id": "nl",
+                  "label": "Dutch"
+                },
+                {
+                  "id": "en",
+                  "label": "English"
+                },
+                {
+                  "id": "fi",
+                  "label": "Finnish"
+                },
+                {
+                  "id": "fr",
+                  "label": "French"
+                },
+                {
+                  "id": "gl",
+                  "label": "Galician"
+                },
+                {
+                  "id": "de",
+                  "label": "German"
+                },
+                {
+                  "id": "el",
+                  "label": "Greek"
+                },
+                {
+                  "id": "he",
+                  "label": "Hebrew"
+                },
+                {
+                  "id": "hi",
+                  "label": "Hindi"
+                },
+                {
+                  "id": "hu",
+                  "label": "Hungarian"
+                },
+                {
+                  "id": "is",
+                  "label": "Icelandic"
+                },
+                {
+                  "id": "id",
+                  "label": "Indonesian"
+                },
+                {
+                  "id": "it",
+                  "label": "Italian"
+                },
+                {
+                  "id": "ja",
+                  "label": "Japanese"
+                },
+                {
+                  "id": "kr",
+                  "label": "Korean"
+                },
+                {
+                  "id": "ku",
+                  "label": "Kurmanji (Kurdish)"
+                },
+                {
+                  "id": "la",
+                  "label": "Latvian"
+                },
+                {
+                  "id": "lt",
+                  "label": "Lithuanian"
+                },
+                {
+                  "id": "mk",
+                  "label": "Macedonian"
+                },
+                {
+                  "id": "no",
+                  "label": "Norwegian"
+                },
+                {
+                  "id": "fa",
+                  "label": "Persian (Farsi)"
+                },
+                {
+                  "id": "pl",
+                  "label": "Polish"
+                },
+                {
+                  "id": "pt",
+                  "label": "Portuguese"
+                },
+                {
+                  "id": "pt_br",
+                  "label": "Português Brasil"
+                },
+                {
+                  "id": "ro",
+                  "label": "Romanian"
+                },
+                {
+                  "id": "ru",
+                  "label": "Russian"
+                },
+                {
+                  "id": "sr",
+                  "label": "Serbian"
+                },
+                {
+                  "id": "sk",
+                  "label": "Slovak"
+                },
+                {
+                  "id": "sl",
+                  "label": "Slovenian"
+                },
+                {
+                  "id": "es",
+                  "label": "Spanish"
+                },
+                {
+                  "id": "sv",
+                  "label": "Swedish"
+                },
+                {
+                  "id": "th",
+                  "label": "Thai"
+                },
+                {
+                  "id": "tr",
+                  "label": "Turkish"
+                },
+                {
+                  "id": "uk",
+                  "label": "Ukrainian"
+                },
+                {
+                  "id": "vi",
+                  "label": "Vietnamese"
+                },
+                {
+                  "id": "zu",
+                  "label": "Zulu"
+                }
+              ]
             }
           ]
         },
@@ -5299,7 +5559,8 @@
         "measure_wind_direction_string",
         "measure_windstrength_beaufort",
         "conditioncode_text",
-        "moonphase"
+        "moonphase",
+        "summary"
       ],
       "pair": [
         {
@@ -7033,6 +7294,18 @@
       "getable": true,
       "setable": false,
       "icon": "/assets/moonset.svg"
+    },
+    "summary": {
+      "type": "string",
+      "title": {
+        "en": "Summary",
+        "de": "Zusammenfassung",
+        "nl": "Samenvatting"
+      },
+      "uiComponent": null,
+      "getable": true,
+      "setable": false,
+      "icon": "/assets/summary.svg"
     },
     "sunrise": {
       "type": "string",

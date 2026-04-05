@@ -24,6 +24,9 @@ class owmOnecallDaily extends Homey.Device {
             "description":{
                 "trigger": "WeatherChanged"
             },
+            "summary":{
+                "trigger": "SummaryChanged"
+            },
             "measure_temperature_min":{
                 "trigger": "TemperatureMinChanged"
             },
@@ -186,7 +189,7 @@ class owmOnecallDaily extends Homey.Device {
                     item['trigger_instance'] = this.homey.flow.getDeviceTriggerCard(item.trigger);
                 }
                 catch(error){
-                    this.log("Error registzering trigger '", item.trigger, "': ", error.message);
+                    this.log("Error registering trigger '", item.trigger, "': ", error.message);
                 }
             }
         }
@@ -273,6 +276,7 @@ class owmOnecallDaily extends Homey.Device {
         // this.getDataCapability('conditioncode_detail')['trigger_token_value'] = data.weather[0].id;
 
         this.getDataCapability('description')['value'] = data.weather[0].description;
+        this.getDataCapability('summary')['value'] = data.summary;
 
         this.getDataCapability('measure_temperature_min')['value'] = Math.round(data.temp.min * 10) / 10;
         this.getDataCapability('measure_temperature_max')['value'] = Math.round(data.temp.max * 10) / 10;

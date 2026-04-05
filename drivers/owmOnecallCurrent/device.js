@@ -92,7 +92,7 @@ class owmOnecallCurrent extends Homey.Device {
         }
 
         settings["units"] = this.homey.i18n.getUnits();
-        settings["language"] = this.homey.i18n.getLanguage();
+        settings["language"] = this._getLanguage(settings["language"]); // this.homey.i18n.getLanguage();
 
         // Flows
         this.registerFlowTrigger();
@@ -193,7 +193,7 @@ class owmOnecallCurrent extends Homey.Device {
                     item['trigger_instance'] = this.homey.flow.getDeviceTriggerCard(item.trigger);
                 }
                 catch(error){
-                    this.log("Error registzering trigger '", item.trigger, "': ", error.message);
+                    this.log("Error registering trigger '", item.trigger, "': ", error.message);
                 }
             }
         }
@@ -634,7 +634,7 @@ class owmOnecallCurrent extends Homey.Device {
                 }
             }
             newSettings["units"] = this.homey.i18n.getUnits();
-            newSettings["language"] = this.homey.i18n.getLanguage();    
+            newSettings["language"] = this._getLanguage(settings.newSettings["language"]);// this.homey.i18n.getLanguage();    
             newSettings['lat'] = settings.newSettings['lat'];
             newSettings['lon'] = settings.newSettings['lon'];
             newSettings["APIKey"] = settings.newSettings["APIKey"];
@@ -652,14 +652,23 @@ class owmOnecallCurrent extends Homey.Device {
     async updateDevice(){
         // Flow action for single update
         let settings = await this.getSettings();
-        let newsettings = {};
-        newsettings['lat'] = settings['lat'];
-        newsettings['lon'] = settings['lon'];
-        newsettings["APIKey"] = settings["APIKey"];
-        newsettings["APIVersion"] = settings["APIVersion"];
-        newsettings["units"] = this.homey.i18n.getUnits();
-        newsettings["language"] = this.homey.i18n.getLanguage();
-        this.pollWeatherData(newsettings);
+        let newSettings = {};
+        newSettings['lat'] = settings['lat'];
+        newSettings['lon'] = settings['lon'];
+        newSettings["APIKey"] = settings["APIKey"];
+        newSettings["APIVersion"] = settings["APIVersion"];
+        newSettings["units"] = this.homey.i18n.getUnits();
+        newSettings["language"] = this._getLanguage(settings["language"]);// this.homey.i18n.getLanguage();
+        this.pollWeatherData(newSettings);
+    }
+
+    _getLanguage(settingsLanguage) {
+        if (settingsLanguage == '--' || settingsLanguage == undefined){
+            return this.homey.i18n.getLanguage();
+        }
+        else{
+            return settingsLanguage;
+        }
     }
 }
 module.exports = owmOnecallCurrent;

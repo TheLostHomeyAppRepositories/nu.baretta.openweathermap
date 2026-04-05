@@ -1,0 +1,12 @@
+{
+    "type": "string",
+    "title": {
+        "en": "Summary",
+        "de": "Zusammenfassung",
+        "nl": "Samenvatting"
+    },
+    "uiComponent": null,
+    "getable": true,
+    "setable": false,
+    "icon": "/assets/summary.svg"
+}

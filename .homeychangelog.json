@@ -290,5 +290,9 @@
   "1.7.0": {
     "en": "Added summary to OneCall daily forecast.",
     "de": "Zusammenfassungä zu OneCall Täglicher Vorhersage hinzugefügt."
+  },
+  "1.8.0": {
+    "en": "Added OneCall 4.0 API URL.",
+    "de": "OneCall 4.0 API URL hinzugefügt."
   }
 }

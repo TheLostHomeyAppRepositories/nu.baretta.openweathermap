@@ -171,7 +171,26 @@ class owmOnecallAlerts extends Homey.Device {
         }
 
         let event = alert.event;
-        let description = alert.description;
+        
+        let description = '';
+        if ( typeof alert.description == 'string' ){
+            description = alert.description;
+        }
+        else if ( typeof alert.description == 'object' ){
+            // OneCall 4.0 returns an array with different languanges
+            let language = this.homey.i18n.getLanguage();
+            for ( let i=0; i<alert.description.length; i++){
+                if (alert.description[i].language.substring(0,2) == language.substring(0,2)){
+                    description = alert.description[i].description;
+                    break;
+                }
+            }
+            if  ( description == '' && alert.description[0] != undefined ){
+                description = alert.description[0].description;
+            }
+        }
+
+
         let tags = '';
         for (let i=0; i<alert.tags.length; i++){
             if (i>0){

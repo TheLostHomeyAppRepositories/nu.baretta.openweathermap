@@ -265,18 +265,29 @@ class owmOnecallDaily extends Homey.Device {
         }
         this.getDataCapability('forecast_time')['value'] = forecast_time;
 
-        this.getDataCapability('conditioncode')['value'] = data.weather[0].main;
-        this.getDataCapability('conditioncode_text')['value'] = this.homey.app.getConditioncodeText(data.weather[0].main);
+        if (data.weather != undefined){            
+            this.getDataCapability('conditioncode')['value'] = data.weather[0].main;
+            this.getDataCapability('conditioncode_text')['value'] = this.homey.app.getConditioncodeText(data.weather[0].main);
 
-        this.getDataCapability('conditioncode_detail')['value'] = data.weather[0].id.toString();
-        this.getDataCapability('conditioncode_detail').trigger_token.push({
-            "trigger_token_id": "conditioncode",
-            "trigger_token_value":data.weather[0].id
-        })
-        // this.getDataCapability('conditioncode_detail')['trigger_token_value'] = data.weather[0].id;
+            this.getDataCapability('conditioncode_detail')['value'] = data.weather[0].id.toString();
+            this.getDataCapability('conditioncode_detail').trigger_token.push({
+                "trigger_token_id": "conditioncode",
+                "trigger_token_value":data.weather[0].id
+            })
+            // this.getDataCapability('conditioncode_detail')['trigger_token_value'] = data.weather[0].id;
 
-        this.getDataCapability('description')['value'] = data.weather[0].description;
-        this.getDataCapability('summary')['value'] = data.summary;
+            this.getDataCapability('description')['value'] = data.weather[0].description;
+        }
+        else{
+            this.getDataCapability('description')['value'] = null;
+        }
+        
+        if ( data.summary != undefined){
+            this.getDataCapability('summary')['value'] = data.summary;
+        }
+        else{
+            this.getDataCapability('summary')['value'] = null;
+        }
 
         this.getDataCapability('measure_temperature_min')['value'] = Math.round(data.temp.min * 10) / 10;
         this.getDataCapability('measure_temperature_max')['value'] = Math.round(data.temp.max * 10) / 10;
@@ -287,12 +298,24 @@ class owmOnecallDaily extends Homey.Device {
 
         this.getDataCapability('measure_humidity')['value'] = data.humidity;
         this.getDataCapability('measure_pressure')['value'] = data.pressure;
-        this.getDataCapability('measure_dew_point')['value'] = Math.round(data.dew_point * 10) / 10;
+
+        if ( data.dew_point != undefined){
+            this.getDataCapability('measure_dew_point')['value'] = Math.round(data.dew_point * 10) / 10;
+        }
+        else{
+            this.getDataCapability('measure_dew_point')['value'] = null;
+        }
 
         this.getDataCapability('measure_ultraviolet')['value'] = data.uvi;
         this.getDataCapability('measure_cloudiness')['value'] = data.clouds;
-        this.getDataCapability('measure_pop')['value'] = Math.round(data.pop * 100);
 
+        if (data.pop != undefined){
+            this.getDataCapability('measure_pop')['value'] = Math.round(data.pop * 100);
+        }
+        else{
+            this.getDataCapability('measure_pop')['value'] = null;
+        }
+        
         let sunr = new Date(data.sunrise*1000).toLocaleString('en-US', 
         { 
             hour12: false, 

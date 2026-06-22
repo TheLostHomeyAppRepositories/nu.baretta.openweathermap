@@ -10,7 +10,7 @@
             "type": "number",
             "value": 0,
             "min": 0,
-            "max": 7,
+            "max": 10,
             "units": { 
                 "en": "Days",
                 "de": "Tage",
@@ -20,6 +20,11 @@
                 "en": "Day difference for the forecast:",
                 "de": "Tages-Differenz für die Vorhersage:", 
                 "nl": "dagelijks verschil voor de voorspelling:"
+            },
+            "hint": {
+                "en": "OneCall 3.0: 0 to 7 days. OneCall 4.0: 0 to 10 days. Examples: '0' for an actual forecast. '5' for a forecast in 5 days.",
+                "de": "OneCall 3.0: 0 bis 7 Tage. OneCall 4.0: 0 bis 10 Tage. Beispiele: '0' für eine aktuelle Vorhersage. '5' für eine Vorhersage in 5 Tagen.",
+                "nl": "OneCall 3.0: 0 tot 7 dagen. OneCall 4.0: 0 tot 10 dagen. Voorbeelden: '0' voor een actuele voorspelling. '5' voor een voorspelling in 5 dagen."
             }
         },
         {

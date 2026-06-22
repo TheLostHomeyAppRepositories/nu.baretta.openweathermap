@@ -226,8 +226,41 @@ class owmOnecallCurrent extends Homey.Device {
         let dataKeys = Object.keys(this.data);
         let data;
         try{
-            let url = owm.getOnecallURL(settings);
-            data = await owm.getWeatherData(url);
+
+            // Special Map OneCall 4.0 calls and response mapping to 3.0 JSON definition
+            if ( settings["APIVersion"] == "4.0" ){
+                data = {};
+                // current weather
+                let url = owm.getOnecall40URL(settings, 'current');
+                let data40 = await owm.getWeatherData(url);
+                data["current"] = data40.data[0];
+                data.current["dt"] = data40.data[0].dt;
+                // daily forecast
+                if ( this.hasChildDaily() ){
+                    let url = owm.getOnecall40URL(settings, 'daily');
+                    data40 = await owm.getWeatherData(url);
+                    data["daily"] = data40.data;
+                }
+                // hourly forecast
+                if ( this.hasChildHourly() ){
+                    let url = owm.getOnecall40URL(settings, 'hourly');
+                    data40 = await owm.getWeatherData(url);
+                    data["hourly"] = data40.data;
+                }
+                // hourly alerts
+                if ( this.hasChildAlerts() && data.current.alerts ){
+                    data["alerts"] = [];
+                    for ( let i=0; i< data.current.alerts.length; i++ ){
+                        let url = owm.getOnecall40AlertURL(settings, data.current.alerts[i]);
+                        data40 = await owm.getWeatherData(url);
+                        data.alerts.push(data40);
+                    }
+                }
+            }
+            else {
+                let url = owm.getOnecallURL(settings);
+                data = await owm.getWeatherData(url);
+            }
         }
         catch(error){
             this.log("Error reading OWM data:", error.message);
@@ -563,6 +596,36 @@ class owmOnecallCurrent extends Homey.Device {
         else{
             await this.updateChildAlerts([])
         }
+    }
+
+    hasChildHourly(){
+        let devices = this.homey.drivers.getDriver('owmOnecallHourly').getDevices();
+        for (let i=0; i<devices.length; i++){
+            if (devices[i].getData().locationId == this.getData().id){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    hasChildDaily(){
+        let devices = this.homey.drivers.getDriver('owmOnecallDaily').getDevices();
+        for (let i=0; i<devices.length; i++){
+            if (devices[i].getData().locationId == this.getData().id){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    hasChildAlerts(){
+        let devices = this.homey.drivers.getDriver('owmOnecallAlerts').getDevices();
+        for (let i=0; i<devices.length; i++){
+            if (devices[i].getData().locationId == this.getData().id){
+                return true;
+            }
+        }
+        return false;
     }
 
     async updateChildHourly(data){

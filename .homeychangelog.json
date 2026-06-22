@@ -294,5 +294,9 @@
   "1.8.0": {
     "en": "Added OneCall 4.0 API URL.",
     "de": "OneCall 4.0 API URL hinzugefügt."
+  },
+  "1.8.1": {
+    "en": "Added OneCall 4.0 API. Please note the changes regarding API costs and data.",
+    "de": "OneCall 4.0 API hinzugefügt. Bitte beachte die Anpassungen bezogen auf die Kosten und Daten der API."
   }
 }

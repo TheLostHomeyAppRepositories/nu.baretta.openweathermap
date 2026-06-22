@@ -20,6 +20,11 @@
                 "en": "Hour difference for the forecast:",
                 "de": "Stunden-Differenz für die Vorhersage:", 
                 "nl": "Uurverschil voor de voorspelling:"
+            },
+            "hint": {
+                "en": "OneCall 3.0: 0 to 47 hours. OneCall 4.0: 0 to 20 hours. Examples: '0' for an actual forecast. '5' for a forecast in 5 hours.",
+                "de": "OneCall 3.0: 0 bis 47 Stunden. OneCall 4.0: 0 bis 20 Stunden. Beispiele: '0' fuer eine aktuelle Vorhersage. '5' fuer eine Vorhersage in 5 Stunden.",
+                "nl": "OneCall 3.0: 0 tot 47 uur. OneCall 4.0: 0 tot 20 uur. Voorbeelden: '0' voor een actuele voorspelling. '5' voor een voorspelling in 5 uur."
             }
         },
         {

@@ -49,6 +49,9 @@ class owmAirPollutionCurrent extends Homey.Device {
         // Flows
         // this._flowTriggerTemperatureChanged = this.homey.flow.getDeviceTriggerCard('TemperatureChanged');
 
+        // wait to get child devices ready
+        await this._wait(2000);
+
         //run once to get the first data
         if (settings.pollingActive == true){
             this.setPollInterval(settings);
@@ -155,6 +158,9 @@ class owmAirPollutionCurrent extends Homey.Device {
         }
         catch(error){
             this.log("Error reading OWM data:", error.message);
+            this.log("Full Error: ", error);
+            this.setDeviceUnavailable(this.homey.__("device_unavailable_reason.no_api_result: "+error.message));
+            return;
         }
         if (!data || !data.list || !data.list[0]){
             if (data && data.message && data.cod>200){

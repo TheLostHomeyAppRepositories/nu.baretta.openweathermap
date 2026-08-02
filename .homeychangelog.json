@@ -298,5 +298,9 @@
   "1.8.1": {
     "en": "Added OneCall 4.0 API. Please note the changes regarding API costs and data.",
     "de": "OneCall 4.0 API hinzugefügt. Bitte beachte die Anpassungen bezogen auf die Kosten und Daten der API."
+  },
+  "1.8.2": {
+    "en": "Added debug log. Fix for 'device definition not found' error.",
+    "de": "Debug-Log hinzugefügt. Korrektur des 'device definition not found' Fehlers."
   }
 }

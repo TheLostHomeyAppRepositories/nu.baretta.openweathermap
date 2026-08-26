@@ -306,5 +306,9 @@
   "1.8.3": {
     "en": "Fixed AirQuality device.",
     "de": "Luftqualitätsgerät korrigiert."
+  },
+  "1.8.4": {
+    "en": "Fixed OneCall pairing (v.4.0 selection).",
+    "de": "OneCall-Verknüpfung korrigiert (v.4.0 Auswahl)."
   }
 }

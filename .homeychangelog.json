@@ -310,5 +310,9 @@
   "1.8.4": {
     "en": "Fixed OneCall pairing (v.4.0 selection).",
     "de": "OneCall-Verknüpfung korrigiert (v.4.0 Auswahl)."
+  },
+  "1.8.5": {
+    "en": "Fixed OneCall daily summary timestamp.",
+    "de": "OneCall Tägliche Vorhersage, Zeitstempel korrigiert."
   }
 }

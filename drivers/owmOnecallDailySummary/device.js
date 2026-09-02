@@ -267,7 +267,7 @@ class owmOnecallDailySummary extends Homey.Device {
             })
             .catch(this.error);
                     
-        let date = new Date(data.date).toLocaleString('en-US', 
+        let date = new Date(data.date + "T00:00:00").toLocaleString('en-US', 
         { 
             hour12: false, 
             timeZone: tz,
